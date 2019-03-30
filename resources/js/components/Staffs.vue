@@ -1,0 +1,142 @@
+<template>
+    <div>
+        <!-- <create-staff v-if="(createMode || editMode)" :editMode="editMode" :createMode="createMode" :staff="editstaff"></create-staff> -->
+    
+    <div class="row" v-if="(!createMode && !editMode)">
+      <div class="col-12">
+        <h1 class="page-header">Staffs List</h1>
+        <button class="btn btn-success btn-sm mt-2 mb-3 " @click="create">New Stafff</button>
+        
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Address</th>
+                    <th>Business/Office</th>
+                    <th>Department</th>
+                    <th>Role/Job Title</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(staff,index) in staffs" :key="staff.id">
+                    <td>{{ index + 1 }}</td>
+                    <td>{{ staff.name }}</td>
+                    <td>{{ staff.phone }}</td>
+                    <td>
+                        {{ 
+                            staff.address.home_no !== null ? staff.address.home_no + ', ' : ''
+                        }}
+
+                        {{
+                            staff.address.street !== null ?  staff.address.street + ', '  : ''
+                        }}
+
+                        {{
+                            staff.address.block !== null ? staff.address.block : ''
+                        }}
+                    </td>
+                    <td>{{ staff.business }}</td>
+                    <td>{{ staff.department }}</td>
+                    <td>{{ staff.role }}</td>
+                    <td>
+                        <button class="btn btn-info btn-sm text-white" @click="editStaff(staff)"><i class="fa fa-edit"></i></button>
+                        <button class="btn btn-danger btn-sm" @click="deleteStaff(staff.no)"><i class="fa fa-times"></i></button>
+                    </td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+
+        <br><br>
+
+      </div>
+    </div>
+
+</div>
+    
+    
+</template>
+
+<style scoped>
+
+</style>
+
+<script>
+    import CreateStaff from './Staff/CreateStaff.vue';
+    import EditStaff from './Staff/EditStaff.vue';
+
+    export default {
+        components : {
+            CreateStaff,
+            EditStaff,
+        },
+        data(){
+            return {
+                createMode:false,
+                editMode:false,
+                edit:false,
+                staffs:{},
+                editstaff : {},
+            }
+        },
+        methods:{
+            editStaff(staff){
+                this.editMode = true
+                this.editstaff = staff
+
+                this.$router.push(`/staffs/edit/${staff.no}`)
+            },
+            deleteStaff(id){
+                axios.delete('/api/staffs/' + id)
+                    .then(response => console.log(response))
+                    .catch(error => console.log(error))
+
+                Bus.$emit('afterDeleted');
+            },
+            loadData(){
+                axios.get('/api/staffs')
+               .then(res=>this.staffs=res.data.data)
+               .catch(errr=>console.log(err.response.data))
+                 
+            },
+            create(){
+               this.createMode = true
+               this.$router.push('/staffs/create')
+            },
+            
+        },
+        created(){
+            this.loadData()
+            Bus.$on('afterCreated',() => {
+                this.loadData();
+            })
+
+            Bus.$on('afterUpdated', () => {
+                this.loadData();
+            })
+
+            Bus.$on('afterDeleted', () => {
+                this.loadData();
+            })
+
+            Bus.$on('cancel', () => {
+                this.createMode = false
+                this.editMode = false
+            })
+
+        },
+
+        
+        
+    }
+</script>
+<style scoped>
+    td{
+        line-height: 1.4em;
+        font-family: 'Zawgyi';
+    }
+</style>
