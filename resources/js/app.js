@@ -20,6 +20,9 @@ window.Bus = new Vue();
  */
 import router from './Router/router.js';
 import vSelect from 'vue-select'
+import User from './Helpers/User.js';
+
+window.User = User
 
 Vue.component('v-select', vSelect)
 

@@ -1,10 +1,9 @@
 <template>
     <div>
-        <!-- <create-staff v-if="(createMode || editMode)" :editMode="editMode" :createMode="createMode" :staff="editstaff"></create-staff> -->
-    
+
     <div class="row" v-if="(!createMode && !editMode)">
       <div class="col-12">
-        <h1 class="page-header">Staffs List</h1>
+        <h1 class="page-header mirim_font">Staffs List</h1>
         <button class="btn btn-success btn-sm mt-2 mb-3 " @click="create">New Stafff</button>
         
         <table class="table table-bordered">
@@ -99,8 +98,8 @@
             },
             loadData(){
                 axios.get('/api/staffs')
-               .then(res=>this.staffs=res.data.data)
-               .catch(errr=>console.log(err.response.data))
+               .then(res=>this.staffs = res.data.data)
+               .catch(errr=>console.log(err))
                  
             },
             create(){

@@ -12,6 +12,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    require('admin-lte');
 } catch (e) {}
 
 /**
@@ -23,6 +24,8 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+let JwtToken = localStorage.getItem('token');
+window.axios.defaults.headers.common['Authorization'] = `Bearer ${JwtToken}`;
 
 /**
  * Next we will register the CSRF Token as a common header with Axios so that

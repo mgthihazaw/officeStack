@@ -17,23 +17,36 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('/staffs', 'StaffController');
-Route::get('/receptionists', 'StaffController@getReceptionists');
-Route::get('/service_engineers', 'StaffController@getServiceEngineers');
 
-Route::apiResource('/roles', 'RoleController');
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
 
-Route::apiResource('/states', 'StateController');
+	Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+});
 
 Route::apiResource('/businesses', 'BusinessController');
 
-Route::apiResource('/departments', 'DepartmentController');
+Route::group(['middleware' => 'auth:api'], function(){
 
-Route::apiResource('/services', 'ServiceController');
+	Route::apiResource('/staffs', 'StaffController');
+	Route::get('/receptionists', 'StaffController@getReceptionists');
+	Route::get('/service_engineers', 'StaffController@getServiceEngineers');
 
-Route::apiResource('/customers', 'CustomerController');
+	Route::apiResource('/roles', 'RoleController');
+
+	Route::apiResource('/states', 'StateController');
+
+	Route::apiResource('/departments', 'DepartmentController');
+
+	Route::apiResource('/services', 'ServiceController');
+
+	Route::apiResource('/customers', 'CustomerController');
 
 
-Route::get('/states/{state}/townships', 'StateController@getTownships');
-Route::get('/townships/{township}/blocks', 'AddressController@getBlocks');
-Route::get('/departments/{department}/roles', 'DepartmentController@getRoles');
+	Route::get('/states/{state}/townships', 'StateController@getTownships');
+	Route::get('/townships/{township}/blocks', 'AddressController@getBlocks');
+	Route::get('/departments/{department}/roles', 'DepartmentController@getRoles');
+});

@@ -15,16 +15,12 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/{any}', function () {
+Route::get('/{any?}', function (){
     return view('home');
-})->where('any', '.*');
+})->where('any', '^(?!api\/)[\/\w\.-]*');
 
 
-// Route::get('/{any}/{any1}', function () {
-//     return view('home');
+
+// Route::get('/test', function(){
+// 	return bcrypt('thihazaw');
 // });
-// Route::get('/{any}/{any1}/{any2}', function () {
-//     return view('home');
-// });
-
-

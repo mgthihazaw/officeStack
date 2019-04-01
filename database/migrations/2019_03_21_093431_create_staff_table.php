@@ -17,7 +17,9 @@ class CreateStaffTable extends Migration
             $table->increments('id');
             $table->integer('person_business_id')->unsigned();
             $table->integer('role_id')->unsigned();
-            
+            $table->string('username')->nullable();
+            $table->string('password')->nullable();
+            $table->string('secret')->default('microstack');
 
             $table->foreign('person_business_id')->references('id')->on('person_business')->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');

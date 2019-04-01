@@ -2,10 +2,16 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class Staff extends Model
+class Staff extends Authenticatable implements JWTSubject
 {
+
+    use Notifiable;
+
 	protected $table = 'staffs';
 
 	public $timestamps = false;
@@ -30,5 +36,16 @@ class Staff extends Model
 
     public function scopeServiceEngineers($query){
     	return $query->where('role_id', '=', 2);
+    }
+
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

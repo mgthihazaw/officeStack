@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "@ttskch/select2-bootstrap4-theme": "^1.0.5",
+        "admin-lte": "^3.0.0-alpha.2",
         "select2": "^4.0.6-rc.1",
         "vue-router": "^3.0.2",
         "vue-select": "^2.6.2",
