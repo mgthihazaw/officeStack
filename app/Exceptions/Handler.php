@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 
 class Handler extends ExceptionHandler
 {
@@ -50,6 +51,11 @@ class Handler extends ExceptionHandler
         if($request->ajax()){
             if($exception instanceof AuthenticationException){
                 return response()->json('Authentication Required');
+            }
+            if ($exception instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
+                return response()->json(['status' => 'Token is Invalid'], 403);
+            }else if ($exception instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
+                return response()->json(['status' => 'Token is Expired'],403);
             }
         }
         

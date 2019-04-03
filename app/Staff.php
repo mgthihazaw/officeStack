@@ -18,6 +18,8 @@ class Staff extends Authenticatable implements JWTSubject
 
     protected $fillable = ['person_business_id','role_id','business_id'];
 
+    protected $hidden = ['password','role','secret','person_business_id'];
+
     public function person_business(){
     	return $this->belongsTo('App\Person');
     }
@@ -47,5 +49,11 @@ class Staff extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function hasPermission($permission){
+        foreach($this->role->permissions as $permiss){
+            return $permission === $permiss->permission ? true : false;
+        }
     }
 }

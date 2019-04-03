@@ -30,9 +30,11 @@ class AuthController extends Controller
     public function user(Request $request)
     {
         $staff = Staff::find(Auth::user()->id);
+        
         return response()->json([
             'status' => 'success',
-            'data' => $staff
+            'data' => $staff,
+            
         ]);
     }
     public function refresh()
@@ -49,6 +51,11 @@ class AuthController extends Controller
         return Auth::guard();
     }
 
+    public function me()
+    {
+        return response()->json(auth()->user());
+    }
+
     /**
      * Get the token array structure.
      *
@@ -58,10 +65,15 @@ class AuthController extends Controller
      */
     protected function respondWithToken($token)
     {
+        $permissions = [];
+        foreach($this->guard()->user()->role->permissions as $permission){
+            $permissions[] = $permission->permission;
+        }
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'user' => $this->guard()->user(),
+            'permissions' => $permissions,
             'expires_in' => auth()->factory()->getTTL() * 60
         ]);
     }

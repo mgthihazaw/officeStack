@@ -3,7 +3,7 @@
 		<div class="row">
 		    <div class="col-12">
 		        <h1 class="page-header">Service List</h1>
-		        <router-link class="btn btn-info btn-sm mt-2 mb-3 text-white" to="/services/create">New Service</i></router-link>
+		        <router-link class="btn btn-info btn-sm mt-2 mb-3 text-white" to="/services/create" v-if="User.isSaleperson()">New Service</i></router-link>
 		        
 		        <table class="table table-bordered">
 		            <thead>
@@ -34,7 +34,8 @@
 		                		<span class="badge" style="{ padding-top : 5px ; padding-bottom : 5px" :class="[service.pending ? 'badge-success' : 'badge-danger']">{{ service.pending ? "Finished" : "Not Finished" }}</span>
 		                	</td>
 		                	<td>
-		                        <button class="btn btn-info btn-sm text-white" @click="editService(service.id)"><i class="fa fa-edit"></i></button>
+		                        <button class="btn btn-info btn-sm text-white" @click="editServicebySaleperson(service.id)" v-if="User.isSaleperson()"><i class="fa fa-edit"></i></button>
+		                        <button class="btn btn-primary btn-sm text-white" @click="editServicebyServiceEngineer(service.id)" v-if="User.isServiceEngineer()"><i class="fa fa-edit"></i></button>
 		                        <!-- <button class="btn btn-danger btn-sm" @click="deleteService(service.id)"><i class="fa fa-times"></i></button> -->
 		                    </td>
 		                </tr>
@@ -49,6 +50,7 @@
 	export default{
 		data(){
 			return {
+				User : '',
 				service_list : [],
 			}
 		},
@@ -62,7 +64,10 @@
 						console.log(error);
 					})
 			},
-			editService(id){
+			editServicebySaleperson(id){
+				this.$router.push('/services/edit/'+id)
+			},
+			editServicebyServiceEngineer(id){
 				this.$router.push('/services/edit/'+id)
 			},
 			deleteService(id){
@@ -76,6 +81,7 @@
 			}
 		},
 		created(){
+			this.User = Gate;
 			this.getServiceList();
 			Bus.$on('afterServiceDeleted', () => {
 				this.getServiceList();

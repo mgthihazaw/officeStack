@@ -38,6 +38,7 @@
 </template>
 
 <script>
+	import Gate from '../Helpers/Gate';
 	export default{
 		data() {
 			return {
@@ -53,7 +54,7 @@
 			login(){
 				axios.post('/api/auth/login', this.form)
 					.then((response) => {
-						User.store(response.data.user,response.data.access_token);
+						User.store(response.data.user,response.data.permissions,response.data.access_token);
 						window.location.replace('/');
 					})
 					.catch((error) => {

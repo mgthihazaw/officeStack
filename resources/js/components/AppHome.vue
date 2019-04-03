@@ -126,7 +126,9 @@
             Dashboard,
         },
         data(){
+            
             return {
+                User : '',
                 isLoggedIn : '',
                 username : '',
             }
@@ -135,14 +137,16 @@
 
         },
         created() {
-            Bus.$on('logout', function(){
+          
+          this.username = User.getUser();
+          this.isLoggedIn = User.isLoggedIn()
+
+          Bus.$emit('getrole');
+          Bus.$on('logout', function(){
                 User.clear();
                 this.isLoggedIn = false
                 window.location.replace('/');
             })
-            this.username = User.getUser();
-            this.isLoggedIn = User.isLoggedIn()
-            
         }
     }
 </script>

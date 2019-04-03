@@ -8,6 +8,7 @@ use App\Person;
 use App\Location;
 use App\Address;
 use App\Http\Resources\StaffResource;
+use Auth;
 
 class StaffController extends Controller
 {

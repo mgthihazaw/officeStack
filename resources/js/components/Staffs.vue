@@ -98,8 +98,17 @@
             },
             loadData(){
                 axios.get('/api/staffs')
-               .then(res=>this.staffs = res.data.data)
-               .catch(errr=>console.log(err))
+               .then(res=> {
+      
+                    this.staffs = res.data.data
+                })
+               .catch(errr => {
+                        console.log(errr.response.status)
+                        if(errr.response.status === 403){
+                           // Bus.$emit('logout');
+                        }
+                    }
+                )
                  
             },
             create(){

@@ -15,4 +15,8 @@ class Role extends Model
     public function department(){
     	return $this->belongsTo('App\Department');
     }
+
+    public function permissions(){
+    	return $this->belongsToMany('App\Permission', 'role_has_permissions');
+    }
 }

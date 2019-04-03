@@ -12,17 +12,16 @@ import CreateService from '../components/Service/CreateService';
 import EditService from '../components/Service/EditService';
 import Login from '../components/Login';
 import NotFound404 from '../components/errors/NotFound404';
+
+
 import Logout from '../components/Logout';
 
 const routes = [
  	  { 
       path: '/', 
       component: Dashboard,
-      beforeEnter: (to, from, next) => {
-        if(!User.getToken()){
-          next('/login');
-        }
-        next();
+      meta : {
+        requiresAuth : true,
       }
     },
     { 
@@ -38,66 +37,51 @@ const routes = [
   	{ 
       path: '/staffs',
       component: Staffs,
-      beforeEnter: (to, from, next) => {
-        if(!User.getToken()){
-          next('/login');
-        }
-        next();
+      meta : {
+        requiresAuth : true,
       }
     },
   	{ 
       path: '/staffs/create',
       component: CreateStaff,
-      beforeEnter: (to, from, next) => {
-        if(!User.getToken()){
-          next('/login');
-        }
-        next();
+      meta : {
+        requiresAuth : true,
       }
     },
   	{ 
       path: '/staffs/edit/:id', 
       component: EditStaff,
-      beforeEnter: (to, from, next) => {
-        if(!User.getToken()){
-          next('/login');
-        }
-        next();
-      } 
+      meta : {
+        requiresAuth : true,
+      }
     },
   	{ 
       path: '/services', 
       component: ServiceList,
-      beforeEnter: (to, from, next) => {
-        if(!User.getToken()){
-          next('/login');
-        }
-        next();
+      meta : {
+        requiresAuth : true,
       }
     },
     { 
       path : '/services/create', 
       component : CreateService,
-      beforeEnter: (to, from, next) => {
-        if(!User.getToken()){
-          next('/login');
-        }
-        next();
-      } 
+      meta : {
+        requiresAuth : true,
+      }
     },
     { 
       path : '/services/edit/:id', 
       component : EditService,
-      beforeEnter: (to, from, next) => {
-        if(!User.getToken()){
-          next('/login');
-        }
-        next();
+      meta : {
+        requiresAuth : true,
       }
     },
     {
       path : '/logout', 
       component : Logout,
+      meta : {
+        requiresAuth : true,
+      }
     },
     {
       path : '*',
@@ -115,4 +99,19 @@ const router = new VueRouter({
   mode:'history',
    // short for `routes: routes`
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.requiresAuth)) {
+    if (!User.getToken()) {
+      next({
+        path: '/login',
+      });
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+})
+
 export default router

@@ -1,5 +1,6 @@
 <template>
-	<div class="container">
+	<unauthorized v-if="!authorized"></unauthorized>
+	<div class="container" v-else>
 		<div class="row">
 			<div class="col-12">
 				<h3>ADD NEW SERVICE</h3>
@@ -56,9 +57,15 @@
 	</div>
 </template>
 <script>
+	import Unauthorized403 from '../errors/Unauthorized403';
+
 	export default{
+		components : {
+			'Unauthorized' : Unauthorized403,
+		},
 		data(){
 			return {
+				authorized : true, 
 				disable : false,
 				receptionists : [],
 				service_engineers : [],
@@ -135,6 +142,9 @@
 			}
 		},
 		created(){
+			if(!Gate.isSaleperson()){
+				this.authorized = false;
+			}
 			this.loadReceptionists();
 			this.loadServiceEngineers();
 			this.loadCustomers();

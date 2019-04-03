@@ -29,7 +29,7 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
 
 Route::apiResource('/businesses', 'BusinessController');
 
-Route::group(['middleware' => 'auth:api'], function(){
+Route::group(['middleware' => 'jwt'], function(){
 
 	Route::apiResource('/staffs', 'StaffController');
 	Route::get('/receptionists', 'StaffController@getReceptionists');

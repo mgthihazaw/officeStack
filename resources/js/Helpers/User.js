@@ -4,26 +4,34 @@ class User{
 		localStorage.setItem('token',token);
 	}
 	setUser(user){
-		localStorage.setItem('user',user.username);
+		localStorage.setItem('user', user.username);
 	}
-	store(user,token){
-		this.setUser(user)
+	setPermissions(permissions){
+		//localStorage.setItem('permissions',permissions);
+	}
+	store(user,permissions,token){
+		this.setUser(user);
+		this.setPermissions(permissions)
 		this.setToken(token)
 	}
 	getUser(){
 		return localStorage.getItem('user');
 	}
+	getPermissions(){
+		return localStorage.getItem('permissions');
+	}
+	
 	getToken(){
 		return localStorage.getItem('token');
 	}
 	isLoggedIn(){
-		return (this.getUser() && this.getToken()) ? true : false;
+		return (this.getToken()) ? true : false;
 	}
 	clear(){
 		if(this.isLoggedIn()){
 			localStorage.removeItem('token');
+			localStorage.removeItem('permissions');
 			localStorage.removeItem('user');
-
 		} 
 	}
 }

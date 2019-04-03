@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Service;
 use App\Customer;
 use App\Http\Resources\ServiceResource;
+use Auth;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Auth\Access\AuthorizationException;
 
 class ServiceController extends Controller
 {
@@ -38,7 +41,10 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-
+        if(!Gate::allows('create-service', Auth::guard()->user())){
+            throw new AuthorizationException;
+            // return response()->json('You are not allowed');
+        }
         $customer_name = $request->customer_name;
         $customer_phone = $request->customer_phone;
         $customer_address = $request->customer_address;
