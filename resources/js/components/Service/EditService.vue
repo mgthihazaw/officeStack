@@ -1,7 +1,7 @@
 <template>
 	<div>
-		<saleperson-editview v-if="User.isSaleperson"></saleperson-editview>
-		<engineer-editview v-if="User.isServiceEngineer"></engineer-editview>
+		<saleperson-editview v-if="isSaleperson()"></saleperson-editview>
+		<engineer-editview v-if="isServiceEngineer()"></engineer-editview>
 	</div>
 </template>
 
@@ -16,12 +16,20 @@
 		},
 		data(){
 			return {
-				User : '',
+				User : new Object,
+			}
+		},
+		methods : {
+			isServiceEngineer(){
+				return Gate.isServiceEngineer();
+			},
+			isSaleperson(){
+				return Gate.isSaleperson();
 			}
 		},
 		created(){
-			this.User = Gate;
-		}
+			
+		},
 		
 	}
 </script>

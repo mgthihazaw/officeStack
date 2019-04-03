@@ -42,4 +42,5 @@ class Permission_Seeder extends Seeder
         	'role_id' => 3,
         	'permission_id' => 3,
         ]);
+    }
 }

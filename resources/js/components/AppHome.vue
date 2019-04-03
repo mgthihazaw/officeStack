@@ -54,7 +54,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <router-link to="/" class="nav-link">
+            <router-link to="/" class="nav-link" v-if="StaffShow()">
               <i class="nav-icon green fas fa-tachometer-alt"></i>
               <p>
                 DASHBOARD
@@ -62,12 +62,12 @@
             </router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/staffs">
+            <router-link class="nav-link" to="/staffs" v-if="StaffShow()">
                 <i class="nav-icon indigo fas fa-people-carry"></i>
                 <p>STAFFS</p>
             </router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" v-if="ServiceShow()">
             <router-link class="nav-link" to="/services">
                 <i class="nav-icon orange fas fa-tasks"></i>
                 <p>SERVICES</p>
@@ -123,23 +123,51 @@
     export default {
         components : {
             Login,
+
+
+
+
             Dashboard,
         },
         data(){
             
             return {
-                User : '',
+                User : {
+                  sale:'',
+                  service: '',
+                  develop:''
+                },
                 isLoggedIn : '',
                 username : '',
             }
         },
         methods : {
-
+           ServiceShow(){
+           return this.User.sale || this.User.service ?true :false
+           },
+           StaffShow(){
+            return this.User.develop ?true :false
+           }
         },
         created() {
+
           
           this.username = User.getUser();
           this.isLoggedIn = User.isLoggedIn()
+
+
+          if(this.isLoggedIn){
+            axios.post('/api/auth/me')
+              .then(response => {
+            Gate.setUser(response.data.role_id);
+            this.User.sale = Gate.isSaleperson()
+            this.User.service=Gate.isServiceEngineer()
+            this.User.develop=Gate.isDeveloper()
+           })
+         
+           
+          
+        }
 
           Bus.$emit('getrole');
           Bus.$on('logout', function(){

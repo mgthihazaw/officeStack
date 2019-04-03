@@ -2,7 +2,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-12">
-				<h3>Edit SERVICE</h3>
+				<h3>Edit by engineer</h3>
 			</div>
 		</div>
 		<div class="row mt-4">
@@ -96,7 +96,6 @@
 				axios.get(`/api/services/${id}`)
 				  .then(res=>{
 				  	this.service=res.data.data
-				  	console.log(this.service)
                         this.form.customer_name=this.service.customer_name
                         this.form.customer_phone=this.service.customer_phone
                         this.form.description=this.service.description

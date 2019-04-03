@@ -34,5 +34,6 @@ class User{
 			localStorage.removeItem('user');
 		} 
 	}
+	
 }
 export default User = new User();
