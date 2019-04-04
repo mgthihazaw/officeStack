@@ -26,12 +26,6 @@
 						</div>
 					</div>
 
-					<div class="form-group row">
-						<div class="col-12">
-							<v-select :options="service_engineers":value="form.service_engineer" label="name" placeholder="Choose Service Engineer" v-model="form.service_engineer"></v-select>
-						</div>
-					</div>
-
 					<div class="form-group">
 						<label for="description">Service Description</label>
 						<textarea name="description" id="description" cols="30" rows="5" class="form-control" v-model="form.description"></textarea>
@@ -57,7 +51,6 @@
 			return {
 				service:'',
 				receptionists : [],
-				service_engineers : [],
 				form : {
 
 					customer_name : '',
@@ -76,15 +69,6 @@
 				axios.get('/api/receptionists')
 					.then(response => {
 						this.receptionists = response.data
-					})
-					.catch(error => {
-						console.log(error)
-					})
-			},
-			loadServiceEngineers(){
-				axios.get('/api/service_engineers')
-					.then(response => {
-						this.service_engineers = response.data
 					})
 					.catch(error => {
 						console.log(error)
@@ -138,7 +122,6 @@
 		},
 		created(){
            this.loadService()
-           this.loadServiceEngineers()
            this.loadReceptionists()
 			
 		}

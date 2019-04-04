@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons);@import url(https://fonts.googleapis.com/css?family=Miriam+Libre);/*!
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons);@import url(https://fonts.googleapis.com/css?family=Miriam+Libre);@import url(/fonts/Zawgyi-One.ttf);/*!
  *   AdminLTE v3.0.0-alpha
  *   Author: Abdullah Almsaeed
  *	 Website: AdminLTE.io <http://adminlte.io>
@@ -14122,7 +14122,12 @@ a.text-muted:hover {
 .elevation-5 {
   -webkit-box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
           box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-}.green {
+}@font-face {
+  font-family: "Zawgyi";
+  src: url("/fonts/Zawgyi-One.ttf");
+}
+
+.green {
   color: #38c172;
 }
 
@@ -25795,5 +25800,9 @@ a.text-dark:focus {
 
 .mirim_font {
   font-family: 'Miriam Libre', sans-serif;
+}
+
+* {
+  font-family: 'Zawgyi';
 }
 

@@ -21,11 +21,13 @@ class ServiceResource extends JsonResource
             'township' => $this->customer_id == null ? $this->township : $this->customer->person_business->address->location->name,
             'staff' => $this->staff->person_business->name,
             'staff_id' => $this->staff->id,
-            'service_engineer' => $this->service_engineer->person_business->name,
-            'service_engineer_id' => $this->service_engineer->id,
+            'service_engineer' => $this->service_engineer === null ? '----' : $this->service_engineer->person_business->name,
+            
             'description' => $this->description,
             'remark' => $this->remark,
             'pending' => $this->pending,
+            'service_description' => $this->service_description,
+            'service_remark' => $this->service_remark,
         ];
     }
 }

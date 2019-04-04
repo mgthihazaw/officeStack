@@ -16,13 +16,16 @@ class CreateServiceTable extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('staff_id')->unsigned();
-            $table->integer('service_engineer_id')->unsigned();
+            $table->integer('service_engineer_id')->unsigned()->nullable();
             $table->integer('customer_id')->unsigned()->nullable();
             $table->string('customer_name')->nullable();
             $table->string('customer_phone')->nullable();
             $table->string('township')->nullable();
             $table->text('description');
             $table->text('remark');
+            $table->text('service_description')->nullable();
+            $table->text('service_remark')->nullable();
+
             $table->boolean('pending')->default(false);
             
             $table->foreign('staff_id')->references('id')->on('staffs')->onDelete('cascade');

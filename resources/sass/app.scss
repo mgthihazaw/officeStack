@@ -2,6 +2,12 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons');
 @import url('https://fonts.googleapis.com/css?family=Miriam+Libre');
+@import url('/fonts/Zawgyi-One.ttf');
+
+@font-face {
+	font-family: "Zawgyi";
+	src: url('/fonts/Zawgyi-One.ttf');
+}
 
 // Variables
 @import 'variables';
@@ -17,4 +23,6 @@
 .mirim_font{
 	font-family : 'Miriam Libre', sans-serif;
 }
-
+ *{
+ 	font-family : 'Zawgyi'
+ }

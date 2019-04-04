@@ -52,8 +52,10 @@ class Staff extends Authenticatable implements JWTSubject
     }
 
     public function hasPermission($permission){
+        $permissions = [];
         foreach($this->role->permissions as $permiss){
-            return $permission === $permiss->permission ? true : false;
+            array_push($permissions, $permiss->permission);
         }
+        return in_array($permission, $permissions) ? true : false;
     }
 }

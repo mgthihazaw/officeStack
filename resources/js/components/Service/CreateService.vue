@@ -32,12 +32,6 @@
 						</div>
 					</div>
 
-					<div class="form-group row">
-						<div class="col-12">
-							<v-select :options="service_engineers" label="name" placeholder="Choose Service Engineer" v-model="form.service_engineer"></v-select>
-						</div>
-					</div>
-
 					<div class="form-group">
 						<label for="description">Service Description</label>
 						<textarea name="description" id="description" cols="30" rows="5" class="form-control" v-model="form.description"></textarea>
@@ -65,10 +59,9 @@
 		},
 		data(){
 			return {
-				authorized : true, 
+				authorized : false, 
 				disable : false,
 				receptionists : [],
-				service_engineers : [],
 				customers : [],
 				form : {
 					customer_id : '',
@@ -76,7 +69,6 @@
 					customer_phone : '',
 					customer_address : '',
 					receptionist : '',
-					service_engineer : '',
 					description : '',
 					remark : '',
 				}
@@ -102,19 +94,8 @@
 						console.log(error)
 					})
 			},
-			loadServiceEngineers(){
-				axios.get('/api/service_engineers')
-					.then(response => {
-						this.service_engineers = response.data
-					})
-					.catch(error => {
-						console.log(error)
-					})
-			},
 			addNewService(){
 				this.form.receptionist = this.form.receptionist.no
-				this.form.service_engineer = this.form.service_engineer.no
-
 				this.form.customer_id = this.form.customer_id.id
 
 				//console.log(this.form);
@@ -142,12 +123,23 @@
 			}
 		},
 		created(){
-			if(!Gate.isSaleperson()){
+			 if(User.isLoggedIn()){
+            axios.post('/api/auth/me')
+              .then(response => {
+            Gate.setUser(response.data.role_id);
+             if(!Gate.isSaleperson()){
 				this.authorized = false;
+			}else{
+				this.authorized = true;
 			}
+           })
+          }
+         
+
 			this.loadReceptionists();
-			this.loadServiceEngineers();
 			this.loadCustomers();
+			
+			
 		}
 	}
 </script>

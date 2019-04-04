@@ -9,6 +9,8 @@ use App\Http\Resources\ServiceResource;
 use Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\AuthorizationException;
+use Hash;
+use App\Staff;
 
 class ServiceController extends Controller
 {
@@ -49,7 +51,7 @@ class ServiceController extends Controller
         $customer_phone = $request->customer_phone;
         $customer_address = $request->customer_address;
         $staff_id = $request->receptionist;
-        $service_engineer_id = $request->service_engineer;
+
         $description = $request->description;
         $remark = $request->remark;
         $customer_id = $request->customer_id;
@@ -59,7 +61,6 @@ class ServiceController extends Controller
             Service::create([
                 'customer_id' => $customer_id,
                 'staff_id' => $staff_id,
-                'service_engineer_id' => $service_engineer_id,
                 'description' => $description,
                 'remark' => $remark,
             ]);
@@ -69,7 +70,6 @@ class ServiceController extends Controller
                 'customer_phone' => $customer_phone,
                 'township' => $customer_address,
                 'staff_id' => $staff_id,
-                'service_engineer_id' => $service_engineer_id,
                 'description' => $description,
                 'remark' => $remark,
             ]);
@@ -87,6 +87,11 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
+
+        if(!Gate::allows('show-service', Auth::guard()->user())){
+            throw new AuthorizationException;
+            // return response()->json('You are not allowed');
+        }
         return new ServiceResource(Service::findOrFail($id));
     }
 
@@ -111,10 +116,30 @@ class ServiceController extends Controller
     public function update(Request $request, $id)
     {
         
-        $service=Service::findOrFail($id);
+        
+        $service = Service::findOrFail($id);
+
+        if($request->service_engineer){
+            $secret = $request->secret;
+            $serviceEngineer = Staff::findOrFail($request->service_engineer);
+
+            if(Hash::check($secret, $serviceEngineer->secret)){
+                $service->update([
+                    'service_description' => $request->service_description,
+                    'service_remark' => $request->service_remark,
+                    'service_engineer_id' => $request->service_engineer,
+                    'pending' => 1,
+                ]);
+
+                return response()->json('Service has been finished', 200);
+            }else{
+                return response()->json(['error' => 'Your secret is wrong'], 401);
+            }
+            
+        }
+
         $service->update([
             'staff_id'=>$request->receptionist,
-            'service_engineer_id'=>$request->service_engineer,
             'customer_name'=>$request->customer_name,
             'customer_phone'=>$request->customer_phone,
             'township'=>$request->customer_address,

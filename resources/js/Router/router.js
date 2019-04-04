@@ -7,6 +7,7 @@ import Dashboard from '../components/Dashboard';
 import Staffs from '../components/Staffs';
 import CreateStaff from '../components/Staff/CreateStaff';
 import EditStaff from '../components/Staff/EditStaff';
+import Service from '../components/Service/Service';
 import ServiceList from '../components/ServiceList';
 import CreateService from '../components/Service/CreateService';
 import EditService from '../components/Service/EditService';
@@ -58,6 +59,13 @@ const routes = [
   	{ 
       path: '/services', 
       component: ServiceList,
+      meta : {
+        requiresAuth : true,
+      }
+    },
+    { 
+      path: '/services/:id/show', 
+      component: Service,
       meta : {
         requiresAuth : true,
       }
