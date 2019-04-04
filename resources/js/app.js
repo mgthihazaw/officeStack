@@ -38,12 +38,12 @@ axios.interceptors.response.use(function (response) {
 window.User = User
 window.Gate = Gate
 
-if(User.isLoggedIn()){
-	axios.post('/api/auth/me')
-		.then(response => {
-			Gate.setUser(response.data.role_id);
-		})
-}
+// if(User.isLoggedIn()){
+// 	axios.post('/api/auth/me')
+// 		.then(response => {
+// 			Gate.setUser(response.data.role_id);
+// 		})
+// }
 
 Vue.component('v-select', vSelect)
 

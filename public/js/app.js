@@ -14693,11 +14693,12 @@ axios.interceptors.response.use(function (response) {
 window.User = __WEBPACK_IMPORTED_MODULE_2__Helpers_User_js__["a" /* default */];
 window.Gate = __WEBPACK_IMPORTED_MODULE_3__Helpers_Gate_js__["a" /* default */];
 
-if (__WEBPACK_IMPORTED_MODULE_2__Helpers_User_js__["a" /* default */].isLoggedIn()) {
-  axios.post('/api/auth/me').then(function (response) {
-    __WEBPACK_IMPORTED_MODULE_3__Helpers_Gate_js__["a" /* default */].setUser(response.data.role_id);
-  });
-}
+// if(User.isLoggedIn()){
+// 	axios.post('/api/auth/me')
+// 		.then(response => {
+// 			Gate.setUser(response.data.role_id);
+// 		})
+// }
 
 Vue.component('v-select', __WEBPACK_IMPORTED_MODULE_1_vue_select___default.a);
 
