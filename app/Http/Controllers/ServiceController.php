@@ -50,14 +50,20 @@ class ServiceController extends Controller
         $customer_name = $request->customer_name;
         $customer_phone = $request->customer_phone;
         $customer_address = $request->customer_address;
-        $staff_id = $request->receptionist;
+        $staff_id = $request->receive_staff;
 
         $description = $request->description;
         $remark = $request->remark;
         $customer_id = $request->customer_id;
 
-
         if($customer_id){
+            $request->validate([
+                'customer_id' => 'required|integer',
+                'receive_staff' => 'required|integer',
+                'description' => 'required|string',
+                'remark' => 'required|string',
+            ]);
+
             Service::create([
                 'customer_id' => $customer_id,
                 'staff_id' => $staff_id,
@@ -65,6 +71,17 @@ class ServiceController extends Controller
                 'remark' => $remark,
             ]);
         }else{
+            
+
+            $request->validate([
+                'customer_name' => 'required|string',
+                'customer_phone' => 'required',
+                'customer_address' => 'required|string',
+                'receive_staff' => 'required|integer',
+                'description' => 'required|string',
+                'remark' => 'required|string',
+            ]);
+
             Service::create([
                 'customer_name' => $customer_name,
                 'customer_phone' => $customer_phone,
@@ -115,11 +132,16 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        
+       
         $service = Service::findOrFail($id);
 
         if($request->service_engineer){
+            $request->validate([
+                'service_description' => 'required|string',
+                'service_remark' => 'required',
+                'service_engineer' => 'required|integer',
+            ]);
+
             $secret = $request->secret;
             $serviceEngineer = Staff::findOrFail($request->service_engineer);
 
@@ -133,13 +155,22 @@ class ServiceController extends Controller
 
                 return response()->json('Service has been finished', 200);
             }else{
-                return response()->json(['error' => 'Your secret is wrong'], 401);
+                return response()->json('Your secret is wrong', 401);
             }
             
         }
 
+        $request->validate([
+            'customer_name' => 'required|string',
+            'customer_phone' => 'required',
+            'customer_address' => 'required|string',
+            'receive_staff' => 'required|integer',
+            'description' => 'required|string',
+            'remark' => 'required|string',
+        ]);
+
         $service->update([
-            'staff_id'=>$request->receptionist,
+            'staff_id'=>$request->receive_staff,
             'customer_name'=>$request->customer_name,
             'customer_phone'=>$request->customer_phone,
             'township'=>$request->customer_address,

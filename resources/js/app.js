@@ -9,6 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VeeValidate from 'vee-validate';
+
+Vue.use(VeeValidate);
+
 
 window.Bus = new Vue();
 

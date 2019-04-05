@@ -22,11 +22,10 @@
 								   <div class="pb-3"><h5 class="card-title">Customer Address</h5>
 								   <p class="card-text  text-secondary">{{ service.township}}</p></div>
 
-								   <div class="pb-3"><h5 class="card-title">Staff</h5>
+								   <div class="pb-3"><h5 class="card-title">Received Staff</h5>
 								   <p class="card-text  text-secondary">{{ service.staff}}</p></div>
 
-								  <div class="pb-5"> <h5 class="card-title">Service Engineer</h5>
-								   <p class="card-text  text-secondary">{{ service.service_engineer}}</p></div>
+								  
 
 	                               <div class="pb-5">
 						 		 	<h5 class="card-title">Description</h5>
@@ -46,16 +45,19 @@
 									<div class="form-group row">
 										<label for="service_descriptioin" class=" form-control-label card-title">Service Description</label>
 										<textarea class="form-control " v-model="form.service_description" style="height:160px;"></textarea>
+										<div class="error" v-for="(error,index) in form_errors['service_description']" :key="index">{{ error }}</div>
 									</div>
 
 									<div class="form-group row">
 										<label for="service_descriptioin" class=" form-control-label card-title">Service Remark</label>
 										<textarea class="form-control " v-model="form.service_remark"  style="height:160px;"></textarea>
+										<div class="error" v-for="(error,index) in form_errors['service_remark']" :key="index">{{ error }}</div>
 									</div>
 
 									<div class="form-group row">
 										<label for="service_engineer" class=" form-control-label card-title">Choose Service Engineer</label>
 										<v-select class="col-12" :options="service_engineers" value="id" label="name" placeholder="Choose Service Engineer" v-model="form.service_engineer"></v-select>
+										<div v-if="service_engineer_error" class="error">Select the service engineer</div>
 									</div>
 
 									<div class="form-group row">
@@ -115,7 +117,9 @@
 					service_remark : '',
 					service_engineer : '',
 					secret : '',
-				}
+				},
+				form_errors : [],
+				service_engineer_error : false,
 			}
 		},
 		methods : {
@@ -140,6 +144,10 @@
 				   	})
 			},
 			updateService(){
+				if(!this.form.service_engineer){
+						this.service_engineer_error = true
+						return;
+				}
 				if(this.form.secret){
 					let id = this.$route.params.id
 					this.form.service_engineer = this.form.service_engineer.no
@@ -151,6 +159,21 @@
 						})
 						.catch(error => {
 							console.log(error.response)
+							if(error.response.status == 422){
+								this.form_errors = error.response.data.errors
+								this.form.service_engineer = this.service_engineers.find(staff => {
+									return staff.no === this.form.service_engineer
+								})
+								console.log(this.form_errors);
+							}
+
+							if(error.response.status == 401 && error.response.data == 'Your secret is wrong'){
+								this.form.service_engineer = this.service_engineers.find(staff => {
+									return staff.no === this.form.service_engineer
+								})
+								alert(error.response.data)
+								this.form.secret = '';
+							}
 						})
 				}else{
 					$('#secretModal').modal('show');
@@ -170,8 +193,9 @@
 		}
 	}
 </script>
-
-
-
-
+<style scoped>
+	.error{
+		color : red;
+	}
+</style>
 

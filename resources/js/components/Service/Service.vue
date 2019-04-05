@@ -38,12 +38,12 @@
 					 	</div>
 					 	<div class="col-7">
 					 		 <div class="pb-5">
-					 		 	<h5 class="card-title">Description</h5>
+					 		 	<h5 class="card-title">Received Description</h5>
 					           <p class="card-text  text-secondary">{{ service.description}}</p>
 					       </div>
 
 					    <div class="pb-5">
-					    	<h5 class="card-title">Remarks</h5>
+					    	<h5 class="card-title">Received Remarks</h5>
 					        <p class="card-text  text-secondary">{{ service.remark}}</p>
 					    </div>
                         <hr>
