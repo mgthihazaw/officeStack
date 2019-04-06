@@ -6,9 +6,9 @@
 			<div class="row">
                  <div class="card col-md-12">
                  	<div class="m-3">
-                      <h3 class="text-capitalize text-success">
+                      <h3 class="text-capitalize text-dark">
                       	
-                      		<i class="fas fa-arrow-circle-left" @click="back" style="cursor: pointer"></i>
+                      		<i class="fas fa-arrow-circle-left green" @click="back" style="cursor: pointer"></i>
                       	
                        Service Information
                    </h3>

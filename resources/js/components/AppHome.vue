@@ -6,7 +6,7 @@
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu"><i class="fa fa-bars"></i></a>
+        <a class="nav-link" data-widget="pushmenu"><i class="fa fa-bars black"></i></a>
       </li>
       
     </ul>
@@ -33,7 +33,7 @@
     <a href="l" class="brand-link">
       <img :src="'/images/vuetify.png'" alt="Microstack Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">Microstack</span>
+      <span class="brand-text font-weight-light text-primary">Microstack</span>
     </a>
 
     <!-- Sidebar -->
