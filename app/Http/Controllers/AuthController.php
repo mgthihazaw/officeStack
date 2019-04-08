@@ -17,7 +17,7 @@ class AuthController extends Controller
         if ($token = $this->guard()->attempt($credentials)) {
             return $this->respondWithToken($token);
         }
-        return response()->json(['error' => 'login_error'], 401);
+        return response()->json(['error' => 'Username or password incorrect','type' => 'login_fail'], 401);
     }
     public function logout()
     {

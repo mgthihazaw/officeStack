@@ -16,7 +16,7 @@ class Staff extends Authenticatable implements JWTSubject
 
 	public $timestamps = false;
 
-    protected $fillable = ['person_business_id','role_id','business_id'];
+    protected $fillable = ['person_business_id','role_id','business_id','username','password'];
 
     protected $hidden = ['password','role','secret','person_business_id'];
 

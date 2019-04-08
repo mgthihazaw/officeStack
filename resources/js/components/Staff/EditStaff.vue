@@ -14,17 +14,26 @@
 					<form @submit.prevent="submit" method="POST">
 		                <div class="form-group">
 		                    <label for="name">Name</label>
+							<p class="error text-muted" v-if="errs.name">
+                            {{errs.name[0]}}
+                            </p>
 		                    <input type="text" class="form-control" id="name"  v-model="form.name">
 		                
 		                </div>
 		                <div class="form-group">
 		                    <label for="phone1">Phone Numbers</label>
+							<div class="error text-muted" v-if="errs.phone">
+                            {{errs.phone[0]}}
+                            </div>
 		                    <input type="text" class="form-control" id="phone1"  v-model="form.phone">
 		                
 		                </div>
 
 		                <div class="form-group">
 		                    <label for="address">Address</label>
+							<div class="error text-muted" v-if="errs['address.township'] || errs['address.block'] || errs['address.home_no'] || errs['address.street'] || errs['address.state.id']">
+                               Your address is not completed 
+                             </div>
 		                    <div class="row">
 		                        <div class="col-12">
 		                            <v-select :options="states" label="name"  v-model="form.address.state" placeholder="State" :onChange="loadTownships"></v-select>
@@ -49,6 +58,9 @@
 
                         <div class="form-group">
                             <label for="business">Office/Business</label>
+							<div class="error text-muted" v-if="errs.business">
+                            {{errs.business[0]}}
+                            </div>
                             <select name="business" id="business" v-model="form.business" class="form-control">
                                 <option value="" disabled>Choose Office/Business</option>
                                 <option v-for="business in businesses" :key="business.id" :value="business.id">{{ business.name }}</option>
@@ -57,6 +69,9 @@
 
                         <div class="form-group">
                             <label for="department">Department</label>
+							<div class="error text-muted " v-if="errs.department">
+                            {{errs.department[0]}}
+                            </div>
                             <select name="department" id="department" v-model="form.department" class="form-control" @change="loadRoles">
                                 <option value="" disabled>Choose Department</option>
                                 <option v-for="department in departments" :key="department.id" :value="department.id">{{ department.department_name }}</option>
@@ -65,6 +80,9 @@
 
 		                <div class="form-group">
 		                    <label for="role">Role/Job Title</label>
+							<div class="error text-muted" v-if="errs.role">
+                            {{errs.role[0]}}
+                            </div>
 		                    <select name="role" id="role" v-model="form.role" ref="role" class="form-control">
 		                        <option value="" disabled>Choose Role/Job Title</option>
 		                        <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
@@ -133,6 +151,7 @@
 	export default{
 		data(){
             return {
+				errs:[],
             	staff : {},
             	state : '',
             	township : '',
@@ -226,7 +245,7 @@
             			this.$router.push('/staffs');
             		})
             		.catch(error => {
-            			console.log(error)
+            			 this.errs=error.response.data.errors
             		})
             }
         },
@@ -279,3 +298,13 @@
         }
 	}
 </script>
+<style scoped>
+.error{
+    
+    color: #D8000C !important;
+	
+    margin-bottom: 10px;
+    font-style: italic;
+    
+}
+</style>

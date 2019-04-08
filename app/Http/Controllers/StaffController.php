@@ -40,6 +40,21 @@ class StaffController extends Controller
      */
     public function store(Request $request)
     {
+        
+        $request->validate([
+            'address.block' => 'required|string',
+            'address.home_no' => 'required|string',
+            'address.street' => 'required|string',
+            'address.township' => 'required',
+            'address.state.id' => 'required',
+            'name' => 'required',
+            'username' => 'required|string|unique:staffs',
+            'password' => 'required|string',
+            'phone' => 'required|string',
+            'role' => 'required|integer',
+            'business' => 'required|integer',
+            'department' => 'required|integer',
+        ]);
    
         $address = $request->address;
 
@@ -50,7 +65,7 @@ class StaffController extends Controller
         $township = $address['township']; // township object
 
         $state = $address['state']; // state object
-
+        
         if(is_array($township)){
             $location = Location::firstOrCreate([
                 'name' => $township['name'],
@@ -87,7 +102,9 @@ class StaffController extends Controller
         Staff::firstOrCreate([
             'person_business_id' => $person->id,
             'role_id' => $role,
-            'business_id' => $business_id
+            'business_id' => $business_id,
+            'username' => $request->username,
+            'password' => bcrypt($request->password),
         ]);
 
         return response()->json('Successfully Created');
@@ -128,6 +145,18 @@ class StaffController extends Controller
     {
 
         //return response()->json($request->all());
+        $request->validate([
+            'address.block' => 'required',
+            'address.home_no' => 'required',
+            'address.street' => 'required',
+            'address.township' => 'required',
+            'address.state.id' => 'required',
+            'name' => 'required',
+            'phone' => 'required',
+            'role' => 'required',
+            'business' => 'required',
+            'department' => 'required',
+        ]);
 
         $old_staff = Staff::findOrFail($id);
 

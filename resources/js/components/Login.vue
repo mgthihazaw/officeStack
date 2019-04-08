@@ -23,9 +23,15 @@
 		              <span class="fas fa-eye input-group-text" @click="showHide"></span>
 		          </div>
 		        </div>
+						<div class="input-group mb-5 mt-5" v-if="login_error">
+		          <div class="alert alert-danger alert-dismissible col-12">
+								<button type="button" class="close" data-dismiss="alert">&times;</button>
+								<strong>{{ login_error }}</strong> 
+							</div>
+		        </div>
 		        <div class="row mb-5 mt-5">
 		          <div class="col-12">
-		            <button type="submit" class="btn btn-block btn-flat">Sign In</button>
+		            <button type="submit" class="btn btn-block btn-flat submit">Sign In</button>
 		          </div>
 		          <!-- /.col -->
 		        </div>
@@ -44,6 +50,7 @@
 			return {
 				passwordType : "password",
 				businesses : [],
+				login_error : '',
 				form : {
 					username : '',
 					password : '',
@@ -58,7 +65,9 @@
 						window.location.replace('/');
 					})
 					.catch((error) => {
-						console.log(error);
+						if(error.response.data.type == 'login_fail'){
+							this.login_error = error.response.data.error
+						}
 					})
 			},
 			showHide(){
@@ -78,7 +87,7 @@
 	.card{
 		background : rgba(222,222,222,0.7);
 	}
-	button{
+	button.submit{
 		background-color : #31bcaa;
 		border: 1px solid #31ccaa;
 		color : white;
@@ -86,7 +95,7 @@
 		font-family : 'Arial',sans-serif;
 		border-radius : 5px !important;
 	}
-	button:hover{
+	button.submit:hover{
 		color : white;
 	}
 	input{
