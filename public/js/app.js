@@ -63458,7 +63458,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Login: __WEBPACK_IMPORTED_MODULE_0__Login_vue___default.a,
-
     Dashboard: __WEBPACK_IMPORTED_MODULE_1__Dashboard_vue___default.a
   },
   data: function data() {

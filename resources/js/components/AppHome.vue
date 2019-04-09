@@ -123,10 +123,6 @@
     export default {
         components : {
             Login,
-
-
-
-
             Dashboard,
         },
         data(){
