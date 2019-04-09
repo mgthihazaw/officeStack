@@ -13,6 +13,11 @@ import VeeValidate from 'vee-validate';
 
 Vue.use(VeeValidate);
 
+import moment from 'moment';
+Vue.filter('myDate',function(created){
+	return moment().format("MMM Do YY");
+})
+
 
 window.Bus = new Vue();
 

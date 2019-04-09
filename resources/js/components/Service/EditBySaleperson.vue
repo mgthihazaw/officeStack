@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container" v-if="!show">
 		<div class="row">
 			<div class="col-12">
 				<h3>Edit by saleperson</h3>
@@ -55,6 +55,7 @@
 	export default{
 		data(){
 			return {
+				show:true,
 				service:'',
 				receptionists : [],
 				form : {
@@ -93,6 +94,7 @@
 							this.form.receive_staff = this.receptionists.find(staff => {
 								return staff.no == this.form.receive_staff
 							})
+							this.show=this.service.pending
 				   })
 			},
 			updateService(){

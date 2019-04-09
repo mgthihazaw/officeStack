@@ -28,6 +28,7 @@ class ServiceResource extends JsonResource
             'pending' => $this->pending,
             'service_description' => $this->service_description,
             'service_remark' => $this->service_remark,
+            'created_at' =>$this->created_at,
         ];
     }
 }
