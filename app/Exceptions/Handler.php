@@ -53,9 +53,9 @@ class Handler extends ExceptionHandler
                 return response()->json('Authentication Required');
             }
             if ($exception instanceof \Tymon\JWTAuth\Exceptions\TokenInvalidException){
-                return response()->json(['status' => 'Token is Invalid'], 403);
+                return response()->json(['error' => 'Token is Invalid', 'type' => 'token_invalid'], 403);
             }else if ($exception instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
-                return response()->json(['status' => 'Token is Expired'],403);
+                return response()->json(['error' => 'Token is Expired', 'type' => 'token_expired'],403);
             }
         }
         

@@ -14750,17 +14750,18 @@ window.Bus = new Vue();
 
 
 
-// axios.interceptors.response.use(function (response) {
-//     // Do something with response data
-//     return response;
-// }, function (error) {
-// 	if(error.response.status === 403){
-//        Bus.$emit('logout');
-//     }
-//     // Do something with response error
-//     // return Promise.reject(error);
-// });
-
+axios.interceptors.response.use(function (response) {
+  // Do something with response data
+  return response;
+}, function (error) {
+  if (error.response.data.type == 'token_invalid') {
+    alert(error.response.data.error);
+    Bus.$emit('logout');
+  } else if (error.response.data.type == 'token_expired') {
+    alert(error.response.data.error);
+    Bus.$emit('logout');
+  }
+});
 
 window.User = __WEBPACK_IMPORTED_MODULE_4__Helpers_User_js__["a" /* default */];
 window.Gate = __WEBPACK_IMPORTED_MODULE_5__Helpers_Gate_js__["a" /* default */];
