@@ -34,9 +34,10 @@
 		                		<span class="badge" style="{ padding-top : 5px ; padding-bottom : 5px" :class="[service.pending ? 'badge-success' : 'badge-danger']">{{ service.pending ? "Finished" : "Not Finished" }}</span>
 		                	</td>
 		                	<td>
-		                        <button class="btn btn-info btn-sm text-white" @click="editServicebySaleperson(service.id)" v-if="User.isSaleperson()"><i class="fa fa-edit"></i></button>
+		                        <button class="btn btn-info btn-sm text-white" @click="editServicebySaleperson(service.id)" v-if="User.isSaleperson() && !service.pending"><i class="fa fa-edit"></i></button>
+								<button class="btn btn-secondary btn-sm" @click="printView(service.id)" v-if="User.isSaleperson() && !service.pending"><i class="fas fa-print"></i></button>
 		                        <button class="btn btn-primary btn-sm text-white" @click="editServicebyServiceEngineer(service.id)" v-if="User.isServiceEngineer()"><i class="fa fa-edit"></i></button>
-		                        <!-- <button class="btn btn-danger btn-sm" @click="deleteService(service.id)"><i class="fa fa-times"></i></button> -->
+		                        
 		                        <router-link :to="'/services/'+service.id+'/show'" class="btn btn-success btn-sm text-white" v-if="service.pending == 1"><i class="fa fa-eye"></i></router-link>
 		                    </td>
 		                </tr>
@@ -67,6 +68,9 @@
 			},
 			editServicebySaleperson(id){
 				this.$router.push('/services/edit/'+id)
+			},
+			printView(id){
+				this.$router.push({name: 'print', params : { id : `${id}`}, query : { type: 'start'}})
 			},
 			editServicebyServiceEngineer(id){
 				this.$router.push('/services/edit/'+id)

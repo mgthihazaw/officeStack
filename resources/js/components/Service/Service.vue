@@ -12,7 +12,8 @@
                       	
                        Service Information
                    </h3>
-                    </div>
+                    </div> 
+					
                     <hr>
 					  <div class="card-body">
                    
@@ -79,6 +80,7 @@ export default {
 		}
 	},
 	methods:{
+		
 		loadService(){
 			 let id=this.$route.params.id;
           axios.get('/api/services/'+id)

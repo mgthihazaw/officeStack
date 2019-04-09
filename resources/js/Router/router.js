@@ -11,6 +11,7 @@ import Service from '../components/Service/Service';
 import ServiceList from '../components/ServiceList';
 import CreateService from '../components/Service/CreateService';
 import EditService from '../components/Service/EditService';
+import StartServiceReport from '../components/Service/StartServiceReport';
 import Login from '../components/Login';
 import NotFound404 from '../components/errors/NotFound404';
 
@@ -94,6 +95,14 @@ const routes = [
     {
       path : '*',
       component : NotFound404,
+    },
+    { 
+      path: '/service/print/:id',
+      name : 'print',
+      component: StartServiceReport,
+      meta : {
+        requiresAuth : true,
+      }
     }
 ]
 
