@@ -22,7 +22,7 @@ class ServiceResource extends JsonResource
             'staff' => $this->staff->person_business->name,
             'staff_id' => $this->staff->id,
             'service_engineer' => $this->service_engineer === null ? '----' : $this->service_engineer->person_business->name,
-            
+            'customer_id' => $this->customer_id,
             'description' => $this->description,
             'remark' => $this->remark,
             'pending' => $this->pending,
