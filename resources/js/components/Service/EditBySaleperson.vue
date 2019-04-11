@@ -10,15 +10,15 @@
 				<form @submit.prevent="updateService">
 					<div class="form-group row">
 						<div class="col-md-4">
-							<input type="text" class="form-control" placeholder="Customer Name" v-model="form.customer_name">
+							<input type="text" class="form-control" placeholder="Customer Name" v-model="form.customer_name" :disabled="disable">
 							<div class="error" v-for="(error,index) in form_errors['customer_name']" :key="index">{{ error }}</div>
 						</div>
 						<div class="col-md-4">
-							<input type="text" class="form-control" placeholder="Customer Phone" v-model="form.customer_phone">
+							<input type="text" class="form-control" placeholder="Customer Phone" v-model="form.customer_phone" :disabled="disable">
 							<div class="error" v-for="(error,index) in form_errors['customer_phone']" :key="index">{{ error }}</div>
 						</div>
 						<div class="col-md-4">
-							<input type="text" class="form-control" placeholder="Customer Address" v-model="form.customer_address">
+							<input type="text" class="form-control" placeholder="Customer Address" v-model="form.customer_address" :disabled="disable">
 							<div class="error" v-for="(error,index) in form_errors['customer_address']" :key="index">{{ error }}</div>
 						</div>
 					</div>
@@ -55,6 +55,7 @@
 	export default{
 		data(){
 			return {
+				disable: false,
 				show:true,
 				service:'',
 				receptionists : [],
@@ -85,6 +86,10 @@
 				axios.get(`/api/services/${id}`)
 				  .then(res=> {
 							this.service = res.data.data
+							
+							if(this.service.customer_id){
+								this.disable=true
+							}
 							this.form.customer_name = this.service.customer_name
 							this.form.customer_phone = this.service.customer_phone
 							this.form.description = this.service.description
@@ -95,6 +100,7 @@
 								return staff.no == this.form.receive_staff
 							})
 							this.show=this.service.pending
+							
 				   })
 			},
 			updateService(){

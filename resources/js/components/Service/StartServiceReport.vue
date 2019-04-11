@@ -4,18 +4,18 @@
 
     <div class="container_fluid" v-else>
       <div>
-        <div class="col-md-12">
+        <div class="">
           <div class="row pageHeader">
             <div class="mt-3 col-6">
               <img :src="'/images/logo/1.png'" alt="microstack" width="300px">
             </div>
             <div class="col-6 pt-2">
-              <h5 class>Invoice</h5>
+              
               <div class="row">
                 <div class="col-3">
                   <p class="text-dark">Invoice ID</p>
                 </div>
-                <div class="col-9">
+                <div class="col-8">
                   <p class="text-secondary">Mrs-{{service.id}}</p>
                 </div>
               </div>
@@ -24,17 +24,17 @@
                 <div class="col-3">
                   <p class="text-dark">Invoice Date</p>
                 </div>
-                <div class="col-9">
+                <div class="col-8">
                   <p class="text-secondary">{{ service.created_at | myDate}}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="mt-5">
-            <div class="row">
-              <div class="row">
-                <div class="col-6 customer">
+          <div class="mt-3">
+            <div >
+              <div class="customerParent row">
+                <div class="col-6 ">
                   <h5 class="pb-2">Customer Information</h5>
                   <div class="row">
                     <div class="col-4">
@@ -63,25 +63,26 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-5 customer">
+                <div class="col-6">
                   <h5 class="pb-2">Company Information</h5>
                   <div class="row">
                     <div class="col-3">
                       <p class="text-dark">Company Name</p>
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                       <p class="text-secondary">Microstack</p>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-3">
-                      <p class="text-dark">Co,pany Street</p>
+                      <p class="text-dark">Company Street</p>
                     </div>
-                    <div class="col-9">
+                    <div class="col-8">
                       <p class="text-secondary">63*64,Kantkaw Street</p>
                     </div>
                   </div>
+                </div>
                 </div>
                 <div class="staff col-12">
                   <h4 class="pb-2">Staff Information</h4>
@@ -106,7 +107,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -168,13 +169,15 @@ export default {
 </script>
 
 <style scoped>
-.customer {
-  border-top: 1px solid #7e7e7e;
+.customerParent {
+  
   border-bottom: 1px solid #7e7e7e;
-  padding-top: 20px;
+  
 }
 .pageHeader {
-  margin-bottom: 50px;
+  margin:0;
+  padding: 0px;
+  border-bottom: 1px solid #7e7e7e;
 }
 .staff {
   padding-top: 20px;

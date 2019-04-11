@@ -85374,6 +85374,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
 		return {
+			disable: false,
 			show: true,
 			service: '',
 			receptionists: [],
@@ -85406,6 +85407,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 			axios.get('/api/services/' + id).then(function (res) {
 				_this2.service = res.data.data;
+
+				if (_this2.service.customer_id) {
+					_this2.disable = true;
+				}
 				_this2.form.customer_name = _this2.service.customer_name;
 				_this2.form.customer_phone = _this2.service.customer_phone;
 				_this2.form.description = _this2.service.description;
@@ -85489,7 +85494,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Customer Name" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Customer Name",
+                          disabled: _vm.disable
+                        },
                         domProps: { value: _vm.form.customer_name },
                         on: {
                           input: function($event) {
@@ -85531,7 +85540,11 @@ var render = function() {
                           }
                         ],
                         staticClass: "form-control",
-                        attrs: { type: "text", placeholder: "Customer Phone" },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Customer Phone",
+                          disabled: _vm.disable
+                        },
                         domProps: { value: _vm.form.customer_phone },
                         on: {
                           input: function($event) {
@@ -85575,7 +85588,8 @@ var render = function() {
                         staticClass: "form-control",
                         attrs: {
                           type: "text",
-                          placeholder: "Customer Address"
+                          placeholder: "Customer Address",
+                          disabled: _vm.disable
                         },
                         domProps: { value: _vm.form.customer_address },
                         on: {
@@ -86561,7 +86575,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.customer[data-v-703e1eec] {\r\n  border-top: 1px solid #7e7e7e;\r\n  border-bottom: 1px solid #7e7e7e;\r\n  padding-top: 20px;\n}\n.pageHeader[data-v-703e1eec] {\r\n  margin-bottom: 50px;\n}\n.staff[data-v-703e1eec] {\r\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\r\n  background-color: #eff0f1;\r\n  border-left: 5px solid #7e7e7e;\n}\r\n", ""]);
+exports.push([module.i, "\n.customerParent[data-v-703e1eec] {\r\n  \r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\r\n  margin:0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\r\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\r\n  background-color: #eff0f1;\r\n  border-left: 5px solid #7e7e7e;\n}\r\n", ""]);
 
 // exports
 
@@ -86574,6 +86588,7 @@ exports.push([module.i, "\n.customer[data-v-703e1eec] {\r\n  border-top: 1px sol
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__);
+//
 //
 //
 //
@@ -86759,7 +86774,7 @@ var render = function() {
         ? _c("unauthorized")
         : _c("div", { staticClass: "container_fluid" }, [
             _c("div", [
-              _c("div", { staticClass: "col-md-12" }, [
+              _c("div", {}, [
                 _c("div", { staticClass: "row pageHeader" }, [
                   _c("div", { staticClass: "mt-3 col-6" }, [
                     _c("img", {
@@ -86772,8 +86787,6 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-6 pt-2" }, [
-                    _c("h5", {}, [_vm._v("Invoice")]),
-                    _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col-3" }, [
                         _c("p", { staticClass: "text-dark" }, [
@@ -86781,7 +86794,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-9" }, [
+                      _c("div", { staticClass: "col-8" }, [
                         _c("p", { staticClass: "text-secondary" }, [
                           _vm._v("Mrs-" + _vm._s(_vm.service.id))
                         ])
@@ -86795,7 +86808,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-9" }, [
+                      _c("div", { staticClass: "col-8" }, [
                         _c("p", { staticClass: "text-secondary" }, [
                           _vm._v(
                             _vm._s(_vm._f("myDate")(_vm.service.created_at))
@@ -86806,10 +86819,10 @@ var render = function() {
                   ])
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "mt-5" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-6 customer" }, [
+                _c("div", { staticClass: "mt-3" }, [
+                  _c("div", [
+                    _c("div", { staticClass: "customerParent row" }, [
+                      _c("div", { staticClass: "col-6 " }, [
                         _c("h5", { staticClass: "pb-2" }, [
                           _vm._v("Customer Information")
                         ]),
@@ -86857,7 +86870,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-5 customer" }, [
+                      _c("div", { staticClass: "col-6" }, [
                         _c("h5", { staticClass: "pb-2" }, [
                           _vm._v("Company Information")
                         ]),
@@ -86869,7 +86882,7 @@ var render = function() {
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-9" }, [
+                          _c("div", { staticClass: "col-8" }, [
                             _c("p", { staticClass: "text-secondary" }, [
                               _vm._v("Microstack")
                             ])
@@ -86879,70 +86892,68 @@ var render = function() {
                         _c("div", { staticClass: "row" }, [
                           _c("div", { staticClass: "col-3" }, [
                             _c("p", { staticClass: "text-dark" }, [
-                              _vm._v("Co,pany Street")
+                              _vm._v("Company Street")
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-9" }, [
+                          _c("div", { staticClass: "col-8" }, [
                             _c("p", { staticClass: "text-secondary" }, [
                               _vm._v("63*64,Kantkaw Street")
                             ])
                           ])
                         ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "staff col-12" }, [
+                      _c("h4", { staticClass: "pb-2" }, [
+                        _vm._v("Staff Information")
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "staff col-12" }, [
-                        _c("h4", { staticClass: "pb-2" }, [
-                          _vm._v("Staff Information")
-                        ]),
-                        _vm._v(" "),
-                        _c("div", [
-                          _c("div", { staticClass: "row" }, [
-                            _c("div", { staticClass: "col-2" }, [
-                              _c("h6", { staticClass: "text-secondary" }, [
-                                _vm._v("Received Staff")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-10" }, [
-                              _c(
-                                "p",
-                                { staticClass: "text-italic text-dark" },
-                                [_vm._v(_vm._s(_vm.service.staff))]
-                              )
+                      _c("div", [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-2" }, [
+                            _c("h6", { staticClass: "text-secondary" }, [
+                              _vm._v("Received Staff")
                             ])
                           ]),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "callout callout-info mb-4 col-10" },
-                            [
-                              _c("h6", { staticClass: "mb-3" }, [
-                                _vm._v("Received Description")
-                              ]),
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(_vm.service.description) +
-                                  "\n                  "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            { staticClass: "callout callout-info mb-3 col-10" },
-                            [
-                              _c("h6", { staticClass: "mb-3" }, [
-                                _vm._v("Received Remarks")
-                              ]),
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(_vm.service.remark) +
-                                  "\n                  "
-                              )
-                            ]
-                          )
-                        ])
+                          _c("div", { staticClass: "col-10" }, [
+                            _c("p", { staticClass: "text-italic text-dark" }, [
+                              _vm._v(_vm._s(_vm.service.staff))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "callout callout-info mb-4 col-10" },
+                          [
+                            _c("h6", { staticClass: "mb-3" }, [
+                              _vm._v("Received Description")
+                            ]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.service.description) +
+                                "\n                  "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "callout callout-info mb-3 col-10" },
+                          [
+                            _c("h6", { staticClass: "mb-3" }, [
+                              _vm._v("Received Remarks")
+                            ]),
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(_vm.service.remark) +
+                                "\n                  "
+                            )
+                          ]
+                        )
                       ])
                     ])
                   ])
