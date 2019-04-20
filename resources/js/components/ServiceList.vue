@@ -1,5 +1,7 @@
 <template>
-	<div>
+    <div v-if="show">
+		<unauthorized v-if="!authorized"></unauthorized>
+	<div v-else >
 		<div class="row">
 		    <div class="col-12">
 		        <h1 class="page-header">Service List</h1>
@@ -46,12 +48,19 @@
 		    </div>
     	</div>
 	</div>
+	</div>
 </template>
 
 <script>
+import Unauthorized403 from "./errors/Unauthorized403";
 	export default{
+		components:{
+			Unauthorized: Unauthorized403
+		},
 		data(){
 			return {
+				show:false,
+                authorized:false,
 				User : '',
 				service_list : [],
 			}
@@ -83,10 +92,30 @@
 					.catch(error => {
 						console.log(error)
 					})
-			}
+			},
+			shows(){
+			this.show=true
+		}
 		},
+		
 		created(){
-			this.User = Gate;
+			if (User.isLoggedIn()) {
+				axios.post("/api/auth/me").then(response => {
+					Gate.setUser(response.data.role_id);
+					this.User=Gate
+					
+					if (this.User.isSaleperson() || this.User.isServiceEngineer()) {
+						console.log("Permis")
+						this.shows()
+					    this.authorized = true;
+					} else {
+						this.shows()
+						this.authorized = false;
+						console.log("NoPermis")
+					}
+				});
+				}
+			
 			this.getServiceList();
 			Bus.$on('afterServiceDeleted', () => {
 				this.getServiceList();

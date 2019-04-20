@@ -112,7 +112,7 @@
           </div>
         </div>
       
-      <button class="btn btn-success" @click="print">Print Preview</button>
+      <button class="btn btn-success printBtn" @click="print">Print Preview</button>
       </div>
     </div>
   </div>
@@ -187,4 +187,7 @@ export default {
   border-left: 5px solid #7e7e7e;
   
 }
+
+  
+
 </style>

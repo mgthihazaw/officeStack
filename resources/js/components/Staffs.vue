@@ -1,5 +1,8 @@
 <template>
-  <div>
+<div v-if="show">
+  <unauthorized v-if="!authorized"></unauthorized>
+  <div v-else>
+    
     <div class="row" v-if="(!createMode && !editMode)">
       <div class="col-12">
         <h1 class="page-header mirim_font">Staffs List</h1>
@@ -54,22 +57,27 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <style scoped>
 </style>
 
 <script>
+import Unauthorized403 from "./errors/Unauthorized403";
 import CreateStaff from "./Staff/CreateStaff.vue";
 import EditStaff from "./Staff/EditStaff.vue";
 
 export default {
   components: {
     CreateStaff,
-    EditStaff
+    EditStaff,
+    Unauthorized: Unauthorized403
   },
   data() {
     return {
+      show:false,
+      authorized:false,
       createMode: false,
       editMode: false,
       edit: false,
@@ -108,9 +116,28 @@ export default {
     create() {
       this.createMode = true;
       this.$router.push("/staffs/create");
-    }
+    },
+    shows(){
+			this.show=true
+		}
   },
   created() {
+    
+    
+     if (User.isLoggedIn()) {
+      axios.post("/api/auth/me").then(response => {
+        Gate.setUser(response.data.role_id);
+        if (!Gate.isDeveloper()) {
+					this.shows()
+          this.authorized = false;
+        } else {
+					this.shows()
+          this.authorized = true;
+        }
+      });
+    }
+
+    
     this.loadData();
     Bus.$on("afterCreated", () => {
       this.loadData();
