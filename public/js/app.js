@@ -87204,6 +87204,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
+      show: false,
       authorized: false,
       service: ""
     };
@@ -87226,6 +87227,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     back: function back() {
       this.$router.go(-1);
+    },
+    shows: function shows() {
+      this.show = true;
     }
   },
   created: function created() {
@@ -87236,8 +87240,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         Gate.setUser(response.data.role_id);
 
         if (!(Gate.isSaleperson() || Gate.isServiceEngineer())) {
+          _this2.shows();
           _this2.authorized = false;
         } else {
+          _this2.shows();
           _this2.authorized = true;
         }
       });
@@ -87255,212 +87261,220 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      !_vm.authorized
-        ? _c("unauthorized")
-        : _c("div", { staticClass: "container_fluid" }, [
-            _c("div", [
-              _c("div", {}, [
-                _c("div", { staticClass: "row pageHeader" }, [
-                  _c("div", { staticClass: "mt-3 col-6" }, [
-                    _c("img", {
-                      attrs: {
-                        src: "/images/logo/1.png",
-                        alt: "microstack",
-                        width: "300px"
-                      }
-                    })
+  return _vm.show
+    ? _c(
+        "div",
+        [
+          !_vm.authorized
+            ? _c("unauthorized")
+            : _c("div", { staticClass: "container_fluid" }, [
+                _c("div", [
+                  _c("div", {}, [
+                    _c("div", { staticClass: "row pageHeader" }, [
+                      _c("div", { staticClass: "mt-3 col-6" }, [
+                        _c("img", {
+                          attrs: {
+                            src: "/images/logo/1.png",
+                            alt: "microstack",
+                            width: "300px"
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-6 pt-2" }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-3" }, [
+                            _c("p", { staticClass: "text-dark" }, [
+                              _vm._v("Invoice ID")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-8" }, [
+                            _c("p", { staticClass: "text-secondary" }, [
+                              _vm._v("Mrs-" + _vm._s(_vm.service.id))
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-3" }, [
+                            _c("p", { staticClass: "text-dark" }, [
+                              _vm._v("Invoice Date")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-8" }, [
+                            _c("p", { staticClass: "text-secondary" }, [
+                              _vm._v(
+                                _vm._s(_vm._f("myDate")(_vm.service.created_at))
+                              )
+                            ])
+                          ])
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mt-3" }, [
+                      _c("div", [
+                        _c("div", { staticClass: "customerParent row" }, [
+                          _c("div", { staticClass: "col-6 " }, [
+                            _c("h5", { staticClass: "pb-2" }, [
+                              _vm._v("Customer Information")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-4" }, [
+                                _c("span", { staticClass: "text-dark" }, [
+                                  _vm._v("Customer Name")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-8" }, [
+                                _c("p", { staticClass: "text-secondary" }, [
+                                  _vm._v(_vm._s(_vm.service.customer_name))
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-4" }, [
+                                _c("p", { staticClass: "text-dark" }, [
+                                  _vm._v("Customer Phone")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-8" }, [
+                                _c("p", { staticClass: "text-secondary" }, [
+                                  _vm._v(_vm._s(_vm.service.customer_phone))
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-4" }, [
+                                _c("p", { staticClass: "text-dark" }, [
+                                  _vm._v("Customer Address")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-8" }, [
+                                _c("p", { staticClass: "text-secondary" }, [
+                                  _vm._v(_vm._s(_vm.service.township))
+                                ])
+                              ])
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-6" }, [
+                            _c("h5", { staticClass: "pb-2" }, [
+                              _vm._v("Company Information")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-3" }, [
+                                _c("p", { staticClass: "text-dark" }, [
+                                  _vm._v("Company Name")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-8" }, [
+                                _c("p", { staticClass: "text-secondary" }, [
+                                  _vm._v("Microstack")
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-3" }, [
+                                _c("p", { staticClass: "text-dark" }, [
+                                  _vm._v("Company Street")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-8" }, [
+                                _c("p", { staticClass: "text-secondary" }, [
+                                  _vm._v("63*64,Kantkaw Street")
+                                ])
+                              ])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "staff col-12" }, [
+                          _c("h4", { staticClass: "pb-2" }, [
+                            _vm._v("Staff Information")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", [
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-2" }, [
+                                _c("h6", { staticClass: "text-secondary" }, [
+                                  _vm._v("Received Staff")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-10" }, [
+                                _c(
+                                  "p",
+                                  { staticClass: "text-italic text-dark" },
+                                  [_vm._v(_vm._s(_vm.service.staff))]
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "callout callout-info mb-4 col-10"
+                              },
+                              [
+                                _c("h6", { staticClass: "mb-3" }, [
+                                  _vm._v("Received Description")
+                                ]),
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(_vm.service.description) +
+                                    "\n                  "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "callout callout-info mb-3 col-10"
+                              },
+                              [
+                                _c("h6", { staticClass: "mb-3" }, [
+                                  _vm._v("Received Remarks")
+                                ]),
+                                _vm._v(
+                                  "\n                    " +
+                                    _vm._s(_vm.service.remark) +
+                                    "\n                  "
+                                )
+                              ]
+                            )
+                          ])
+                        ])
+                      ])
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-6 pt-2" }, [
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-3" }, [
-                        _c("p", { staticClass: "text-dark" }, [
-                          _vm._v("Invoice ID")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-8" }, [
-                        _c("p", { staticClass: "text-secondary" }, [
-                          _vm._v("Mrs-" + _vm._s(_vm.service.id))
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-3" }, [
-                        _c("p", { staticClass: "text-dark" }, [
-                          _vm._v("Invoice Date")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-8" }, [
-                        _c("p", { staticClass: "text-secondary" }, [
-                          _vm._v(
-                            _vm._s(_vm._f("myDate")(_vm.service.created_at))
-                          )
-                        ])
-                      ])
-                    ])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mt-3" }, [
-                  _c("div", [
-                    _c("div", { staticClass: "customerParent row" }, [
-                      _c("div", { staticClass: "col-6 " }, [
-                        _c("h5", { staticClass: "pb-2" }, [
-                          _vm._v("Customer Information")
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-4" }, [
-                            _c("span", { staticClass: "text-dark" }, [
-                              _vm._v("Customer Name")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
-                            _c("p", { staticClass: "text-secondary" }, [
-                              _vm._v(_vm._s(_vm.service.customer_name))
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-4" }, [
-                            _c("p", { staticClass: "text-dark" }, [
-                              _vm._v("Customer Phone")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
-                            _c("p", { staticClass: "text-secondary" }, [
-                              _vm._v(_vm._s(_vm.service.customer_phone))
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-4" }, [
-                            _c("p", { staticClass: "text-dark" }, [
-                              _vm._v("Customer Address")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
-                            _c("p", { staticClass: "text-secondary" }, [
-                              _vm._v(_vm._s(_vm.service.township))
-                            ])
-                          ])
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-6" }, [
-                        _c("h5", { staticClass: "pb-2" }, [
-                          _vm._v("Company Information")
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3" }, [
-                            _c("p", { staticClass: "text-dark" }, [
-                              _vm._v("Company Name")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
-                            _c("p", { staticClass: "text-secondary" }, [
-                              _vm._v("Microstack")
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3" }, [
-                            _c("p", { staticClass: "text-dark" }, [
-                              _vm._v("Company Street")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
-                            _c("p", { staticClass: "text-secondary" }, [
-                              _vm._v("63*64,Kantkaw Street")
-                            ])
-                          ])
-                        ])
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "staff col-12" }, [
-                      _c("h4", { staticClass: "pb-2" }, [
-                        _vm._v("Staff Information")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", [
-                        _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-2" }, [
-                            _c("h6", { staticClass: "text-secondary" }, [
-                              _vm._v("Received Staff")
-                            ])
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-10" }, [
-                            _c("p", { staticClass: "text-italic text-dark" }, [
-                              _vm._v(_vm._s(_vm.service.staff))
-                            ])
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "callout callout-info mb-4 col-10" },
-                          [
-                            _c("h6", { staticClass: "mb-3" }, [
-                              _vm._v("Received Description")
-                            ]),
-                            _vm._v(
-                              "\n                    " +
-                                _vm._s(_vm.service.description) +
-                                "\n                  "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "callout callout-info mb-3 col-10" },
-                          [
-                            _c("h6", { staticClass: "mb-3" }, [
-                              _vm._v("Received Remarks")
-                            ]),
-                            _vm._v(
-                              "\n                    " +
-                                _vm._s(_vm.service.remark) +
-                                "\n                  "
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ])
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success printBtn",
+                      on: { click: _vm.print }
+                    },
+                    [_vm._v("Print Preview")]
+                  )
                 ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-success printBtn",
-                  on: { click: _vm.print }
-                },
-                [_vm._v("Print Preview")]
-              )
-            ])
-          ])
-    ],
-    1
-  )
+              ])
+        ],
+        1
+      )
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
