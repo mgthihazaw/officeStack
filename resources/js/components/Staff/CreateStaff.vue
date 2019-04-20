@@ -1,6 +1,8 @@
 <template>
-  <div>
-    <div>
+ <div v-if="show">
+		<unauthorized v-if="!authorized"></unauthorized>
+	   <div v-else >
+       <div>
       <div class="container">
         <div class="row">
           <div class="col-12">
@@ -181,13 +183,20 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 </template>
 
 <script>
+import Unauthorized403 from "../errors/Unauthorized403";
 export default {
+  components:{
+    Unauthorized: Unauthorized403
+  },
   data() {
     return {
+       show:false,
+      authorized:false,
       disable: true,
       form: {
         id: "",
@@ -306,9 +315,24 @@ export default {
       (this.form.name = ""), (this.form.phone = "");
       this.form.address = "";
       this.form.role = "";
-    }
+    },
+    shows(){
+			this.show=true
+		}
   },
   created() {
+    if (User.isLoggedIn()) {
+      axios.post("/api/auth/me").then(response => {
+        Gate.setUser(response.data.role_id);
+        if (!Gate.isDeveloper()) {
+					this.shows()
+          this.authorized = false;
+        } else {
+					this.shows()
+          this.authorized = true;
+        }
+      });
+    }
     this.loadStates();
     this.loadData();
     this.loadBusinesses();

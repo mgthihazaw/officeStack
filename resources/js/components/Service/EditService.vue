@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="show">
 		<unauthorized v-if="!authorized"></unauthorized>
 		<div v-else>
 			<saleperson-editview v-if="isSaleperson()"></saleperson-editview>
@@ -22,6 +22,7 @@ import Unauthorized403 from '../errors/Unauthorized403';
 		},
 		data(){
 			return {
+				show:false,
 				authorized : false,
 				User : new Object,
 			}
@@ -32,6 +33,9 @@ import Unauthorized403 from '../errors/Unauthorized403';
 			},
 			isSaleperson(){
 				return Gate.isSaleperson();
+			},
+			shows(){
+				this.show=true
 			}
 		},
 		created(){
@@ -41,8 +45,10 @@ import Unauthorized403 from '../errors/Unauthorized403';
             	Gate.setUser(response.data.role_id);
             	
              	if(!(Gate.isSaleperson() || Gate.isServiceEngineer())){
+					 this.shows()
 					this.authorized = false;
 				}else{
+					this.shows()
 					this.authorized = true;
 				}
            	})

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="show">
 		<unauthorized v-if="!authorized"></unauthorized>
 
 		<div class="container_fluid" v-else>
@@ -75,6 +75,7 @@ export default {
 	},
 	data(){
 		return {
+			show:false,
 			authorized : false,
             service:'',
 		}
@@ -94,6 +95,9 @@ export default {
 		},
 		back(){
 			this.$router.go(-1);
+		},
+		shows(){
+			this.show=true
 		}
 	},
 	created(){
@@ -103,8 +107,10 @@ export default {
             	Gate.setUser(response.data.role_id);
 
              	if(!(Gate.isSaleperson() || Gate.isServiceEngineer())){
+					 this.shows()
 					this.authorized = false;
 				}else{
+					this.shows()
 					this.authorized = true;
 				}
            	})
