@@ -38,13 +38,36 @@
                              </div>
 		                    <div class="row">
 		                        <div class="col-12">
-		                            <v-select :options="states" label="name"  v-model="form.address.state" placeholder="State" :onChange="loadTownships"></v-select>
+									<multiselect 
+                    v-model="form.address.state"
+                     track-by="name" 
+					:block-keys="['Delete']" 
+                    placeholder="Choose State" 
+                    label="name" 
+					
+                    :options="states"
+                    @input="loadTownships(form.address.state)"></multiselect>
+		                            
 		                        </div>
 		                    </div>
 
 		                    <div class="row mt-2">
 		                        <div class="col-12">
-		                            <v-select :options="townships" :value="township" label="name" v-model="form.address.township" :taggable=true  placeholder="Township" @change="loadBlocks"></v-select>
+									<multiselect
+									
+                      :options="townships"
+					  
+                      label="name"
+					  :block-keys="['Delete']"
+                      v-model="form.address.township"
+                      placeholder="Choose Township"
+                      @input="loadBlocks"
+                      :taggable="true" 
+                      @tag="addTag"
+					  track-by="name" 
+                      
+                    ></multiselect>
+		                            
 		                        </div>
 		                    </div>
 
@@ -219,7 +242,7 @@ import Unauthorized403 from "../errors/Unauthorized403";
                 axios.get('/api/states')
                     .then(response => {
                         this.states = response.data.filter(function(state){
-                            return state.name != 'Myanmar'
+                            return state.name != 'မြန်မာ'
                         })
                     })
                     .catch(error => console.log(error.response.data))
@@ -257,6 +280,14 @@ import Unauthorized403 from "../errors/Unauthorized403";
             			 this.errs=error.response.data.errors
             		})
 			},
+			 addTag (newTag) {
+      const tag = {
+        name: newTag,
+        id: this.townships.length
+      }
+      this.townships.push(tag)
+      this.form.address.township=tag
+    },
 			shows(){
 			this.show=true
 		}
@@ -297,9 +328,9 @@ import Unauthorized403 from "../errors/Unauthorized403";
         			this.form.phone = this.staff.phone;
         			this.form.address.state = this.staff.address.location.location
 
-        			this.township = this.staff.address.location.name
+        			this.township = this.staff.address.location
         
-        			this.form.address.township = this.staff.address.location.name
+        			this.form.address.township = this.staff.address.location
         			this.form.address.home_no = this.staff.address.home_no
         			this.form.address.block = this.staff.address.block
         			this.form.address.street = this.staff.address.street
@@ -322,6 +353,7 @@ import Unauthorized403 from "../errors/Unauthorized403";
         }
 	}
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .error{
     

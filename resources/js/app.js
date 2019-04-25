@@ -17,7 +17,9 @@ import moment from 'moment';
 Vue.filter('myDate', function (created) {
 	return moment().format("MMM Do YY");
 })
-
+//MultiSelect
+import Multiselect from 'vue-multiselect'
+Vue.component('multiselect', Multiselect)
 
 window.Bus = new Vue();
 
@@ -34,7 +36,7 @@ import Gate from './Helpers/Gate.js';
 
 axios.interceptors.response.use(function (response) {
 	// Do something with response data
-	console.log('Intercepter response', response.data)
+	
     return response;
 }, function (error) {
 	if(error.response.data.type == 'token_invalid'){
@@ -44,7 +46,7 @@ axios.interceptors.response.use(function (response) {
 		// alert(error.response.data.error)
 		Bus.$emit('logout')
 	}
-	console.log('Inetrcepter error', error.response)
+	
 	return Promise.reject(error)
 });
 

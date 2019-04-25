@@ -1,189 +1,196 @@
 <template>
- <div v-if="show">
-		<unauthorized v-if="!authorized"></unauthorized>
-	   <div v-else >
-       <div>
-      <div class="container">
-        <div class="row">
-          <div class="col-12">
-            <h3>New Staff</h3>
+  <div v-if="show">
+    <unauthorized v-if="!authorized"></unauthorized>
+    <div v-else>
+      <div>
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <h3>New Staff</h3>
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-12">
-            <form @submit.prevent="submit" method="POST">
-              <div class="form-group">
-                <label for="name">Name</label>
-                <div class="error text-muted" v-if="errs.name">{{errs.name[0]}}</div>
-                <input type="text" class="form-control" id="name" v-model="form.name">
-              </div>
-              <div class="form-group">
-                <label for="phone1">Phone Numbers</label>
-                <div class="error text-muted" v-if="errs.phone">{{errs.phone[0]}}</div>
-                <input type="text" class="form-control" id="phone1" v-model="form.phone">
-              </div>
+          <div class="row">
+            <div class="col-12">
+              <form @submit.prevent="submit" method="POST">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <div class="error text-muted" v-if="errs.name">{{errs.name[0]}}</div>
+                  <input type="text" class="form-control" id="name" v-model="form.name">
+                </div>
+                <div class="form-group">
+                  <label for="phone1">Phone Numbers</label>
+                  <div class="error text-muted" v-if="errs.phone">{{errs.phone[0]}}</div>
+                  <input type="text" class="form-control" id="phone1" v-model="form.phone">
+                </div>
 
-              <div class="form-group">
-                <label for="address">Address</label>
-                <div
-                  class="error text-muted"
-                  v-if="errs['address.township'] || errs['address.block'] || errs['address.home_no'] || errs['address.street'] || errs['address.state.id']"
-                >Your address is not completed</div>
+                <div class="form-group">
+                  <label for="address">Address</label>
+                  <div
+                    class="error text-muted"
+                    v-if="errs['address.township'] || errs['address.block'] || errs['address.home_no'] || errs['address.street'] || errs['address.state.id']"
+                  >Your address is not completed</div>
 
-                <div class="row">
-                  <div class="col-md-4">
-                    <v-select
-                      :options="states"
-                      label="name"
-                      v-model="form.address.state"
-                      placeholder="State"
-                      @change="loadTownships"
-                    ></v-select>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <multiselect
+                        v-model="form.address.state"
+                        placeholder="Choose State"
+                        label="name"
+                        :block-keys="['Delete']"
+                        track-by="name" 
+                        :options="states"
+                        @select="loadTownships"
+                      ></multiselect>
+                    </div>
+                    <div class="col-md-4">
+                      <multiselect
+                        :options="townships"
+                        label="name"
+                        v-model="form.address.township"
+                        placeholder="Choose Township"
+                        @change="loadBlocks"
+                        :taggable="true"
+                        :block-keys="['Delete']"
+                        @tag="addTag"
+                        :disabled="disable"
+                      ></multiselect>
+                    </div>
+                    <div class="col-md-4">
+                      <input
+                        type="text"
+                        v-model="getAddress"
+                        class="form-control"
+                        id="address"
+                        @click="createAddress"
+                      >
+                    </div>
                   </div>
+                </div>
+
+                <div class="form-group row">
                   <div class="col-md-4">
-                    <v-select
-                      :options="townships"
-                      value="name"
-                      label="name"
-                      :taggable="true"
-                      v-model="form.address.township"
-                      placeholder="Township"
-                      @change="loadBlocks"
-                      :disabled="disable"
-                    ></v-select>
-                  </div>
-                  <div class="col-md-4">
-                    <input
-                      type="text"
-                      v-model="getAddress"
+                    <label for="business">Office/Business</label>
+                    <div class="error text-muted" v-if="errs.business">{{errs.business[0]}}</div>
+                    <select
+                      name="business"
+                      id="business"
+                      v-model="form.business"
                       class="form-control"
-                      id="address"
-                      @click="createAddress"
                     >
+                      <option value disabled>Choose Office/Business</option>
+                      <option
+                        v-for="business in businesses"
+                        :key="business.id"
+                        :value="business.id"
+                      >{{ business.name }}</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="department">Department</label>
+                    <div class="error text-muted" v-if="errs.department">{{errs.department[0]}}</div>
+                    <select
+                      name="department"
+                      id="department"
+                      v-model="form.department"
+                      class="form-control"
+                      @change="loadRoles"
+                    >
+                      <option value disabled>Choose Department</option>
+                      <option
+                        v-for="department in departments"
+                        :key="department.id"
+                        :value="department.id"
+                      >{{ department.department_name }}</option>
+                    </select>
+                  </div>
+
+                  <div class="col-md-4">
+                    <label for="role">Role/Job Title</label>
+                    <div class="error text-muted" v-if="errs.role">{{errs.role[0]}}</div>
+                    <select
+                      name="role"
+                      id="role"
+                      v-model="form.role"
+                      ref="role"
+                      class="form-control"
+                      disabled="true"
+                    >
+                      <option value disabled>Choose Role/Job Title</option>
+                      <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
+                    </select>
                   </div>
                 </div>
-              </div>
 
-              <div class="form-group row">
-                <div class="col-md-4">
-                  <label for="business">Office/Business</label>
-                  <div class="error text-muted" v-if="errs.business">{{errs.business[0]}}</div>
-                  <select
-                    name="business"
-                    id="business"
-                    v-model="form.business"
-                    class="form-control"
-                  >
-                    <option value disabled>Choose Office/Business</option>
-                    <option
-                      v-for="business in businesses"
-                      :key="business.id"
-                      :value="business.id"
-                    >{{ business.name }}</option>
-                  </select>
-                </div>
-
-                <div class="col-md-4">
-                  <label for="department">Department</label>
-                  <div class="error text-muted" v-if="errs.department">{{errs.department[0]}}</div>
-                  <select
-                    name="department"
-                    id="department"
-                    v-model="form.department"
-                    class="form-control"
-                    @change="loadRoles"
-                  >
-                    <option value disabled>Choose Department</option>
-                    <option
-                      v-for="department in departments"
-                      :key="department.id"
-                      :value="department.id"
-                    >{{ department.department_name }}</option>
-                  </select>
-                </div>
-
-                <div class="col-md-4">
-                  <label for="role">Role/Job Title</label>
-                  <div class="error text-muted" v-if="errs.role">{{errs.role[0]}}</div>
-                  <select
-                    name="role"
-                    id="role"
-                    v-model="form.role"
-                    ref="role"
-                    class="form-control"
-                    disabled="true"
-                  >
-                    <option value disabled>Choose Role/Job Title</option>
-                    <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group row">
+                <div class="form-group row">
                   <div class="col-md-6">
-                      <label for="username">Login Username</label>
-                      <div class="error text-muted" v-if="errs.username">{{errs.username[0]}}</div>
-                      <input type="text" class="form-control" v-model="form.username">
+                    <label for="username">Login Username</label>
+                    <div class="error text-muted" v-if="errs.username">{{errs.username[0]}}</div>
+                    <input type="text" class="form-control" v-model="form.username">
                   </div>
                   <div class="col-md-6">
-                      <label for="password">Login Password</label>
-                      <div class="error text-muted" v-if="errs.password">{{errs.password[0]}}</div>
-                      <input type="text" class="form-control" v-model="form.password">
+                    <label for="password">Login Password</label>
+                    <div class="error text-muted" v-if="errs.password">{{errs.password[0]}}</div>
+                    <input type="text" class="form-control" v-model="form.password">
                   </div>
-              </div>
+                </div>
 
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @click="close">Close</button>
-                <button type="submit" class="btn btn-primary">Create</button>
-              </div>
-            </form>
-            
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div
-      class="modal fade"
-      id="newAddressModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Fill Address</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form method="POST">
-              <div class="form-group">
-                <label for="home_no">Home No:</label>
-                <input type="text" class="form-control" id="home_no" v-model="form.address.home_no">
-              </div>
-
-              <div class="form-group">
-                <label for="block">Block</label>
-                <input type="text" class="form-control" id="block" v-model="form.address.block">
-              </div>
-
-              <div class="form-group">
-                <label for="street">Street</label>
-                <input type="text" class="form-control" id="street" v-model="form.address.street">
-              </div>
-            </form>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" @click="close">Close</button>
-              <button type="submit" class="btn btn-primary" @click="saveAddress">Create</button>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" @click="close">Close</button>
+                  <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
-    </div>
+
+      <div
+        class="modal fade"
+        id="newAddressModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Fill Address</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form method="POST">
+                <div class="form-group">
+                  <label for="home_no">Home No:</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="home_no"
+                    v-model="form.address.home_no"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label for="block">Block</label>
+                  <input type="text" class="form-control" id="block" v-model="form.address.block">
+                </div>
+
+                <div class="form-group">
+                  <label for="street">Street</label>
+                  <input type="text" class="form-control" id="street" v-model="form.address.street">
+                </div>
+              </form>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @click="close">Close</button>
+                <button type="submit" class="btn btn-primary" @click="saveAddress">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -191,19 +198,19 @@
 <script>
 import Unauthorized403 from "../errors/Unauthorized403";
 export default {
-  components:{
+  components: {
     Unauthorized: Unauthorized403
   },
   data() {
     return {
-       show:false,
-      authorized:false,
+      show: false,
+      authorized: false,
       disable: true,
       form: {
         id: "",
         name: "",
-        username : "",
-        password : "",
+        username: "",
+        password: "",
         phone: "",
         address: {
           block: "",
@@ -259,12 +266,13 @@ export default {
         .get("/api/states")
         .then(response => {
           this.states = response.data.filter(function(state) {
-            return state.name != "Myanmar";
+            return state.name != "မြန်မာ";
           });
         })
         .catch(error => console.log(error.response.data));
     },
     loadTownships(state) {
+      console.log(state);
       axios
         .get(`/api/states/${state.id}/townships`)
         .then(response => {
@@ -282,7 +290,6 @@ export default {
         .catch(error => console.log(error.response.data));
     },
     deleteStaff(id) {
-       
       axios
         .delete("/api/staffs/" + id)
         .then(response => console.log(response))
@@ -297,7 +304,7 @@ export default {
         .catch(errr => console.log(err.response.data));
     },
     submit() {
-        console.log(this.form);
+      console.log(this.form);
       axios
         .post("/api/staffs/", this.form)
         .then(response => {
@@ -318,19 +325,27 @@ export default {
       this.form.address = "";
       this.form.role = "";
     },
-    shows(){
-			this.show=true
-		}
+    shows() {
+      this.show = true;
+    },
+    addTag(newTag) {
+      const tag = {
+        name: newTag,
+        id: this.townships.length
+      };
+      this.townships.push(tag);
+      this.form.address.township = tag;
+    }
   },
   created() {
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
         Gate.setUser(response.data.role_id);
         if (!Gate.isDeveloper()) {
-					this.shows()
+          this.shows();
           this.authorized = false;
         } else {
-					this.shows()
+          this.shows();
           this.authorized = true;
         }
       });
@@ -354,6 +369,7 @@ export default {
   }
 };
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .error {
   color: #d8000c !important;
