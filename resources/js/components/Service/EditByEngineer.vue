@@ -187,9 +187,10 @@ export default {
             if (response.status == 200) {
               this.$router.push("/services");
             }
+            
           })
-          .catch(error => {
-            console.log(error.response);
+          .catch((error)=> {
+            console.log("error")
             if (error.response.status == 422) {
               this.form_errors = error.response.data.errors;
               this.form.service_engineer = this.service_engineers.find(

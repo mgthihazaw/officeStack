@@ -32,18 +32,21 @@ import vSelect from 'vue-select'
 import User from './Helpers/User.js';
 import Gate from './Helpers/Gate.js';
 
-axios.interceptors.response.use(function (response) {
-    // Do something with response data
-    return response;
-}, function (error) {
-	if(error.response.data.type == 'token_invalid'){
-		alert(error.response.data.error)
-		Bus.$emit('logout')
-	}else if(error.response.data.type == 'token_expired'){
-		alert(error.response.data.error)
-		Bus.$emit('logout')
-	}
-});
+// axios.interceptors.response.use(function (response) {
+// 	// Do something with response data
+// 	console.log('Intercepter response', response.data)
+//     return response;
+// }, function (error) {
+// 	if(error.response.data.type == 'token_invalid'){
+// 		alert(error.response.data.error)
+// 		Bus.$emit('logout')
+// 	}else if(error.response.data.type == 'token_expired'){
+// 		alert(error.response.data.error)
+// 		Bus.$emit('logout')
+// 	}
+// 	console.log('Inetrcepter error', error.response)
+// 	return error
+// });
 
 
 window.User = User

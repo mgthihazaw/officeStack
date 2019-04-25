@@ -193,6 +193,11 @@ export default {
   border-left: 5px solid #7e7e7e;
   
 }
+@media print {
+  .printBtn {
+    display:none;
+  }
+}
 
   
 

@@ -31585,18 +31585,22 @@ window.Bus = new Vue();
 
 
 
-axios.interceptors.response.use(function (response) {
-  // Do something with response data
-  return response;
-}, function (error) {
-  if (error.response.data.type == 'token_invalid') {
-    alert(error.response.data.error);
-    Bus.$emit('logout');
-  } else if (error.response.data.type == 'token_expired') {
-    alert(error.response.data.error);
-    Bus.$emit('logout');
-  }
-});
+// axios.interceptors.response.use(function (response) {
+// 	// Do something with response data
+// 	console.log('Intercepter response', response.data)
+//     return response;
+// }, function (error) {
+// 	if(error.response.data.type == 'token_invalid'){
+// 		alert(error.response.data.error)
+// 		Bus.$emit('logout')
+// 	}else if(error.response.data.type == 'token_expired'){
+// 		alert(error.response.data.error)
+// 		Bus.$emit('logout')
+// 	}
+// 	console.log('Inetrcepter error', error.response)
+// 	return error
+// });
+
 
 window.User = __WEBPACK_IMPORTED_MODULE_4__Helpers_User_js__["a" /* default */];
 window.Gate = __WEBPACK_IMPORTED_MODULE_5__Helpers_Gate_js__["a" /* default */];
@@ -80547,10 +80551,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -81256,18 +81256,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("footer", { staticClass: "main-footer" }, [
-      _c("div", { staticClass: "float-right d-none d-sm-inline" }, [
-        _vm._v("\n    Anything you want\n  ")
-      ]),
-      _vm._v(" "),
-      _c("strong", [
-        _vm._v("Copyright © 2014-2018 "),
-        _c("a", { attrs: { href: "https://adminlte.io" } }, [
-          _vm._v("AdminLTE.io")
-        ]),
-        _vm._v(".")
-      ]),
-      _vm._v(" All rights reserved.\n")
+      _c("strong", [_vm._v("Microstack Technology")])
     ])
   }
 ]
@@ -84558,7 +84547,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			axios.get('/api/services').then(function (response) {
 				_this.service_list = response.data;
 			}).catch(function (error) {
-				console.log(error);
+				if (error.response.data.type == 'token_invalid') {
+					alert(error.response.data.error);
+					Bus.$emit('logout');
+				}
+				console.log(error.response);
 			});
 		},
 		editServicebySaleperson: function editServicebySaleperson(id) {
@@ -86537,7 +86530,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this3.$router.push("/services");
           }
         }).catch(function (error) {
-          console.log(error.response);
+          console.log("error");
           if (error.response.status == 422) {
             _this3.form_errors = error.response.data.errors;
             _this3.form.service_engineer = _this3.service_engineers.find(function (staff) {
@@ -87063,7 +87056,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.customerParent[data-v-703e1eec] {\r\n  \r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\r\n  margin:0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\r\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\r\n  background-color: #eff0f1;\r\n  border-left: 5px solid #7e7e7e;\n}\r\n\r\n  \r\n\r\n", ""]);
+exports.push([module.i, "\n.customerParent[data-v-703e1eec] {\r\n  \r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\r\n  margin:0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\r\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\r\n  background-color: #eff0f1;\r\n  border-left: 5px solid #7e7e7e;\n}\n@media print {\n.printBtn[data-v-703e1eec] {\r\n    display:none;\n}\n}\r\n\r\n  \r\n\r\n", ""]);
 
 // exports
 

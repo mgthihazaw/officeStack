@@ -72,7 +72,11 @@ import Unauthorized403 from "./errors/Unauthorized403";
 						this.service_list = response.data
 					})
 					.catch(error => {
-						console.log(error);
+						if(error.response.data.type == 'token_invalid'){
+							alert(error.response.data.error)
+							Bus.$emit('logout')
+						}
+						console.log(error.response);
 					})
 			},
 			editServicebySaleperson(id){
