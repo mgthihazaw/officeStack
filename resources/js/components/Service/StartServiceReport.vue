@@ -5,27 +5,27 @@
     <div class="container_fluid" v-else>
       <div>
         <div class="">
-          <div class="row pageHeader">
+          <div class="row pageHeader ">
             <div class="mt-3 col-6">
               <img :src="'/images/logo/1.png'" alt="microstack" width="300px">
             </div>
             <div class="col-6 pt-2">
               
               <div class="row">
-                <div class="col-3">
-                  <p class="text-dark">Invoice ID</p>
+                <div class="col-4">
+                  <h6 class="text-dark">Invoice ID</h6>
                 </div>
                 <div class="col-8">
-                  <p class="text-secondary">Mrs-{{service.id}}</p>
+                  <p class="text-dark">Mrs-{{service.id}}</p>
                 </div>
               </div>
 
               <div class="row">
-                <div class="col-3">
-                  <p class="text-dark">Invoice Date</p>
+                <div class="col-4">
+                  <h6 class="text-dark">Invoice Date</h6>
                 </div>
                 <div class="col-8">
-                  <p class="text-secondary">{{ service.created_at | myDate}}</p>
+                  <p class="text-dark">{{ service.created_at | myDate}}</p>
                 </div>
               </div>
             </div>
@@ -33,66 +33,75 @@
 
           <div class="mt-3">
             <div >
-              <div class="customerParent row">
+              <div class="row  customerParent ">
                 <div class="col-6 ">
                   <h5 class="pb-2">Customer Information</h5>
                   <div class="row">
                     <div class="col-4">
-                      <span class="text-dark">Customer Name</span>
+                      <h6 class="text-dark">Customer Name</h6>
                     </div>
                     <div class="col-8">
-                      <p class="text-secondary">{{ service.customer_name}}</p>
+                      <p class="text-dark">{{ service.customer_name}}</p>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-4">
-                      <p class="text-dark">Customer Phone</p>
+                      <h6 class="text-dark">Customer Phone</h6>
                     </div>
                     <div class="col-8">
-                      <p class="text-secondary">{{ service.customer_phone}}</p>
+                      <p class="text-dark">{{ service.customer_phone}}</p>
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="col-4">
-                      <p class="text-dark">Customer Address</p>
+                      <h6 class="text-dark">Customer Address</h6>
                     </div>
                     <div class="col-8">
-                      <p class="text-secondary">{{ service.township}}</p>
+                      <p class="text-dark">{{ service.township}}</p>
                     </div>
                   </div>
                 </div>
                 <div class="col-6">
                   <h5 class="pb-2">Company Information</h5>
                   <div class="row">
-                    <div class="col-3">
-                      <p class="text-dark">Company Name</p>
+                    <div class="col-4">
+                      <h6 class="text-dark">Company Name</h6>
                     </div>
                     <div class="col-8">
-                      <p class="text-secondary">Microstack</p>
+                      <p class="text-dark">Microstack</p>
                     </div>
                   </div>
 
                   <div class="row">
-                    <div class="col-3">
-                      <p class="text-dark">Company Street</p>
+                    <div class="col-4">
+                      <h6 class="text-dark">Company Street</h6>
                     </div>
                     <div class="col-8">
-                      <p class="text-secondary">63*64,Kantkaw Street</p>
+                      <p class="text-dark">63*64,Kantkaw Street</p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-4">
+                      <h6 class="text-dark">Company Email</h6>
+                    </div>
+                    <div class="col-8">
+                      <p class="text-dark">microstack@gmail.com</p>
                     </div>
                   </div>
                 </div>
                 </div>
-                <div class="staff col-12">
+                <div class="staff ">
                   <h4 class="pb-2">Staff Information</h4>
                   <div>
                     <div class="row">
                       <div class="col-2">
-                        <h6 class="text-secondary">Received Staff</h6>
+                        <h6 class="text-dark">Received Staff</h6>
                       </div>
                       <div class="col-10">
-                        <p class="text-italic text-dark">{{ service.staff}}</p>
+                        <p class=" text-dark">{{ service.staff}}</p>
                       </div>
                     </div>
 
@@ -175,6 +184,15 @@ export default {
 </script>
 
 <style scoped>
+h1,h2,h3,h4,h5{
+  font-weight:500;
+  line-height: 1.4em;
+}
+h6{
+  font-weight:bold;
+  line-height: 1.4em;
+}
+
 .customerParent {
   
   border-bottom: 1px solid #7e7e7e;

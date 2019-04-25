@@ -14,7 +14,7 @@ import VeeValidate from 'vee-validate';
 Vue.use(VeeValidate);
 
 import moment from 'moment';
-Vue.filter('myDate',function(created){
+Vue.filter('myDate', function (created) {
 	return moment().format("MMM Do YY");
 })
 
@@ -32,31 +32,36 @@ import vSelect from 'vue-select'
 import User from './Helpers/User.js';
 import Gate from './Helpers/Gate.js';
 
-// axios.interceptors.response.use(function (response) {
-// 	// Do something with response data
-// 	console.log('Intercepter response', response.data)
-//     return response;
-// }, function (error) {
-// 	if(error.response.data.type == 'token_invalid'){
-// 		alert(error.response.data.error)
-// 		Bus.$emit('logout')
-// 	}else if(error.response.data.type == 'token_expired'){
-// 		alert(error.response.data.error)
-// 		Bus.$emit('logout')
-// 	}
-// 	console.log('Inetrcepter error', error.response)
-// 	return error
-// });
+axios.interceptors.response.use(function (response) {
+	// Do something with response data
+	console.log('Intercepter response', response.data)
+    return response;
+}, function (error) {
+	if(error.response.data.type == 'token_invalid'){
+		// alert(error.response.data.error)
+		Bus.$emit('logout')
+	}else if(error.response.data.type == 'token_expired'){
+		// alert(error.response.data.error)
+		Bus.$emit('logout')
+	}
+	console.log('Inetrcepter error', error.response)
+	return Promise.reject(error)
+});
 
 
 window.User = User
 window.Gate = Gate
 
-if(User.isLoggedIn()){
+if (User.isLoggedIn()) {
+
+    
+
 	axios.post('/api/auth/me')
 		.then(response => {
 			Gate.setUser(response.data.role_id);
+            console.log(response)
 		})
+		
 }
 
 Vue.component('v-select', vSelect)
@@ -64,6 +69,6 @@ Vue.component('v-select', vSelect)
 Vue.component('app-home', require('./components/AppHome.vue'));
 
 const app = new Vue({
-    el: '#app',
-    router,
+	el: '#app',
+	router,
 });

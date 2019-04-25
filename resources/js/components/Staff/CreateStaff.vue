@@ -127,6 +127,7 @@
                   </div>
                   <div class="col-md-6">
                       <label for="password">Login Password</label>
+                      <div class="error text-muted" v-if="errs.password">{{errs.password[0]}}</div>
                       <input type="text" class="form-control" v-model="form.password">
                   </div>
               </div>
@@ -281,6 +282,7 @@ export default {
         .catch(error => console.log(error.response.data));
     },
     deleteStaff(id) {
+       
       axios
         .delete("/api/staffs/" + id)
         .then(response => console.log(response))

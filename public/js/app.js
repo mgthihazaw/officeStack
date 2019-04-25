@@ -31570,7 +31570,7 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_0_vee_validate__["a" /* default */]);
 
 
 Vue.filter('myDate', function (created) {
-  return __WEBPACK_IMPORTED_MODULE_1_moment___default()().format("MMM Do YY");
+	return __WEBPACK_IMPORTED_MODULE_1_moment___default()().format("MMM Do YY");
 });
 
 window.Bus = new Vue();
@@ -31585,30 +31585,31 @@ window.Bus = new Vue();
 
 
 
-// axios.interceptors.response.use(function (response) {
-// 	// Do something with response data
-// 	console.log('Intercepter response', response.data)
-//     return response;
-// }, function (error) {
-// 	if(error.response.data.type == 'token_invalid'){
-// 		alert(error.response.data.error)
-// 		Bus.$emit('logout')
-// 	}else if(error.response.data.type == 'token_expired'){
-// 		alert(error.response.data.error)
-// 		Bus.$emit('logout')
-// 	}
-// 	console.log('Inetrcepter error', error.response)
-// 	return error
-// });
-
+axios.interceptors.response.use(function (response) {
+	// Do something with response data
+	console.log('Intercepter response', response.data);
+	return response;
+}, function (error) {
+	if (error.response.data.type == 'token_invalid') {
+		// alert(error.response.data.error)
+		Bus.$emit('logout');
+	} else if (error.response.data.type == 'token_expired') {
+		// alert(error.response.data.error)
+		Bus.$emit('logout');
+	}
+	console.log('Inetrcepter error', error.response);
+	return Promise.reject(error);
+});
 
 window.User = __WEBPACK_IMPORTED_MODULE_4__Helpers_User_js__["a" /* default */];
 window.Gate = __WEBPACK_IMPORTED_MODULE_5__Helpers_Gate_js__["a" /* default */];
 
 if (__WEBPACK_IMPORTED_MODULE_4__Helpers_User_js__["a" /* default */].isLoggedIn()) {
-  axios.post('/api/auth/me').then(function (response) {
-    __WEBPACK_IMPORTED_MODULE_5__Helpers_Gate_js__["a" /* default */].setUser(response.data.role_id);
-  });
+
+	axios.post('/api/auth/me').then(function (response) {
+		__WEBPACK_IMPORTED_MODULE_5__Helpers_Gate_js__["a" /* default */].setUser(response.data.role_id);
+		console.log(response);
+	});
 }
 
 Vue.component('v-select', __WEBPACK_IMPORTED_MODULE_3_vue_select___default.a);
@@ -31616,8 +31617,8 @@ Vue.component('v-select', __WEBPACK_IMPORTED_MODULE_3_vue_select___default.a);
 Vue.component('app-home', __webpack_require__(145));
 
 var app = new Vue({
-  el: '#app',
-  router: __WEBPACK_IMPORTED_MODULE_2__Router_router_js__["a" /* default */]
+	el: '#app',
+	router: __WEBPACK_IMPORTED_MODULE_2__Router_router_js__["a" /* default */]
 });
 
 /***/ }),
@@ -81255,8 +81256,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("footer", { staticClass: "main-footer" }, [
-      _c("strong", [_vm._v("Microstack Technology")])
+    return _c("footer", { staticClass: "main-footer teal" }, [
+      _c("div", { staticClass: "text-center " }, [
+        _c("strong", [_vm._v("Copyright ©Microstack Technology Co.ltd")])
+      ])
     ])
   }
 ]
@@ -81875,6 +81878,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -81980,6 +81984,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     deleteStaff: function deleteStaff(id) {
+
       axios.delete("/api/staffs/" + id).then(function (response) {
         return console.log(response);
       }).catch(function (error) {
@@ -82549,6 +82554,14 @@ var render = function() {
                                 _c("label", { attrs: { for: "password" } }, [
                                   _vm._v("Login Password")
                                 ]),
+                                _vm._v(" "),
+                                _vm.errs.password
+                                  ? _c(
+                                      "div",
+                                      { staticClass: "error text-muted" },
+                                      [_vm._v(_vm._s(_vm.errs.password[0]))]
+                                    )
+                                  : _vm._e(),
                                 _vm._v(" "),
                                 _c("input", {
                                   directives: [
@@ -87056,7 +87069,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.customerParent[data-v-703e1eec] {\r\n  \r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\r\n  margin:0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\r\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\r\n  background-color: #eff0f1;\r\n  border-left: 5px solid #7e7e7e;\n}\n@media print {\n.printBtn[data-v-703e1eec] {\r\n    display:none;\n}\n}\r\n\r\n  \r\n\r\n", ""]);
+exports.push([module.i, "\nh1[data-v-703e1eec],h2[data-v-703e1eec],h3[data-v-703e1eec],h4[data-v-703e1eec],h5[data-v-703e1eec]{\r\n  font-weight:500;\r\n  line-height: 1.4em;\n}\nh6[data-v-703e1eec]{\r\n  font-weight:bold;\r\n  line-height: 1.4em;\n}\n.customerParent[data-v-703e1eec] {\r\n  \r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\r\n  margin:0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\r\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\r\n  background-color: #eff0f1;\r\n  border-left: 5px solid #7e7e7e;\n}\n@media print {\n.printBtn[data-v-703e1eec] {\r\n    display:none;\n}\n}\r\n\r\n  \r\n\r\n", ""]);
 
 // exports
 
@@ -87069,6 +87082,15 @@ exports.push([module.i, "\n.customerParent[data-v-703e1eec] {\r\n  \r\n  border-
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -87263,7 +87285,7 @@ var render = function() {
             : _c("div", { staticClass: "container_fluid" }, [
                 _c("div", [
                   _c("div", {}, [
-                    _c("div", { staticClass: "row pageHeader" }, [
+                    _c("div", { staticClass: "row pageHeader " }, [
                       _c("div", { staticClass: "mt-3 col-6" }, [
                         _c("img", {
                           attrs: {
@@ -87276,28 +87298,28 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-6 pt-2" }, [
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3" }, [
-                            _c("p", { staticClass: "text-dark" }, [
+                          _c("div", { staticClass: "col-4" }, [
+                            _c("h6", { staticClass: "text-dark" }, [
                               _vm._v("Invoice ID")
                             ])
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-8" }, [
-                            _c("p", { staticClass: "text-secondary" }, [
+                            _c("p", { staticClass: "text-dark" }, [
                               _vm._v("Mrs-" + _vm._s(_vm.service.id))
                             ])
                           ])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-3" }, [
-                            _c("p", { staticClass: "text-dark" }, [
+                          _c("div", { staticClass: "col-4" }, [
+                            _c("h6", { staticClass: "text-dark" }, [
                               _vm._v("Invoice Date")
                             ])
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-8" }, [
-                            _c("p", { staticClass: "text-secondary" }, [
+                            _c("p", { staticClass: "text-dark" }, [
                               _vm._v(
                                 _vm._s(_vm._f("myDate")(_vm.service.created_at))
                               )
@@ -87309,7 +87331,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("div", { staticClass: "mt-3" }, [
                       _c("div", [
-                        _c("div", { staticClass: "customerParent row" }, [
+                        _c("div", { staticClass: "row  customerParent " }, [
                           _c("div", { staticClass: "col-6 " }, [
                             _c("h5", { staticClass: "pb-2" }, [
                               _vm._v("Customer Information")
@@ -87317,13 +87339,13 @@ var render = function() {
                             _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-4" }, [
-                                _c("span", { staticClass: "text-dark" }, [
+                                _c("h6", { staticClass: "text-dark" }, [
                                   _vm._v("Customer Name")
                                 ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-8" }, [
-                                _c("p", { staticClass: "text-secondary" }, [
+                                _c("p", { staticClass: "text-dark" }, [
                                   _vm._v(_vm._s(_vm.service.customer_name))
                                 ])
                               ])
@@ -87331,13 +87353,13 @@ var render = function() {
                             _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-4" }, [
-                                _c("p", { staticClass: "text-dark" }, [
+                                _c("h6", { staticClass: "text-dark" }, [
                                   _vm._v("Customer Phone")
                                 ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-8" }, [
-                                _c("p", { staticClass: "text-secondary" }, [
+                                _c("p", { staticClass: "text-dark" }, [
                                   _vm._v(_vm._s(_vm.service.customer_phone))
                                 ])
                               ])
@@ -87345,13 +87367,13 @@ var render = function() {
                             _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-4" }, [
-                                _c("p", { staticClass: "text-dark" }, [
+                                _c("h6", { staticClass: "text-dark" }, [
                                   _vm._v("Customer Address")
                                 ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-8" }, [
-                                _c("p", { staticClass: "text-secondary" }, [
+                                _c("p", { staticClass: "text-dark" }, [
                                   _vm._v(_vm._s(_vm.service.township))
                                 ])
                               ])
@@ -87364,36 +87386,50 @@ var render = function() {
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-3" }, [
-                                _c("p", { staticClass: "text-dark" }, [
+                              _c("div", { staticClass: "col-4" }, [
+                                _c("h6", { staticClass: "text-dark" }, [
                                   _vm._v("Company Name")
                                 ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-8" }, [
-                                _c("p", { staticClass: "text-secondary" }, [
+                                _c("p", { staticClass: "text-dark" }, [
                                   _vm._v("Microstack")
                                 ])
                               ])
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-3" }, [
-                                _c("p", { staticClass: "text-dark" }, [
+                              _c("div", { staticClass: "col-4" }, [
+                                _c("h6", { staticClass: "text-dark" }, [
                                   _vm._v("Company Street")
                                 ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-8" }, [
-                                _c("p", { staticClass: "text-secondary" }, [
+                                _c("p", { staticClass: "text-dark" }, [
                                   _vm._v("63*64,Kantkaw Street")
+                                ])
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "row" }, [
+                              _c("div", { staticClass: "col-4" }, [
+                                _c("h6", { staticClass: "text-dark" }, [
+                                  _vm._v("Company Email")
+                                ])
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-8" }, [
+                                _c("p", { staticClass: "text-dark" }, [
+                                  _vm._v("microstack@gmail.com")
                                 ])
                               ])
                             ])
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "staff col-12" }, [
+                        _c("div", { staticClass: "staff " }, [
                           _c("h4", { staticClass: "pb-2" }, [
                             _vm._v("Staff Information")
                           ]),
@@ -87401,17 +87437,15 @@ var render = function() {
                           _c("div", [
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-2" }, [
-                                _c("h6", { staticClass: "text-secondary" }, [
+                                _c("h6", { staticClass: "text-dark" }, [
                                   _vm._v("Received Staff")
                                 ])
                               ]),
                               _vm._v(" "),
                               _c("div", { staticClass: "col-10" }, [
-                                _c(
-                                  "p",
-                                  { staticClass: "text-italic text-dark" },
-                                  [_vm._v(_vm._s(_vm.service.staff))]
-                                )
+                                _c("p", { staticClass: " text-dark" }, [
+                                  _vm._v(_vm._s(_vm.service.staff))
+                                ])
                               ])
                             ]),
                             _vm._v(" "),

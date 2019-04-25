@@ -103,9 +103,9 @@
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- Default to the left -->
-    <strong>Microstack Technology</strong>
+  <footer class="main-footer teal">
+   <div class="text-center "><strong>Copyright &copy;Microstack Technology Co.ltd</strong></div>
+     
   </footer>
 
         </div>
