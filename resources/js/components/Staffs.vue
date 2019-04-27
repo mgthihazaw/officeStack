@@ -95,7 +95,12 @@ export default {
     deleteStaff(id) {
       axios
         .delete("/api/staffs/" + id)
-        .then(response => console.log(response))
+        .then(response => {
+          Toast.fire({
+            type: "success",
+            title: "Successfully Deleted"
+          });
+        })
         .catch(error => console.log(error));
 
       Bus.$emit("afterDeleted");

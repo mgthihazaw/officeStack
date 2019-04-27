@@ -3,12 +3,13 @@
     <unauthorized v-if="!authorized"></unauthorized>
     <div v-else>
       <div>
-        <div class="container">
-          <div class="row">
+        <div class="container table-bordered">
+          <div class="row pt-3">
             <div class="col-12">
               <h3>New Staff</h3>
             </div>
           </div>
+          <hr>
           <div class="row">
             <div class="col-12">
               <form @submit.prevent="submit" method="POST">
@@ -266,22 +267,22 @@ export default {
         .get("/api/states")
         .then(response => {
           this.states = response.data.filter(function(state) {
-            return state.id !=1;
+            return state.id != 1;
           });
         })
         .catch(error => console.log(error.response.data));
     },
     loadTownships(state) {
-      if(state){
-         axios
-        .get(`/api/states/${state.id}/townships`)
-        .then(response => {
-          this.townships = response.data;
-          this.disable = false;
-        })
-        .catch(error => console.log(error.response.data));
+      this.form.address.township = "";
+      if (state) {
+        axios
+          .get(`/api/states/${state.id}/townships`)
+          .then(response => {
+            this.townships = response.data;
+            this.disable = false;
+          })
+          .catch(error => console.log(error.response.data));
       }
-     
     },
     loadBlocks(township) {
       axios
@@ -291,14 +292,7 @@ export default {
         })
         .catch(error => console.log(error.response.data));
     },
-    deleteStaff(id) {
-      axios
-        .delete("/api/staffs/" + id)
-        .then(response => console.log(response))
-        .catch(error => console.log(error));
 
-      Bus.$emit("afterDeleted");
-    },
     loadData() {
       axios
         .get("/api/staffs")
@@ -306,22 +300,28 @@ export default {
         .catch(errr => console.log(err.response.data));
     },
     submit() {
-      console.log(this.form);
       axios
         .post("/api/staffs/", this.form)
         .then(response => {
-          console.log(response);
+          // console.log(response.data)
+          Toast.fire({
+            type: "success",
+            title: response.data
+          });
           Bus.$emit("afterCreated");
           this.close();
         })
         .catch(error => {
+          Toast.fire({
+            type: "error",
+            title: error.response.data.message
+          });
           this.errs = error.response.data.errors;
         });
     },
     close() {
       this.$router.push("/staffs");
       Bus.$emit("cancel");
-      
     },
     resetForm() {
       (this.form.name = ""), (this.form.phone = "");

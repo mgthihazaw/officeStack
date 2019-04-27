@@ -26,6 +26,7 @@
         "admin-lte": "^3.0.0-alpha.2",
         "moment": "^2.24.0",
         "select2": "^4.0.6-rc.1",
+        "sweetalert2": "^8.8.7",
         "vee-validate": "^2.2.0",
         "vue-multiselect": "^2.1.4",
         "vue-router": "^3.0.2",

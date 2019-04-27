@@ -105,14 +105,16 @@
                       </div>
                     </div>
 
-                    <div class="callout callout-info mb-4 col-10">
+                    <div class="row">
+                      <div class="callout callout-info mb-4 col-6">
                       <h6 class="mb-3">Received Description</h6>
                       {{ service.description}}
                     </div>
 
-                    <div class="callout callout-info mb-3 col-10">
+                    <div class="callout callout-info mb-4 col-6">
                       <h6 class="mb-3">Received Remarks</h6>
                       {{ service.remark}}
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -208,7 +210,7 @@ h6{
 }
 .callout {
   background-color: #eff0f1;
-  border-left: 5px solid #7e7e7e;
+  border-left: 3px solid #7e7e7e;
   
 }
 @media print {

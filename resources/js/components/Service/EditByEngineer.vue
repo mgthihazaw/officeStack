@@ -80,15 +80,15 @@
                   class="form-control-label card-title"
                 >Choose Service Engineer</label>
                 <multiselect
-                :options="service_engineers"
-               v-model="form.service_engineer"
-                track-by="name"
-                :block-keys="['Delete']"
-                placeholder="Choose Service Engineer"
-                label="name"
-                
-              ></multiselect>
-                
+                  :options="service_engineers"
+                  v-model="form.service_engineer"
+                  value="name"
+                  track-by="name"
+                  :block-keys="['Delete']"
+                  placeholder="Choose Service Engineer"
+                  label="name"
+                ></multiselect>
+
                 <div v-if="service_engineer_error" class="error">Select the service engineer</div>
               </div>
 
@@ -170,6 +170,12 @@ export default {
         .get(`/api/services/${id}`)
         .then(res => {
           this.service = res.data.data;
+          if(this.service.service_engineer)
+          {
+            
+            this.form.service_description=this.service.service_description
+            this.form.service_remark=this.service.service_remark
+          }
         })
         .catch(error => {
           console.log(error.response);
@@ -186,13 +192,16 @@ export default {
         axios
           .put(`/api/services/${id}`, this.form)
           .then(response => {
+            
             if (response.status == 200) {
+              Toast.fire({
+              type: "success",
+              title: response.data
+            });
               this.$router.push("/services");
             }
-            
           })
-          .catch((error)=> {
-            console.log("error")
+          .catch(error => {
             if (error.response.status == 422) {
               this.form_errors = error.response.data.errors;
               this.form.service_engineer = this.service_engineers.find(
@@ -200,7 +209,6 @@ export default {
                   return staff.no === this.form.service_engineer;
                 }
               );
-              console.log(this.form_errors);
             }
 
             if (
@@ -212,7 +220,7 @@ export default {
                   return staff.no === this.form.service_engineer;
                 }
               );
-              alert(error.response.data);
+              
               this.form.secret = "";
             }
           });

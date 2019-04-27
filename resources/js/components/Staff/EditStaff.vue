@@ -38,7 +38,7 @@
                         placeholder="Choose State"
                         label="name"
                         :options="states"
-						:reset-after="false"
+						            :reset-after="false"
                         @input="loadTownships(form.address.state)"
 						@select="form.address.township=''"
                       ></multiselect>
@@ -171,7 +171,7 @@
                 </div>
               </form>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @click="close">Close</button>
+                <button type="button" class="btn btn-secondary" @click="saveAddress">Close</button>
                 <button type="submit" class="btn btn-primary" @click="saveAddress">Save</button>
               </div>
             </div>

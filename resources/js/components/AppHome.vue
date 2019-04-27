@@ -103,7 +103,7 @@
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  <footer class="main-footer teal">
+  <footer class="main-footer bg-white">
    <div class="text-center "><strong>Copyright &copy;Microstack Technology Co.ltd</strong></div>
      
   </footer>

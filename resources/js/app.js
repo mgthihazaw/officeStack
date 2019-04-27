@@ -9,9 +9,18 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-import VeeValidate from 'vee-validate';
+//Alert Message
 
-Vue.use(VeeValidate);
+import swal from 'sweetalert2';
+window.swal=swal;
+const Toast = swal.mixin({
+	toast: true,
+	position: 'top-end',
+	showConfirmButton: false,
+	timer: 3000
+  });
+window.Toast=Toast
+
 
 import moment from 'moment';
 Vue.filter('myDate', function (created) {
@@ -36,9 +45,13 @@ import Gate from './Helpers/Gate.js';
 
 axios.interceptors.response.use(function (response) {
 	// Do something with response data
-
+	
 	return response;
 }, function (error) {
+	Toast.fire({
+		type: "error",
+		title: error.response.data.message
+	  });
 	if (error.response.data.type == 'token_invalid') {
 		// alert(error.response.data.error)
 		Bus.$emit('logout')
@@ -56,9 +69,12 @@ window.Gate = Gate
 if (User.isLoggedIn()) {
 	axios.post('/api/auth/me')
 		.then(response => {
+			console.log(response)
 			Gate.setUser(response.data.role_id);
 })
-.catch(err=>{console.log(err)})
+.catch(err=>{
+	console.log(err)
+})
 }
 
 Vue.component('v-select', vSelect)

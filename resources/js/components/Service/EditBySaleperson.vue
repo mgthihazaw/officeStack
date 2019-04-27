@@ -171,11 +171,14 @@ export default {
         this.form.receive_staff = this.form.receive_staff.no;
       }
 
-      console.log(this.form);
+      
       axios
         .put(`/api/services/${this.service.id}`, this.form)
         .then(res => {
-          console.log(res);
+          Toast.fire({
+              type: "success",
+              title: res.data
+            });
           this.$router.push("/services");
         })
         .catch(error => {
@@ -184,7 +187,7 @@ export default {
           });
           if (error.response.status == 422) {
             this.form_errors = error.response.data.errors;
-            console.log(this.form_errors);
+           
           }
         });
     },

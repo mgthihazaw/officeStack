@@ -189,14 +189,17 @@ export default {
         this.form.customer_id = this.form.customer_id.id;
       }
 
-      console.log(this.form);
+      
       if (this.form_errors.length > 0) {
         return;
       }
       axios
         .post("/api/services", this.form)
         .then(response => {
-          console.log(response.status);
+          Toast.fire({
+		type: "success",
+		title: response.data
+	  });
           if (response.status == 200) {
             this.$router.push("/services");
           }
@@ -207,8 +210,7 @@ export default {
             this.form.receive_staff = this.receptionists.find(staff => {
               return staff.no === this.form.receive_staff;
             });
-            console.log(this.form_errors);
-            console.log(this.errors);
+           
           }
         });
     },
