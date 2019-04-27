@@ -79,14 +79,16 @@
                   for="service_engineer"
                   class="form-control-label card-title"
                 >Choose Service Engineer</label>
-                <v-select
-                  class="col-12"
-                  :options="service_engineers"
-                  value="id"
-                  label="name"
-                  placeholder="Choose Service Engineer"
-                  v-model="form.service_engineer"
-                ></v-select>
+                <multiselect
+                :options="service_engineers"
+               v-model="form.service_engineer"
+                track-by="name"
+                :block-keys="['Delete']"
+                placeholder="Choose Service Engineer"
+                label="name"
+                
+              ></multiselect>
+                
                 <div v-if="service_engineer_error" class="error">Select the service engineer</div>
               </div>
 
@@ -231,6 +233,7 @@ export default {
   }
 };
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scoped>
 .error {
   color: red;

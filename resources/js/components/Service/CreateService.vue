@@ -12,14 +12,16 @@
           <form @submit.prevent="addNewService">
             <div class="form-group row">
               <div class="col-md-4">
-                <v-select
+                <multiselect
                   :options="customers"
-                  label="name"
-                  value="id"
+                   v-model="form.customer_id"
+                  track-by="name"
+                  :block-keys="['Delete']"
+                  @input="makeDisable()"
                   placeholder="Choose Existing Customer"
-                  v-model="form.customer_id"
-                  @change="makeDisable()"
-                ></v-select>
+                  label="name"
+                ></multiselect>
+                
               </div>
             </div>
             <div class="form-group row">
@@ -69,12 +71,18 @@
 
             <div class="form-group row">
               <div class="col-12">
-                <v-select
-                  label="name"
-                  :options="receptionists"
-                  placeholder="Choose Received Staff"
-                  v-model="form.receive_staff"
-                ></v-select>
+                
+                <multiselect
+                v-model="form.receive_staff"
+                track-by="name"
+                :block-keys="['Delete']"
+                placeholder="Choose Received Staff"
+                label="name"
+                :options="receptionists"
+              ></multiselect>
+
+              
+               
                 <div
                   class="error"
                   v-for="(error,index) in form_errors['receive_staff']"
@@ -135,7 +143,7 @@ export default {
   },
   data() {
     return {
-      show:false,
+      show: false,
       authorized: false,
       disable: false,
       receptionists: [],
@@ -185,7 +193,8 @@ export default {
       if (this.form_errors.length > 0) {
         return;
       }
-      axios.post("/api/services", this.form)
+      axios
+        .post("/api/services", this.form)
         .then(response => {
           console.log(response.status);
           if (response.status == 200) {
@@ -212,22 +221,21 @@ export default {
       } else {
         this.disable = false;
       }
-		},
-		shows(){
-			this.show=true
-		}
+    },
+    shows() {
+      this.show = true;
+    }
   },
 
   created() {
-		 
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
         Gate.setUser(response.data.role_id);
         if (!Gate.isSaleperson()) {
-					this.shows()
+          this.shows();
           this.authorized = false;
         } else {
-					this.shows()
+          this.shows();
           this.authorized = true;
         }
       });
@@ -238,6 +246,7 @@ export default {
   }
 };
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scopde>
 @media (max-width: 768px) {
   .col-md-4 {

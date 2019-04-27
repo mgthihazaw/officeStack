@@ -36,17 +36,16 @@ import Gate from './Helpers/Gate.js';
 
 axios.interceptors.response.use(function (response) {
 	// Do something with response data
-	
-    return response;
+
+	return response;
 }, function (error) {
-	if(error.response.data.type == 'token_invalid'){
+	if (error.response.data.type == 'token_invalid') {
 		// alert(error.response.data.error)
 		Bus.$emit('logout')
-	}else if(error.response.data.type == 'token_expired'){
+	} else if (error.response.data.type == 'token_expired') {
 		// alert(error.response.data.error)
 		Bus.$emit('logout')
 	}
-	
 	return Promise.reject(error)
 });
 
@@ -55,15 +54,11 @@ window.User = User
 window.Gate = Gate
 
 if (User.isLoggedIn()) {
-
-    
-
 	axios.post('/api/auth/me')
 		.then(response => {
 			Gate.setUser(response.data.role_id);
-            console.log(response)
-		})
-		
+})
+.catch(err=>{console.log(err)})
 }
 
 Vue.component('v-select', vSelect)

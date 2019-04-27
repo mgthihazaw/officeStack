@@ -37,7 +37,7 @@
                         placeholder="Choose State"
                         label="name"
                         :block-keys="['Delete']"
-                        track-by="name" 
+                        track-by="name"
                         :options="states"
                         @select="loadTownships"
                       ></multiselect>
@@ -184,7 +184,7 @@
                 </div>
               </form>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @click="close">Close</button>
+                <button type="button" class="btn btn-secondary" @click="saveAddress">Close</button>
                 <button type="submit" class="btn btn-primary" @click="saveAddress">Create</button>
               </div>
             </div>
@@ -266,20 +266,22 @@ export default {
         .get("/api/states")
         .then(response => {
           this.states = response.data.filter(function(state) {
-            return state.name != "မြန်မာ";
+            return state.id !=1;
           });
         })
         .catch(error => console.log(error.response.data));
     },
     loadTownships(state) {
-      console.log(state);
-      axios
+      if(state){
+         axios
         .get(`/api/states/${state.id}/townships`)
         .then(response => {
           this.townships = response.data;
           this.disable = false;
         })
         .catch(error => console.log(error.response.data));
+      }
+     
     },
     loadBlocks(township) {
       axios
@@ -317,8 +319,9 @@ export default {
         });
     },
     close() {
-      Bus.$emit("cancel");
       this.$router.push("/staffs");
+      Bus.$emit("cancel");
+      
     },
     resetForm() {
       (this.form.name = ""), (this.form.phone = "");
