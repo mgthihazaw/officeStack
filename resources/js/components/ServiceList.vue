@@ -40,7 +40,7 @@
 								<button class="btn btn-secondary btn-sm" @click="printView(service.id)" v-if="User.isSaleperson() && !service.pending"><i class="fas fa-print"></i></button>
 		                        <button class="btn btn-primary btn-sm text-white" @click="editServicebyServiceEngineer(service.id)" v-if="User.isServiceEngineer()"><i class="fa fa-edit"></i></button>
 		                        
-		                        <router-link :to="'/services/'+service.id+'/show'" class="btn btn-success btn-sm text-white" v-if="service.pending == 1"><i class="fa fa-eye"></i></router-link>
+		                        <router-link :to="'/services/'+service.id+'/show'" class="btn btn-success btn-sm text-white" v-if="service.pending == 1"><i class="fas fa-print"></i></router-link>
 		                    </td>
 		                </tr>
 		            </tbody>
