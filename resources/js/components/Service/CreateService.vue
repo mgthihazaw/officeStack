@@ -1,27 +1,27 @@
 <template>
-  <div v-if="show">
+  <div v-if="show" >
     <unauthorized v-if="!authorized"></unauthorized>
-    <div class="container" v-if="authorized">
-      <div class="row">
+    <div  v-if="authorized" class="container formcolor animated fadeInRight">
+      <div class="row ">
         <div class="col-12">
-          <h3>ADD NEW SERVICE</h3>
+          <h3 class="pt-3">ADD NEW SERVICE</h3>
         </div>
       </div>
+      <hr>
       <div class="row mt-4">
-        <div class="col-12">
+        <div class="col-12 ">
           <form @submit.prevent="addNewService">
             <div class="form-group row">
               <div class="col-md-4">
                 <multiselect
                   :options="customers"
-                   v-model="form.customer_id"
+                  v-model="form.customer_id"
                   track-by="name"
                   :block-keys="['Delete']"
                   @input="makeDisable()"
                   placeholder="Choose Existing Customer"
                   label="name"
                 ></multiselect>
-                
               </div>
             </div>
             <div class="form-group row">
@@ -71,18 +71,15 @@
 
             <div class="form-group row">
               <div class="col-12">
-                
                 <multiselect
-                v-model="form.receive_staff"
-                track-by="name"
-                :block-keys="['Delete']"
-                placeholder="Choose Received Staff"
-                label="name"
-                :options="receptionists"
-              ></multiselect>
+                  v-model="form.receive_staff"
+                  track-by="name"
+                  :block-keys="['Delete']"
+                  placeholder="Choose Received Staff"
+                  label="name"
+                  :options="receptionists"
+                ></multiselect>
 
-              
-               
                 <div
                   class="error"
                   v-for="(error,index) in form_errors['receive_staff']"
@@ -189,7 +186,6 @@ export default {
         this.form.customer_id = this.form.customer_id.id;
       }
 
-      
       if (this.form_errors.length > 0) {
         return;
       }
@@ -197,9 +193,9 @@ export default {
         .post("/api/services", this.form)
         .then(response => {
           Toast.fire({
-		type: "success",
-		title: response.data
-	  });
+            type: "success",
+            title: response.data
+          });
           if (response.status == 200) {
             this.$router.push("/services");
           }
@@ -210,7 +206,6 @@ export default {
             this.form.receive_staff = this.receptionists.find(staff => {
               return staff.no === this.form.receive_staff;
             });
-           
           }
         });
     },
@@ -257,5 +252,14 @@ export default {
 }
 .error {
   color: red;
+}
+.formcolor {
+  
+    background: #EBEFF2;
+    border-left: 2px solid rgba(113, 190, 152, 0.271);
+    border-right: 2px solid rgba(113, 190, 152, 0.271);
+    border-top: 20px solid rgba(113, 190, 152, 0.271);
+    border-bottom: 2px solid rgba(113, 190, 152, 0.271);
+    border-radius:30px;
 }
 </style>

@@ -134,6 +134,7 @@
                     </div>
 
                     <div class="saveform m-3">
+                      
                       <form @submit.prevent="save">
                         <div class="row">
                           <div class="col-4">
@@ -180,10 +181,11 @@
                             <th></th>
                           </tr>
 
-                          <tr v-for="(data,index) in accountance">
+                          <tr v-for="(data,index) in accountance" class="animated pulse">
                             <td>{{data.item}}</td>
                             <td style="padding-left:30px;">{{data.amount}}</td>
                             <td style="padding-left:20px;">{{data.price}}</td>
+                            <td> <button class="btn btn-danger btn-sm" @click="deleteCost(index)" ><i class="fas fa-minus"></i></button></td>
                           </tr>
                           <tr v-if="accountance.length>0">
                             <td>Total</td>
@@ -230,12 +232,13 @@ export default {
   },
   methods: {
     save() {
-      if (this.form.item != null) {
+      if (this.form.item != '') {
         this.accountance.push({
           item: this.form.item,
           amount: this.form.amount == '' ? '_' : this.form.amount,
           price: this.form.price == '' ? '0' : this.form.price,
         });
+        this.total=0
         this.accountance.forEach(element => {
           this.total += parseInt(element.price);
         });
@@ -243,6 +246,14 @@ export default {
         this.form.item = "";
         this.form.price = "";
       }
+    },
+    deleteCost(index){
+      console.log(index)
+      this.accountance.splice(index,1);
+       this.total=0
+      this.accountance.forEach(element => {
+          this.total += parseInt(element.price);
+        });
     },
     loadService() {
       let id = this.$route.params.id;

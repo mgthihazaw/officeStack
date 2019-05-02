@@ -30,11 +30,11 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="l" class="brand-link">
+    <router-link to="/" class="brand-link">
       <img :src="'/images/vuetify.png'" alt="Microstack Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light text-primary">Microstack</span>
-    </a>
+    </router-link>
 
     <!-- Sidebar -->
     <div class="sidebar">

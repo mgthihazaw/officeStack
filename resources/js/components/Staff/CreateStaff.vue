@@ -2,8 +2,8 @@
   <div v-if="show">
     <unauthorized v-if="!authorized"></unauthorized>
     <div v-else>
-      <div>
-        <div class="container table-bordered">
+      <div class="animated fadeInRight">
+        <div class="container formcolor">
           <div class="row pt-3">
             <div class="col-12">
               <h3>New Staff</h3>
@@ -379,6 +379,15 @@ export default {
 
   margin-bottom: 10px;
   font-style: italic;
+}
+.formcolor {
+  
+    background: #EBEFF2;
+    border-left: 2px solid rgba(113, 190, 152, 0.271);
+    border-right: 2px solid rgba(113, 190, 152, 0.271);
+    border-top: 20px solid rgba(113, 190, 152, 0.271);
+    border-bottom: 2px solid rgba(113, 190, 152, 0.271);
+    border-radius:30px;
 }
 </style>
 

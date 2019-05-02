@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="animated fadeInUp">
     <div class="login-box">
       <!-- <div class="login-logo">
 		    <h3>Microstack</h3>

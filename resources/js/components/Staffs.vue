@@ -8,8 +8,8 @@
         <h1 class="page-header mirim_font">Staffs List</h1>
         <button class="btn btn-success btn-sm mt-2 mb-3" @click="create">New Stafff</button>
 
-        <table class="table table-bordered">
-          <thead>
+        <table class="table table-hover">
+          <thead class="thead-light">
             <tr>
               <th>No</th>
               <th>Name</th>
@@ -167,5 +167,8 @@ export default {
 td {
   line-height: 1.4em;
   font-family: "Zawgyi";
+}
+.table-hover tbody tr:hover td {
+    background: rgba(113, 190, 152, 0.271);
 }
 </style>

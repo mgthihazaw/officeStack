@@ -1,10 +1,11 @@
 <template>
-  <div class="container" v-if="!show">
-    <div class="row">
+  <div class="container formcolor animated fadeInRight" v-if="!show">
+    <div class="row formheading">
       <div class="col-12">
-        <h3>Edit by saleperson</h3>
+        <h3 >Edit by saleperson</h3>
       </div>
     </div>
+    <hr>
     <div class="row mt-4">
       <div class="col-12">
         <form @submit.prevent="updateService">
@@ -106,7 +107,7 @@
             >{{ error }}</div>
           </div>
           <div class="form-group text-right">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Update Service</button>
             <button class="btn btn-secondary" @click="close">Cancel</button>
           </div>
         </form>
@@ -205,5 +206,18 @@ export default {
 <style scoped>
 .error {
   color: red;
+}
+.formcolor {
+  
+    background: #EBEFF2;
+    border-left: 2px solid rgba(113, 190, 152, 0.271);
+    border-right: 2px solid rgba(113, 190, 152, 0.271);
+    border-top: 20px solid rgba(113, 190, 152, 0.271);
+    border-bottom: 2px solid rgba(113, 190, 152, 0.271);
+    border-radius:30px;
+}
+.formheading {
+  padding-top: 10px;
+  
 }
 </style>

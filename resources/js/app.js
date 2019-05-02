@@ -52,6 +52,7 @@ axios.interceptors.response.use(function (response) {
 		type: "error",
 		title: error.response.data.message
 	  });
+	  console.log(error.response.data)
 	if (error.response.data.type == 'token_invalid') {
 		// alert(error.response.data.error)
 		Bus.$emit('logout')

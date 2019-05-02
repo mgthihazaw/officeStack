@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="card col-md-12">
+  <div class="formcolor animated fadeInRight">
+    <div class=" col-md-12">
       <div class="m-3">
         <h3 class="text-capitalize text-dark">
           <i class="fas fa-arrow-circle-left green" @click="back" style="cursor: pointer"></i>
@@ -8,7 +8,7 @@
         </h3>
       </div>
       <hr>
-      <div class="card-body">
+      <div class="">
         <div class="row">
           <div class="col-5">
             <div class="pb-3">
@@ -42,7 +42,7 @@
             </div>
           </div>
 
-          <div class="col-7">
+          <div class="col-7 pr-5">
             <form @submit.prevent="updateService">
               <div class="form-group row">
                 <label
@@ -245,6 +245,15 @@ export default {
 <style scoped>
 .error {
   color: red;
+}
+.formcolor {
+  
+    background: #EBEFF2;
+    border-left: 2px solid rgba(113, 190, 152, 0.271);
+    border-right: 2px solid rgba(113, 190, 152, 0.271);
+    border-top: 20px solid rgba(113, 190, 152, 0.271);
+    border-bottom: 2px solid rgba(113, 190, 152, 0.271);
+    border-radius:30px;
 }
 </style>
 
