@@ -45,7 +45,9 @@ Route::group(['middleware' => 'jwt'], function(){
 
 	Route::apiResource('/customers', 'CustomerController');
 
-
+	Route::post('/service-item', 'ServiceItemController@store');
+    Route::delete('/service-item/{id}', 'ServiceItemController@destroy');
+     
 	Route::get('/states/{state}/townships', 'StateController@getTownships');
 	Route::get('/townships/{township}/blocks', 'AddressController@getBlocks');
 	Route::get('/departments/{department}/roles', 'DepartmentController@getRoles');

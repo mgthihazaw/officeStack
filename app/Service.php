@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
+	
    	protected $fillable = ['staff_id','service_engineer_id','customer_id','customer_name','customer_phone','township','description','remark','pending','service_description','service_remark'];
 
    	public function staff(){
@@ -18,5 +19,8 @@ class Service extends Model
 
    	public function customer(){
    		return $this->belongsTo('App\Customer');
-   	}
+	   }
+	   public function service_items(){
+		   return $this->hasMany('App\ServiceItem');
+	   }
 }

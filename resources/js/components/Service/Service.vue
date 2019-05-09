@@ -134,7 +134,6 @@
                     </div>
 
                     <div class="saveform m-3">
-                      
                       <form @submit.prevent="save">
                         <div class="row">
                           <div class="col-4">
@@ -149,8 +148,8 @@
                             <input
                               class="form-control"
                               type="number"
-                              v-model.number="form.amount"
-                              placeholder="Enter Amount"
+                              v-model.number="form.quantity"
+                              placeholder="Enter quantity"
                             >
                           </div>
                           <div class="col-3">
@@ -161,8 +160,9 @@
                               placeholder="Enter Price"
                             >
                           </div>
-                          <div class="col-2">
-                            <button class="btn btn-warning" type="submit">
+                          <div class="col-2 pl-5">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-primary" type="submit">
                               <i class="far fa-save"></i>
                             </button>
                           </div>
@@ -176,21 +176,29 @@
                         <tbody>
                           <tr>
                             <th style="width: 60%">Item</th>
-                            <th>Amount</th>
+                            <th>Quantity</th>
                             <th style="width: 150px">Price</th>
                             <th></th>
                           </tr>
 
-                          <tr v-for="(data,index) in accountance" class="animated pulse">
+                          <tr
+                            v-for="(data,index) in serviceItems"
+                            :key="index"
+                            class="animated pulse"
+                          >
                             <td>{{data.item}}</td>
-                            <td style="padding-left:30px;">{{data.amount}}</td>
+                            <td style="padding-left:30px;">{{data.quantity}}</td>
                             <td style="padding-left:20px;">{{data.price}}</td>
-                            <td> <button class="btn btn-danger btn-sm" @click="deleteCost(index)" ><i class="fas fa-minus"></i></button></td>
+                            <td>
+                              <button class="btn btn-danger btn-sm" @click="deleteCost(index)">
+                                <i class="fas fa-minus"></i>
+                              </button>
+                            </td>
                           </tr>
-                          <tr v-if="accountance.length>0">
-                            <td>Total</td>
-                            <td style="padding-left:30px;">:</td>
-                            <td style="padding-left:20px;">{{ total }}</td>
+                          <tr v-if="serviceItems.length>0">
+                            <td ><p class="text-bold">Total</p></td>
+                            <td style="padding-left:30px;"></td>
+                            <td style="padding-left:20px;"><p class="text-bold">{{ total }}</p></td>
                           </tr>
                         </tbody>
                       </table>
@@ -220,10 +228,11 @@ export default {
     return {
       form: {
         item: "",
-        amount: "",
-        price: ""
+        quantity: 1,
+        price: 0,
+        service_id: this.$route.params.id
       },
-      accountance: [],
+      serviceItems: [],
       total: 0,
       show: false,
       authorized: false,
@@ -232,27 +241,29 @@ export default {
   },
   methods: {
     save() {
-      if (this.form.item != '') {
-        this.accountance.push({
-          item: this.form.item,
-          amount: this.form.amount == '' ? '_' : this.form.amount,
-          price: this.form.price == '' ? '0' : this.form.price,
+      if (this.form.item != "") {
+        axios.post("/api/service-item", this.form).then(response => {
+          this.serviceItems.push(response.data);
+          this.total = 0;
+          this.serviceItems.forEach(element => {
+            this.total += parseInt(element.price);
+          });
+          this.form.quantity = "";
+          this.form.item = "";
+          this.form.price = "";
         });
-        this.total=0
-        this.accountance.forEach(element => {
-          this.total += parseInt(element.price);
-        });
-        this.form.amount = "";
-        this.form.item = "";
-        this.form.price = "";
       }
     },
-    deleteCost(index){
-      console.log(index)
-      this.accountance.splice(index,1);
-       this.total=0
-      this.accountance.forEach(element => {
-          this.total += parseInt(element.price);
+    deleteCost(index) {
+      console.log(this.serviceItems[index].id);
+      axios
+        .delete(`/api/service-item/${this.serviceItems[index].id}`)
+        .then(response => {
+          this.serviceItems.splice(index, 1);
+          this.total = 0;
+          this.serviceItems.forEach(element => {
+            this.total += parseInt(element.price);
+          });
         });
     },
     loadService() {
@@ -261,7 +272,11 @@ export default {
         .get("/api/services/" + id)
         .then(res => {
           this.service = res.data.data;
-          console.log(this.service);
+          if (this.service.service_items != null)
+            this.serviceItems = this.service.service_items;
+          this.serviceItems.forEach(element => {
+            this.total += parseInt(element.price);
+          });
         })
         .catch(err => {
           console.log(err);

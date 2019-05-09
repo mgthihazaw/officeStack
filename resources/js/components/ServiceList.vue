@@ -12,7 +12,7 @@
             v-if="User.isSaleperson()"
           >New Service</router-link>
           
-          <table class="table table-responsive table-hover ">
+          <table class="table table-responsive table-hover table-striped ">
 
             <thead class="thead-light ">
               <tr>
@@ -182,8 +182,9 @@ export default {
 td {
   font-family: "Zawgyi-One";
 }
+
 .table-hover tbody tr:hover td {
-    background: rgba(113, 190, 152, 0.271);
+    background: #E9ECEF;
 }
 
 .createroute{
