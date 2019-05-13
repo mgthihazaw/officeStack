@@ -116,7 +116,7 @@ export default {
         .get("/api/services/" + id)
         .then(res => {
           this.service = res.data.data;
-          console.log(this.service);
+          // console.log(this.service);
         })
         .catch(err => {
           console.log(err);

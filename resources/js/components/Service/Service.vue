@@ -255,7 +255,7 @@ export default {
       }
     },
     deleteCost(index) {
-      console.log(this.serviceItems[index].id);
+      // console.log(this.serviceItems[index].id);
       axios
         .delete(`/api/service-item/${this.serviceItems[index].id}`)
         .then(response => {

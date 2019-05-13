@@ -265,7 +265,7 @@ export default {
         .get(`/api/states/${state.id}/townships`)
         .then(response => {
           this.townships = response.data;
-          console.log(this.townships.includes(this.township));
+          // console.log(this.townships.includes(this.township));
         })
         .catch(error => console.log(error.response.data));
 	  }
@@ -290,7 +290,7 @@ export default {
       axios
         .put(`/api/staffs/${this.staff.no}`, this.form)
         .then(response => {
-          console.log(response);
+          // console.log(response);
           Bus.$emit("afterUpdated");
           this.$router.push("/staffs");
         })

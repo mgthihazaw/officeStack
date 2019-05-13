@@ -12,7 +12,7 @@
             v-if="User.isSaleperson()"
           >New Service</router-link>
           
-          <table class="table table-responsive table-hover table-striped ">
+          <table class="table  table-hover  ">
 
             <thead class="thead-light ">
               <tr>
@@ -111,7 +111,7 @@ export default {
             alert(error.response.data.error);
             Bus.$emit("logout");
           }
-          console.log(error.response);
+          
         });
     },
     editServicebySaleperson(id) {
@@ -149,13 +149,13 @@ export default {
         this.User = Gate;
 
         if (this.User.isSaleperson() || this.User.isServiceEngineer()) {
-          console.log("Permis");
+          // console.log("Permis");
           this.shows();
           this.authorized = true;
         } else {
           this.shows();
           this.authorized = false;
-          console.log("NoPermis");
+          // console.log("NoPermis");
         }
       });
     }

@@ -101,7 +101,7 @@ export default {
             title: "Successfully Deleted"
           });
         })
-        .catch(error => console.log(error));
+        
 
       Bus.$emit("afterDeleted");
     },
@@ -111,12 +111,7 @@ export default {
         .then(res => {
           this.staffs = res.data.data;
         })
-        .catch(errr => {
-          console.log(errr.response.status);
-          if (errr.response.status === 403) {
-            // Bus.$emit('logout');
-          }
-        });
+        
     },
     create() {
       this.createMode = true;

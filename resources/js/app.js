@@ -52,7 +52,7 @@ axios.interceptors.response.use(function (response) {
 		type: "error",
 		title: error.response.data.message
 	  });
-	  console.log(error.response.data)
+	  
 	if (error.response.data.type == 'token_invalid') {
 		// alert(error.response.data.error)
 		Bus.$emit('logout')
@@ -70,7 +70,7 @@ window.Gate = Gate
 if (User.isLoggedIn()) {
 	axios.post('/api/auth/me')
 		.then(response => {
-			console.log(response)
+			// console.log(response)
 			Gate.setUser(response.data.role_id);
 })
 .catch(err=>{
@@ -82,7 +82,17 @@ Vue.component('v-select', vSelect)
 
 Vue.component('app-home', require('./components/AppHome.vue'));
 
+import Turbolinks from 'turbolinks';
+  Turbolinks.start()
+  
+  import TurbolinksAdapter from 'vue-turbolinks';
+  Vue.use(TurbolinksAdapter)
+  document.addEventListener('turbolinks:load', () => {
+    var element=document.getElementById("app")
+    if(element != null){
 const app = new Vue({
 	el: '#app',
 	router,
+});
+}
 });
