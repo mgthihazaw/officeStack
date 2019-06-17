@@ -90,6 +90,33 @@
             </router-link>
           </li>
 
+          <li class="nav-item has-treeview menu-open" v-if="ServiceShow()">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-database green"></i>
+              <p>
+                Items
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview" style="display: block;">
+              <li class="nav-item">
+                 <router-link class="nav-link" to="/item">
+                  <i class="fas fa-table nav-icon"></i>
+                  
+                  <p>Item</p>
+                 </router-link>
+              </li>
+              <li class="nav-item">
+                 <router-link class="nav-link" to="/itemtype">
+                  <i class="fas fa-table nav-icon"></i>
+                  
+                  <p>Item Type</p>
+                 </router-link>
+              </li>
+              
+            </ul>
+          </li>
+
           <li class="nav-item logout">
             <router-link class="nav-link" to="/logout">
                 <i class="nav-icon red fas fa-power-off"></i>

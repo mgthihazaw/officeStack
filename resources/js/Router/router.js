@@ -16,6 +16,8 @@ import FinishServiceReport from '../components/Service/FinishServiceReport';
 import Login from '../components/Login';
 import NotFound404 from '../components/errors/NotFound404';
 import Profile from '../components/Profile';
+import ItemType from '../components/Items/ItemType';
+import Item from '../components/Items/Item';
 
 import Logout from '../components/Logout';
 
@@ -119,6 +121,23 @@ const routes = [
         requiresAuth : true,
       }
     },
+    { 
+      path: '/itemtype',
+      component: ItemType,
+      meta : {
+        requiresAuth : true,
+      },
+
+    },
+    { 
+      path: '/item',
+      component: Item,
+      meta : {
+        requiresAuth : true,
+      },
+
+    },
+
 ]
 
 // 3. Create the router instance and pass the `routes` option
