@@ -19,13 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
-
 	Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
 	Route::post('me', 'AuthController@me')->middleware('jwt');
-	
-
 });
 
 Route::apiResource('/businesses', 'BusinessController');
@@ -54,4 +51,14 @@ Route::group(['middleware' => 'jwt'], function(){
 	Route::get('/states/{state}/townships', 'StateController@getTownships');
 	Route::get('/townships/{township}/blocks', 'AddressController@getBlocks');
 	Route::get('/departments/{department}/roles', 'DepartmentController@getRoles');
+
+	Route::apiResource('/itemtypes', 'Item\ItemTypeController');
+
+	Route::apiResource('/items', 'Item\ItemController');
+
+	Route::apiResource('/attributes', 'Item\AttributeController');
+
+	Route::apiResource('/attributevalues', 'Item\AttributeValueController');
+
+
 });

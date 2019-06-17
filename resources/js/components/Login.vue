@@ -69,20 +69,15 @@ export default {
   },
   methods: {
     login() {
-      axios
-        .post("/api/auth/login", this.form)
+      axios.post("/api/auth/login", this.form)
         .then(response => {
-          
           User.store(
             response.data.userID,
             response.data.user,
             response.data.permissions,
             response.data.access_token
           );
-
-          
-          
-           window.location.replace("/");
+          window.location.replace("/");
         })
         .catch(error => {
           if (error.response.data.type == "login_fail") {

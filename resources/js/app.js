@@ -72,10 +72,10 @@ if (User.isLoggedIn()) {
 		.then(response => {
 			console.log(response)
 			Gate.setUser(response.data.role_id);
-})
-.catch(err=>{
-	console.log(err)
-})
+		})
+		.catch(err=>{
+			console.log(err)
+		})
 }
 
 Vue.component('v-select', vSelect)
@@ -83,7 +83,7 @@ Vue.component('v-select', vSelect)
 Vue.component('app-home', require('./components/AppHome.vue'));
 
 import Turbolinks from 'turbolinks';
-  Turbolinks.start()
+Turbolinks.start()
   
   import TurbolinksAdapter from 'vue-turbolinks';
   Vue.use(TurbolinksAdapter)
