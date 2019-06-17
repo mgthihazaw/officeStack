@@ -4,7 +4,7 @@
   <div v-else>
     
     <div class="row" v-if="(!createMode && !editMode)">
-      <div class="col-12">
+      <div class="col-12 animated zoomIn">
         <h1 class="page-header mirim_font">Staffs List</h1>
         <button class="btn btn-success btn-sm mt-2 mb-3" @click="create">New Stafff</button>
 

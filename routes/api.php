@@ -23,7 +23,8 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
 	Route::post('login', 'AuthController@login');
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me')->middleware('jwt');
+	Route::post('me', 'AuthController@me')->middleware('jwt');
+	
 
 });
 
@@ -34,7 +35,9 @@ Route::group(['middleware' => 'jwt'], function(){
 	Route::apiResource('/staffs', 'StaffController');
 	Route::get('/receptionists', 'StaffController@getReceptionists');
 	Route::get('/service_engineers', 'StaffController@getServiceEngineers');
-
+	Route::put('/staffs/{staff}/changeAccount','StaffController@changeAccount');
+	Route::put('/staffs/{staff}/changeSecret','StaffController@changeSecret');
+	
 	Route::apiResource('/roles', 'RoleController');
 
 	Route::apiResource('/states', 'StateController');

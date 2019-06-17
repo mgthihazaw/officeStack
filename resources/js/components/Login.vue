@@ -72,7 +72,9 @@ export default {
       axios
         .post("/api/auth/login", this.form)
         .then(response => {
+          
           User.store(
+            response.data.userID,
             response.data.user,
             response.data.permissions,
             response.data.access_token

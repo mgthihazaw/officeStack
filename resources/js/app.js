@@ -70,7 +70,7 @@ window.Gate = Gate
 if (User.isLoggedIn()) {
 	axios.post('/api/auth/me')
 		.then(response => {
-			// console.log(response)
+			console.log(response)
 			Gate.setUser(response.data.role_id);
 })
 .catch(err=>{

@@ -9,6 +9,7 @@ use App\Location;
 use App\Address;
 use App\Http\Resources\StaffResource;
 use Auth;
+use Hash;
 
 class StaffController extends Controller
 {
@@ -239,5 +240,39 @@ class StaffController extends Controller
         $service_engineers = StaffResource::collection(Staff::serviceEngineers()->get());
 
         return response()->json($service_engineers, 200);
+    }
+    public function changeAccount(Staff $staff,Request $request)
+    {
+        $request->validate([
+            'newPassword' => 'required|confirmed|string|min:6',
+            'oldPassword' =>'required'
+        ]);
+        
+        if(Hash::check($request->oldPassword,$staff->password)){
+            
+            $staff->password=bcrypt($request->newPassword);
+            
+                $staff->save();
+                return response()->json("Successfully change Account",200);
+            
+        }
+        return response()->json("Your Account is invalid",403);
+    }
+    public function changeSecret(Staff $staff,Request $request){
+        
+        $request->validate([
+            'newSecret' => 'required|confirmed|string|min:6',
+            'password' =>'required'
+        ]);
+        if(Hash::check($request->password,$staff->password)){
+            
+            $staff->secret=bcrypt($request->newSecret);
+            
+                $staff->save();
+                return response()->json("Successfully change Account",200);
+            
+        }
+        return response()->json("Your Account is invalid",403);
+    
     }
 }

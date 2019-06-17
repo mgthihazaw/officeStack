@@ -2,7 +2,7 @@
   <div v-if="show">
     <unauthorized v-if="!authorized"></unauthorized>
     <div v-else>
-      <div class="animated fadeInRight">
+      <div class="animated zoomIn">
         <div class="container formcolor">
           <div class="row pt-3">
             <div class="col-12">

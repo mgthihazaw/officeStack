@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="formcolor animated fadeInRight">
     <div class=" col-md-12">
       <div class="m-3">
@@ -102,7 +103,7 @@
         </div>
       </div>
     </div>
-
+  </div>
     <div
       class="modal fade"
       id="secretModal"
@@ -225,6 +226,7 @@ export default {
             }
           });
       } else {
+        
         $("#secretModal").modal("show");
       }
     },

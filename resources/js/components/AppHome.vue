@@ -47,7 +47,7 @@
         </div>
         
         <div class="info">
-          <a href="#" class="d-block">{{ username }}</a>
+          <a  class="d-block">{{ username }}</a>
         </div>
       </div>
 
@@ -67,11 +67,22 @@
             </router-link>
           </li>
           <li class="nav-item">
+            <router-link to="/profile" class="nav-link">
+              <i class="nav-icon indigo fas fa-user"></i>
+              <p>
+                PROFILE
+              </p>
+            </router-link>
+          </li>
+          
+
+          <li class="nav-item">
             <router-link class="nav-link" to="/staffs" v-if="StaffShow()">
                 <i class="nav-icon indigo fas fa-people-carry"></i>
                 <p>STAFFS</p>
             </router-link>
           </li>
+          
           <li class="nav-item" v-if="ServiceShow()">
             <router-link class="nav-link" to="/services">
                 <i class="nav-icon orange fas fa-tasks"></i>

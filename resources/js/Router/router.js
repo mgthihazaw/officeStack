@@ -15,7 +15,7 @@ import StartServiceReport from '../components/Service/StartServiceReport';
 import FinishServiceReport from '../components/Service/FinishServiceReport';
 import Login from '../components/Login';
 import NotFound404 from '../components/errors/NotFound404';
-
+import Profile from '../components/Profile';
 
 import Logout from '../components/Logout';
 
@@ -111,7 +111,14 @@ const routes = [
       name : 'fprint',
       component: FinishServiceReport,
       
-    }
+    },
+    { 
+      path: '/profile',
+      component: Profile,
+      meta : {
+        requiresAuth : true,
+      }
+    },
 ]
 
 // 3. Create the router instance and pass the `routes` option

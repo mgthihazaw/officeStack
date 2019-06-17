@@ -3,13 +3,17 @@ class User{
 	setToken(token){
 		localStorage.setItem('token',token);
 	}
+	setID(userID){
+		localStorage.setItem('id',userID);
+	}
 	setUser(user){
 		localStorage.setItem('user', user.username);
 	}
 	setPermissions(permissions){
 		//localStorage.setItem('permissions',permissions);
 	}
-	store(user,permissions,token){
+	store(userID,user,permissions,token){
+		this.setID(userID);
 		this.setUser(user);
 		this.setPermissions(permissions)
 		this.setToken(token)

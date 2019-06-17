@@ -188,7 +188,7 @@
                           >
                             <td>{{data.item}}</td>
                             <td style="padding-left:30px;">{{data.quantity}}</td>
-                            <td style="padding-left:20px;">{{data.price}}</td>
+                            <td style="padding-left:10px;">{{data.price}}</td>
                             <td>
                               <button class="btn btn-danger btn-sm" @click="deleteCost(index)">
                                 <i class="fas fa-minus"></i>
@@ -198,7 +198,7 @@
                           <tr v-if="serviceItems.length>0">
                             <td ><p class="text-bold">Total</p></td>
                             <td style="padding-left:30px;"></td>
-                            <td style="padding-left:20px;"><p class="text-bold">{{ total }}</p></td>
+                            <td style="padding-left:10px;"><p class="text-bold">{{ total }}</p></td>
                           </tr>
                         </tbody>
                       </table>
