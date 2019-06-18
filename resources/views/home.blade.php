@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
         
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        
+        <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,800i,900i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link rel="stylesheet" href="vue-multiselect/dist/vue-multiselect.min.css">
         <style>

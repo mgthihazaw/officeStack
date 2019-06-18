@@ -42,7 +42,7 @@ class ItemController extends Controller
         $item = Item::create($request->all());
 
 
-        return response()->json(['data' => $item, 'message' => 'Item Created'], 201)
+        return response()->json(['data' => $item, 'message' => 'Item Created'], 201);
     }
 
     /**

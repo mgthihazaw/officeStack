@@ -59,9 +59,10 @@ class Handler extends ExceptionHandler
                 return response()->json(['error' => 'Token is Invalid', 'type' => 'token_invalid'], 403);
             }else if ($exception instanceof \Tymon\JWTAuth\Exceptions\TokenExpiredException){
                 return response()->json(['error' => 'Token is Expired', 'type' => 'token_expired'],403);
-            }else if($exception instanceof QueryException){
+            }
+            else if($exception instanceof QueryException){
                 DB::rollback();
-                return response()->json('error');
+                return response()->json('Database query error');
             }
         }
         

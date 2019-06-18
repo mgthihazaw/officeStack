@@ -71,6 +71,7 @@ export default {
     login() {
       axios.post("/api/auth/login", this.form)
         .then(response => {
+          console.log(response)
           User.store(
             response.data.userID,
             response.data.user,
@@ -80,6 +81,7 @@ export default {
           window.location.replace("/");
         })
         .catch(error => {
+          console.log(error)
           if (error.response.data.type == "login_fail") {
             this.login_error = error.response.data.error;
           }

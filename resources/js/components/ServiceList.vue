@@ -4,18 +4,21 @@
     <div v-else>
       <div class="row">
         <div class="col-12">
-          
-			  <h3 class="page-header ">Service List</h3>
-          <router-link
-            class="btn btn-info   mt-2 mb-3 text-white "
+          <div class="row mb-2">
+			  <h3 class="pl-5 col-10">Service List</h3>
+          <div class="col-2 text-center">
+            <router-link
+            class="btn btn-success text-white "
             to="/services/create"
             v-if="User.isSaleperson()"
           >New Service</router-link>
+          </div>
+          </div>
           
-          <table class="table  table-hover  ">
+          <table class="table  table-hover ">
 
-            <thead class="thead-light ">
-              <tr>
+            <thead >
+              <tr class="heading">
                 <th>No</th>
                 <th>Customer</th>
                 <th>Customer Address</th>
@@ -182,7 +185,46 @@ export default {
 td {
   font-family: "Zawgyi-One";
 }
+/* .table{
+    width:100%;
+    height: 100%;
+} */
+.table{
+   
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.2;
+    font-weight: unset !important;
+    
+     
+   
+}
+table {
+  font-family: Poppins-Regular;
+  border: 1px solid rgb(111, 161, 136); 
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+ .heading{
+      background:  rgb(168, 180, 176); 
+      
+}
+.heading th{
+    padding-top:20px;
+    padding-bottom: 20px;
+    
+}
+tbody tr{
+    background:  rgb(243, 243, 243); 
+}
 
+ td {
+  padding: 1em;
+  background: #fff;
+  border-bottom: 1px solid rgba(191, 236, 197, 0.87); 
+}
 .table-hover tbody tr:hover td {
     background: #E9ECEF;
 }

@@ -21,6 +21,8 @@ import Item from '../components/Items/Item';
 
 import Logout from '../components/Logout';
 
+import Table from '../components/Table/Table';
+
 const routes = [
  	  { 
       path: '/', 
@@ -136,6 +138,11 @@ const routes = [
         requiresAuth : true,
       },
 
+    },
+    { 
+      path: '/table' ,
+      component : Table,
+      
     },
 
 ]
