@@ -15,7 +15,7 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        $attributes = Attribute::all();
+        $attributes = Attribute::orderBy('id', 'DESC')->with('values')->get();
 
         return response()->json(['data' => $attributes], 200);
     }
@@ -46,7 +46,6 @@ class AttributeController extends Controller
      */
     public function show(Attribute $attribute)
     {
-        return "Hello";
         return response()->json(['data' => $attribute], 200);
     }
 

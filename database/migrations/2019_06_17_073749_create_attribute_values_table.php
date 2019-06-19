@@ -16,8 +16,8 @@ class CreateAttributeValuesTable extends Migration
         Schema::create('attribute_values', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('item_attribute_id')->unsigned();
-            $table->foreign('item_attribute_id')->references('id')->on('attributes')->onDelete('cascade');
+            $table->integer('attribute_id')->unsigned();
+            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
             $table->timestamps();
         });
     }

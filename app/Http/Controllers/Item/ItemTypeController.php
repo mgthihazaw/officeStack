@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Item;
 
+use App\ItemType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\ItemType;
+use App\Http\Resources\ItemType\ItemTypeResource;
+use App\Http\Requests\ItemType\ItemTypeStoreRequest;
+use App\Http\Requests\ItemType\ItemTypeUpdateRequest;
+
 
 class ItemTypeController extends Controller
 {
@@ -15,9 +19,9 @@ class ItemTypeController extends Controller
      */
     public function index()
     {
-        $item_types = ItemType::all();
+        $item_types = ItemType::orderBy('id', 'DESC')->with('attributes')->paginate(15);
 
-        return response()->json(['data' => $item_types], 200);
+        return ItemTypeResource::collection($item_types);
     }
 
     /**
@@ -26,17 +30,14 @@ class ItemTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemTypeStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required'
-        ]);
+        $item_type = ItemType::create($request->only(['name']));
 
-        $item_type = ItemType::create([
-            'name' => $request->name
-        ]);
-
-        return response()->json(['data' => $item_type,'message' => 'Item Type Created'], 201);
+        return response()->json([
+            'data' => new ItemTypeResource($item_type),
+            'message' => 'Item Type Created'
+        ], 201);
     }
 
     /**
@@ -47,7 +48,7 @@ class ItemTypeController extends Controller
      */
     public function show(ItemType $itemtype)
     {
-        return response()->json(['data' => $itemtype], 200);
+        return response()->json(['data' => new ItemTypeResource($itemtype)], 200);
     }
 
     /**
@@ -57,15 +58,11 @@ class ItemTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ItemType $itemtype)
+    public function update(ItemTypeUpdateRequest $request, ItemType $itemtype)
     {
-        $request->validate([
-            'name' => 'string|min:1',
-        ]);
+        $itemtype->update($request->only(['name']));
 
-        $itemtype->update($request->all());
-
-        return response()->json(['data' => $itemtype, 'message' => 'Item Type Updated'], 200);
+        return response()->json(['data' => new ItemTypeResource($itemtype), 'message' => 'Item Type Updated'], 200);
     }
 
     /**

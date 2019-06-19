@@ -35,15 +35,15 @@ Route::group(['middleware' => 'jwt'], function(){
 	Route::put('/staffs/{staff}/changeAccount','StaffController@changeAccount');
 	Route::put('/staffs/{staff}/changeSecret','StaffController@changeSecret');
 	
-	Route::apiResource('/roles', 'RoleController');
+	Route::apiResource('roles', 'RoleController');
 
-	Route::apiResource('/states', 'StateController');
+	Route::apiResource('states', 'StateController');
 
-	Route::apiResource('/departments', 'DepartmentController');
+	Route::apiResource('departments', 'DepartmentController');
 
-	Route::apiResource('/services', 'ServiceController');
+	Route::apiResource('services', 'ServiceController');
 
-	Route::apiResource('/customers', 'CustomerController');
+	Route::apiResource('customers', 'CustomerController');
 
 	Route::post('/service-item', 'ServiceItemController@store');
     Route::delete('/service-item/{id}', 'ServiceItemController@destroy');
@@ -52,13 +52,14 @@ Route::group(['middleware' => 'jwt'], function(){
 	Route::get('/townships/{township}/blocks', 'AddressController@getBlocks');
 	Route::get('/departments/{department}/roles', 'DepartmentController@getRoles');
 
-	Route::apiResource('/itemtypes', 'Item\ItemTypeController');
+	Route::apiResource('itemtypes', 'Item\ItemTypeController');
+	Route::apiResource('itemtypes.attributes', 'Item\ItemTypeAttributeController', ['only' => 'index']);
 
-	Route::apiResource('/items', 'Item\ItemController');
+	Route::apiResource('items', 'Item\ItemController');
 
-	Route::apiResource('/attributes', 'Item\AttributeController');
+	Route::apiResource('attributes', 'Item\AttributeController');
 
-	Route::apiResource('/attributevalues', 'Item\AttributeValueController');
+	Route::apiResource('attributevalues', 'Item\AttributeValueController');
 
 
 });
