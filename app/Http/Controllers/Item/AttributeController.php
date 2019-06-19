@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Item;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Attribute\AttributeResource;
+use App\Http\Requests\Attribute\AttributeStoreRequest;
+use App\Http\Requests\Attribute\AttributeUpdateRequest;
 use App\Attribute;
 
 class AttributeController extends Controller
@@ -17,7 +20,7 @@ class AttributeController extends Controller
     {
         $attributes = Attribute::orderBy('id', 'DESC')->with('values')->get();
 
-        return response()->json(['data' => $attributes], 200);
+        return response()->json(['data' => AttributeResource::collection($attributes)], 200);
     }
 
     /**
@@ -26,16 +29,11 @@ class AttributeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AttributeStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'item_type_id' => 'required|integer|exists:item_types,id'
-        ]);
-
         $attribute = Attribute::create($request->all());
 
-        return response()->json(['data' => $attribute, 'message' => 'Attribute Created'], 201);
+        return response()->json(['data' => new AttributeResource($attribute), 'message' => 'Attribute Created'], 201);
     }
 
     /**
@@ -46,7 +44,7 @@ class AttributeController extends Controller
      */
     public function show(Attribute $attribute)
     {
-        return response()->json(['data' => $attribute], 200);
+        return response()->json(['data' => new AttributeResource($attribute)], 200);
     }
 
     /**
@@ -56,16 +54,11 @@ class AttributeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Attribute $attribute)
+    public function update(AttributeUpdateRequest $request, Attribute $attribute)
     {
-        $request->validate([
-            'name' => 'string|min:1',
-            'item_type_id' => 'required|integer|exists:item_types,id'
-        ]);
-
         $attribute->update($request->all());
 
-        return response()->json(['data' => $attribute, 'message' => 'Attribute Updated'], 200);
+        return response()->json(['data' => new AttributeResource($attribute), 'message' => 'Attribute Updated'], 200);
     }
 
     /**

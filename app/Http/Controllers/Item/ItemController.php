@@ -5,7 +5,11 @@ namespace App\Http\Controllers\Item;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Item\ItemStoreRequest;
+use App\Http\Resources\Item\ItemResource;
 use App\Item;
+use App\ItemType;
+use App\Attribute;
 
 class ItemController extends Controller
 {
@@ -16,9 +20,10 @@ class ItemController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
+        $items = Item::orderBy('id', 'DESC')->paginate(10);
 
-        return response()->json(['data' => $items], 200);
+        return ItemResource::collection($items);
+        // return response()->json(['data' => $items], 200);
     }
 
     /**
@@ -27,22 +32,23 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ItemStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'string',
-            'price' => 'integer|min:0',
-            'quantity' => 'integer|min:0',
-            'item_type_id' => 'required|integer|exists:item_types,id'
-        ]);
+        $item_type= ItemType::findOrFail($request->item_type_id);
+        $attributes = $request->input('attributes');
 
-        
+        $item = Item::create($request->only(['name','description','price','quantity','item_type_id']));
 
-        $item = Item::create($request->all());
+        foreach($attributes as $attribute => $value){
+            $attribute = Attribute::firstOrCreate(['name' => $attribute]);
+            $item_type->attributes()->syncWithoutDetaching($attribute);
+            $attribute_value = $attribute->values()->firstOrCreate([
+                'name' => $value
+            ]);
+            $item->attribute_values()->syncWithoutDetaching($attribute_value);
+        }
 
-
-        return response()->json(['data' => $item, 'message' => 'Item Created'], 201);
+        return response()->json(['data' => new ItemResource($item), 'message' => 'Item Created'], 201);
     }
 
     /**

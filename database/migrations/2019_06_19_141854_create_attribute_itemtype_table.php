@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributeValuesTable extends Migration
+class CreateAttributeItemtypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateAttributeValuesTable extends Migration
      */
     public function up()
     {
-        Schema::create('attribute_values', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
+        Schema::create('attribute_item_type', function (Blueprint $table) {
+            $table->integer('item_type_id')->unsigned();
             $table->integer('attribute_id')->unsigned();
+            $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
             $table->timestamps();
+            $table->unique(['item_type_id', 'attribute_id']);
         });
     }
 
@@ -29,9 +30,11 @@ class CreateAttributeValuesTable extends Migration
      */
     public function down()
     {
-        Schema::table('attribute_values', function(Blueprint $table){
+        Schema::table('attribute_item_type', function(Blueprint $table){
+            $table->dropForeign(['item_type_id']);
             $table->dropForeign(['attribute_id']);
+
         });
-        Schema::dropIfExists('attribute_values');
+        Schema::dropIfExists('attribute_item_type');
     }
 }

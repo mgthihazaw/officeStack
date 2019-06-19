@@ -9,7 +9,7 @@ class Attribute extends Model
     protected $fillable = ['name','item_type_id'];
 
     public function item_type(){
-    	return $this->belongsTo('App\ItemType');
+    	return $this->belongsToMany('App\ItemType');
     }
 
     public function values(){

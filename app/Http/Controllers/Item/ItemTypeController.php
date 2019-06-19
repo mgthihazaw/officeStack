@@ -19,7 +19,7 @@ class ItemTypeController extends Controller
      */
     public function index()
     {
-        $item_types = ItemType::orderBy('id', 'DESC')->with('attributes')->paginate(15);
+        $item_types = ItemType::orderBy('id', 'DESC')->paginate(15);
 
         return ItemTypeResource::collection($item_types);
     }

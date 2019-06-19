@@ -9,6 +9,10 @@ class ItemType extends Model
     protected $fillable = ['name'];
 
     public function attributes(){
-    	return $this->hasMany('App\Attribute');
+    	return $this->belongsToMany('App\Attribute');
+    }
+
+    public function items(){
+    	return $this->hasMany('App\Item');
     }
 }

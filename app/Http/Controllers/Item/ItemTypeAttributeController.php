@@ -4,7 +4,12 @@ namespace App\Http\Controllers\Item;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ItemTypeAttribute\ItemTypeAttributeStoreRequest;
+use App\Http\Resources\Attribute\AttributeResource;
+use App\Http\Resources\ItemType\ItemTypeResource;
+
 use App\ItemType;
+use App\Attribute;
 
 class ItemTypeAttributeController extends Controller
 {
@@ -17,6 +22,16 @@ class ItemTypeAttributeController extends Controller
     {
         $attributes = $itemtype->attributes;
 
-        return $attributes;
+        return AttributeResource::collection($attributes);
     }
+
+    public function store(ItemTypeAttributeStoreRequest $request,ItemType $itemtype){
+        $attribute = Attribute::firstOrCreate([
+            'name' => $request->attribute_name
+        ]);
+
+        $itemtype->attributes()->syncWithoutDetaching($attribute);
+
+        return new ItemTypeResource($itemtype);
+    }   
 }
