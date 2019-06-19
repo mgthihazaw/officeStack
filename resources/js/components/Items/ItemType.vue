@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     
-      <div class="col-md-12 row">
+      <div class="mb-2 col-md-12 row">
         <div class="col-md-5">
           <button class="btn btn-outline-success btn-lg" @click.prevent="createType">
             Add New
@@ -195,11 +195,23 @@ export default {
 
 
 <style scoped>
+.table {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 15px;
 
+  line-height: 1.2;
+  font-weight: unset !important;
+  padding-top: 20px;
+
+  padding-bottom: 20px;
+}
 table {
   border-collapse: collapse;
   border-radius: 1em;
   overflow: hidden;
+  
 }
 .heading {
   background: rgb(168, 180, 176);

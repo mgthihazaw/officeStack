@@ -51,7 +51,7 @@
 
     <!--------------------ITEM FORM------------------------------------>
 
-    <div class="itemForm mx-5" v-if="create">
+    <div class="itemForm mx-5 col-12" v-if="create">
       <div class="container formcolor animated zoomIn">
         <div class="row">
           <div class="col-12">
@@ -62,6 +62,7 @@
         <div class="row mt-4">
           <div class="col-12">
             <form>
+              <h5>1.Insert Item Information</h5>
               <div class="form-group row pt-4">
                 <div class="col-md-4">
                   <label for="secret" class="pt-2">Item Name</label>
@@ -109,6 +110,7 @@
                     id="exampleInputtext1"
                     placeholder="Enter Item Price"
                     v-model="form.price"
+
                   >
                 </div>
               </div>
@@ -124,14 +126,20 @@
                         placeholder="Choose Item Type"
                         :taggable="true"
                         :block-keys="['Delete']"
-                        @tag="addTag"
+                        
                         
                       ></multiselect>
                 </div>
               </div>
+              <hr>
+              <h5 class="py-3">2.Insert Item Attributes Information</h5>
               <div class="form-group row">
                 <div class="col-md-4">
-                  <label for="exampleInputtext1" class="pt-2">Item Type</label>
+                  <label for="exampleInputtext1" class="pt-2">Item Attribute
+
+
+
+                  </label>
                 </div>
                 <div class="col-md-3">
                   <multiselect
@@ -141,7 +149,7 @@
                         placeholder="Choose Item Type"
                         :taggable="true"
                         :block-keys="['Delete']"
-                        @tag="addTag"
+                        
                         
                       ></multiselect>
                 </div>
@@ -153,7 +161,7 @@
                         placeholder="Choose Item Type"
                         :taggable="true"
                         :block-keys="['Delete']"
-                        @tag="addTag"
+                       
                         
                       ></multiselect>
                 </div>
@@ -162,10 +170,10 @@
                 </div>
               </div>
               
-              <div class="form-group row" v-if="form.attribute_value_id.length>=1">
+              <div class="form-group row" >
                   
                 <div class="col-md-4 ">
-                  <label for="exampleInputtext1" class="pt-2">Item Detail</label>
+                  <label for="exampleInputtext1" class="pt-2">Item Attribute Detail</label>
                 </div>
                 <div class="col-md-8">
                   <div class="list-group">
@@ -181,13 +189,13 @@
                 
               </div>
               
-              
-              
-
-              <div class="form-group row">
-                <div class="col-md-4"></div>
-                <div class="col-md-8">
-                  <button type="button" class="btn btn-primary btn-block" @click="submitItem">Create Item</button>
+              <div class="form-group row pt-3">
+                <div class="col-md-5">
+                  
+                </div>
+                <div class="col-md-4 ">
+                  <button class="btn btn-secondary" @click="back">Cancel</button>
+                  <button type="button" class="btn btn-primary " @click="submitItem">Save Item</button>
                 </div>
               </div>
             </form>
@@ -271,14 +279,6 @@ export default {
             console.log(err)
         })
     },
-    addTag(newTag) {
-      const tag = {
-        name: newTag,
-        id: this.townships.length
-      };
-      this.townships.push(tag);
-      this.form.address.township = tag;
-    },
     deleteItem(id) {
       swal
         .fire({
@@ -305,6 +305,9 @@ export default {
             title: err.response.data.message
           });
         });
+    },
+    back() {
+      this.create=false
     },
   },
   created() {

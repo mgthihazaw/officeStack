@@ -46,6 +46,7 @@ class AttributeController extends Controller
      */
     public function show(Attribute $attribute)
     {
+        return "Hello";
         return response()->json(['data' => $attribute], 200);
     }
 

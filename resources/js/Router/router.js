@@ -18,6 +18,7 @@ import NotFound404 from '../components/errors/NotFound404';
 import Profile from '../components/Profile';
 import ItemType from '../components/Items/ItemType';
 import Item from '../components/Items/Item';
+import Attribute from '../components/Items/Attribute';
 
 import Logout from '../components/Logout';
 
@@ -140,8 +141,16 @@ const routes = [
 
     },
     { 
-      path: '/table' ,
-      component : Table,
+      path: '/item',
+      component: Item,
+      meta : {
+        requiresAuth : true,
+      },
+
+    },
+    { 
+      path: '/attribute' ,
+      component : Attribute,
       
     },
 

@@ -113,6 +113,13 @@
                   <p>Item Type</p>
                  </router-link>
               </li>
+              <li class="nav-item">
+                 <router-link class="nav-link" to="/attribute">
+                  <i class="fas fa-table nav-icon"></i>
+                  
+                  <p>Attribute</p>
+                 </router-link>
+              </li>
               
             </ul>
           </li>
