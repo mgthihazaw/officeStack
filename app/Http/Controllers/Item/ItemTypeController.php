@@ -36,7 +36,6 @@ class ItemTypeController extends Controller
 
         return response()->json([
             'data' => new ItemTypeResource($item_type),
-            'message' => 'Item Type Created'
         ], 201);
     }
 

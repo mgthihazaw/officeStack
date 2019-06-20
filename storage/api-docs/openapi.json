@@ -47,6 +47,56 @@
             "bearerAuth": []
           }
         ]
+      },
+      "post": {
+        "tags": [
+          "itemtype"
+        ],
+        "summary": "Create new item type",
+        "operationId": "App/Http/Controllers/Item/ItemTypeController@store",
+        "requestBody": {
+          "description": "Item Type Name",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "New Item Type"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "New item type created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemType"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
       }
     }
   },
