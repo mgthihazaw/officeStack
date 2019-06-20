@@ -24,7 +24,6 @@ class ItemTypeAttributeStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'item_type_id' => 'required|exists:item_types,id',
             'attribute_name' => 'required|min:1'
         ];
     }

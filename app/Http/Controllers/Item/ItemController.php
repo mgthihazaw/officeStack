@@ -37,18 +37,30 @@ class ItemController extends Controller
         $item_type= ItemType::findOrFail($request->item_type_id);
         $attributes = $request->input('attributes');
 
-        $item = Item::create($request->only(['name','description','price','quantity','item_type_id']));
+        $attributes = $this->unique_multi_array($attributes, 'name');
 
-        foreach($attributes as $attribute => $value){
-            $attribute = Attribute::firstOrCreate(['name' => $attribute]);
-            $item_type->attributes()->syncWithoutDetaching($attribute);
-            $attribute_value = $attribute->values()->firstOrCreate([
-                'name' => $value
-            ]);
-            $item->attribute_values()->syncWithoutDetaching($attribute_value);
-        }
+        $result = DB::transaction(function() use($request,$item_type,$attributes){
+            try{
+                $item = Item::create($request->only(['name','description','price','quantity','item_type_id']));
 
-        return response()->json(['data' => new ItemResource($item), 'message' => 'Item Created'], 201);
+                foreach($attributes as $index => $attr){
+
+                    $attribute = Attribute::firstOrCreate(['name' => $attr['name']]);
+
+                    $item_type->attributes()->syncWithoutDetaching($attribute);
+                    
+                    $attribute_value = $attribute->values()->firstOrCreate([
+                        'name' => $attr['value']
+                    ]);
+                    $item->attribute_values()->syncWithoutDetaching($attribute_value);
+                }
+                return response()->json(['data' => new ItemResource($item), 'message' => 'Item Created'], 201);
+            }catch(Exception $e){
+                return response()->json(['error' => $e->getMessage()], 500);
+            }
+            
+        });
+        return $result;
     }
 
     /**
@@ -95,5 +107,23 @@ class ItemController extends Controller
         $item->delete();
 
         return response()->json([], 204);
+    }
+
+    private function unique_multi_array($array, $key) { 
+        $temp_array = array();
+        $i = 0; 
+        $key_array = array(); 
+      
+        foreach($array as $val) { 
+            if (!in_array($val[$key], $key_array)) { 
+                $key_array[$i] = $val[$key]; 
+                $temp_array[$i] = $val;
+            }else{
+                $temp_array[array_search($val[$key], $key_array)]['value'] = $val['value'];
+            }
+            $i++;
+        }
+        
+        return $temp_array; 
     }
 }

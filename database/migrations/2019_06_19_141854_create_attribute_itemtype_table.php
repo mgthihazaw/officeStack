@@ -18,7 +18,6 @@ class CreateAttributeItemtypeTable extends Migration
             $table->integer('attribute_id')->unsigned();
             $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
-            $table->timestamps();
             $table->unique(['item_type_id', 'attribute_id']);
         });
     }

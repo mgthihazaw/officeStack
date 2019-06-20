@@ -3,7 +3,8 @@
 namespace App\Http\Resources\ItemType;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\Attribute\AttributeCollection;
+use App\Http\Resources\Attribute\AttributeResource;
+
 
 
 class ItemTypeResource extends JsonResource
@@ -19,9 +20,9 @@ class ItemTypeResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'attributes' => new AttributeCollection($this->attributes),
+            'attributes' => AttributeResource::collection($this->attributes),
             'links' => [
-                'self' => route('itemtypes.show', $this->id)
+                'self' => route('itemtypes.show', $this->id),
             ]
         ];
     }

@@ -75,7 +75,7 @@ class AuthController extends Controller
             'userID'    => $this->guard()->id(),
             'user' => $this->guard()->user(),
             'permissions' => $permissions,
-            'expires_in' => auth()->factory()->getTTL() * 1440
+            'expires_in' => auth()->factory()->getTTL()
         ]);
     }
 

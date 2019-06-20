@@ -15,7 +15,7 @@ class AttributeCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'data' => $this->collection->transform(function($attribute){
+            $this->collection->transform(function($attribute){
                 return [
                     'id' => $attribute->id,
                     'name' => $attribute->name,

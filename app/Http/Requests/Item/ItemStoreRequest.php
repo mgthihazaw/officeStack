@@ -29,7 +29,10 @@ class ItemStoreRequest extends FormRequest
             'price' => 'required|integer|min:0',
             'quantity' => 'required|integer|min:0',
             'item_type_id' => 'required|integer|exists:item_types,id',
-            'attributes' => 'array'
+            'attributes' => 'required|array',
+            'attributes.*' => 'required',
+            'attributes.*.name' => 'required',
+            'attributes.*.value' => 'required'
         ];
     }
 }

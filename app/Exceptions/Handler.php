@@ -10,6 +10,8 @@ use Illuminate\Database\QueryException;
 use Tymon\JWTAuth\Exceptions\TokenExpiredException;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Handler extends ExceptionHandler
 {
@@ -63,11 +65,22 @@ class Handler extends ExceptionHandler
                 return response()->json(['error' => 'Token is Expired', 'type' => 'token_expired'],403);
             }else if($exception instanceof JWTException){
                 return response()->json(['error' => 'Unauthenticated'], 401);
-            }else if($exception instanceof QueryException){
+            }else if($exception instanceof ModelNotFoundException){
+                $message = class_basename($exception->getModel())." Not Found";
+                return response()->json(['error' => $message], 404);
+            }else if($exception instanceof NotFoundHttpException){
+                return response()->json(['error' => 'URL Not Found']);
+            }
+
+            else if($exception instanceof QueryException){
                 dd($exception);
                 DB::rollback();
                 return response()->json('Database query error', 500);
             }
+        }
+
+        if($exception instanceof JWTException){
+            return redirect('/');
         }
         
         return parent::render($request, $exception);
