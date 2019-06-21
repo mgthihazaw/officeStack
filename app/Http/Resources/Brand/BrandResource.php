@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Attribute;
+namespace App\Http\Resources\Brand;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AttributeResource extends JsonResource
+class BrandResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,7 @@ class AttributeResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'links' => [
-                'self' => route('attributes.show', $this->id)
-            ]
+            'name' => $this->name
         ];
     }
 }

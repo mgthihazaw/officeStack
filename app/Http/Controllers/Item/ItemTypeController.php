@@ -32,7 +32,7 @@ class ItemTypeController extends Controller
      */
     public function store(ItemTypeStoreRequest $request)
     {
-        $item_type = ItemType::create($request->only(['name']));
+        $item_type = ItemType::create($request->all());
 
         return response()->json([
             'data' => new ItemTypeResource($item_type),

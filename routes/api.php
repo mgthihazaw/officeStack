@@ -52,7 +52,7 @@ Route::group(['middleware' => 'jwt'], function(){
 	Route::get('/departments/{department}/roles', 'DepartmentController@getRoles');
 
 	Route::apiResource('brands', 'BrandController');
-	// Route::apiResource('itemtypes.attributes', 'Item\ItemTypeAttributeController', ['only' => ['index', 'store']]);
+	Route::apiResource('itemtypes', 'Item\ItemTypeController');
 	// Route::apiResource('itemtypes.items', 'Item\ItemTypeItemController', ['only' => 'index']);
 
 	// Route::apiResource('items', 'Item\ItemController');

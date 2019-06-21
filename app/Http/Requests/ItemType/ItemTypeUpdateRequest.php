@@ -24,7 +24,7 @@ class ItemTypeUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:1|unique:item_types,name,'.$this->itemtype->id,
+            'name' => 'min:1|unique:item_types,name,'.$this->itemtype->id
         ];
     }
 }

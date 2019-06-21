@@ -80,7 +80,7 @@ class Handler extends ExceptionHandler
                 return $this->convertValidationExceptionToResponse($exception, $request);
             }
             dd($exception);
-            return response()->json(['error' => 'Error'], 500);
+            return response()->json(['error' => $exception->getMessage()], 500);
         }
 
         if($exception instanceof JWTException){

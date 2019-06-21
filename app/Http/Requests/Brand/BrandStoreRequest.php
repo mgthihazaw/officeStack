@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Attribute;
+namespace App\Http\Requests\Brand;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AttributeUpdateRequest extends FormRequest
+class BrandStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class AttributeUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'unique:attributes,name,'.$this->attribute->id,
+            'name' => 'required|unique:brands,name'
         ];
     }
 }
