@@ -51,15 +51,15 @@ Route::group(['middleware' => 'jwt'], function(){
 	Route::get('/townships/{township}/blocks', 'AddressController@getBlocks');
 	Route::get('/departments/{department}/roles', 'DepartmentController@getRoles');
 
-	Route::apiResource('itemtypes', 'Item\ItemTypeController');
-	Route::apiResource('itemtypes.attributes', 'Item\ItemTypeAttributeController', ['only' => ['index', 'store']]);
-	Route::apiResource('itemtypes.items', 'Item\ItemTypeItemController', ['only' => 'index']);
+	Route::apiResource('brands', 'BrandController');
+	// Route::apiResource('itemtypes.attributes', 'Item\ItemTypeAttributeController', ['only' => ['index', 'store']]);
+	// Route::apiResource('itemtypes.items', 'Item\ItemTypeItemController', ['only' => 'index']);
 
-	Route::apiResource('items', 'Item\ItemController');
+	// Route::apiResource('items', 'Item\ItemController');
 
-	Route::apiResource('attributes', 'Item\AttributeController');
+	// Route::apiResource('attributes', 'Item\AttributeController');
 
-	Route::apiResource('attributevalues', 'Item\AttributeValueController');
+	// Route::apiResource('attributevalues', 'Item\AttributeValueController');
 
 
 });

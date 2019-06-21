@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAttributeItemtypeTable extends Migration
+class CreateBrandItemTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateAttributeItemtypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('attribute_item_type', function (Blueprint $table) {
+        Schema::create('brand_item_type', function (Blueprint $table) {
+            $table->integer('brand_id')->unsigned();
             $table->integer('item_type_id')->unsigned();
-            $table->integer('attribute_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
-            $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
-            $table->unique(['item_type_id', 'attribute_id']);
+            $table->unique(['brand_id', 'item_type_id']);
         });
     }
 
@@ -29,11 +29,11 @@ class CreateAttributeItemtypeTable extends Migration
      */
     public function down()
     {
-        Schema::table('attribute_item_type', function(Blueprint $table){
+        Schema::table('brand_item_type', function(Blueprint $table){
+            $table->dropForeign(['brand_id']);
             $table->dropForeign(['item_type_id']);
-            $table->dropForeign(['attribute_id']);
 
         });
-        Schema::dropIfExists('attribute_item_type');
+        Schema::dropIfExists('brand_item_type');
     }
 }

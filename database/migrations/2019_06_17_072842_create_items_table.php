@@ -15,12 +15,14 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('name');
-            $table->text('description')->nullable();
             $table->integer('price');
             $table->integer('quantity');
+            $table->integer('brand_id')->unsigned();
             $table->integer('item_type_id')->unsigned();
+            $table->integer('model_id')->unsigned();
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
+            $table->foreign('model_id')->references('id')->on('models')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +34,11 @@ class CreateItemsTable extends Migration
      */
     public function down()
     {
+        Schema::table('items', function(Blueprint $table){
+            $table->dropForeign(['brand_id']);
+            $table->dropForeign(['item_type_id']);
+            $table->dropForeign(['model_id']);
+        });
         Schema::dropIfExists('items');
     }
 }

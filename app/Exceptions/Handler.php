@@ -12,6 +12,8 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\Routing\Exception\MethodNotAllowedException;
+use Illuminate\Validation\ValidationException;
 
 class Handler extends ExceptionHandler
 {
@@ -69,14 +71,16 @@ class Handler extends ExceptionHandler
                 $message = class_basename($exception->getModel())." Not Found";
                 return response()->json(['error' => $message], 404);
             }else if($exception instanceof NotFoundHttpException){
-                return response()->json(['error' => 'URL Not Found']);
-            }
-
-            else if($exception instanceof QueryException){
+                return response()->json(['error' => 'URL Not Found'], 404);
+            }else if($exception instanceof MethodNotAllowedException){
+                return response()->json(['error' => 'Method not allowed for the requested endpoint'], 405);
+            }else if($exception instanceof QueryException){
                 dd($exception);
-                DB::rollback();
-                return response()->json('Database query error', 500);
+            }else if($exception instanceof ValidationException) {
+                return $this->convertValidationExceptionToResponse($exception, $request);
             }
+            dd($exception);
+            return response()->json(['error' => 'Error'], 500);
         }
 
         if($exception instanceof JWTException){

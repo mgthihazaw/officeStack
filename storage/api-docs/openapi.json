@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Swagger Petstore",
+    "title": "Microstack Admin Panel",
     "description": "This is a sample server Petstore server.  You can find out more about     Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).      For this sample, you can use the api key `special-key` to test the authorization     filters.",
     "version": "1.0.0"
   },
@@ -15,15 +15,62 @@
   ],
   "tags": [
     {
-      "name": "itemtype",
+      "name": "Authentication",
+      "description": "User Authentication"
+    },
+    {
+      "name": "Item Type",
       "description": "Everything about Item Type"
+    },
+    {
+      "name": "Attribute",
+      "description": "Everything about Item Attribute"
     }
   ],
   "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Login with username and password",
+        "description": "Login with username and password to get api token",
+        "operationId": "App/Http/Controllers/AuthController@login",
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Login success",
+            "content": {}
+          },
+          "401": {
+            "description": "Unauthenticated"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/itemtypes": {
       "get": {
         "tags": [
-          "itemtype"
+          "Item Type"
         ],
         "summary": "Get list of some item types",
         "operationId": "App/Http/Controllers/Item/ItemTypeController@index",
@@ -50,7 +97,7 @@
       },
       "post": {
         "tags": [
-          "itemtype"
+          "Item Type"
         ],
         "summary": "Create new item type",
         "operationId": "App/Http/Controllers/Item/ItemTypeController@store",
@@ -98,6 +145,349 @@
           }
         ]
       }
+    },
+    "/itemtypes/{itemtype}": {
+      "get": {
+        "tags": [
+          "Item Type"
+        ],
+        "summary": "Get item type by id",
+        "parameters": [
+          {
+            "name": "itemtype",
+            "in": "path",
+            "required": true,
+            "description": "Id of item type you want",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Item Type Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Item Type"
+        ],
+        "summary": "Update item type",
+        "parameters": [
+          {
+            "name": "itemtype",
+            "in": "path",
+            "required": true,
+            "description": "Id of item type you want to update",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Item Type Not Found"
+          },
+          "422": {
+            "description": "Unprocessable request"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Item Type"
+        ],
+        "summary": "Delete item type",
+        "parameters": [
+          {
+            "name": "itemtype",
+            "in": "path",
+            "required": true,
+            "description": "Id of item type you want to delete",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ItemType"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Item Type Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/attributes": {
+      "get": {
+        "tags": [
+          "Attribute"
+        ],
+        "summary": "Get list of some attributes",
+        "operationId": "App/Http/Controllers/Item/AttributeController@index",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Attribute"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Attribute"
+        ],
+        "summary": "Create new attribute",
+        "operationId": "App/Http/Controllers/Item/AttributeController@store",
+        "requestBody": {
+          "description": "Attribute Name",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "New Attribute"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Attribute"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    },
+    "/attributes/{attribute}": {
+      "get": {
+        "tags": [
+          "Attribute"
+        ],
+        "summary": "Get attribute by id",
+        "operationId": "App/Http/Controllers/Item/AttributeController@show",
+        "parameters": [
+          {
+            "name": "attribute",
+            "in": "path",
+            "required": true,
+            "description": "Id of attribute you want",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Attribute"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Attribute Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Attribute"
+        ],
+        "summary": "Update attribute",
+        "operationId": "App/Http/Controllers/Item/AttributeController@update",
+        "parameters": [
+          {
+            "name": "attribute",
+            "in": "path",
+            "required": true,
+            "description": "Id of attribute you want",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Attribute Name",
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "New Attribute"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Attribute"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Attribute Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Attribute"
+        ],
+        "summary": "Delete attribute",
+        "operationId": "App/Http/Controllers/Item/AttributeController@destroy",
+        "parameters": [
+          {
+            "name": "attribute",
+            "in": "path",
+            "required": true,
+            "description": "Id of attribute you want",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Attribute Not Found"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -111,6 +501,40 @@
           },
           "name": {
             "type": "string"
+          },
+          "attributes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Attribute"
+            }
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "Attribute": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string"
+          },
+          "links": {
+            "type": "object",
+            "properties": {
+              "self": {
+                "type": "string"
+              }
+            }
           }
         }
       }
