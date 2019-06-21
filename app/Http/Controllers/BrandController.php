@@ -12,8 +12,9 @@ use App\Http\Resources\Brand\BrandResource;
 class BrandController extends Controller
 {
     public function index(){
-    	$brands = Brand::orderBy('id', 'DESC')->get();
-    	return response()->json(['data' => BrandResource::collection($brands) ], 200);
+    	$brands = Brand::orderBy('id', 'DESC')->paginate(15);
+        return BrandResource::collection($brands);
+    	//return response()->json(['data' => BrandResource::collection($brands) ], 200);
     }
 
     public function store(BrandStoreRequest $request){

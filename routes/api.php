@@ -53,7 +53,8 @@ Route::group(['middleware' => 'jwt'], function(){
 
 	Route::apiResource('brands', 'BrandController');
 	Route::apiResource('itemtypes', 'Item\ItemTypeController');
-	// Route::apiResource('itemtypes.items', 'Item\ItemTypeItemController', ['only' => 'index']);
+	Route::apiResource('brands.itemtypes', 'BrandItemTypeController', ['only' => ['index']]);
+	Route::apiResource('models', 'ModelController');
 
 	// Route::apiResource('items', 'Item\ItemController');
 
