@@ -24,7 +24,8 @@ class ModelStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:models,name'
+            'name' => 'required|unique:models,name',
+            'brand_id' => 'required|integer|exists:brands,id'
         ];
     }
 }

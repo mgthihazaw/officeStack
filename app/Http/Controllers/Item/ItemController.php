@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Item;
 
+use App\Item;
+use App\ItemType;
+use App\Attribute;
+use App\Brand;
+use App\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Item\ItemStoreRequest;
 use App\Http\Resources\Item\ItemResource;
-use App\Item;
-use App\ItemType;
-use App\Attribute;
 
 class ItemController extends Controller
 {
@@ -23,7 +25,6 @@ class ItemController extends Controller
         $items = Item::orderBy('id', 'DESC')->paginate(10);
 
         return ItemResource::collection($items);
-        // return response()->json(['data' => $items], 200);
     }
 
     /**
@@ -34,33 +35,22 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
-        $item_type= ItemType::findOrFail($request->item_type_id);
-        $attributes = $request->input('attributes');
+        return DB::transaction(function() use($request){
+                    $brand = Brand::findOrFail($request->brand_id);
+                    $item_type = ItemType::findOrFail($request->item_type_id);
 
-        $attributes = $this->unique_multi_array($attributes, 'name');
-
-        $result = DB::transaction(function() use($request,$item_type,$attributes){
-            try{
-                $item = Item::create($request->only(['name','description','price','quantity','item_type_id']));
-
-                foreach($attributes as $index => $attr){
-
-                    $attribute = Attribute::firstOrCreate(['name' => $attr['name']]);
-
-                    $item_type->attributes()->syncWithoutDetaching($attribute);
-                    
-                    $attribute_value = $attribute->values()->firstOrCreate([
-                        'name' => $attr['value']
+                    $model = Model::firstOrCreate([
+                        'name' => $request->model,
+                        'brand_id' => $brand->id
                     ]);
-                    $item->attribute_values()->syncWithoutDetaching($attribute_value);
-                }
-                return response()->json(['data' => new ItemResource($item), 'message' => 'Item Created'], 201);
-            }catch(Exception $e){
-                return response()->json(['error' => $e->getMessage()], 500);
-            }
-            
-        });
-        return $result;
+                    //dd($request->get('attributes'));
+
+                    foreach($request->get('attributes') as $attr){
+                        foreach($attr as $attribute => $value){
+                            
+                        }
+                    }
+                });
     }
 
     /**

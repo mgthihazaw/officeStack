@@ -75,6 +75,7 @@ class Handler extends ExceptionHandler
             }else if($exception instanceof MethodNotAllowedException){
                 return response()->json(['error' => 'Method not allowed for the requested endpoint'], 405);
             }else if($exception instanceof QueryException){
+                return response()->json('error');
                 dd($exception);
             }else if($exception instanceof ValidationException) {
                 return $this->convertValidationExceptionToResponse($exception, $request);

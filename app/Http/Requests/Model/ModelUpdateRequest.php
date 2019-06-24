@@ -24,7 +24,8 @@ class ModelUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:1|unique:models,name,'.$this->model->id
+            'name' => 'min:1|unique:models,name,'.$this->model->id,
+            'brand_id' => 'required|integer|exists:brands,id'
         ];
     }
 }

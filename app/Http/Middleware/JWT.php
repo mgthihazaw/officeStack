@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 use JWTAuth;
 use Closure;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class JWT
 {
@@ -17,6 +18,8 @@ class JWT
     {
         
         if($user = JWTAuth::parseToken()->authenticate())
-        return $next($request);
+            return $next($request);
+        else
+            throw new JWTException;
     }
 }

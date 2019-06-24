@@ -6,13 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Attribute extends Model
 {
-    protected $fillable = ['name','item_type_id'];
+    protected $fillable = ['name','attribute_group_id'];
 
-    public function item_type(){
-    	return $this->belongsToMany('App\ItemType');
-    }
-
-    public function values(){
-    	return $this->hasMany('App\AttributeValue');
+    public function attribute_group(){
+    	return $this->belongsTo('App\AttributeGroup');
     }
 }

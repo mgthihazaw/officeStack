@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Brand;
 
 use App\Brand;
 use Illuminate\Http\Request;
 use App\Http\Resources\ItemType\ItemTypeResource;
+use App\Http\Controllers\Controller;
+
 
 
 class BrandItemTypeController extends Controller

@@ -16,6 +16,8 @@ class CreateAttributeGroupTable extends Migration
         Schema::create('attribute_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('item_type_id')->unsigned();
+            $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +29,9 @@ class CreateAttributeGroupTable extends Migration
      */
     public function down()
     {
+        Schema::table('attribute_groups', function(Blueprint $table){
+            $table->dropForeign(['item_type_id']);
+        });
         Schema::dropIfExists('attribute_groups');
     }
 }

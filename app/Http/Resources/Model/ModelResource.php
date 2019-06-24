@@ -17,6 +17,7 @@ class ModelResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'brand' => $this->brand->name,
             'links' => [
                 'self' => route('models.show', $this->id)
             ]

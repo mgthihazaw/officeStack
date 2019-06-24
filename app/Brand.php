@@ -11,4 +11,8 @@ class Brand extends Model
     public function item_types(){
     	return $this->belongsToMany('App\ItemType');
     }
+
+    public function models(){
+    	return $this->hasMany('App\Model');
+    }
 }
