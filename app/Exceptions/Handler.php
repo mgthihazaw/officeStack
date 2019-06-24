@@ -2,7 +2,6 @@
 
 namespace App\Exceptions;
 
-use DB;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
@@ -14,6 +13,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\DB;
+
 
 class Handler extends ExceptionHandler
 {
@@ -75,7 +76,6 @@ class Handler extends ExceptionHandler
             }else if($exception instanceof MethodNotAllowedException){
                 return response()->json(['error' => 'Method not allowed for the requested endpoint'], 405);
             }else if($exception instanceof QueryException){
-                return response()->json('error');
                 dd($exception);
             }else if($exception instanceof ValidationException) {
                 return $this->convertValidationExceptionToResponse($exception, $request);

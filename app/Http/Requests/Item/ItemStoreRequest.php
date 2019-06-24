@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Item;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Rules\AssociativeArray;
 
 class ItemStoreRequest extends FormRequest
 {
@@ -29,9 +30,7 @@ class ItemStoreRequest extends FormRequest
             'brand_id' => 'required|integer|exists:brands,id',
             'item_type_id' => 'required|integer|exists:item_types,id',
             'model' => 'required',
-            'attributes' => 'required|array',
-            'attributes.*' => 'array',
-            'attributes.*[]' => 'required|exists:attribute_groups,name'
+            'attributes' => ['required',new AssociativeArray()],
         ];
     }
 }

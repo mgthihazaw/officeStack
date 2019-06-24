@@ -7,6 +7,7 @@ use App\ItemType;
 use App\Attribute;
 use App\Brand;
 use App\Model;
+use App\AttributeGroup;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -35,21 +36,24 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
+        foreach($request->get('attributes') as $attr_val){
+            if(count($attr_val) > 1){
+                return response()->json(['error' => 'Attributes value is invalid'], 500);
+            }else{
+                foreach ($attr_val as $attribute => $value) {
+                    
+                    return AttributeGroup::where('name', '=', $attribute)->where('item_type_id',$request->item_type_id)->get();
+                    // if(AttributeGroup::where('name', $attribute)->where('item_type_id', $request->item_type_id)->get()->count()){
+
+                    //     return response()->json(['error' => 'Attribute Group for this item type is invalid'], 500);
+                    // }
+                    // dd($value);
+                }
+            }
+            
+        }
         return DB::transaction(function() use($request){
-                    $brand = Brand::findOrFail($request->brand_id);
-                    $item_type = ItemType::findOrFail($request->item_type_id);
-
-                    $model = Model::firstOrCreate([
-                        'name' => $request->model,
-                        'brand_id' => $brand->id
-                    ]);
-                    //dd($request->get('attributes'));
-
-                    foreach($request->get('attributes') as $attr){
-                        foreach($attr as $attribute => $value){
-                            
-                        }
-                    }
+                    
                 });
     }
 
@@ -97,23 +101,5 @@ class ItemController extends Controller
         $item->delete();
 
         return response()->json([], 204);
-    }
-
-    private function unique_multi_array($array, $key) { 
-        $temp_array = array();
-        $i = 0; 
-        $key_array = array(); 
-      
-        foreach($array as $val) { 
-            if (!in_array($val[$key], $key_array)) { 
-                $key_array[$i] = $val[$key]; 
-                $temp_array[$i] = $val;
-            }else{
-                $temp_array[array_search($val[$key], $key_array)]['value'] = $val['value'];
-            }
-            $i++;
-        }
-        
-        return $temp_array; 
     }
 }

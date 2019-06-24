@@ -24,7 +24,8 @@ class AttributeGroupUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'min:1|unique:attribute_groups,name,'.$this->attributegroup->id
+            'name' => 'min:1|unique:attribute_groups,name,'.$this->attributegroup->id,
+            'item_type_id' => 'required|integer|exists:item_types,id'
         ];
     }
 }

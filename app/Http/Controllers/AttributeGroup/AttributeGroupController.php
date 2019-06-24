@@ -33,6 +33,7 @@ class AttributeGroupController extends Controller
      */
     public function store(AttributeGroupStoreRequest $request)
     {
+
         $attr_group = AttributeGroup::create($request->all());
 
         return response()->json(['data' => new AttributeGroupResource($attr_group)], 201);
@@ -71,6 +72,6 @@ class AttributeGroupController extends Controller
     public function destroy(AttributeGroup $attributegroup)
     {
         $attributegroup->delete();
-        return response()->json(['message' => 'Deleted'], 410);
+        return response()->json(['message' => 'Deleted'], 204);
     }
 }
