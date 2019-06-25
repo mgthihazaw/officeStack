@@ -14,13 +14,19 @@ class ItemResource extends JsonResource
      */
     public function toArray($request)
     {
+        $attribute_value = array();
+        foreach($this->attributes as $attribute){
+            $attribute_value[$attribute->attribute_group->name] = $attribute->name;
+        }
+
         return [
             'id' => $this->id,
-            'price' => $this->quantity,
+            'price' => $this->price,
             'quantity' => $this->quantity,
             'brand' => $this->brand->name,
-            'model' => $this->model->name,
+            'model' => $this->model_no,
             'item_type' => $this->item_type->name,
+            'attributes' => $attribute_value
         ];
     }
 }

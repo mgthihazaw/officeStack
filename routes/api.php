@@ -53,16 +53,14 @@ Route::group(['middleware' => 'jwt'], function(){
 
 	Route::apiResource('brands', 'Brand\BrandController');
 	Route::apiResource('brands.itemtypes', 'Brand\BrandItemTypeController', ['only' => ['index']]);
-	Route::apiResource('brands.models', 'Brand\BrandModelController', ['only' => ['index']]);
 
 	Route::apiResource('itemtypes', 'Item\ItemTypeController');
-
-	Route::apiResource('models', 'ModelController');
+	Route::apiResource('itemtypes.attributegroups', 'Item\ItemTypeAttributeGroupController', ['only' => ['index', 'store']]);
 
 	Route::apiResource('attributegroups', 'AttributeGroup\AttributeGroupController');
 	Route::apiResource('attributegroups.attributes', 'AttributeGroup\AttributeGroupAttributeController', ['only' => ['index']]);
 
-	Route::apiResource('attributes', 'Attribute\AttributeController');
+	//Route::apiResource('attributes', 'Attribute\AttributeController');
 
 	Route::apiResource('items', 'Item\ItemController');
 });

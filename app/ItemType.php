@@ -8,8 +8,8 @@ class ItemType extends Model
 {
     protected $fillable = ['name'];
 
-    public function attributes(){
-    	return $this->belongsToMany('App\Attribute');
+    public function attribute_groups(){
+    	return $this->hasMany('App\AttributeGroup');
     }
 
     public function items(){

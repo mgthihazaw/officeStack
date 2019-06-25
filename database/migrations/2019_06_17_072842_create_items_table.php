@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->integer('quantity');
             $table->integer('brand_id')->unsigned();
             $table->integer('item_type_id')->unsigned();
-            $table->string('model_no')->nullable();
+            $table->string('model_no')->nullable()->unique();
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
             $table->timestamps();

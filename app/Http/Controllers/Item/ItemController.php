@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Item\ItemStoreRequest;
+use App\Http\Requests\Item\ItemUpdateRequest;
 use App\Http\Resources\Item\ItemResource;
 
 class ItemController extends Controller
@@ -36,25 +37,36 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
-        foreach($request->get('attributes') as $attr_val){
-            if(count($attr_val) > 1){
-                return response()->json(['error' => 'Attributes value is invalid'], 500);
-            }else{
-                foreach ($attr_val as $attribute => $value) {
-                    
-                    return AttributeGroup::where('name', '=', $attribute)->where('item_type_id',$request->item_type_id)->get();
-                    // if(AttributeGroup::where('name', $attribute)->where('item_type_id', $request->item_type_id)->get()->count()){
+        return DB::transaction(function () use($request){
+            $attributes = array();
 
-                    //     return response()->json(['error' => 'Attribute Group for this item type is invalid'], 500);
-                    // }
-                    // dd($value);
+            foreach($request->get('attributes') as $attr_val){
+                if(count($attr_val) > 1){
+                    return response()->json(['error' => 'Attributes value is invalid'], 400);
+                }else{
+                    foreach ($attr_val as $attribute => $value) {
+                        $attribute = (string) $attribute;
+                        $attribute_group = AttributeGroup::where('name', $attribute)->where('item_type_id', $request->item_type_id)->first();
+                        if($attribute_group){
+                            $attributes[] = $attribute_group->attributes()->firstOrCreate(['name' => $value])->id;
+                        }else{
+                            DB::rollback();
+                            return response()->json(['error' => "This item type doesn't have the attribute '".$attribute."'"],400);
+                        }
+                    }
                 }
             }
-            
-        }
-        return DB::transaction(function() use($request){
-                    
-                });
+            $item = Item::create([
+                'price' => $request->price,
+                'quantity' => $request->quantity,
+                'brand_id' => $request->brand_id,
+                'item_type_id' => $request->item_type_id,
+                'model_no' => $request->model_no
+            ]);
+            $item->attributes()->sync($attributes);
+            return response()->json(['data' => new ItemResource($item)], 201);
+        });
+        
     }
 
     /**
@@ -65,7 +77,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        return response()->json(['data' => $item], 200);
+        return response()->json(['data' => new ItemResource($item)], 200);
     }
 
     /**
@@ -75,19 +87,32 @@ class ItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Item $item)
+    public function update(ItemUpdateRequest $request, Item $item)
     {
-        $request->validate([
-            'name' => 'string|min:1',
-            'description' => 'string',
-            'price' => 'integer|min:0',
-            'quantity' => 'integer|min:0',
-            'item_type_id' => 'required|integer|exists:item_types,id'
-        ]);
+        return DB::transaction(function () use($request,$item){
+            $attributes = array();
 
-        $item->update($request->all());
+            foreach($request->get('attributes') as $attr_val){
+                if(count($attr_val) > 1){
+                    return response()->json(['error' => 'Attributes value is invalid'], 400);
+                }else{
+                    foreach ($attr_val as $attribute => $value) {
+                        $attribute = (string) $attribute;
+                        $attribute_group = AttributeGroup::where('name', $attribute)->where('item_type_id', $request->item_type_id)->first();
+                        if($attribute_group){
+                            $attributes[] = $attribute_group->attributes()->firstOrCreate(['name' => $value])->id;
+                        }else{
+                            DB::rollback();
+                            return response()->json(['error' => "This item type doesn't have the attribute '".$attribute."'"],400);
+                        }
+                    }
+                }
+            }
+            $item->update($request->only(['price','quantity','brand_id','item_type_id','model_no']));
+            $item->attributes()->syncWithoutDetaching($attributes);
+            return response()->json(['data' => new ItemResource($item), 'message' => 'Item Updated'], 200);
+        });
 
-        return response()->json(['data' => $item, 'message' => 'Item Updated'], 200);
     }
 
     /**

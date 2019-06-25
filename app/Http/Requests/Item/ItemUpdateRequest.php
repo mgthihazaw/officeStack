@@ -5,7 +5,7 @@ namespace App\Http\Requests\Item;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\AssociativeArray;
 
-class ItemStoreRequest extends FormRequest
+class ItemUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,7 @@ class ItemStoreRequest extends FormRequest
             'quantity' => 'required|integer|min:0|max:9999', 
             'brand_id' => 'required|integer|exists:brands,id',
             'item_type_id' => 'required|integer|exists:item_types,id',
-            'model_no' => 'required|unique:items,model_no',
+            'model_no' => 'required|unique:items,model_no,'.$this->item->id,
             'attributes' => ['required',new AssociativeArray()],
         ];
     }
