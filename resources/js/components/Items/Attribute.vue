@@ -16,7 +16,7 @@
           <tr class="heading">
             <th >#</th>
             <th>Attribute Name</th>
-            <th>Attribute Value</th>
+            
             <th>Item Type</th>
             <th>Date</th>
             <th style="width: 200px">Action</th>
@@ -24,28 +24,21 @@
           <tr v-for="(attribute,index) in attributes" :key="index" class="animated fadeIn">
             <td>{{ index+1 }}</td>
             <td>{{ attribute.name }}</td>
-             <td>
-               4GB<br>
-               8GB<br>
-               16GB<br>
-               32GB<br>
-               64GB<br>
              
-             </td>
-            <td>{{ attribute.item_type_id}}</td>
+            <td>{{ attribute.item_type.name}}</td>
             <td>{{ attribute.update_at | myDate}}</td>
             <td style="width: 200px">
-              <button class="btn btn-warning btn-sm text-white">
+              <button class="btn btn-warning btn-sm text-white" @click="editAttribute(attribute)">
                 <i class="fa fa-edit"></i>
               </button>
-              <button class="btn btn-info btn-sm" >
-                <i class="fas fa-upload"></i>
-               </button>
+              
               <button class="btn btn-danger btn-sm" @click="deleteAttribute(attribute.id)">
                 <i class="fa fa-times"></i>
               </button>
             </td>
+            
           </tr>
+          
         </tbody>
       </table>
     </div>
@@ -53,7 +46,7 @@
     <!------------------------MODAL DIALOG------------------------>
     <div
       class="modal fade"
-      id="newType"
+      id="newAttribute"
       tabindex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
@@ -78,30 +71,18 @@
                   v-model="form.item_type_id"
                   ref="item"
                   class="form-control"
-                  @change=loadAttribute(form.item_type_id)
+                 
                 >
                   <option value disabled>Choose Item Type</option>
                   <option v-for="type in types" :key="type.id" :value="type.id">{{ type.name }}</option>
                 </select>
               </div>
-              <div class="form-group row">
-                <div class="col-md-6">
-                   <label for="name">Attribute Name:</label>
-                     <multiselect
-                        :options="attributes"
-                        label="name"
-                        v-model="form.attribute"
-                        placeholder="Choose Attribute"
-                        :taggable="true"
-                        :block-keys="['Delete']"
-                        @tag="addTag"
-                        
-                      ></multiselect>
-                </div>
-                <div class="col-md-6">
+              <div class="form-group ">
+                
+              
                    <label for="name">Attribute Value:</label>
-                     <input type="text" class="form-control" v-model="form.attribute_value">
-                </div>
+                     <input type="text" class="form-control" v-model="form.name">
+                
                
               </div>
               
@@ -109,7 +90,7 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" @click="cancel">Close</button>
               <button type="submit" class="btn btn-primary" v-if="!edit" @click="submitAttribute">Create</button>
-              <button type="submit" class="btn btn-primary" v-else>Update</button>
+              <button type="submit" class="btn btn-primary" @click="updateAttribute" v-else>Update</button>
             </div>
           </div>
         </div>
@@ -126,11 +107,10 @@ export default {
       edit: false,
       attributes: [],
       types: [],
-      attributeNames:[],
+      
       form: {
         id: "",
         attribute: "",
-        attribute_value:'',
         item_type_id: ""
       },
       
@@ -139,7 +119,7 @@ export default {
   methods: {
     getAttribute() {
       axios
-        .get("/api/attributes")
+        .get("/api/attributegroups")
         .then(res => {
           this.attributes = res.data.data;
         })
@@ -151,6 +131,7 @@ export default {
       axios
         .get("/api/itemtypes")
         .then(res => {
+          
           this.types = res.data.data;
         })
         .catch(err => {
@@ -158,21 +139,23 @@ export default {
         });
     },
     createAttribute() {
-      $("#newType").modal("show");
+      $("#newAttribute").modal("show");
     },
     submitAttribute(){
-      axios.post('/api/attributes',this.form)
+      axios.post('/api/attributegroups',this.form)
       .then(res =>{
+        console.log(res)
         this.cancel()
         this.form={
                 id: "",
-                name: "",
-                item_type_id :""
+                attribute: "",
+                item_type_id: ""
+                
             }
             
             Toast.fire({
             type: "success",
-            title: res.data.message
+            title: "Successfully Created "
           });
           Bus.$emit("afterAttributeChange");
 
@@ -192,7 +175,7 @@ export default {
         .then(result => {
           if (result.value) {
             //Send Delete Request to sever
-            axios.delete("/api/attributes/"+id).then(res => {
+            axios.delete("/api/attributegroups/"+id).then(res => {
               Bus.$emit("afterAttributeChange");
               swal.fire("Deleted!", res.data.message, "success");
             });
@@ -204,29 +187,40 @@ export default {
             title: err.response.data.message
           });
         });
+    
+    
     },
-    loadAttribute(id){
-      console.log("/api/attributes/"+id)
-       axios
-        .get("/api/attributes/"+id)
+
+    cancel() {
+      $("#newAttribute").modal("hide");
+    },
+    editAttribute(attribute){
+      this.edit = true;
+      $("#newAttribute").modal("show");
+      this.form.name = attribute.name;
+      this.form.id = attribute.id;
+      this.form.item_type_id=attribute.item_type.id
+    },
+     updateAttribute() {
+      axios
+        .put(`api/attributegroups/${this.form.id}`, this.form)
         .then(res => {
-          this.attributeNames = res.data.data;
+          this.form = {
+           id: "",
+           attribute: "",
+           item_type_id: ""
+          };
+          this.cancel();
+          Toast.fire({
+            type: "success",
+            title: "Sucessfully Updated"
+          });
+          Bus.$emit("afterAttributeChange");
         })
         .catch(err => {
           console.log(err);
         });
-    },
-
-    cancel() {
-      $("#newType").modal("hide");
-    },
-    addTag(newTag) {
-      const tag = {
-        name: newTag,
-        id: this.attributes.length
-      };
-      this.attributes.push(tag);
-      this.form.attribute = tag;
+      this.edit = false;
     },
      
   },
@@ -240,7 +234,7 @@ export default {
 };
 </script >
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+
 <style scoped>
 
 
@@ -268,3 +262,6 @@ td {
   background: #e9ecef;
 }
 </style>
+
+
+

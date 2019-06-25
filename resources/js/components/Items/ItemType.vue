@@ -22,7 +22,7 @@
               <th style="width: 200px">Action</th>
             </tr>
             <tr v-for="(type,index) in itemTypes" :key="index" class="animated fadeIn">
-              <td>{{ index }}</td>
+              <td>{{ index+1 }}</td>
               <td>{{ type.name }}</td>
               <td>{{ type.update_at | myDate}}</td>
               <td>
