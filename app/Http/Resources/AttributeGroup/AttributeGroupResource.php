@@ -19,6 +19,7 @@ class AttributeGroupResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'item_type' => new ItemTypeResource($this->item_type),
+            'attributes' => $this->attributes->pluck('name'),
             'links' => [
                 'self' => route('attributegroups.show', $this->id)
             ]

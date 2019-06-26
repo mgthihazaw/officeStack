@@ -54,7 +54,7 @@
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel" v-if="!edit">Create New Item Type</h5>
             <h5 class="modal-title" id="exampleModalLabel" v-else>Edit Item Type</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" @click="cancel">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -105,10 +105,7 @@ export default {
       axios
         .post("api/itemtypes", this.form)
         .then(res => {
-          this.form = {
-            id: "",
-            name: ""
-          };
+          
           this.cancel();
           Toast.fire({
             type: "success",
@@ -157,10 +154,7 @@ export default {
       axios
         .put(`api/itemtypes/${this.form.id}`, this.form)
         .then(res => {
-          this.form = {
-            id: "",
-            name: ""
-          };
+          
           this.cancel();
           Toast.fire({
             type: "success",
@@ -179,6 +173,10 @@ export default {
     },
     cancel() {
       $("#newType").modal("hide");
+      this.form = {
+            id: "",
+            name: ""
+          };
     }
   },
   created() {

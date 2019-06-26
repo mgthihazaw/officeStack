@@ -54,10 +54,10 @@ axios.interceptors.response.use(function (response) {
 	  });
 	  
 	if (error.response.data.type == 'token_invalid') {
-		alert(error.response.data.error)
+		// alert(error.response.data.error)
 		Bus.$emit('logout')
 	} else if (error.response.data.type == 'token_expired') {
-		alert(error.response.data.error)
+		// alert(error.response.data.error)
 		Bus.$emit('logout')
 	}
 	return Promise.reject(error)

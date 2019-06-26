@@ -37,14 +37,16 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
+        
         return DB::transaction(function () use($request){
             $attributes = array();
-
+          
             foreach($request->get('attributes') as $attr_val){
                 if(count($attr_val) > 1){
                     return response()->json(['error' => 'Attributes value is invalid'], 400);
                 }else{
                     foreach ($attr_val as $attribute => $value) {
+                        
                         $attribute = (string) $attribute;
                         $attribute_group = AttributeGroup::where('name', $attribute)->where('item_type_id', $request->item_type_id)->first();
                         if($attribute_group){

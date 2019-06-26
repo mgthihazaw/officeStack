@@ -90,7 +90,7 @@
             </router-link>
           </li>
 
-          <li class="nav-item has-treeview menu-open" v-if="ServiceShow()">
+          <li class="nav-item has-treeview menu-open" v-if="SaleShow()">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-database green"></i>
               <p>
@@ -186,6 +186,9 @@
         methods : {
            ServiceShow(){
            return this.User.sale || this.User.service ?true :false
+           },
+           SaleShow(){
+           return this.User.sale  ?true :false
            },
            StaffShow(){
             return this.User.develop ?true :false

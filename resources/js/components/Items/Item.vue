@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="itemTable col-md-12" v-if="!create" ref="itemTable">
-      <div class=" mb-2  row">
+      <div class="mb-2 row">
         <div class="col-md-5">
           <button class="btn btn-outline-success btn-lg" @click="createItem">
             Add New
@@ -18,7 +18,7 @@
             <tr class="heading">
               <th style="width: 100px">#</th>
               <th>Name</th>
-              <th>Description</th>
+
               <th>Quantity</th>
               <th>Item Type</th>
               <th>Price</th>
@@ -27,19 +27,25 @@
             </tr>
             <tr v-for="(item,index) in items" :key="index" class="animated fadeIn">
               <td>{{ index+1 }}</td>
-              <td>{{ item.name }}</td>
-              <td>{{ item.description }}</td>
+              <td>
+                {{ item.brand }}
+                <span
+                  v-for="(attribute,index) in item.attributes"
+                  :key="index"
+                >{{ attribute }}&nbsp;</span>
+              </td>
+
               <td>{{ item.quantity }}</td>
-              <td>{{ item.item_type_id }}</td>
+              <td>{{ item.item_type }}</td>
 
               <td>{{ item.price }}</td>
               <td>{{ item.update_at | myDate}}</td>
               <td>
                 <button class="btn btn-warning btn-sm text-white">
-                  <i class="fa fa-edit" ></i>
+                  <i class="fa fa-edit"></i>
                 </button>
                 <button class="btn btn-danger btn-sm" @click="deleteItem(item.id)">
-                  <i class="fa fa-times" ></i>
+                  <i class="fa fa-times"></i>
                 </button>
               </td>
             </tr>
@@ -51,43 +57,72 @@
 
     <!--------------------ITEM FORM------------------------------------>
 
-    <div class="itemForm mx-5 col-12" v-if="create">
+    <div class="itemForm col-12" v-if="create">
       <div class="container formcolor animated zoomIn">
         <div class="row">
           <div class="col-12">
-            <h3 class="pt-3">CREATE ITEM</h3>
+            <h3 class="pt-3">
+              <i class="fas fa-arrow-circle-left green" @click="back" style="cursor: pointer"></i>
+              CREATE ITEM
+            </h3>
           </div>
         </div>
         <hr>
-        <div class="row mt-4">
-          <div class="col-12">
+        <div class="row justify-content-center mt-4">
+          <div class="col-10">
             <form>
               <h5>1.Insert Item Information</h5>
               <div class="form-group row pt-4">
                 <div class="col-md-4">
-                  <label for="secret" class="pt-2">Item Name</label>
+                  <label for="secret" class="pt-2">Item Brand</label>
+                </div>
+                <div class="col-md-8">
+                  <multiselect
+                    :options="brands"
+                    label="name"
+                    v-model="brand"
+                    placeholder="Choose Item Type"
+                    :taggable="true"
+                    :block-keys="['Delete']"
+                  ></multiselect>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="exampleInputtext1" class="pt-2">Item Type</label>
+                </div>
+                <div class="col-md-8">
+                  <multiselect
+                    :options="itemTypes"
+                    label="name"
+                    v-model="itemType"
+                    placeholder="Choose Item Type"
+                    :taggable="true"
+                    :block-keys="['Delete']"
+                    @select="loadAttributeGroup"
+                  ></multiselect>
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <div class="col-md-4">
+                  <label for="exampleInputtext1" class="pt-2">Model No</label>
                 </div>
                 <div class="col-md-8">
                   <input
                     type="text"
                     class="form-control"
-                    id="secret"
-                    placeholder="Secret Number"
-                    v-model="form.name"
+                    id="exampleInputtext1"
+                    v-model="form.model_no"
+                    placeholder="Enter Model Number"
                   >
                 </div>
               </div>
-              <div class="form-group row pt-4">
-                <div class="col-md-4">
-                  <label for="secret" class="pt-2">Item Description</label>
-                </div>
-                <div class="col-md-8">
-                  <textarea name id class="form-control"  v-model="form.description"></textarea>
-                </div>
-              </div>
+
               <div class="form-group row">
                 <div class="col-md-4">
-                  <label for="exampleInputtext1" class="pt-2"  >Item Quantity</label>
+                  <label for="exampleInputtext1" class="pt-2">Item Quantity</label>
                 </div>
                 <div class="col-md-8">
                   <input
@@ -99,6 +134,7 @@
                   >
                 </div>
               </div>
+
               <div class="form-group row">
                 <div class="col-md-4">
                   <label for="exampleInputtext1" class="pt-2">Item Price</label>
@@ -110,97 +146,46 @@
                     id="exampleInputtext1"
                     placeholder="Enter Item Price"
                     v-model="form.price"
-
                   >
                 </div>
               </div>
-              <div class="form-group row">
-                <div class="col-md-4">
-                  <label for="exampleInputtext1" class="pt-2">Item Type</label>
-                </div>
-                <div class="col-md-8">
-                  <multiselect
-                        :options="itemTypes"
-                        label="name"
-                        v-model="itemType"
-                        placeholder="Choose Item Type"
-                        :taggable="true"
-                        :block-keys="['Delete']"
-                        
-                        
-                      ></multiselect>
+
+              <div v-if="attributeGroups.length>0">
+                <hr>
+                <h5 class="py-3">2.Insert Item Attributes Information</h5>
+                <div
+                  class="form-group row"
+                  v-for="(attributeGroup,index) in attributeGroups"
+                  :key="index"
+                >
+                  <div class="col-md-4">
+                    <label for="exampleInputtext1" class="pt-2">{{ attributeGroup.name }}</label>
+                  </div>
+
+                  <div class="col-md-8">
+                    <multiselect
+                      :options="attributeGroup.attributes"
+                      v-model="attributes[index]"
+                      placeholder="Choose Item Type"
+                      :close-on-select="true"
+                      :show-labels="false"
+                      :block-keys="['Delete']"
+                      :taggable="true"
+                      @tag="addTag($event,attributes[index],attributeGroup.attributes)"
+                    ></multiselect>
+                  </div>
                 </div>
               </div>
-              <hr>
-              <h5 class="py-3">2.Insert Item Attributes Information</h5>
-              <div class="form-group row">
-                <div class="col-md-4">
-                  <label for="exampleInputtext1" class="pt-2">Item Attribute
 
-
-
-                  </label>
-                </div>
-                <div class="col-md-3">
-                  <multiselect
-                        :options="itemTypes"
-                        label="name"
-                        v-model="itemType"
-                        placeholder="Choose Item Type"
-                        :taggable="true"
-                        :block-keys="['Delete']"
-                        
-                        
-                      ></multiselect>
-                </div>
-                 <div class="col-md-3">
-                  <multiselect
-                        :options="itemTypes"
-                        label="name"
-                        v-model="itemType"
-                        placeholder="Choose Item Type"
-                        :taggable="true"
-                        :block-keys="['Delete']"
-                       
-                        
-                      ></multiselect>
-                </div>
-                <div class="col-md-2 pt-1">
-                  <button class="btn btn-primary ">ADD</button>
-                </div>
-              </div>
-              
-              <div class="form-group row" >
-                  
-                <div class="col-md-4 ">
-                  <label for="exampleInputtext1" class="pt-2">Item Attribute Detail</label>
-                </div>
-                <div class="col-md-8">
-                  <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action ">
-                        Cras justo odio
-                    </a>
-                    <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                    <a href="#" class="list-group-item list-group-item-action">Morbi leo risus</a>
-                    <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                    <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
-                    </div>
-                </div>
-                
-              </div>
-              
               <div class="form-group row pt-3">
-                <div class="col-md-5">
-                  
-                </div>
-                <div class="col-md-4 ">
+                <div class="col-md-5"></div>
+                <div class="col-md-4">
                   <button class="btn btn-secondary" @click="back">Cancel</button>
-                  <button type="button" class="btn btn-primary " @click="submitItem">Save Item</button>
+                  <button type="button" class="btn btn-primary" @click="submitItem">Save Item</button>
                 </div>
               </div>
             </form>
           </div>
-          
         </div>
       </div>
     </div>
@@ -216,25 +201,47 @@ export default {
       edit: false,
       create: false,
       items: [],
-      itemTypes : [],
-      itemType:'',
+      itemTypes: [],
+      itemType: [],
+      brands: [],
+      brand: [],
+      attributeGroups: [],
+      attributes: [],
       form: {
         id: "",
-        name: "",
-        description : "",
-        quantity : "",
+        brand_id: "",
+        quantity: "",
         price: "",
-        item_type_id :"",
-        attribute_value_id: []
+        model_no: "",
+        item_type_id: "",
+        attributes: []
       }
     };
   },
   methods: {
-       getItemType() {
+    loadItemType() {
       axios
-        .get("/api/itemtypes")
+        .get(`/api/itemtypes`)
         .then(res => {
           this.itemTypes = res.data.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    loadAttributeGroup(type) {
+      axios
+        .get(`/api/itemtypes/${type.id}/attributegroups`)
+        .then(res => {
+          this.attributeGroups = res.data.data;
+          this.form.attributes = [];
+          this.attributeGroups.forEach((attGroup, index) => {
+            let name = attGroup.name;
+            this.attributes[index] = "";
+            // this.form.attributes[attGroup.name]=''
+            // this.form.attributes=[]
+            this.form.attributes.push({ [attGroup.name]: "" });
+          });
         })
         .catch(err => {
           console.log(err);
@@ -250,34 +257,55 @@ export default {
           console.log(err);
         });
     },
+    getBrand() {
+      axios
+        .get("/api/brands")
+        .then(res => {
+          this.brands = res.data.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
     createItem() {
       this.create = true;
     },
     cancel() {
       $("#newType").modal("hide");
     },
-    submitItem(){
-        this.form.item_type_id=this.itemType.id
-        axios.post('/api/items',this.form)
-        .then( res => {
-           this.form={
-                id: "",
-                name: "",
-                description : "",
-                quantity : "",
-                price: "",
-                item_type_id :""
-            }
-            this.create=false
-            Toast.fire({
+    submitItem() {
+      this.form.item_type_id = this.itemType.id;
+      this.form.brand_id = this.brand.id;
+
+      //Validation Of Attribute
+      this.form.attributes.forEach((attribute, key) => {
+        attribute[Object.keys(attribute)] = this.attributes[key];
+      });
+
+      this.form.attributes = this.form.attributes.filter(function(
+        value,
+        index,
+        arr
+      ) {
+        return value[Object.keys(value)] != "" && value[Object.keys(value)] !=null;
+      });
+
+      axios
+        .post("/api/items", this.form)
+        .then(res => {
+          console.log(res);
+
+          this.back();
+
+          Toast.fire({
             type: "success",
-            title: res.data.message
+            title: "Successfully Created"
           });
           Bus.$emit("afterItemChange");
         })
         .catch(err => {
-            console.log(err)
-        })
+          console.log(err);
+        });
     },
     deleteItem(id) {
       swal
@@ -295,7 +323,7 @@ export default {
             //Send Delete Request to sever
             axios.delete("/api/items/" + id).then(res => {
               Bus.$emit("afterItemChange");
-              swal.fire("Deleted!", res.data.message, "success");
+              swal.fire("Deleted!", "Successfully  Deleted", "success");
             });
           }
         })
@@ -307,16 +335,36 @@ export default {
         });
     },
     back() {
-      this.create=false
+      this.create = false;
+      this.form = {
+        id: "",
+        brand_id: "",
+        quantity: "",
+        price: "",
+        model_no: "",
+        item_type_id: "",
+        attributes: []
+      };
+      this.itemType = [];
+      this.brand = [];
+      this.attributeGroups = [];
+      this.attributes = [];
     },
+
+    addTag(newTag, itemType, itemTypes) {
+      const tag = newTag;
+
+      itemTypes.push(tag);
+      itemType = tag;
+    }
   },
   created() {
-      this.getItem()
-      this.getItemType();
-       Bus.$on("afterItemChange", () => {
+    this.getItem();
+    this.loadItemType();
+    this.getBrand();
+    Bus.$on("afterItemChange", () => {
       this.getItem();
     });
-    
   }
 };
 </script >

@@ -27,6 +27,23 @@
                     </div>
 
                     <form @submit.prevent="changeAccount">
+                     
+                     <div class="form-group row">
+                        <div class="col-md-4">
+                          <label for="oldpassword" class="pt-2">Old Password</label>
+                        </div>
+                        <div class="col-md-8">
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="oldpassword"
+                            placeholder="Old Password"
+                            v-model="formAccount.oldPassword"
+                          >
+                        </div>
+                      </div>
+
+
                       <div class="form-group row pt-4">
                         <div class="col-md-4">
                           <label for="newpassword" class="pt-2">New Password</label>
@@ -55,20 +72,7 @@
                           >
                         </div>
                       </div>
-                      <div class="form-group row">
-                        <div class="col-md-4">
-                          <label for="oldpassword" class="pt-2">Old Password</label>
-                        </div>
-                        <div class="col-md-8">
-                          <input
-                            type="password"
-                            class="form-control"
-                            id="oldpassword"
-                            placeholder="Old Password"
-                            v-model="formAccount.oldPassword"
-                          >
-                        </div>
-                      </div>
+                      
                       <div class="form-group row">
                         <div class="col-md-4"></div>
                         <div class="col-md-8">
@@ -94,6 +98,23 @@
                     </div>
 
                     <form @submit.prevent="changeSecret">
+
+                      <div class="form-group row">
+                        <div class="col-md-4">
+                          <label for="exampleInputPassword1" class="pt-2">Your Password</label>
+                        </div>
+                        <div class="col-md-8">
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="exampleInputPassword1"
+                            placeholder="Password"
+                            v-model="formSecret.password"
+                          >
+                        </div>
+                      </div>
+
+
                       <div class="form-group row pt-4">
                         <div class="col-md-4">
                           <label for="secret" class="pt-2">New Secret Number</label>
@@ -122,20 +143,7 @@
                           >
                         </div>
                       </div>
-                      <div class="form-group row">
-                        <div class="col-md-4">
-                          <label for="exampleInputPassword1" class="pt-2">Your Password</label>
-                        </div>
-                        <div class="col-md-8">
-                          <input
-                            type="password"
-                            class="form-control"
-                            id="exampleInputPassword1"
-                            placeholder="Password"
-                            v-model="formSecret.password"
-                          >
-                        </div>
-                      </div>
+                      
                       <div class="form-group row">
                         <div class="col-md-4"></div>
                         <div class="col-md-8">

@@ -7,7 +7,7 @@
           <i class="fa fa-plus"></i>
         </button>
       </div>
-      <h3 class="px-4 pt-2 col-md-4 text-left">ATTRIBUTE TABLE</h3>
+      <h3 class="px-4 pt-2 col-md-4 text-left">ATTRIBUTE GROUP TABLE</h3>
     </div>
 
     <div class="col-md-12">
@@ -15,7 +15,7 @@
         <tbody>
           <tr class="heading">
             <th >#</th>
-            <th>Attribute Name</th>
+            <th>Attribute Group Name</th>
             
             <th>Item Type</th>
             <th>Date</th>
@@ -55,9 +55,9 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel" v-if="!edit">Create New Attribute</h5>
-            <h5 class="modal-title" id="exampleModalLabel" v-else>Edit Item Type</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <h5 class="modal-title" id="exampleModalLabel" v-if="!edit">Create New Attribute Group</h5>
+            <h5 class="modal-title" id="exampleModalLabel" v-else>Edit Attribute Group</h5>
+            <button type="button" class="close" @click="cancel()">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -146,13 +146,6 @@ export default {
       .then(res =>{
         console.log(res)
         this.cancel()
-        this.form={
-                id: "",
-                attribute: "",
-                item_type_id: ""
-                
-            }
-            
             Toast.fire({
             type: "success",
             title: "Successfully Created "
@@ -193,6 +186,11 @@ export default {
 
     cancel() {
       $("#newAttribute").modal("hide");
+       this.form = {
+           id: "",
+           attribute: "",
+           item_type_id: ""
+          };
     },
     editAttribute(attribute){
       this.edit = true;
@@ -205,11 +203,7 @@ export default {
       axios
         .put(`api/attributegroups/${this.form.id}`, this.form)
         .then(res => {
-          this.form = {
-           id: "",
-           attribute: "",
-           item_type_id: ""
-          };
+          
           this.cancel();
           Toast.fire({
             type: "success",
