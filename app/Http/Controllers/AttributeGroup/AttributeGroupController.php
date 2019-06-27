@@ -10,7 +10,6 @@ use App\Http\Requests\AttributeGroup\AttributeGroupStoreRequest;
 use App\Http\Requests\AttributeGroup\AttributeGroupUpdateRequest;
 
 
-
 class AttributeGroupController extends Controller
 {
     /**
@@ -33,9 +32,7 @@ class AttributeGroupController extends Controller
      */
     public function store(AttributeGroupStoreRequest $request)
     {
-
-        $attr_group = AttributeGroup::create($request->all());
-
+        $attr_group = AttributeGroup::firstOrCreate($request->only(['name','item_type_id']));
         return response()->json(['data' => new AttributeGroupResource($attr_group)], 201);
     }
 

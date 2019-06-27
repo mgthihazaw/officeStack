@@ -24,7 +24,7 @@ class AttributeGroupStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:attribute_groups,name',
+            'name' => 'required',
             'item_type_id' => 'required|integer|exists:item_types,id'
         ];
     }

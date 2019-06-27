@@ -37,7 +37,7 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
-        
+        return $this->multi_unique($request->get('attributes'));
         return DB::transaction(function () use($request){
             $attributes = array();
           
@@ -58,10 +58,16 @@ class ItemController extends Controller
                     }
                 }
             }
+
+            $brand = Brand::firstOrCreate(['name' => $request->brand]);
+
+            $item_types = $brand->item_types->pluck('id')->toArray();
+
+            $brand->item_types()->sync(array_push($item_types, $request->item_type_id));
+
             $item = Item::create([
                 'price' => $request->price,
-                'quantity' => $request->quantity,
-                'brand_id' => $request->brand_id,
+                'brand_id' => $brand->id,
                 'item_type_id' => $request->item_type_id,
                 'model_no' => $request->model_no
             ]);
@@ -91,6 +97,7 @@ class ItemController extends Controller
      */
     public function update(ItemUpdateRequest $request, Item $item)
     {
+        
         return DB::transaction(function () use($request,$item){
             $attributes = array();
 
@@ -128,5 +135,22 @@ class ItemController extends Controller
         $item->delete();
 
         return response()->json([], 204);
+    }
+
+    protected function multi_unique($array){
+        $duplicate_keys = array();
+        $keys_array = array();
+        $temp = array();
+ 
+        foreach ($array as $attribute) {
+            foreach ($attribute as $key => $value) {
+                if(in_array($key, $keys_array)){
+                    $duplicate_keys[][$key] = $value;
+                }else{
+                    $temp[] = $attribute;
+                    array_push($keys_array, $key);
+                }
+            }
+        }
     }
 }

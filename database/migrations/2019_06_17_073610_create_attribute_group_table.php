@@ -18,6 +18,7 @@ class CreateAttributeGroupTable extends Migration
             $table->string('name');
             $table->integer('item_type_id')->unsigned();
             $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
+            $table->unique(['name','item_type_id']);
             $table->timestamps();
         });
     }
