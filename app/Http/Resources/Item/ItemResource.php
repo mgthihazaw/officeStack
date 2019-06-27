@@ -26,7 +26,8 @@ class ItemResource extends JsonResource
             'brand' => $this->brand->name,
             'model' => $this->model_no,
             'item_type' => $this->item_type->name,
-            'attributes' => $this->attributes->pluck('name'),
+            'attributes' => $attribute_value,
+             
         ];
     }
 }

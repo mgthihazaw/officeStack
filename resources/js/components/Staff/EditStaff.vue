@@ -39,9 +39,9 @@
                         placeholder="Choose State"
                         label="name"
                         :options="states"
-						            :reset-after="false"
+                        :reset-after="false"
                         @input="loadTownships(form.address.state)"
-						@select="form.address.township=''"
+                        @select="form.address.township=''"
                       ></multiselect>
                     </div>
                   </div>
@@ -56,10 +56,8 @@
                         placeholder="Choose Township"
                         @input="loadBlocks"
                         :taggable="true"
-						
                         @tag="addTag"
                         track-by="name"
-                        
                       ></multiselect>
                     </div>
                   </div>
@@ -253,34 +251,31 @@ export default {
         .get("/api/states")
         .then(response => {
           this.states = response.data.filter(function(state) {
-            return state.id!= 1;
+            return state.id != 1;
           });
         })
         .catch(error => console.log(error.response.data));
     },
     loadTownships(state) {
-		
-      if(state){
-         axios
-        .get(`/api/states/${state.id}/townships`)
-        .then(response => {
-          this.townships = response.data;
-          // console.log(this.townships.includes(this.township));
-        })
-        .catch(error => console.log(error.response.data));
-	  }
-      
+      if (state) {
+        axios
+          .get(`/api/states/${state.id}/townships`)
+          .then(response => {
+            this.townships = response.data;
+            // console.log(this.townships.includes(this.township));
+          })
+          .catch(error => console.log(error.response.data));
+      }
     },
     loadBlocks(township) {
-		if(township){
-           axios
-        .get(`/api/townships/${township.id}/blocks`)
-        .then(response => {
-          this.blocks = response.data;
-        })
-        .catch(error => console.log(error.response.data));
-		}
-      
+      if (township) {
+        axios
+          .get(`/api/townships/${township.id}/blocks`)
+          .then(response => {
+            this.blocks = response.data;
+          })
+          .catch(error => console.log(error.response.data));
+      }
     },
     close() {
       Bus.$emit("cancel");
@@ -303,8 +298,8 @@ export default {
         name: newTag,
         id: this.townships.length
       };
-      this.townships.push(tag)
-      this.form.address.township=tag;
+      this.townships.push(tag);
+      this.form.address.township = tag;
     },
     shows() {
       this.show = true;
@@ -347,12 +342,11 @@ export default {
       .get(`/api/staffs/${id}`)
       .then(response => {
         this.staff = response.data.data;
-        // console.log(this.staff)
 
         this.form.name = this.staff.name;
         this.form.phone = this.staff.phone;
-		this.form.address.state = this.staff.address.location.location;
-		this.loadTownships(this.form.address.state)
+        this.form.address.state = this.staff.address.location.location;
+        this.loadTownships(this.form.address.state);
 
         this.township = this.staff.address.location;
 
@@ -388,12 +382,11 @@ export default {
   font-style: italic;
 }
 .formcolor {
-  
-    background: #EBEFF2;
-    border-left: 2px solid rgba(113, 190, 152, 0.271);
-    border-right: 2px solid rgba(113, 190, 152, 0.271);
-    border-top: 20px solid rgba(113, 190, 152, 0.271);
-    border-bottom: 2px solid rgba(113, 190, 152, 0.271);
-    border-radius:30px;
+  background: #ebeff2;
+  border-left: 2px solid rgba(113, 190, 152, 0.271);
+  border-right: 2px solid rgba(113, 190, 152, 0.271);
+  border-top: 20px solid rgba(113, 190, 152, 0.271);
+  border-bottom: 2px solid rgba(113, 190, 152, 0.271);
+  border-radius: 30px;
 }
 </style>

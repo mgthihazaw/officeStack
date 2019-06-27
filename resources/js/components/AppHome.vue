@@ -98,7 +98,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview" style="display: block;">
+            <ul class="nav nav-treeview dropColor pl-2" style="display: block;">
               <li class="nav-item">
                  <router-link class="nav-link" to="/item">
                   <i class="fas fa-table nav-icon"></i>
@@ -145,7 +145,7 @@
     <!-- Main content -->
     <div class="content pt-4">
       <div class="container-fluid">
-        <router-view></router-view>
+        <router-view ></router-view>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->

@@ -17,9 +17,9 @@ class BrandResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'links' => [
-                'self' => route('brands.show', $this->id)
-            ]
+            // 'links' => [
+            //     'self' => route('brands.show', $this->id)
+            // ]
         ];
     }
 }
