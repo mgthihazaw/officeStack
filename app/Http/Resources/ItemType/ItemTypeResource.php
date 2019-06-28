@@ -17,9 +17,6 @@ class ItemTypeResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'links' => [
-                'self' => route('itemtypes.show', $this->id)
-            ]
         ];
     }
 }

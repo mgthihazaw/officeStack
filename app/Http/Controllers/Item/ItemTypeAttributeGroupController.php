@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Item;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ItemType\ItemTypeAttributeGroupStoreRequest;
-use App\Http\Resources\AttributeGroup\AttributeGroupResource;
-use App\Http\Resources\ItemTpe\ItemTypeResource;
-
+use App\Http\Resources\ItemType\AttributeGroupResource;
 
 use App\ItemType;
 use App\AttributeGroup;

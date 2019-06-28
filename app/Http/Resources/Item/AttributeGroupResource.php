@@ -1,11 +1,9 @@
 <?php
 
-namespace App\Http\Resources\AttributeGroup;
+namespace App\Http\Resources\Item;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\ItemType\ItemTypeResource;
 use App\Http\Resources\Attribute\AttributeResource;
-
 
 class AttributeGroupResource extends JsonResource
 {
@@ -20,7 +18,6 @@ class AttributeGroupResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'item_type' => new ItemTypeResource($this->item_type),
             'attributes' => AttributeResource::collection($this->attributes),
         ];
     }

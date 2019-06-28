@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Item;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Item\AttributeGroupResource;
 
 class ItemResource extends JsonResource
 {
@@ -25,8 +26,7 @@ class ItemResource extends JsonResource
             'brand' => $this->brand->name,
             'model' => $this->model_no,
             'item_type' => $this->item_type->name,
-            'attributes' => $attribute_value,
-             
+            'attribute_groups' => AttributeGroupResource::collection($this->item_type->attribute_groups),
         ];
     }
 }

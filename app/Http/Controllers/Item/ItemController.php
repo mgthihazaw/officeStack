@@ -37,7 +37,6 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
-        return $this->multi_unique($request->get('attributes'));
         return DB::transaction(function () use($request){
             $attributes = array();
           
@@ -135,22 +134,5 @@ class ItemController extends Controller
         $item->delete();
 
         return response()->json([], 204);
-    }
-
-    protected function multi_unique($array){
-        $duplicate_keys = array();
-        $keys_array = array();
-        $temp = array();
- 
-        foreach ($array as $attribute) {
-            foreach ($attribute as $key => $value) {
-                if(in_array($key, $keys_array)){
-                    $duplicate_keys[][$key] = $value;
-                }else{
-                    $temp[] = $attribute;
-                    array_push($keys_array, $key);
-                }
-            }
-        }
     }
 }
