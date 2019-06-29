@@ -109,7 +109,7 @@ export default {
           this.cancel();
           Toast.fire({
             type: "success",
-            title: res.data.message
+            title: "Item Type is Successfully Created"
           });
           Bus.$emit("afterTypeCreated");
         })
@@ -133,7 +133,7 @@ export default {
             //Send Delete Request to sever
             axios.delete("/api/itemtypes/" + id).then(res => {
               Bus.$emit("afterTypeDeleted");
-              swal.fire("Deleted!", res.data.message, "success");
+              swal.fire("Deleted!", "Item Type is Successfully Deleted", "success");
             });
           }
         })
@@ -158,7 +158,7 @@ export default {
           this.cancel();
           Toast.fire({
             type: "success",
-            title: res.data.message
+            title: "Item Type is Updated"
           });
           Bus.$emit("afterTypeCreated");
         })

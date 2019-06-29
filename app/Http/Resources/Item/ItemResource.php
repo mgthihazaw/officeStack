@@ -3,7 +3,10 @@
 namespace App\Http\Resources\Item;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\Item\AttributeGroupResource;
+use App\Http\Resources\Attribute\AttributeResource;
+use App\Http\Resources\ItemType\ItemTypeResource;
+use App\Http\Resources\Brand\BrandResource;
+
 
 class ItemResource extends JsonResource
 {
@@ -23,10 +26,10 @@ class ItemResource extends JsonResource
         return [
             'id' => $this->id,
             'price' => $this->price,
-            'brand' => $this->brand->name,
-            'model' => $this->model_no,
-            'item_type' => $this->item_type->name,
-            'attribute_groups' => AttributeGroupResource::collection($this->item_type->attribute_groups),
+            'brand' => new BrandResource($this->brand),
+            'model_no' => $this->model_no,
+            'item_type' => new ItemTypeResource($this->item_type),
+            'attributes' => AttributeResource::collection($this->attributes),
         ];
     }
 }

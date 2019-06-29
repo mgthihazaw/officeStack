@@ -1,6 +1,5 @@
 <template>
   <div v-if="show">
-    
     <div class="row" v-if="authorized">
       <div class="itemTable col-md-12" v-if="!(create || edit)" ref="itemTable">
         <div class="mb-2 row">
@@ -21,34 +20,58 @@
                 <th style="width: 100px">#</th>
                 <th>Name</th>
 
-                <th>Quantity</th>
                 <th>Item Type</th>
                 <th>Price</th>
                 <th>Date</th>
                 <th style="width: 150px">Action</th>
               </tr>
-              <tr v-for="(item,index) in items" :key="index" class="animated fadeIn">
+            </tbody>
+            <tbody v-for="(item,index) in items" :key="index" class="animated fadeIn">
+              <tr>
                 <td>{{ index+1 }}</td>
                 <td>
-                  {{ item.brand }}
-                  <span
-                    v-for="(attribute,index) in item.attributes"
-                    :key="index"
-                  >{{ attribute }}&nbsp;</span>
+                  {{ item.brand.name }}
+                  <span>{{ item.model_no }}</span>
                 </td>
 
-                <td>{{ item.quantity }}</td>
-                <td>{{ item.item_type }}</td>
+                <td>{{ item.item_type.name }}</td>
 
                 <td>{{ item.price }}</td>
                 <td>{{ item.update_at | myDate}}</td>
                 <td>
+                  <button
+                    class="btn btn-info btn-sm text-white"
+                    data-toggle="collapse"
+                    :data-target="`#demo${index}`"
+                  >
+                    <i class="fa fa-eye"></i>
+                  </button>
                   <button class="btn btn-warning btn-sm text-white" @click="editItem(item.id)">
                     <i class="fa fa-edit"></i>
                   </button>
                   <button class="btn btn-danger btn-sm" @click="deleteItem(item.id)">
                     <i class="fa fa-times"></i>
                   </button>
+                </td>
+              </tr>
+              <tr :id="`demo${index}`" class="collapse animated fadeIn">
+                <td colspan="6">
+                  <div class="card ">
+                    <div class="card-body ">
+                      <h4 class="card-title">
+                        {{ item.brand.name }}
+                        <span>{{ item.model_no }}</span>
+                        &nbsp;&nbsp;&nbsp; =>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        {{ item.price }}
+                      </h4>
+                      
+                      <p
+                      v-for="(attribute,index) in item.attributes" :key="index"
+                        class="card-text"
+                      >{{ attribute.attribute_group}} : {{attribute.name}}</p>
+                      
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -74,23 +97,8 @@
             <div class="col-10">
               <form>
                 <h5>1.Insert Item Information</h5>
-                <div class="form-group row pt-4">
-                  <div class="col-md-4">
-                    <label for="secret" class="pt-2">Item Brand</label>
-                  </div>
-                  <div class="col-md-8">
-                    <multiselect
-                      :options="brands"
-                      label="name"
-                      v-model="brand"
-                      placeholder="Choose Item Type"
-                      :taggable="true"
-                      :block-keys="['Delete']"
-                    ></multiselect>
-                  </div>
-                </div>
 
-                <div class="form-group row">
+                <div class="form-group row pt-4">
                   <div class="col-md-4">
                     <label for="exampleInputtext1" class="pt-2">Item Type</label>
                   </div>
@@ -109,6 +117,24 @@
 
                 <div class="form-group row">
                   <div class="col-md-4">
+                    <label for="secret" class="pt-2">Item Brand</label>
+                  </div>
+                  <div class="col-md-8">
+                    <multiselect
+                      tag-placeholder="Create New Brand"
+                      :options="brands"
+                      label="name"
+                      v-model="brand"
+                      placeholder="Choose Item Type"
+                      :taggable="true"
+                      :block-keys="['Delete']"
+                      @tag="addBrandTag"
+                    ></multiselect>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-md-4">
                     <label for="exampleInputtext1" class="pt-2">Model No</label>
                   </div>
                   <div class="col-md-8">
@@ -118,21 +144,6 @@
                       id="exampleInputtext1"
                       v-model="form.model_no"
                       placeholder="Enter Model Number"
-                    >
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <div class="col-md-4">
-                    <label for="exampleInputtext1" class="pt-2">Item Quantity</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="exampleInputtext1"
-                      v-model="form.quantity"
-                      placeholder="Enter Item Quantity"
                     >
                   </div>
                 </div>
@@ -169,6 +180,7 @@
                         :options="attributeGroup.attributes"
                         v-model="attributes[index]"
                         placeholder="Choose Item Type"
+                        label="name"
                         :close-on-select="true"
                         :show-labels="false"
                         :block-keys="['Delete']"
@@ -183,7 +195,11 @@
                   <div class="col-md-5"></div>
                   <div class="col-md-4">
                     <button class="btn btn-secondary" @click="back">Cancel</button>
-                    <button type="button" class="btn btn-primary" @click="submitItem">Save Item</button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      @click="submitItem(form.id)"
+                    >Save Item</button>
                   </div>
                 </div>
               </form>
@@ -211,42 +227,40 @@
             <div class="col-10">
               <form>
                 <h5>1.Insert Item Information</h5>
+
                 <div class="form-group row pt-4">
                   <div class="col-md-4">
-                    <label for="secret" class="pt-2">Item Brand</label>
+                    <label for="exampleInputtext1" class="pt-2">Item Type</label>
                   </div>
                   <div class="col-md-8">
                     <multiselect
-                        
-                        v-model="brand"
-                        track-by="name"
-                        :block-keys="['Delete']"
-                        placeholder="Choose State"
-                        label="name"
-                        :options="brands"
-						            
-                        @input="changeData"
-					 	            
+                      v-model="itemType"
+                      track-by="name"
+                      :block-keys="['Delete']"
+                      placeholder="Choose State"
+                      label="name"
+                      :options="itemTypes"
+                      :reset-after="false"
+                      @input="loadAttributeGroup"
                     ></multiselect>
                   </div>
                 </div>
 
                 <div class="form-group row">
                   <div class="col-md-4">
-                    <label for="exampleInputtext1" class="pt-2">Item Type</label>
+                    <label for="secret" class="pt-2">Item Brand</label>
                   </div>
                   <div class="col-md-8">
                     <multiselect
-
-                        v-model="itemType"
-                        track-by="name"
-                        :block-keys="['Delete']"
-                        placeholder="Choose State"
-                        label="name"
-                        :options="itemTypes"
-						            :reset-after="false"
-                        @input="loadAttributeGroup"
-					 	                           
+                      v-model="brand"
+                      track-by="name"
+                      :block-keys="['Delete']"
+                      placeholder="Choose Brand"
+                      label="name"
+                      :options="brands"
+                      :reset-after="false"
+                      :taggable="true"
+                      @tag="addBrandTag"
                     ></multiselect>
                   </div>
                 </div>
@@ -262,21 +276,6 @@
                       id="exampleInputtext1"
                       v-model="form.model_no"
                       placeholder="Enter Model Number"
-                    >
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <div class="col-md-4">
-                    <label for="exampleInputtext1" class="pt-2">Item Quantity</label>
-                  </div>
-                  <div class="col-md-8">
-                    <input
-                      type="number"
-                      class="form-control"
-                      id="exampleInputtext1"
-                      v-model="form.quantity"
-                      placeholder="Enter Item Quantity"
                     >
                   </div>
                 </div>
@@ -313,9 +312,9 @@
                         :options="attributeGroup.attributes"
                         v-model="attributes[index]"
                         placeholder="Choose Item Type"
-                        :close-on-select="true"
-                        :show-labels="false"
                         :block-keys="['Delete']"
+                         label="name"
+                         track-by="name"
                         :taggable="true"
                         @tag="addTag($event,attributes[index],attributeGroup.attributes)"
                       ></multiselect>
@@ -327,7 +326,11 @@
                   <div class="col-md-5"></div>
                   <div class="col-md-4">
                     <button type="button" class="btn btn-secondary" @click="back">Cancel</button>
-                    <button type="button" class="btn btn-primary" @click="submitItem">Save Item</button>
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      @click="updateItem(form.id)"
+                    >Update Item</button>
                   </div>
                 </div>
               </form>
@@ -337,6 +340,9 @@
       </div>
 
       <!--------------------ITEM EDIT FORM------------------------------------>
+      <!-------------SHOW --------------------->
+
+      <!-------------SHOW --------------------->
     </div>
 
     <div v-else>
@@ -366,8 +372,7 @@ export default {
       attributes: [],
       form: {
         id: "",
-        brand_id: "",
-        quantity: "",
+        brand: "",
         price: "",
         model_no: "",
         item_type_id: "",
@@ -376,8 +381,8 @@ export default {
     };
   },
   methods: {
-    changeData(data){
-      alert(data.name)
+    changeData() {
+      alert("Hello");
     },
     loadItemType() {
       axios
@@ -390,24 +395,24 @@ export default {
         });
     },
     loadAttributeGroup(type) {
-      console.log("getAttr",type)
-      if(type){
+      // console.log("getAttr",type)
+      if (type) {
         axios
-        .get(`/api/itemtypes/${type.id}/attributegroups`)
-        .then(res => {
-          this.attributeGroups = res.data.data;
-          this.form.attributes = [];
-          this.attributeGroups.forEach((attGroup, index) => {
-            let name = attGroup.name;
-            this.attributes[index] = "";
-            // this.form.attributes[attGroup.name]=''
-            // this.form.attributes=[]
-            this.form.attributes.push({ [attGroup.name]: "" });
+          .get(`/api/itemtypes/${type.id}/attributegroups`)
+          .then(res => {
+            this.attributeGroups = res.data.data;
+            this.form.attributes = [];
+            this.attributeGroups.forEach((attGroup, index) => {
+              let name = attGroup.name;
+              this.attributes[index] = "";
+              // this.form.attributes[attGroup.name]=''
+              // this.form.attributes=[]
+              this.form.attributes.push({ [attGroup.name]: "" });
+            });
+          })
+          .catch(err => {
+            console.log(err);
           });
-        })
-        .catch(err => {
-          console.log(err);
-        });
       }
     },
     getItems() {
@@ -415,28 +420,41 @@ export default {
         .get("/api/items")
         .then(res => {
           this.items = res.data.data;
-          
         })
         .catch(err => {
           console.log(err);
         });
     },
-    getItem(id){
-      
-      axios.get('/api/items/'+id)
+    getItem(id) {
+      axios
+        .get("/api/items/" + id)
         .then(res => {
-          this.form=res.data.data
-           this.brand={id:1,name:this.form.brand}
-           this.itemType={id:1,name:this.form.item_type}
-          
-           
-           
-          //  this.attributeGroups
+          this.form = res.data.data;
+          // console.log(res.data.data);
+          this.brand = this.form.brand;
+          this.itemType = this.form.item_type;
+          const tempAttributes = res.data.data.attributes;
+          axios
+            .get(`/api/itemtypes/${this.itemType.id}/attributegroups`)
+            .then(res => {
+              this.attributeGroups = res.data.data;
+              this.form.attributes = [];
+              this.attributeGroups.forEach((attGroup, index) => {
+                this.form.attributes.push({ [attGroup.name]: "" });
+
+                
+               this.attributes[index]= tempAttributes.find(tempAttribute=>{
+                  return tempAttribute.attribute_group == attGroup.name
+                })
+              });
+            })
+            .catch(err => {
+              console.log(err);
+            });
         })
         .catch(err => {
           console.log(err);
         });
-      
     },
     getBrand() {
       axios
@@ -450,21 +468,22 @@ export default {
     },
     createItem() {
       this.create = true;
-      
     },
-    editItem(id){
+    editItem(id) {
       this.edit = true;
-      
-      this.getItem(id)
+
+      this.getItem(id);
     },
-    
+
     submitItem() {
       this.form.item_type_id = this.itemType.id;
-      this.form.brand_id = this.brand.id;
+      this.form.brand = this.brand.name;
 
       //Validation Of Attribute
       this.form.attributes.forEach((attribute, key) => {
-        attribute[Object.keys(attribute)] = this.attributes[key];
+       if(this.attributes[key]){
+          attribute[Object.keys(attribute)] = this.attributes[key].name;
+       }
       });
 
       this.form.attributes = this.form.attributes.filter(function(
@@ -476,6 +495,7 @@ export default {
           value[Object.keys(value)] != "" && value[Object.keys(value)] != null
         );
       });
+      // console.log(this.form.attributes)
 
       axios
         .post("/api/items", this.form)
@@ -521,8 +541,51 @@ export default {
           });
         });
     },
+    updateItem(id) {
+      this.form.item_type_id = this.itemType.id;
+      this.form.brand = this.brand.name;
+
+      //Validation Of Attribute
+      this.form.attributes.forEach((attribute, key) => {
+        if(this.attributes[key]){
+          attribute[Object.keys(attribute)] = this.attributes[key].name;
+        }
+        
+      });
+
+      this.form.attributes = this.form.attributes.filter(function(
+        value,
+        index,
+        arr
+      ) {
+        return (
+          value[Object.keys(value)] != "" && value[Object.keys(value)] != null
+        );
+      });
+      // console.log(this.form.attributes)
+
+      axios
+        .put("/api/items/" + id, this.form)
+        .then(res => {
+          // console.log(res);
+
+          this.back();
+
+          Toast.fire({
+            type: "success",
+            title: "Successfully Updated"
+          });
+          Bus.$emit("afterItemChange");
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    },
+    showItem(id) {
+      $("#showItem").modal("show");
+    },
     back() {
-      this.$router.push('/item')
+      this.$router.push("/item");
       this.create = false;
       this.edit = false;
       this.form = {
@@ -539,9 +602,20 @@ export default {
       this.attributeGroups = [];
       this.attributes = [];
     },
+    addBrandTag(newTag) {
+      const tag = {
+        name: newTag,
+        id: this.brands.length
+      };
+      this.brands.push(tag);
+      this.brand.township = tag;
+    },
 
     addTag(newTag, itemType, itemTypes) {
-      const tag = newTag;
+      const tag = {
+        name: newTag,
+        id: 0
+      };
 
       itemTypes.push(tag);
       itemType = tag;
@@ -563,13 +637,12 @@ export default {
     }
   },
   created() {
-    
     this.getPermis();
     this.getItems();
     this.loadItemType();
     this.getBrand();
     Bus.$on("afterItemChange", () => {
-      this.getItem();
+      this.getItems();
     });
   }
 };
@@ -606,11 +679,11 @@ tbody tr {
 }
 
 td {
-  padding: 1.5em;
+  padding: 0.9em;
   background: #fff;
   border-bottom: 1px solid rgba(191, 236, 197, 0.87);
 }
-.table-hover tbody tr:hover td {
+.table-hover tbody:hover td {
   background: #e9ecef;
 }
 

@@ -72497,6 +72497,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -73058,7 +73068,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("p", [
                                       _vm._v(
-                                        "\n              DASHBOARD\n            "
+                                        "\n                DASHBOARD\n              "
                                       )
                                     ])
                                   ]
@@ -73085,7 +73095,7 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("p", [
                                   _vm._v(
-                                    "\n              PROFILE\n            "
+                                    "\n                PROFILE\n              "
                                   )
                                 ])
                               ]
@@ -73144,96 +73154,80 @@ var render = function() {
                             )
                           : _vm._e(),
                         _vm._v(" "),
-                        _vm.SaleShow()
-                          ? _c(
+                        _c("li", { staticClass: "nav-item has-treeview" }, [
+                          _vm._m(1),
+                          _vm._v(" "),
+                          _c("ul", { staticClass: "nav nav-treeview" }, [
+                            _c(
                               "li",
-                              {
-                                staticClass: "nav-item has-treeview menu-open"
-                              },
+                              { staticClass: "nav-item" },
                               [
-                                _vm._m(1),
-                                _vm._v(" "),
                                 _c(
-                                  "ul",
+                                  "router-link",
                                   {
-                                    staticClass:
-                                      "nav nav-treeview dropColor pl-2",
-                                    staticStyle: { display: "block" }
+                                    staticClass: "nav-link",
+                                    attrs: { to: "/item" }
                                   },
                                   [
-                                    _c(
-                                      "li",
-                                      { staticClass: "nav-item" },
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "nav-link",
-                                            attrs: { to: "/item" }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass:
-                                                "fas fa-table nav-icon"
-                                            }),
-                                            _vm._v(" "),
-                                            _c("p", [_vm._v("Item")])
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    ),
+                                    _c("i", {
+                                      staticClass:
+                                        "far fa-circle nav-icon green"
+                                    }),
                                     _vm._v(" "),
-                                    _c(
-                                      "li",
-                                      { staticClass: "nav-item" },
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "nav-link",
-                                            attrs: { to: "/itemtype" }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass:
-                                                "fas fa-table nav-icon"
-                                            }),
-                                            _vm._v(" "),
-                                            _c("p", [_vm._v("Item Type")])
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "li",
-                                      { staticClass: "nav-item" },
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "nav-link",
-                                            attrs: { to: "/attribute" }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass:
-                                                "fas fa-table nav-icon"
-                                            }),
-                                            _vm._v(" "),
-                                            _c("p", [_vm._v("Attribute")])
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
+                                    _c("p", [_vm._v("Item")])
                                   ]
                                 )
-                              ]
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "li",
+                              { staticClass: "nav-item" },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "nav-link",
+                                    attrs: { to: "/itemtype" }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass:
+                                        "far fa-circle nav-icon green"
+                                    }),
+                                    _vm._v(" "),
+                                    _c("p", [_vm._v("Item Type")])
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "li",
+                              { staticClass: "nav-item" },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "nav-link",
+                                    attrs: { to: "/attribute" }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass:
+                                        "far fa-circle nav-icon green"
+                                    }),
+                                    _vm._v(" "),
+                                    _c("p", [_vm._v("Attribute")])
+                                  ]
+                                )
+                              ],
+                              1
                             )
-                          : _vm._e(),
+                          ])
+                        ]),
                         _vm._v(" "),
                         _c(
                           "li",
@@ -73335,7 +73329,7 @@ var staticRenderFns = [
       _c("i", { staticClass: "nav-icon fas fa-database green" }),
       _vm._v(" "),
       _c("p", [
-        _vm._v("\n              Items\n              "),
+        _vm._v("\n                Items\n                "),
         _c("i", { staticClass: "right fas fa-angle-left" })
       ])
     ])
@@ -82247,7 +82241,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this2.cancel();
         Toast.fire({
           type: "success",
-          title: res.data.message
+          title: "Item Type is Successfully Created"
         });
         Bus.$emit("afterTypeCreated");
       }).catch(function (err) {
@@ -82268,7 +82262,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           //Send Delete Request to sever
           axios.delete("/api/itemtypes/" + id).then(function (res) {
             Bus.$emit("afterTypeDeleted");
-            swal.fire("Deleted!", res.data.message, "success");
+            swal.fire("Deleted!", "Item Type is Successfully Deleted", "success");
           });
         }
       }).catch(function (err) {
@@ -82292,7 +82286,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this3.cancel();
         Toast.fire({
           type: "success",
-          title: res.data.message
+          title: "Item Type is Updated"
         });
         Bus.$emit("afterTypeCreated");
       }).catch(function (err) {
@@ -82680,7 +82674,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-1df20866] {\r\n  width: 100%;\r\n  height: 100%;\r\n  font-family: Poppins-Regular;\r\n  font-size: 15px;\r\n\r\n  line-height: 1.2;\r\n  font-weight: unset !important;\r\n  padding-top: 20px;\r\n\r\n  padding-bottom: 20px;\n}\ntable[data-v-1df20866] {\r\n  border: 1px solid rgb(111, 161, 136);\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-1df20866] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-1df20866] {\r\n  padding: 20px;\n}\ntbody tr[data-v-1df20866] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-1df20866] {\r\n  padding: 1.5em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-1df20866] {\r\n  background: #e9ecef;\n}\n.formcolor[data-v-1df20866] {\r\n  background: #ebeff2;\r\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-radius: 30px;\n}\n.form-group .form-control[data-v-1df20866] {\r\n  padding: 1.35rem 0.75rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.table[data-v-1df20866] {\r\n  width: 100%;\r\n  height: 100%;\r\n  font-family: Poppins-Regular;\r\n  font-size: 15px;\r\n\r\n  line-height: 1.2;\r\n  font-weight: unset !important;\r\n  padding-top: 20px;\r\n\r\n  padding-bottom: 20px;\n}\ntable[data-v-1df20866] {\r\n  border: 1px solid rgb(111, 161, 136);\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-1df20866] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-1df20866] {\r\n  padding: 20px;\n}\ntbody tr[data-v-1df20866] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-1df20866] {\r\n  padding: 0.9em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody:hover td[data-v-1df20866] {\r\n  background: #e9ecef;\n}\n.formcolor[data-v-1df20866] {\r\n  background: #ebeff2;\r\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-radius: 30px;\n}\n.form-group .form-control[data-v-1df20866] {\r\n  padding: 1.35rem 0.75rem;\n}\r\n", ""]);
 
 // exports
 
@@ -82695,6 +82689,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -83063,8 +83063,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       attributes: [],
       form: {
         id: "",
-        brand_id: "",
-        quantity: "",
+        brand: "",
         price: "",
         model_no: "",
         item_type_id: "",
@@ -83074,8 +83073,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
 
   methods: {
-    changeData: function changeData(data) {
-      alert(data.name);
+    changeData: function changeData() {
+      alert("Hello");
     },
     loadItemType: function loadItemType() {
       var _this = this;
@@ -83089,7 +83088,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     loadAttributeGroup: function loadAttributeGroup(type) {
       var _this2 = this;
 
-      console.log("getAttr", type);
+      // console.log("getAttr",type)
       if (type) {
         axios.get("/api/itemtypes/" + type.id + "/attributegroups").then(function (res) {
           _this2.attributeGroups = res.data.data;
@@ -83118,13 +83117,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getItem: function getItem(id) {
       var _this4 = this;
 
-      axios.get('/api/items/' + id).then(function (res) {
+      axios.get("/api/items/" + id).then(function (res) {
         _this4.form = res.data.data;
-        _this4.brand = { id: 1, name: _this4.form.brand };
-        _this4.itemType = { id: 1, name: _this4.form.item_type
+        // console.log(res.data.data);
+        _this4.brand = _this4.form.brand;
+        _this4.itemType = _this4.form.item_type;
+        var tempAttributes = res.data.data.attributes;
+        axios.get("/api/itemtypes/" + _this4.itemType.id + "/attributegroups").then(function (res) {
+          _this4.attributeGroups = res.data.data;
+          _this4.form.attributes = [];
+          _this4.attributeGroups.forEach(function (attGroup, index) {
+            _this4.form.attributes.push(_defineProperty({}, attGroup.name, ""));
 
-          //  this.attributeGroups
-        };
+            _this4.attributes[index] = tempAttributes.find(function (tempAttribute) {
+              return tempAttribute.attribute_group == attGroup.name;
+            });
+          });
+        }).catch(function (err) {
+          console.log(err);
+        });
       }).catch(function (err) {
         console.log(err);
       });
@@ -83150,16 +83161,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this6 = this;
 
       this.form.item_type_id = this.itemType.id;
-      this.form.brand_id = this.brand.id;
+      this.form.brand = this.brand.name;
 
       //Validation Of Attribute
       this.form.attributes.forEach(function (attribute, key) {
-        attribute[Object.keys(attribute)] = _this6.attributes[key];
+        if (_this6.attributes[key]) {
+          attribute[Object.keys(attribute)] = _this6.attributes[key].name;
+        }
       });
 
       this.form.attributes = this.form.attributes.filter(function (value, index, arr) {
         return value[Object.keys(value)] != "" && value[Object.keys(value)] != null;
       });
+      // console.log(this.form.attributes)
 
       axios.post("/api/items", this.form).then(function (res) {
         console.log(res);
@@ -83199,8 +83213,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
+    updateItem: function updateItem(id) {
+      var _this7 = this;
+
+      this.form.item_type_id = this.itemType.id;
+      this.form.brand = this.brand.name;
+
+      //Validation Of Attribute
+      this.form.attributes.forEach(function (attribute, key) {
+        if (_this7.attributes[key]) {
+          attribute[Object.keys(attribute)] = _this7.attributes[key].name;
+        }
+      });
+
+      this.form.attributes = this.form.attributes.filter(function (value, index, arr) {
+        return value[Object.keys(value)] != "" && value[Object.keys(value)] != null;
+      });
+      // console.log(this.form.attributes)
+
+      axios.put("/api/items/" + id, this.form).then(function (res) {
+        // console.log(res);
+
+        _this7.back();
+
+        Toast.fire({
+          type: "success",
+          title: "Successfully Updated"
+        });
+        Bus.$emit("afterItemChange");
+      }).catch(function (err) {
+        console.log(err);
+      });
+    },
+    showItem: function showItem(id) {
+      $("#showItem").modal("show");
+    },
     back: function back() {
-      this.$router.push('/item');
+      this.$router.push("/item");
       this.create = false;
       this.edit = false;
       this.form = {
@@ -83217,39 +83266,50 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.attributeGroups = [];
       this.attributes = [];
     },
+    addBrandTag: function addBrandTag(newTag) {
+      var tag = {
+        name: newTag,
+        id: this.brands.length
+      };
+      this.brands.push(tag);
+      this.brand.township = tag;
+    },
     addTag: function addTag(newTag, itemType, itemTypes) {
-      var tag = newTag;
+      var tag = {
+        name: newTag,
+        id: 0
+      };
 
       itemTypes.push(tag);
       itemType = tag;
     },
     getPermis: function getPermis() {
-      var _this7 = this;
+      var _this8 = this;
 
       if (User.isLoggedIn()) {
         axios.post("/api/auth/me").then(function (response) {
           Gate.setUser(response.data.role_id);
 
           if (Gate.isSaleperson()) {
-            _this7.show = true;
-            _this7.authorized = true;
+            _this8.show = true;
+            _this8.authorized = true;
           } else {
-            _this7.show = true;
-            _this7.authorized = false;
+            _this8.show = true;
+            _this8.authorized = false;
           }
         });
       }
     }
   },
   created: function created() {
-    var _this8 = this;
+    var _this9 = this;
 
     this.getPermis();
     this.getItems();
     this.loadItemType();
     this.getBrand();
     Bus.$on("afterItemChange", function () {
-      _this8.getItem();
+      _this9.getItems();
     });
   }
 });
@@ -83280,7 +83340,7 @@ var render = function() {
                               on: { click: _vm.createItem }
                             },
                             [
-                              _vm._v("\n              Add New\n              "),
+                              _vm._v("\n            Add New\n            "),
                               _c("i", { staticClass: "fa fa-plus" })
                             ]
                           )
@@ -83294,45 +83354,34 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "p-0 col-md-12" }, [
-                        _c("table", { staticClass: "table table-hover" }, [
-                          _c(
-                            "tbody",
-                            [
-                              _vm._m(0),
-                              _vm._v(" "),
-                              _vm._l(_vm.items, function(item, index) {
-                                return _c(
-                                  "tr",
-                                  {
-                                    key: index,
-                                    staticClass: "animated fadeIn"
-                                  },
-                                  [
+                        _c(
+                          "table",
+                          { staticClass: "table table-hover" },
+                          [
+                            _vm._m(0),
+                            _vm._v(" "),
+                            _vm._l(_vm.items, function(item, index) {
+                              return _c(
+                                "tbody",
+                                { key: index, staticClass: "animated fadeIn" },
+                                [
+                                  _c("tr", [
                                     _c("td", [_vm._v(_vm._s(index + 1))]),
                                     _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      [
-                                        _vm._v(
-                                          "\n                  " +
-                                            _vm._s(item.brand) +
-                                            "\n                  "
-                                        ),
-                                        _vm._l(item.attributes, function(
-                                          attribute,
-                                          index
-                                        ) {
-                                          return _c("span", { key: index }, [
-                                            _vm._v(_vm._s(attribute) + " ")
-                                          ])
-                                        })
-                                      ],
-                                      2
-                                    ),
+                                    _c("td", [
+                                      _vm._v(
+                                        "\n                " +
+                                          _vm._s(item.brand.name) +
+                                          "\n                "
+                                      ),
+                                      _c("span", [
+                                        _vm._v(_vm._s(item.model_no))
+                                      ])
+                                    ]),
                                     _vm._v(" "),
-                                    _c("td", [_vm._v(_vm._s(item.quantity))]),
-                                    _vm._v(" "),
-                                    _c("td", [_vm._v(_vm._s(item.item_type))]),
+                                    _c("td", [
+                                      _vm._v(_vm._s(item.item_type.name))
+                                    ]),
                                     _vm._v(" "),
                                     _c("td", [_vm._v(_vm._s(item.price))]),
                                     _vm._v(" "),
@@ -83343,6 +83392,19 @@ var render = function() {
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "btn btn-info btn-sm text-white",
+                                          attrs: {
+                                            "data-toggle": "collapse",
+                                            "data-target": "#demo" + index
+                                          }
+                                        },
+                                        [_c("i", { staticClass: "fa fa-eye" })]
+                                      ),
+                                      _vm._v(" "),
                                       _c(
                                         "button",
                                         {
@@ -83374,13 +83436,77 @@ var render = function() {
                                         ]
                                       )
                                     ])
-                                  ]
-                                )
-                              })
-                            ],
-                            2
-                          )
-                        ])
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "tr",
+                                    {
+                                      staticClass: "collapse animated fadeIn",
+                                      attrs: { id: "demo" + index }
+                                    },
+                                    [
+                                      _c("td", { attrs: { colspan: "6" } }, [
+                                        _c("div", { staticClass: "card " }, [
+                                          _c(
+                                            "div",
+                                            { staticClass: "card-body " },
+                                            [
+                                              _c(
+                                                "h4",
+                                                { staticClass: "card-title" },
+                                                [
+                                                  _vm._v(
+                                                    "\n                      " +
+                                                      _vm._s(item.brand.name) +
+                                                      "\n                      "
+                                                  ),
+                                                  _c("span", [
+                                                    _vm._v(
+                                                      _vm._s(item.model_no)
+                                                    )
+                                                  ]),
+                                                  _vm._v(
+                                                    "\n                          =>      \n                      " +
+                                                      _vm._s(item.price) +
+                                                      "\n                    "
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _vm._l(item.attributes, function(
+                                                attribute,
+                                                index
+                                              ) {
+                                                return _c(
+                                                  "p",
+                                                  {
+                                                    key: index,
+                                                    staticClass: "card-text"
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(
+                                                        attribute.attribute_group
+                                                      ) +
+                                                        " : " +
+                                                        _vm._s(attribute.name)
+                                                    )
+                                                  ]
+                                                )
+                                              })
+                                            ],
+                                            2
+                                          )
+                                        ])
+                                      ])
+                                    ]
+                                  )
+                                ]
+                              )
+                            })
+                          ],
+                          2
+                        )
                       ])
                     ]
                   )
@@ -83401,7 +83527,7 @@ var render = function() {
                                 on: { click: _vm.back }
                               }),
                               _vm._v(
-                                "\n                CREATE ITEM\n              "
+                                "\n              CREATE ITEM\n            "
                               )
                             ])
                           ])
@@ -83429,18 +83555,21 @@ var render = function() {
                                       [
                                         _c("multiselect", {
                                           attrs: {
-                                            options: _vm.brands,
+                                            options: _vm.itemTypes,
                                             label: "name",
                                             placeholder: "Choose Item Type",
                                             taggable: true,
                                             "block-keys": ["Delete"]
                                           },
+                                          on: {
+                                            select: _vm.loadAttributeGroup
+                                          },
                                           model: {
-                                            value: _vm.brand,
+                                            value: _vm.itemType,
                                             callback: function($$v) {
-                                              _vm.brand = $$v
+                                              _vm.itemType = $$v
                                             },
-                                            expression: "brand"
+                                            expression: "itemType"
                                           }
                                         })
                                       ],
@@ -83458,19 +83587,20 @@ var render = function() {
                                     [
                                       _c("multiselect", {
                                         attrs: {
-                                          options: _vm.itemTypes,
+                                          "tag-placeholder": "Create New Brand",
+                                          options: _vm.brands,
                                           label: "name",
                                           placeholder: "Choose Item Type",
                                           taggable: true,
                                           "block-keys": ["Delete"]
                                         },
-                                        on: { select: _vm.loadAttributeGroup },
+                                        on: { tag: _vm.addBrandTag },
                                         model: {
-                                          value: _vm.itemType,
+                                          value: _vm.brand,
                                           callback: function($$v) {
-                                            _vm.itemType = $$v
+                                            _vm.brand = $$v
                                           },
-                                          expression: "itemType"
+                                          expression: "brand"
                                         }
                                       })
                                     ],
@@ -83523,42 +83653,6 @@ var render = function() {
                                         {
                                           name: "model",
                                           rawName: "v-model",
-                                          value: _vm.form.quantity,
-                                          expression: "form.quantity"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      attrs: {
-                                        type: "number",
-                                        id: "exampleInputtext1",
-                                        placeholder: "Enter Item Quantity"
-                                      },
-                                      domProps: { value: _vm.form.quantity },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.form,
-                                            "quantity",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "form-group row" }, [
-                                  _vm._m(5),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-8" }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
                                           value: _vm.form.price,
                                           expression: "form.price"
                                         }
@@ -83642,6 +83736,7 @@ var render = function() {
                                                         attributeGroup.attributes,
                                                       placeholder:
                                                         "Choose Item Type",
+                                                      label: "name",
                                                       "close-on-select": true,
                                                       "show-labels": false,
                                                       "block-keys": ["Delete"],
@@ -83702,7 +83797,11 @@ var render = function() {
                                         {
                                           staticClass: "btn btn-primary",
                                           attrs: { type: "button" },
-                                          on: { click: _vm.submitItem }
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.submitItem(_vm.form.id)
+                                            }
+                                          }
                                         },
                                         [_vm._v("Save Item")]
                                       )
@@ -83732,9 +83831,7 @@ var render = function() {
                                 staticStyle: { cursor: "pointer" },
                                 on: { click: _vm.back }
                               }),
-                              _vm._v(
-                                "\n                EDIT ITEM\n              "
-                              )
+                              _vm._v("\n              EDIT ITEM\n            ")
                             ])
                           ])
                         ]),
@@ -83753,7 +83850,7 @@ var render = function() {
                                   "div",
                                   { staticClass: "form-group row pt-4" },
                                   [
-                                    _vm._m(6),
+                                    _vm._m(5),
                                     _vm._v(" "),
                                     _c(
                                       "div",
@@ -83765,15 +83862,16 @@ var render = function() {
                                             "block-keys": ["Delete"],
                                             placeholder: "Choose State",
                                             label: "name",
-                                            options: _vm.brands
+                                            options: _vm.itemTypes,
+                                            "reset-after": false
                                           },
-                                          on: { input: _vm.changeData },
+                                          on: { input: _vm.loadAttributeGroup },
                                           model: {
-                                            value: _vm.brand,
+                                            value: _vm.itemType,
                                             callback: function($$v) {
-                                              _vm.brand = $$v
+                                              _vm.itemType = $$v
                                             },
-                                            expression: "brand"
+                                            expression: "itemType"
                                           }
                                         })
                                       ],
@@ -83783,7 +83881,7 @@ var render = function() {
                                 ),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "form-group row" }, [
-                                  _vm._m(7),
+                                  _vm._m(6),
                                   _vm._v(" "),
                                   _c(
                                     "div",
@@ -83793,18 +83891,19 @@ var render = function() {
                                         attrs: {
                                           "track-by": "name",
                                           "block-keys": ["Delete"],
-                                          placeholder: "Choose State",
+                                          placeholder: "Choose Brand",
                                           label: "name",
-                                          options: _vm.itemTypes,
-                                          "reset-after": false
+                                          options: _vm.brands,
+                                          "reset-after": false,
+                                          taggable: true
                                         },
-                                        on: { input: _vm.loadAttributeGroup },
+                                        on: { tag: _vm.addBrandTag },
                                         model: {
-                                          value: _vm.itemType,
+                                          value: _vm.brand,
                                           callback: function($$v) {
-                                            _vm.itemType = $$v
+                                            _vm.brand = $$v
                                           },
-                                          expression: "itemType"
+                                          expression: "brand"
                                         }
                                       })
                                     ],
@@ -83813,7 +83912,7 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "form-group row" }, [
-                                  _vm._m(8),
+                                  _vm._m(7),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "col-md-8" }, [
                                     _c("input", {
@@ -83849,43 +83948,7 @@ var render = function() {
                                 ]),
                                 _vm._v(" "),
                                 _c("div", { staticClass: "form-group row" }, [
-                                  _vm._m(9),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-8" }, [
-                                    _c("input", {
-                                      directives: [
-                                        {
-                                          name: "model",
-                                          rawName: "v-model",
-                                          value: _vm.form.quantity,
-                                          expression: "form.quantity"
-                                        }
-                                      ],
-                                      staticClass: "form-control",
-                                      attrs: {
-                                        type: "number",
-                                        id: "exampleInputtext1",
-                                        placeholder: "Enter Item Quantity"
-                                      },
-                                      domProps: { value: _vm.form.quantity },
-                                      on: {
-                                        input: function($event) {
-                                          if ($event.target.composing) {
-                                            return
-                                          }
-                                          _vm.$set(
-                                            _vm.form,
-                                            "quantity",
-                                            $event.target.value
-                                          )
-                                        }
-                                      }
-                                    })
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "form-group row" }, [
-                                  _vm._m(10),
+                                  _vm._m(8),
                                   _vm._v(" "),
                                   _c("div", { staticClass: "col-md-8" }, [
                                     _c("input", {
@@ -83976,9 +84039,9 @@ var render = function() {
                                                         attributeGroup.attributes,
                                                       placeholder:
                                                         "Choose Item Type",
-                                                      "close-on-select": true,
-                                                      "show-labels": false,
                                                       "block-keys": ["Delete"],
+                                                      label: "name",
+                                                      "track-by": "name",
                                                       taggable: true
                                                     },
                                                     on: {
@@ -84037,9 +84100,13 @@ var render = function() {
                                         {
                                           staticClass: "btn btn-primary",
                                           attrs: { type: "button" },
-                                          on: { click: _vm.submitItem }
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.updateItem(_vm.form.id)
+                                            }
+                                          }
                                         },
-                                        [_vm._v("Save Item")]
+                                        [_vm._v("Update Item")]
                                       )
                                     ])
                                   ]
@@ -84062,29 +84129,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("tr", { staticClass: "heading" }, [
-      _c("th", { staticStyle: { width: "100px" } }, [_vm._v("#")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Name")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Quantity")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Item Type")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Price")]),
-      _vm._v(" "),
-      _c("th", [_vm._v("Date")]),
-      _vm._v(" "),
-      _c("th", { staticStyle: { width: "150px" } }, [_vm._v("Action")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("label", { staticClass: "pt-2", attrs: { for: "secret" } }, [
-        _vm._v("Item Brand")
+    return _c("tbody", [
+      _c("tr", { staticClass: "heading" }, [
+        _c("th", { staticStyle: { width: "100px" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Name")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Item Type")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Price")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Date")]),
+        _vm._v(" "),
+        _c("th", { staticStyle: { width: "150px" } }, [_vm._v("Action")])
       ])
     ])
   },
@@ -84105,11 +84162,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-4" }, [
-      _c(
-        "label",
-        { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
-        [_vm._v("Model No")]
-      )
+      _c("label", { staticClass: "pt-2", attrs: { for: "secret" } }, [
+        _vm._v("Item Brand")
+      ])
     ])
   },
   function() {
@@ -84120,7 +84175,7 @@ var staticRenderFns = [
       _c(
         "label",
         { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
-        [_vm._v("Item Quantity")]
+        [_vm._v("Model No")]
       )
     ])
   },
@@ -84141,6 +84196,18 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-4" }, [
+      _c(
+        "label",
+        { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
+        [_vm._v("Item Type")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-4" }, [
       _c("label", { staticClass: "pt-2", attrs: { for: "secret" } }, [
         _vm._v("Item Brand")
       ])
@@ -84154,31 +84221,7 @@ var staticRenderFns = [
       _c(
         "label",
         { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
-        [_vm._v("Item Type")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c(
-        "label",
-        { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
         [_vm._v("Model No")]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c(
-        "label",
-        { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
-        [_vm._v("Item Quantity")]
       )
     ])
   },

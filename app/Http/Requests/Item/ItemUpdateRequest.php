@@ -26,7 +26,7 @@ class ItemUpdateRequest extends FormRequest
     {
         return [
             'price' => 'required|integer|min:1|max:999999', 
-            'brand' => 'required|integer|exists:brands,id',
+            'brand' => 'required|string',
             'item_type_id' => 'required|integer|exists:item_types,id',
             'model_no' => 'unique:items,model_no,'.$this->item->id,
             'attributes' => ['required',new AssociativeArray()],

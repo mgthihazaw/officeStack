@@ -90,7 +90,10 @@
             </router-link>
           </li>
 
-          <li class="nav-item has-treeview menu-open" v-if="SaleShow()">
+
+
+
+<li class="nav-item has-treeview">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-database green"></i>
               <p>
@@ -98,31 +101,38 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview dropColor pl-2" style="display: block;">
+            <ul class="nav nav-treeview">
               <li class="nav-item">
                  <router-link class="nav-link" to="/item">
-                  <i class="fas fa-table nav-icon"></i>
+                  <i class="far fa-circle nav-icon green"></i>
                   
                   <p>Item</p>
                  </router-link>
               </li>
               <li class="nav-item">
                  <router-link class="nav-link" to="/itemtype">
-                  <i class="fas fa-table nav-icon"></i>
+                  <i class="far fa-circle nav-icon green"></i>
                   
                   <p>Item Type</p>
                  </router-link>
               </li>
               <li class="nav-item">
                  <router-link class="nav-link" to="/attribute">
-                  <i class="fas fa-table nav-icon"></i>
+                  <i class="far fa-circle nav-icon green"></i>
                   
                   <p>Attribute</p>
                  </router-link>
               </li>
-              
             </ul>
           </li>
+
+
+
+
+
+
+
+
 
           <li class="nav-item logout">
             <router-link class="nav-link" to="/logout">

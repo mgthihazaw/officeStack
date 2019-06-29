@@ -116,8 +116,16 @@ class ItemController extends Controller
                     }
                 }
             }
-            $item->update($request->only(['price','quantity','brand_id','item_type_id','model_no']));
-            $item->attributes()->syncWithoutDetaching($attributes);
+            $brand = Brand::firstOrCreate(['name' => $request->brand]);
+            $item->update([
+                'price' => $request->price,
+                'brand_id' => $brand->id,
+                'item_type_id' => $request->item_type_id,
+                'model_no' => $request->model_no
+            ]);
+
+
+            $item->attributes()->sync($attributes);
             return response()->json(['data' => new ItemResource($item), 'message' => 'Item Updated'], 200);
         });
 
