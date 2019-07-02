@@ -27,6 +27,10 @@ class Staff extends Authenticatable implements JWTSubject
     	return $this->belongsTo('App\Business');
     }
 
+    public function department(){
+        return $this->belongsTo('App\Department');
+    }
+
     public function scopeReceptionists($query){
     	return $query->where('role_id', '=', 3);
     }

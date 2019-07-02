@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\Business;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Http\Resources\Township\TownshipResource;
 use App\Http\Resources\State\StateResource;
-use App\Http\Resources\Role\RoleResource;
-use App\Http\Resources\Business\BusinessResource;
-use App\Http\Resources\Department\DepartmentResource;
 
 
-class StaffResource extends JsonResource
+class BusinessResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -27,9 +24,6 @@ class StaffResource extends JsonResource
             'address' => $this->person_business->address_line,
             'township' => new TownshipResource($this->person_business->township),
             'state' => new StateResource($this->person_business->township->state),
-            'roles' => RoleResource::collection($this->roles),
-            'business' => new BusinessResource($this->business),
-            'department' => new DepartmentResource($this->department),
         ];
     }
 }

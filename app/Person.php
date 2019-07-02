@@ -16,7 +16,7 @@ class Person extends Model
     	return $this->hasMany('App\Staff');
     }
 
-    public function address(){
-    	return $this->belongsTo('App\Address');
+    public function township(){
+    	return $this->belongsTo('App\Township');
     }
 }

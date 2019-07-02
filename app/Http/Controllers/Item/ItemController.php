@@ -65,7 +65,7 @@ class ItemController extends Controller
             $brand->item_types()->sync(array_push($item_types, $request->item_type_id));
 
             $item = Item::create([
-                'price' => $request->price,
+                'price_one' => $request->price_one,
                 'brand_id' => $brand->id,
                 'item_type_id' => $request->item_type_id,
                 'model_no' => $request->model_no
@@ -145,30 +145,29 @@ class ItemController extends Controller
     }
 
     public function search(Request $request){
-
-        $query = Item::query();
+        $query = Item::select('items.*');
         
-        $results = $query->whereHas('item_type', function($q) use($request){
-            if($request->query('item_type')){
-                $q->where('id', $request->query('item_type'));
+        if($request->query('item_type')){
+            $query->where('item_type_id', $request->query('item_type'));
+        }
+
+        if($request->query('brand')){
+            $query->where('brand_id', $request->query('brand'));
+        }
+
+        if($request->query('attributes')){
+            $attributes = explode(',', $request->query('attributes'));
+            foreach ($attributes as $key => $attribute) {
+                $index = $key + 1;
+                $query->leftjoin("attribute_item as col".$index, "items.id", "=", "col".$index."."."item_id")
+                        ->leftjoin("attributes as a".$index, "col".$index.".attribute_id", "=", "a".$index."."."id")
+                        ->where("a".$index."."."name", $attribute);
             }
-        })
-        ->whereHas('brand', function($q) use($request){
-            if($request->query('brand')){
-                $q->where('id', $request->query('brand'));
-            }
-        })
-        ->whereHas('attributes', function($q) use($request){
-            if($request->query('attributes')){
-                $attributes = explode(',', $request->query('attributes'));
-                $q->whereIn('name', $attributes);
-            }
-        })
-        ->get();
+        }
 
         DB::enableQueryLog();
         $results = $query->get();
-        //dd(DB::getQueryLog());
+        // dd(DB::getQueryLog());
 
         return response()->json(['data' => ItemResource::collection($results)], 200);
     }
