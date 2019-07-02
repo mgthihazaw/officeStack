@@ -31611,7 +31611,7 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
 	Toast.fire({
 		type: "error",
-		title: error.response.data.message
+		title: error.response.data.error
 	});
 
 	if (error.response.data.type == 'token_invalid') {
@@ -73068,7 +73068,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c("p", [
                                       _vm._v(
-                                        "\n                DASHBOARD\n              "
+                                        "\n              DASHBOARD\n            "
                                       )
                                     ])
                                   ]
@@ -73095,7 +73095,7 @@ var render = function() {
                                 _vm._v(" "),
                                 _c("p", [
                                   _vm._v(
-                                    "\n                PROFILE\n              "
+                                    "\n              PROFILE\n            "
                                   )
                                 ])
                               ]
@@ -73154,80 +73154,82 @@ var render = function() {
                             )
                           : _vm._e(),
                         _vm._v(" "),
-                        _c("li", { staticClass: "nav-item has-treeview" }, [
-                          _vm._m(1),
-                          _vm._v(" "),
-                          _c("ul", { staticClass: "nav nav-treeview" }, [
-                            _c(
-                              "li",
-                              { staticClass: "nav-item" },
-                              [
+                        _vm.SaleShow()
+                          ? _c("li", { staticClass: "nav-item has-treeview" }, [
+                              _vm._m(1),
+                              _vm._v(" "),
+                              _c("ul", { staticClass: "nav nav-treeview" }, [
                                 _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "nav-link",
-                                    attrs: { to: "/item" }
-                                  },
+                                  "li",
+                                  { staticClass: "nav-item" },
                                   [
-                                    _c("i", {
-                                      staticClass:
-                                        "far fa-circle nav-icon green"
-                                    }),
-                                    _vm._v(" "),
-                                    _c("p", [_vm._v("Item")])
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "li",
-                              { staticClass: "nav-item" },
-                              [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        staticClass: "nav-link",
+                                        attrs: { to: "/item" }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "far fa-circle nav-icon green"
+                                        }),
+                                        _vm._v(" "),
+                                        _c("p", [_vm._v("Item")])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
                                 _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "nav-link",
-                                    attrs: { to: "/itemtype" }
-                                  },
+                                  "li",
+                                  { staticClass: "nav-item" },
                                   [
-                                    _c("i", {
-                                      staticClass:
-                                        "far fa-circle nav-icon green"
-                                    }),
-                                    _vm._v(" "),
-                                    _c("p", [_vm._v("Item Type")])
-                                  ]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "li",
-                              { staticClass: "nav-item" },
-                              [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        staticClass: "nav-link",
+                                        attrs: { to: "/itemtype" }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "far fa-circle nav-icon green"
+                                        }),
+                                        _vm._v(" "),
+                                        _c("p", [_vm._v("Item Type")])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
                                 _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "nav-link",
-                                    attrs: { to: "/attribute" }
-                                  },
+                                  "li",
+                                  { staticClass: "nav-item" },
                                   [
-                                    _c("i", {
-                                      staticClass:
-                                        "far fa-circle nav-icon green"
-                                    }),
-                                    _vm._v(" "),
-                                    _c("p", [_vm._v("Attribute")])
-                                  ]
+                                    _c(
+                                      "router-link",
+                                      {
+                                        staticClass: "nav-link",
+                                        attrs: { to: "/attribute" }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "far fa-circle nav-icon green"
+                                        }),
+                                        _vm._v(" "),
+                                        _c("p", [_vm._v("Attribute")])
+                                      ]
+                                    )
+                                  ],
+                                  1
                                 )
-                              ],
-                              1
-                            )
-                          ])
-                        ]),
+                              ])
+                            ])
+                          : _vm._e(),
                         _vm._v(" "),
                         _c(
                           "li",
@@ -73329,7 +73331,7 @@ var staticRenderFns = [
       _c("i", { staticClass: "nav-icon fas fa-database green" }),
       _vm._v(" "),
       _c("p", [
-        _vm._v("\n                Items\n                "),
+        _vm._v("\n              Items\n              "),
         _c("i", { staticClass: "right fas fa-angle-left" })
       ])
     ])
@@ -83590,7 +83592,7 @@ var render = function() {
                                           "tag-placeholder": "Create New Brand",
                                           options: _vm.brands,
                                           label: "name",
-                                          placeholder: "Choose Item Type",
+                                          placeholder: "Choose Brand Name",
                                           taggable: true,
                                           "block-keys": ["Delete"]
                                         },

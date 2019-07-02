@@ -66,14 +66,25 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         $permissions = [];
-        foreach($this->guard()->user()->role->permissions as $permission){
-            $permissions[] = $permission->permission;
+        foreach($this->guard()->user()->roles as $role){
+            foreach($role->perms as $permission){
+                $permissions[] = $permission->name;
+            }
         }
+
+        $roles = [];
+        foreach($this->guard()->user()->roles as $role){
+            $roles[] = $role->name;
+        }
+        
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'userID'    => $this->guard()->id(),
-            'user' => $this->guard()->user(),
+            'user' => [
+                'username' => $this->guard()->user()->username,
+                'roles' => $roles
+            ],
             'permissions' => $permissions,
             'expires_in' => auth()->factory()->getTTL()
         ]);

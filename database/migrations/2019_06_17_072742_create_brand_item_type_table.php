@@ -13,6 +13,8 @@ class CreateBrandItemTypeTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('brand_item_type', function (Blueprint $table) {
             $table->integer('brand_id')->unsigned();
             $table->integer('item_type_id')->unsigned();
@@ -20,6 +22,8 @@ class CreateBrandItemTypeTable extends Migration
             $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
             $table->unique(['brand_id', 'item_type_id']);
         });
+
+        DB::commit();
     }
 
     /**

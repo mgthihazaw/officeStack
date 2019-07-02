@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Attribute\AttributeResource;
 use App\Http\Requests\Attribute\AttributeStoreRequest;
 use App\Http\Requests\Attribute\AttributeUpdateRequest;
+use Illuminate\Support\Facades\DB;
 
 
 class AttributeController extends Controller
@@ -73,5 +74,13 @@ class AttributeController extends Controller
         $attribute->delete();
 
         return response()->json(['message' => 'Deleted'], 410);
+    }
+
+    public function search(Request $request){
+        $key = $request->query('key');
+
+        $results = Attribute::where('name', 'LIKE', "$key%")->get();
+
+        return response()->json(['data' => AttributeResource::collection($results)], 200);
     }
 }

@@ -13,15 +13,21 @@ class CreatePersonBusinessTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('person_business', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('phone')->nullable();
-
+            $table->text('address_line')->nullable();
+            $table->integer('township_id')->unsigned()->nullable();
             $table->integer('person_business_id')->unsigned()->default(1);
+
+            $table->foreign('township_id')->references('id')->on('townships')->onDelete('cascade');
             $table->foreign('person_business_id')->references('id')->on('person_business')->onDelete('cascade');
-            $table->timestamps();
         });
+
+        DB::commit();
     }
 
     /**
@@ -32,6 +38,7 @@ class CreatePersonBusinessTable extends Migration
     public function down()
     {
         Schema::table('person_business', function(Blueprint $table){
+            $table->dropForeign(['township_id']);
             $table->dropForeign(['person_business_id']);
         });
         Schema::dropIfExists('person_business');

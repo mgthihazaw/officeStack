@@ -13,16 +13,22 @@ class CreateItemsTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('price');
-            $table->integer('brand_id')->unsigned();
+            $table->integer('price_one');
+            $table->integer('price_two')->nullable();
+            $table->integer('price_three')->nullable();
+            $table->integer('brand_id')->unsigned()->nullable();
             $table->integer('item_type_id')->unsigned();
             $table->string('model_no')->nullable()->unique();
             $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
             $table->foreign('item_type_id')->references('id')->on('item_types')->onDelete('cascade');
             $table->timestamps();
         });
+
+        DB::commit();
     }
 
     /**

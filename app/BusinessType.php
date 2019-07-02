@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class BusinessType extends Model
 {
-    protected $fillable = ['type'];
+    protected $fillable = ['name'];
 }

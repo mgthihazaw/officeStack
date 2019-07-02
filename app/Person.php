@@ -8,7 +8,9 @@ class Person extends Model
 {
 	protected $table = 'person_business';
 
-    protected $fillable = ['name','phone','person_business_id','address_id'];
+    protected $fillable = ['name','phone','address_line','township_id','person_business_id'];
+
+    public $timestamps = false;
 
     public function staffs(){
     	return $this->hasMany('App\Staff');

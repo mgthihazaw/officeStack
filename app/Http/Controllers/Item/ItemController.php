@@ -143,4 +143,33 @@ class ItemController extends Controller
 
         return response()->json([], 204);
     }
+
+    public function search(Request $request){
+
+        $query = Item::query();
+        
+        $results = $query->whereHas('item_type', function($q) use($request){
+            if($request->query('item_type')){
+                $q->where('id', $request->query('item_type'));
+            }
+        })
+        ->whereHas('brand', function($q) use($request){
+            if($request->query('brand')){
+                $q->where('id', $request->query('brand'));
+            }
+        })
+        ->whereHas('attributes', function($q) use($request){
+            if($request->query('attributes')){
+                $attributes = explode(',', $request->query('attributes'));
+                $q->whereIn('name', $attributes);
+            }
+        })
+        ->get();
+
+        DB::enableQueryLog();
+        $results = $query->get();
+        //dd(DB::getQueryLog());
+
+        return response()->json(['data' => ItemResource::collection($results)], 200);
+    }
 }

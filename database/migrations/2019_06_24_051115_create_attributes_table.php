@@ -13,6 +13,8 @@ class CreateAttributesTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('attributes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -20,6 +22,8 @@ class CreateAttributesTable extends Migration
             $table->foreign('attribute_group_id')->references('id')->on('attribute_groups')->onDelete('cascade');
             $table->timestamps();
         });
+
+        DB::commit();
     }
 
     /**

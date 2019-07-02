@@ -125,7 +125,7 @@
                       :options="brands"
                       label="name"
                       v-model="brand"
-                      placeholder="Choose Item Type"
+                      placeholder="Choose Brand Name"
                       :taggable="true"
                       :block-keys="['Delete']"
                       @tag="addBrandTag"

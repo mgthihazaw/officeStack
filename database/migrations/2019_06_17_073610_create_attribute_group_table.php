@@ -13,6 +13,8 @@ class CreateAttributeGroupTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('attribute_groups', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
@@ -21,6 +23,8 @@ class CreateAttributeGroupTable extends Migration
             $table->unique(['name','item_type_id']);
             $table->timestamps();
         });
+
+        DB::commit();
     }
 
     /**

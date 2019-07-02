@@ -13,11 +13,15 @@ class CreateBusinessTypeTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('business_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('type');
+            $table->string('name');
             $table->timestamps();
         });
+
+        DB::commit();
     }
 
     /**

@@ -93,7 +93,7 @@
 
 
 
-<li class="nav-item has-treeview">
+          <li class="nav-item has-treeview" v-if="SaleShow()">
             <a href="#" class="nav-link ">
               <i class="nav-icon fas fa-database green"></i>
               <p>

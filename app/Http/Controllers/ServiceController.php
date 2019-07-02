@@ -43,10 +43,6 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
-        if(!Gate::allows('create-service', Auth::guard()->user())){
-            throw new AuthorizationException;
-            // return response()->json('You are not allowed');
-        }
         $customer_name = $request->customer_name;
         $customer_phone = $request->customer_phone;
         $customer_address = $request->customer_address;
@@ -83,6 +79,7 @@ class ServiceController extends Controller
             ]);
 
             Service::create([
+                'received_id' => 1,
                 'customer_name' => $customer_name,
                 'customer_phone' => $customer_phone,
                 'township' => $customer_address,
@@ -104,11 +101,6 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-
-        if(!Gate::allows('show-service', Auth::guard()->user())){
-            throw new AuthorizationException;
-            // return response()->json('You are not allowed');
-        }
         return new ServiceResource(Service::findOrFail($id));
     }
 
@@ -155,7 +147,7 @@ class ServiceController extends Controller
 
                 return response()->json('Service has been finished', 200);
             }else{
-                return response()->json('Your secret is wrong', 401);
+                return response()->json(['error' => 'Your secret is wrong'], 401);
             }
             
         }

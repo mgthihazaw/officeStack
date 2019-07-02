@@ -60,7 +60,8 @@ Route::group(['middleware' => 'jwt'], function(){
 	Route::apiResource('attributegroups', 'AttributeGroup\AttributeGroupController');
 	Route::apiResource('attributegroups.attributes', 'AttributeGroup\AttributeGroupAttributeController', ['only' => ['index']]);
 
-	//Route::apiResource('attributes', 'Attribute\AttributeController');
+	Route::get('/search/attribute', 'Attribute\AttributeController@search');
 
 	Route::apiResource('items', 'Item\ItemController');
+	Route::get('search/items', 'Item\ItemController@search');
 });

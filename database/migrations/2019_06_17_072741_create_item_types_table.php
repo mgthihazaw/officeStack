@@ -13,11 +13,15 @@ class CreateItemTypesTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('item_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->timestamps();
         });
+
+        DB::commit();
     }
 
     /**

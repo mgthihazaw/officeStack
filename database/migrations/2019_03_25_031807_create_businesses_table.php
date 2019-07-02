@@ -13,6 +13,8 @@ class CreateBusinessesTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('businesses', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('person_business_id')->unsigned();
@@ -20,6 +22,8 @@ class CreateBusinessesTable extends Migration
             $table->integer('business_type_id')->unsigned();
             $table->foreign('business_type_id')->references('id')->on('business_types')->onDelete('cascade');
         });
+
+        DB::commit();
     }
 
     /**

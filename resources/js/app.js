@@ -50,7 +50,7 @@ axios.interceptors.response.use(function (response) {
 }, function (error) {
 	Toast.fire({
 		type: "error",
-		title: error.response.data.message
+		title: error.response.data.error
 	  });
 	  
 	if (error.response.data.type == 'token_invalid') {

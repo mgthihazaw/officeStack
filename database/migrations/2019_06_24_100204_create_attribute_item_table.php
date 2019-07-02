@@ -13,6 +13,8 @@ class CreateAttributeItemTable extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         Schema::create('attribute_item', function (Blueprint $table) {
             $table->integer('item_id')->unsigned();
             $table->integer('attribute_id')->unsigned();
@@ -20,6 +22,8 @@ class CreateAttributeItemTable extends Migration
             $table->foreign('item_id')->references('id')->on('items')->onDelete('cascade');
             $table->foreign('attribute_id')->references('id')->on('attributes')->onDelete('cascade');
         });
+
+        DB::commit();
     }
 
     /**
