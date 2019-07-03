@@ -53,18 +53,6 @@ class AuthController extends Controller
 
     public function me()
     {
-        return response()->json($this->guard()->user());
-    }
-
-    /**
-     * Get the token array structure.
-     *
-     * @param  string $token
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    protected function respondWithToken($token)
-    {
         $permissions = [];
         foreach($this->guard()->user()->roles as $role){
             foreach($role->perms as $permission){
@@ -76,16 +64,35 @@ class AuthController extends Controller
         foreach($this->guard()->user()->roles as $role){
             $roles[] = $role->name;
         }
-        
+        return response()->json([
+            'user' => [
+                'id' => $this->guard()->id(),
+                'username' => $this->guard()->user()->username,
+                'roles' => $roles,
+                'permissions' => $permissions,
+            ]
+        ]);
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param  string $token
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token)
+    {
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'userID'    => $this->guard()->id(),
             'user' => [
+                'id'    => $this->guard()->id(),
                 'username' => $this->guard()->user()->username,
-                'roles' => $roles
+                //'roles' => $roles,
+                //'permissions' => $permissions,
             ],
-            'permissions' => $permissions,
+            
             'expires_in' => auth()->factory()->getTTL()
         ]);
     }
