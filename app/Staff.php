@@ -32,11 +32,15 @@ class Staff extends Authenticatable implements JWTSubject
     }
 
     public function scopeReceptionists($query){
-    	return $query->where('role_id', '=', 3);
+    	return $query->whereHas('roles', function($q){
+            $q->where('name','receptionist');
+        });
     }
 
     public function scopeServiceEngineers($query){
-    	return $query->where('role_id', '=', 2);
+    	return $query->whereHas('roles', function($q){
+            $q->where('name','service_engineer');
+        });
     }
 
 

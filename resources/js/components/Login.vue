@@ -73,9 +73,9 @@ export default {
         .then(response => {
           console.log(response)
           User.store(
-            response.data.userID,
+            response.data.user.id,
             response.data.user,
-            response.data.permissions,
+           
             response.data.access_token
           );
           window.location.replace("/");

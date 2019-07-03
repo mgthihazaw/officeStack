@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Department;
 use App\Role;
+use App\Http\Resources\Role\RoleResource;
 
 class DepartmentController extends Controller
 {
@@ -86,6 +87,6 @@ class DepartmentController extends Controller
     public function getRoles($id){
         $roles = Role::where('department_id', '=' , $id)->get();
 
-        return response()->json($roles);
+        return response()->json(RoleResource::collection($roles));
     }
 }

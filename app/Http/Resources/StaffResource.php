@@ -20,6 +20,10 @@ class StaffResource extends JsonResource
      */
     public function toArray($request)
     {
+        $departments = [];
+        foreach($this->roles as $role){
+            $departments[] = $role->department;
+        }
         return [
             'id' => $this->id,
             'name' => $this->person_business->name,
@@ -27,9 +31,9 @@ class StaffResource extends JsonResource
             'address' => $this->person_business->address_line,
             'township' => new TownshipResource($this->person_business->township),
             'state' => new StateResource($this->person_business->township->state),
-            'roles' => RoleResource::collection($this->roles),
+            'roles' => new RoleResource($this->roles()->first()),
             'business' => new BusinessResource($this->business),
-            'department' => new DepartmentResource($this->department),
+            'departments' => new DepartmentResource($this->roles()->first()->department)
         ];
     }
 }

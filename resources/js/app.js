@@ -70,8 +70,9 @@ window.Gate = Gate
 if (User.isLoggedIn()) {
 	axios.post('/api/auth/me')
 		.then(response => {
-			// console.log(response)
-			Gate.setUser(response.data.role_id);
+			// console.log(response.data.user.roles,response.data.user.permissions)
+			 Gate.setUser(response.data.user.roles,response.data.user.permissions);
+			//   console.log(Gate.can('service-list'))
 		})
 		.catch(err=>{
 			console.log(err)

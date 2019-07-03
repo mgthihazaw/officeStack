@@ -9,13 +9,13 @@ class User{
 	setUser(user){
 		localStorage.setItem('user', user.username);
 	}
-	setPermissions(permissions){
+	// setPermissions(permissions){
 		//localStorage.setItem('permissions',permissions);
-	}
-	store(userID,user,permissions,token){
+	// }
+	store(userID,user,token){
 		this.setID(userID);
 		this.setUser(user);
-		this.setPermissions(permissions)
+		// this.setPermissions(permissions)
 		this.setToken(token)
 	}
 	getUser(){

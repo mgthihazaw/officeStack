@@ -18,13 +18,11 @@ class CreateStaffTable extends Migration
         Schema::create('staffs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('person_business_id')->unsigned();
-            $table->integer('department_id')->unsigned();
             $table->integer('business_id')->unsigned();
             $table->string('username')->nullable();
             $table->string('password')->nullable();
             $table->string('secret')->default(bcrypt('microstack'));
 
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
             $table->foreign('person_business_id')->references('id')->on('person_business')->onDelete('cascade');
 
@@ -42,7 +40,6 @@ class CreateStaffTable extends Migration
     public function down()
     {
         Schema::table('staffs', function(Blueprint $table){
-            $table->dropForeign(['department_id']);
             $table->dropForeign(['business_id']);
             $table->dropForeign(['person_business_id']);
         });

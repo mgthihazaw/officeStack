@@ -5,19 +5,18 @@
       <div class="row">
         <div class="col-12">
           <div class="row mb-2">
-			  <h3 class="pl-5 col-10">Service List</h3>
-          <div class="col-2 text-center">
-            <router-link
-            class="btn btn-success text-white "
-            to="/services/create"
-            v-if="User.isSaleperson()"
-          >New Service</router-link>
+            <h3 class="pl-5 col-10">Service List</h3>
+            <div class="col-2 text-center">
+              <router-link
+                class="btn btn-success text-white"
+                to="/services/create"
+                v-if="User.isSaleperson()"
+              >New Service</router-link>
+            </div>
           </div>
-          </div>
-          
-          <table class="table  table-hover ">
 
-            <thead >
+          <table class="table table-hover">
+            <thead>
               <tr class="heading">
                 <th>No</th>
                 <th>Customer</th>
@@ -114,7 +113,6 @@ export default {
             alert(error.response.data.error);
             Bus.$emit("logout");
           }
-          
         });
     },
     editServicebySaleperson(id) {
@@ -148,7 +146,7 @@ export default {
   created() {
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.role_id);
+        Gate.setUser(response.data.user.roles, response.data.user.permissions);
         this.User = Gate;
 
         if (this.User.isSaleperson() || this.User.isServiceEngineer()) {
@@ -170,18 +168,17 @@ export default {
   },
   filters: {
     subStr: function(string) {
-		if(string.length>150){
-              return string.substring(0, 150) + "...";
-		}
-	  
-	  return string
+      if (string.length > 150) {
+        return string.substring(0, 150) + "...";
+      }
+
+      return string;
     }
   }
 };
 </script>
 
 <style scoped>
-
 td {
   font-family: "Zawgyi-One";
 }
@@ -189,49 +186,42 @@ td {
     width:100%;
     height: 100%;
 } */
-.table{
-   
-    font-family: Poppins-Regular;
-    font-size: 15px;
-    color: #666666;
-    line-height: 1.2;
-    font-weight: unset !important;
-    
-     
-   
+.table {
+  font-family: Poppins-Regular;
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.2;
+  font-weight: unset !important;
 }
 table {
   font-family: Poppins-Regular;
-  border: 1px solid rgb(111, 161, 136); 
+  border: 1px solid rgb(111, 161, 136);
   border-collapse: collapse;
   border-radius: 1em;
   overflow: hidden;
 }
- .heading{
-      background:  rgb(168, 180, 176); 
-      
+.heading {
+  background: rgb(168, 180, 176);
 }
-.heading th{
-    padding-top:20px;
-    padding-bottom: 20px;
-    
+.heading th {
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
-tbody tr{
-    background:  rgb(243, 243, 243); 
+tbody tr {
+  background: rgb(243, 243, 243);
 }
 
- td {
+td {
   padding: 1em;
   background: #fff;
-  border-bottom: 1px solid rgba(191, 236, 197, 0.87); 
+  border-bottom: 1px solid rgba(191, 236, 197, 0.87);
 }
 .table-hover tbody tr:hover td {
-    background: #E9ECEF;
+  background: #e9ecef;
 }
 
-.createroute{
-	display: block;
-	float:right;
-	
+.createroute {
+  display: block;
+  float: right;
 }
 </style>

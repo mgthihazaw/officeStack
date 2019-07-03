@@ -147,7 +147,7 @@
                       <div class="form-group row">
                         <div class="col-md-4"></div>
                         <div class="col-md-8">
-                          <button type="submit" class="btn btn-primary btn-block">Change Password</button>
+                          <button type="submit" class="btn btn-primary btn-block">Change Secret</button>
                         </div>
                       </div>
                     </form>

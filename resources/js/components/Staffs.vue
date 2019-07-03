@@ -5,12 +5,20 @@
     
     <div class="row" v-if="(!createMode && !editMode)">
       <div class="col-12 animated zoomIn">
-        <h1 class="page-header mirim_font">Staffs List</h1>
-        <button class="btn btn-success btn-sm mt-2 mb-3" @click="create">New Stafff</button>
+        <div class="mb-2 row">
+          <div class="col-md-5">
+            <button class="btn btn-outline-success btn-lg" @click="create">
+              Add New
+              <i class="fa fa-plus"></i>
+            </button>
+          </div>
+          <h3 class="px-4 pt-2 col-md-4 text-left">Staffs List</h3>
+        </div>
+        
 
-        <table class="table table-light table-hover table-striped ">
-          <thead class="thead-light">
-            <tr>
+        <table class="table  table-hover ">
+          <thead >
+            <tr class="heading">
               <th>No</th>
               <th>Name</th>
               <th>Phone</th>
@@ -22,29 +30,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(staff,index) in staffs" :key="staff.id">
+            <tr v-for="(staff,index) in staffs" :key="staff.id" class="animated fadeIn">
               <td>{{ index + 1 }}</td>
               <td>{{ staff.name }}</td>
               <td>{{ staff.phone }}</td>
               <td>
-                {{
-                staff.address.home_no !== null ? staff.address.home_no + ', ' : ''
-                }}
-                {{
-                staff.address.street !== null ? staff.address.street + ', ' : ''
-                }}
-                {{
-                staff.address.block !== null ? staff.address.block : ''
-                }}
+                {{ staff.address}}
+                
+                
               </td>
-              <td>{{ staff.business }}</td>
-              <td>{{ staff.department }}</td>
-              <td>{{ staff.role }}</td>
+              <td>{{ staff.business.name }}</td>
+              <td>
+                  {{ staff.departments.name }}
+              </td>
+              <td>
+                  {{ staff.roles.name }}
+              </td>
               <td>
                 <button class="btn btn-info btn-sm text-white" @click="editStaff(staff)">
                   <i class="fa fa-edit"></i>
                 </button>
-                <button class="btn btn-danger btn-sm" @click="deleteStaff(staff.no)">
+                <button class="btn btn-danger btn-sm" @click="deleteStaff(staff.id)">
                   <i class="fa fa-times"></i>
                 </button>
               </td>
@@ -90,7 +96,7 @@ export default {
       this.editMode = true;
       this.editstaff = staff;
 
-      this.$router.push(`/staffs/edit/${staff.no}`);
+      this.$router.push(`/staffs/edit/${staff.id}`);
     },
     deleteStaff(id) {
       axios
@@ -126,7 +132,7 @@ export default {
     
      if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.role_id);
+        Gate.setUser(response.data.user.roles,response.data.user.permissions);
         if (!Gate.isDeveloper()) {
 					this.shows()
           this.authorized = false;
@@ -164,7 +170,49 @@ td {
   font-family: "Zawgyi";
 }
 
+.table{
+   
+    font-family: Poppins-Regular;
+    font-size: 15px;
+    color: #666666;
+    line-height: 1.2;
+    font-weight: unset !important;
+    
+     
+   
+}
+table {
+  font-family: Poppins-Regular;
+  border: 1px solid rgb(111, 161, 136); 
+  border-collapse: collapse;
+  border-radius: 1em;
+  overflow: hidden;
+}
+ .heading{
+      background:  rgb(168, 180, 176); 
+      
+}
+.heading th{
+    padding-top:20px;
+    padding-bottom: 20px;
+    
+}
+tbody tr{
+    background:  rgb(243, 243, 243); 
+}
+
+ td {
+  padding: 1em;
+  background: #fff;
+  border-bottom: 1px solid rgba(191, 236, 197, 0.87); 
+}
 .table-hover tbody tr:hover td {
     background: #E9ECEF;
+}
+
+.createroute{
+	display: block;
+	float:right;
+	
 }
 </style>

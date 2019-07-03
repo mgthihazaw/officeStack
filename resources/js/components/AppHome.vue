@@ -214,7 +214,7 @@
           if(this.isLoggedIn){
             axios.post('/api/auth/me')
               .then(response => {
-            Gate.setUser(response.data.role_id);
+            Gate.setUser(response.data.user.roles,response.data.user.permissions);
             this.User.sale = Gate.isSaleperson()
             this.User.service=Gate.isServiceEngineer()
             this.User.develop=Gate.isDeveloper()

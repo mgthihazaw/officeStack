@@ -19,6 +19,9 @@ class EntrustSetupTables extends Migration
             $table->string('name')->unique();
             $table->string('display_name')->nullable();
             $table->string('description')->nullable();
+            $table->integer('department_id')->unsigned()->nullable();
+
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
             $table->timestamps();
         });
 
@@ -67,6 +70,9 @@ class EntrustSetupTables extends Migration
      */
     public function down()
     {
+        Schema::table('roles', function(Blueprint $table){
+            $table->dropForeign(['department_id']);
+        });
         Schema::drop('permission_role');
         Schema::drop('permissions');
         Schema::drop('role_staff');

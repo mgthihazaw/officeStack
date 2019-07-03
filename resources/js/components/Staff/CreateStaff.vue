@@ -34,7 +34,7 @@
                   <div class="row">
                     <div class="col-md-4">
                       <multiselect
-                        v-model="form.address.state"
+                        v-model="form.state"
                         placeholder="Choose State"
                         label="name"
                         :block-keys="['Delete']"
@@ -47,9 +47,8 @@
                       <multiselect
                         :options="townships"
                         label="name"
-                        v-model="form.address.township"
+                        v-model="form.township"
                         placeholder="Choose Township"
-                        @change="loadBlocks"
                         :taggable="true"
                         :block-keys="['Delete']"
                         @tag="addTag"
@@ -59,10 +58,10 @@
                     <div class="col-md-4">
                       <input
                         type="text"
-                        v-model="getAddress"
+                        v-model="form.address_line"
                         class="form-control"
                         id="address"
-                        @click="createAddress"
+                        
                       >
                     </div>
                   </div>
@@ -102,7 +101,7 @@
                         v-for="department in departments"
                         :key="department.id"
                         :value="department.id"
-                      >{{ department.department_name }}</option>
+                      >{{ department.name }}</option>
                     </select>
                   </div>
 
@@ -146,52 +145,7 @@
         </div>
       </div>
 
-      <div
-        class="modal fade"
-        id="newAddressModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Fill Address</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="POST">
-                <div class="form-group">
-                  <label for="home_no">Home No:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="home_no"
-                    v-model="form.address.home_no"
-                  >
-                </div>
-
-                <div class="form-group">
-                  <label for="block">Block</label>
-                  <input type="text" class="form-control" id="block" v-model="form.address.block">
-                </div>
-
-                <div class="form-group">
-                  <label for="street">Street</label>
-                  <input type="text" class="form-control" id="street" v-model="form.address.street">
-                </div>
-              </form>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @click="saveAddress">Close</button>
-                <button type="submit" class="btn btn-primary" @click="saveAddress">Create</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
   </div>
 </template>
@@ -213,13 +167,9 @@ export default {
         username: "",
         password: "",
         phone: "",
-        address: {
-          block: "",
-          home_no: "",
-          street: "",
-          township: "",
-          state: ""
-        },
+        state: "",
+        township:'',
+        address_line:'',
         business: "",
         department: "",
         role: ""
@@ -273,7 +223,7 @@ export default {
         .catch(error => console.log(error.response.data));
     },
     loadTownships(state) {
-      this.form.address.township = "";
+      this.form.township = "";
       if (state) {
         axios
           .get(`/api/states/${state.id}/townships`)
@@ -300,16 +250,20 @@ export default {
         .catch(errr => console.log(err.response.data));
     },
     submit() {
+      this.form.township=this.form.township.name
+      this.form.state = this.form.state.id
       axios
         .post("/api/staffs/", this.form)
         .then(response => {
-          // console.log(response.data)
-          Toast.fire({
-            type: "success",
-            title: response.data
-          });
-          Bus.$emit("afterCreated");
-          this.close();
+          if(response.status == 201){
+            Toast.fire({
+              type: "success",
+              title: "Staff Created Successfully"
+            });
+            Bus.$emit("afterCreated");
+            this.close();
+          }
+          
         })
         .catch(error => {
           Toast.fire({
@@ -337,13 +291,13 @@ export default {
         id: this.townships.length
       };
       this.townships.push(tag);
-      this.form.address.township = tag;
+      this.form.township = tag;
     }
   },
   created() {
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.role_id);
+        Gate.setUser(response.data.user.roles,response.data.user.permissions);
         if (!Gate.isDeveloper()) {
           this.shows();
           this.authorized = false;
@@ -358,18 +312,8 @@ export default {
     this.loadBusinesses();
     this.loadDepartments();
   },
-  computed: {
-    getAddress() {
-      return (
-        "Home_No: " +
-        this.form.address.home_no +
-        "/ Block: " +
-        this.form.address.block +
-        "/ Street: " +
-        this.form.address.street
-      );
-    }
-  }
+ 
+  
 };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

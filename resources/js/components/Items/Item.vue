@@ -623,7 +623,7 @@ export default {
     getPermis() {
       if (User.isLoggedIn()) {
         axios.post("/api/auth/me").then(response => {
-          Gate.setUser(response.data.role_id);
+          Gate.setUser(response.data.user.roles,response.data.user.permissions);
 
           if (Gate.isSaleperson()) {
             this.show = true;

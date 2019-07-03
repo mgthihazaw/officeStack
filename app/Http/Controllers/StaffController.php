@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Staff;
 use App\Person;
-use App\Location;
+use App\Township;
 use App\Address;
 use App\Http\Resources\StaffResource;
+use App\Http\Requests\Staff\StaffStoreRequest;
+use App\Http\Requests\Staff\StaffUpdateRequest;
+
+use DB;
 use Auth;
 use Hash;
 
@@ -39,76 +43,51 @@ class StaffController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StaffStoreRequest $request)
     {
-        
-        $request->validate([
-            'address.block' => 'required|string',
-            'address.home_no' => 'required|string',
-            'address.street' => 'required|string',
-            'address.township' => 'required',
-            'address.state.id' => 'required',
-            'name' => 'required',
-            'username' => 'required|string|unique:staffs',
-            'password' => 'required|string',
-            'phone' => 'required|string',
-            'role' => 'required|integer',
-            'business' => 'required|integer',
-            'department' => 'required|integer',
-        ]);
-   
-        $address = $request->address;
-
-        $block = $address['block'];
-        $home_no = $address['home_no'];
-        $street = $address['street'];
-
-        $township = $address['township']; // township object
-
-        $state = $address['state']; // state object
-        
-        if(is_array($township)){
-            $location = Location::firstOrCreate([
-                'name' => $township['name'],
-                'location_id' => $state['id'],
-            ]);
-        }else{
-            $location = Location::firstOrCreate([
-                'name' => $township,
-                'location_id' => $state['id'],
-            ]);
-        }
-
-        $staff_address = Address::firstOrCreate([
-            'home_no' => $home_no,
-            'block' => $block,
-            'street' => $street,
-            'location_id' => $location->id,
-        ]);
-
         $name = $request->name;
-        $business_id = $request->business;
-        $department_id = $request->department;
         $phone = $request->phone;
+        $username = $request->username;
+        $password = $request->password;
+        $role_id = $request->role;
+        $business_id = $request->business;
 
-        $role = $request->role;
+        $state_id = $request->state;
+        $township = $request->township;
+        $address_line = $request->address_line;
 
-        $person = Person::firstOrCreate([
-            'name' => $name,
-            'address_id' => $staff_address->id,
-            'phone' => $phone,
-            'person_business_id' => 2,
-        ]);
+        DB::beginTransaction();
+        try{
+            $township = Township::firstOrCreate([
+                'name' => $township,
+                'state_id' => $state_id
+            ]);
 
-        Staff::firstOrCreate([
-            'person_business_id' => $person->id,
-            'role_id' => $role,
-            'business_id' => $business_id,
-            'username' => $request->username,
-            'password' => bcrypt($request->password),
-        ]);
+            $person = Person::create([
+                'name' => $name,
+                'phone' => $phone,
+                'address_line' => $address_line,
+                'township_id' => $township->id,
+                'person_business_id' => 2
+            ]);
 
-        return response()->json('Successfully Created');
+            $staff = Staff::create([
+                'person_business_id' => $person->id,
+                'business_id' => $business_id,
+                'username' => $username,
+                'password' => bcrypt($password)
+            ]);
+
+            $staff->attachRole($role_id);
+            
+            DB::commit();
+
+            return response()->json(['data' => new StaffResource($staff)], 201);
+        }catch(Exception $e){
+            DB::rollback();
+            throw $e;
+        }
+        DB::endTransaction();     
     }
 
     /**
@@ -142,76 +121,48 @@ class StaffController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StaffUpdateRequest $request, Staff $staff)
     {
-
-        //return response()->json($request->all());
-        $request->validate([
-            'address.block' => 'required',
-            'address.home_no' => 'required',
-            'address.street' => 'required',
-            'address.township' => 'required',
-            'address.state.id' => 'required',
-            'name' => 'required',
-            'phone' => 'required',
-            'role' => 'required',
-            'business' => 'required',
-            'department' => 'required',
-        ]);
-
-        $old_staff = Staff::findOrFail($id);
-
         $name = $request->name;
         $phone = $request->phone;
-        $role = $request->role;
-        $business = $request->business;
-        $block = $request->address['block'];
-        $home_no = $request->address['home_no'];
-        $street = $request->address['street'];
+        $username = $request->username;
+        $password = $request->password;
+        $role_id = $request->role;
+        $business_id = $request->business;
 
-        $state = $request->address['state']['id'];
+        $state_id = $request->state;
+        $township = $request->township;
+        $address_line = $request->address_line;
 
-        $new_township = $request->address['township'];
-        if(is_array($new_township)){
-            $township = Location::where('name', '=' ,$new_township['name'])->where('location_id', '=' , $state)->first();
-        }else{
-            $township = Location::where('name', '=' ,$new_township)->where('location_id', '=' , $state)->first();
+        DB::beginTransaction();
+        try{
+            $township = Township::firstOrCreate([
+                'name' => $township,
+                'state_id' => $state_id
+            ]);
+
+            $person = $staff->person_business;
+            $person->update([
+                'name' => $name,
+                'phone' => $phone,
+                'address_line' => $address_line,
+                'township_id' => $township->id
+            ]);
+
+            $staff->update([
+                'business_id' => $business_id
+            ]);
+
+            $staff->roles()->sync($role_id);
+            
+            DB::commit();
+
+            return response()->json(['data' => new StaffResource($staff)], 201);
+        }catch(Exception $e){
+            DB::rollback();
+            dd($e);
         }
-
-        if(!$township){
-            if(is_array($new_township)){
-                $township = Location::firstOrCreate([
-                    'name' => $new_township['name'],
-                    'location_id' => $state,
-                ]);
-            }else{
-                $township = Location::firstOrCreate([
-                    'name' => $new_township,
-                    'location_id' => $state,
-                ]);
-            }
-        }
-
-        $staff_address = Address::firstOrCreate([
-            'home_no' => $home_no,
-            'block' => $block,
-            'street' => $street,
-            'location_id' => $township->id,
-        ]);
-
-
-        $old_staff->person_business->name = $name;
-        $old_staff->person_business->phone = $phone;
-        $old_staff->person_business->save();
-
-        $old_staff->business_id = $business;
-        $old_staff->role_id = $role;
-        $old_staff->save();
-
-        $old_staff->person_business->address_id = $staff_address->id;
-        $old_staff->person_business->save();
-        
-        return response()->json($old_staff);
+        DB::endTransaction(); 
     }
 
     /**

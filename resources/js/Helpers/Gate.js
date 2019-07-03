@@ -1,15 +1,29 @@
 class Gate{
-	setUser(role){
-		this.role = role;
+	
+	setUser(roles,permissions){
+		this.role = roles;
+		this.permissions=permissions
 	}
+	
 	isServiceEngineer(){
-		return this.role == 2
+		if(Array.isArray(this.role)){
+			return this.role.includes('service_engineer')
+		}
 	}
 	isSaleperson(){
-		return this.role == 3
+		if(Array.isArray(this.role)){
+			return this.role.includes('receptionist')
+		}
 	}
 	isDeveloper(){
-		return this.role == 1
+	if(Array.isArray(this.role)){
+		return this.role.includes('developer')
+	}
+	}
+	can(permis){
+		
+			return this.permissions.includes(permis)
+		
 	}
 }
 export default Gate = new Gate();

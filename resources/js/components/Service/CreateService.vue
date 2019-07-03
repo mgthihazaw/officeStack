@@ -163,6 +163,7 @@ export default {
         .get("/api/receptionists")
         .then(response => {
           this.receptionists = response.data;
+          console.log( response.data)
         })
         .catch(error => {
           console.log(error.response);
@@ -227,7 +228,7 @@ export default {
   created() {
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.role_id);
+        Gate.setUser(response.data.user.roles,response.data.user.permissions);
         if (!Gate.isSaleperson()) {
           this.shows();
           this.authorized = false;

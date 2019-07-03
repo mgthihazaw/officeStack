@@ -22,7 +22,7 @@ class RoleSeeder extends Seeder
         }
         
         // Developer Role
-        $role = ['name' => 'developer', 'display_name' => 'Developer', 'description' => 'Full Permission'];
+        $role = ['name' => 'developer', 'display_name' => 'Developer', 'description' => 'Full Permission', 'department_id' => 2];
         $role = Role::create($role);
         $permission = Permission::get();
         foreach ($permission as $key => $value) {
@@ -30,7 +30,7 @@ class RoleSeeder extends Seeder
         }
 
         // Service Engineer Role
-        $role = ['name' => 'service_engineer', 'display_name' => 'Service Engineer', 'description' => 'Associated with services'];
+        $role = ['name' => 'service_engineer', 'display_name' => 'Service Engineer', 'description' => 'Associated with services', 'department_id' => 3];
         $role = Role::create($role);
         $permission = Permission::where('name', 'service-list')->orWhere('name', 'service-update')->get();
         foreach ($permission as $key => $value) {
@@ -38,7 +38,7 @@ class RoleSeeder extends Seeder
         }
 
         // Receptionist Role
-        $role = ['name' => 'receptionist', 'display_name' => 'Receptionist', 'description' => 'Associated with services and Item Sales'];
+        $role = ['name' => 'receptionist', 'display_name' => 'Receptionist', 'description' => 'Associated with services and Item Sales', 'department_id' => 1];
         $role = Role::create($role);
         $permission = Permission::where('name', 'LIKE', '%service%')->orWhere('name','LIKE', '%item%')->get();
         foreach ($permission as $key => $value) {

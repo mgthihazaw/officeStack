@@ -9,19 +9,19 @@
               <h3>Edit Staff</h3>
             </div>
           </div>
-          <hr>
+          <hr />
           <div class="row">
             <div class="col-12">
               <form @submit.prevent="submit" method="POST">
                 <div class="form-group">
                   <label for="name">Name</label>
                   <p class="error text-muted" v-if="errs.name">{{errs.name[0]}}</p>
-                  <input type="text" class="form-control" id="name" v-model="form.name">
+                  <input type="text" class="form-control" id="name" v-model="form.name" />
                 </div>
                 <div class="form-group">
                   <label for="phone1">Phone Numbers</label>
                   <div class="error text-muted" v-if="errs.phone">{{errs.phone[0]}}</div>
-                  <input type="text" class="form-control" id="phone1" v-model="form.phone">
+                  <input type="text" class="form-control" id="phone1" v-model="form.phone" />
                 </div>
 
                 <div class="form-group">
@@ -33,15 +33,15 @@
                   <div class="row">
                     <div class="col-12">
                       <multiselect
-                        v-model="form.address.state"
+                        v-model="form.state"
                         track-by="name"
                         :block-keys="['Delete']"
                         placeholder="Choose State"
                         label="name"
                         :options="states"
                         :reset-after="false"
-                        @input="loadTownships(form.address.state)"
-                        @select="form.address.township=''"
+                        @input="loadTownships(form.state)"
+                        @select="form.township=''"
                       ></multiselect>
                     </div>
                   </div>
@@ -52,9 +52,8 @@
                         :options="townships"
                         label="name"
                         :block-keys="['Delete']"
-                        v-model="form.address.township"
+                        v-model="form.township"
                         placeholder="Choose Township"
-                        @input="loadBlocks"
                         :taggable="true"
                         @tag="addTag"
                         track-by="name"
@@ -64,15 +63,13 @@
 
                   <div class="row mt-2">
                     <div class="col-12">
-                      <input
-                        type="text"
-                        v-model="getAddress"
-                        class="form-control"
-                        id="address"
-                        @click="createAddress"
-                      >
+                     <input type="text" class="form-control" placeholder="Enter Address" v-model="form.address_line">
                     </div>
                   </div>
+
+
+
+
                 </div>
 
                 <div class="form-group">
@@ -83,6 +80,7 @@
                     id="business"
                     v-model="form.business"
                     class="form-control"
+                    
                   >
                     <option value disabled>Choose Office/Business</option>
                     <option
@@ -96,27 +94,24 @@
                 <div class="form-group">
                   <label for="department">Department</label>
                   <div class="error text-muted" v-if="errs.department">{{errs.department[0]}}</div>
-                  <select
-                    name="department"
-                    id="department"
+
+                  <multiselect
                     v-model="form.department"
-                    class="form-control"
-                    @change="loadRoles"
-                  >
-                    <option value disabled>Choose Department</option>
-                    <option
-                      v-for="department in departments"
-                      :key="department.id"
-                      :value="department.id"
-                    >{{ department.department_name }}</option>
-                  </select>
+                    tag-placeholder="Add this as new tag"
+                    placeholder="Search or add a tag"
+                    :block-keys="['Delete']"
+                    label="name"
+                    track-by="name"
+                    :options="departments"
+                    @input="loadRoles"
+                  ></multiselect>
                 </div>
 
                 <div class="form-group">
                   <label for="role">Role/Job Title</label>
                   <div class="error text-muted" v-if="errs.role">{{errs.role[0]}}</div>
-                  <select name="role" id="role" v-model="form.role" ref="role" class="form-control">
-                    <option value disabled>Choose Role/Job Title</option>
+                  <select v-model="form.role" class="form-control">
+                    <option >Select Role</option>
                     <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
                   </select>
                 </div>
@@ -126,53 +121,6 @@
                   <button type="submit" class="btn btn-primary">Save</button>
                 </div>
               </form>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="modal fade"
-        id="newAddressModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Fill Address</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form method="POST">
-                <div class="form-group">
-                  <label for="home_no">Home No:</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="home_no"
-                    v-model="form.address.home_no"
-                  >
-                </div>
-
-                <div class="form-group">
-                  <label for="block">Block</label>
-                  <input type="text" class="form-control" id="block" v-model="form.address.block">
-                </div>
-
-                <div class="form-group">
-                  <label for="street">Street</label>
-                  <input type="text" class="form-control" id="street" v-model="form.address.street">
-                </div>
-              </form>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" @click="saveAddress">Close</button>
-                <button type="submit" class="btn btn-primary" @click="saveAddress">Save</button>
-              </div>
             </div>
           </div>
         </div>
@@ -199,13 +147,8 @@ export default {
         id: "",
         name: "",
         phone: "",
-        address: {
-          block: "",
-          home_no: "",
-          street: "",
-          township: "",
-          state: ""
-        },
+        township: "",
+        state: "",
         business: "",
         department: "",
         role: ""
@@ -237,12 +180,13 @@ export default {
         .then(response => (this.departments = response.data))
         .catch(error => console.log(error.response.data));
     },
-    loadRoles(event) {
-      let id = event.target.value;
+    loadRoles(department) {
+      this.form.role=''
       axios
-        .get(`/api/departments/${id}/roles`)
+        .get(`/api/departments/${department.id}/roles`)
         .then(response => {
           this.roles = response.data;
+          console.log(this.roles);
         })
         .catch(error => console.log(error.response.data));
     },
@@ -267,25 +211,19 @@ export default {
           .catch(error => console.log(error.response.data));
       }
     },
-    loadBlocks(township) {
-      if (township) {
-        axios
-          .get(`/api/townships/${township.id}/blocks`)
-          .then(response => {
-            this.blocks = response.data;
-          })
-          .catch(error => console.log(error.response.data));
-      }
-    },
     close() {
       Bus.$emit("cancel");
       this.$router.push("/staffs");
     },
     submit() {
+      this.form.state = this.form.state.id
+      this.form.department = this.form.department.id
+      this.form.township = this.form.township.name
+
       axios
-        .put(`/api/staffs/${this.staff.no}`, this.form)
+        .put(`/api/staffs/${this.staff.id}`, this.form)
         .then(response => {
-          // console.log(response);
+          //console.log(response);
           Bus.$emit("afterUpdated");
           this.$router.push("/staffs");
         })
@@ -294,13 +232,18 @@ export default {
         });
     },
     addTag(newTag) {
+      let townshipId = 0
+      if(this.townships.length>0){
+        townshipId = this.townships.length
+      }
       const tag = {
         name: newTag,
-        id: this.townships.length
+        id: townshipId
       };
       this.townships.push(tag);
-      this.form.address.township = tag;
+      this.form.township = tag;
     },
+    
     shows() {
       this.show = true;
     }
@@ -322,7 +265,7 @@ export default {
   created() {
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.role_id);
+        Gate.setUser(response.data.user.roles, response.data.user.permissions);
         if (!Gate.isDeveloper()) {
           this.shows();
           this.authorized = false;
@@ -345,27 +288,25 @@ export default {
 
         this.form.name = this.staff.name;
         this.form.phone = this.staff.phone;
-        this.form.address.state = this.staff.address.location.location;
-        this.loadTownships(this.form.address.state);
+        this.form.state = this.staff.state;
+        this.loadTownships(this.form.state);
 
-        this.township = this.staff.address.location;
+        this.form.township = this.staff.township;
+        this.form.address_line= this.staff.address
+        
 
-        this.form.address.township = this.staff.address.location;
-        this.form.address.home_no = this.staff.address.home_no;
-        this.form.address.block = this.staff.address.block;
-        this.form.address.street = this.staff.address.street;
-
-        this.form.business = this.staff.business_id;
-        this.form.department = this.staff.department_id;
-
+        this.form.business = this.staff.business.id;
+        this.form.department = this.staff.departments;
+        this.form.role = this.staff.roles.id;
+  
         axios
-          .get(`/api/departments/${this.form.department}/roles`)
+          .get(`/api/departments/${this.form.department.id}/roles`)
           .then(response => {
             this.roles = response.data;
           })
           .catch(error => console.log(error.response.data));
 
-        this.form.role = this.staff.role_id;
+        
       })
       .catch(error => {
         console.log(error);
