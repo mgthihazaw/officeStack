@@ -36,7 +36,7 @@
 
                 <td>{{ item.item_type.name }}</td>
 
-                <td>{{ item.price }}</td>
+                <td>{{ item. price }}</td>
                 <td>{{ item.update_at | myDate}}</td>
                 <td>
                   <button
@@ -62,7 +62,7 @@
                         {{ item.brand.name }}
                         <span>{{ item.model_no }}</span>
                         &nbsp;&nbsp;&nbsp; =>  &nbsp;&nbsp;&nbsp;&nbsp;
-                        {{ item.price }}
+                        {{ item.price_one }}
                       </h4>
                       
                       <p
@@ -152,13 +152,31 @@
                   <div class="col-md-4">
                     <label for="exampleInputtext1" class="pt-2">Item Price</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-2">
                     <input
                       type="number"
-                      class="form-control"
+                      class="form-control "
                       id="exampleInputtext1"
-                      placeholder="Enter Item Price"
-                      v-model="form.price"
+                      placeholder="Enter Item Price One"
+                      v-model="form.price_one"
+                    >
+                  </div>
+                  <div class="col-md-2">
+                    <input
+                      type="number"
+                      class="form-control "
+                      id="exampleInputtext1"
+                      placeholder="Enter Item Price Two"
+                      v-model="form.price_two"
+                    >
+                  </div>
+                  <div class="col-md-2">
+                    <input
+                      type="number"
+                      class="form-control "
+                      id="exampleInputtext1"
+                      placeholder="Enter Item Price Three"
+                      v-model="form.price_three"
                     >
                   </div>
                 </div>
@@ -284,13 +302,31 @@
                   <div class="col-md-4">
                     <label for="exampleInputtext1" class="pt-2">Item Price</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-2">
                     <input
                       type="number"
                       class="form-control"
                       id="exampleInputtext1"
-                      placeholder="Enter Item Price"
+                      placeholder="Enter Item Price One"
                       v-model="form.price"
+                    >
+                  </div>
+                  <div class="col-md-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleInputtext1"
+                      placeholder="Enter Item Price Two"
+                      v-model="form.price_two"
+                    >
+                  </div>
+                  <div class="col-md-2">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="exampleInputtext1"
+                      placeholder="Enter Item Price Three"
+                      v-model="form.price_three"
                     >
                   </div>
                 </div>
@@ -373,7 +409,7 @@ export default {
       form: {
         id: "",
         brand: "",
-        price: "",
+        price_one: "",
         model_no: "",
         item_type_id: "",
         attributes: []
@@ -592,7 +628,9 @@ export default {
         id: "",
         brand_id: "",
         quantity: "",
-        price: "",
+        price_one: "",
+        price_two: "",
+        price_three: "",
         model_no: "",
         item_type_id: "",
         attributes: []

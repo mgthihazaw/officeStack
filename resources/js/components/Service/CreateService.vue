@@ -182,7 +182,7 @@ export default {
     },
     addNewService() {
       if (this.form.receive_staff)
-        this.form.receive_staff = this.form.receive_staff.no;
+        this.form.receive_staff = this.form.receive_staff.id;
       if (this.form.customer_id) {
         this.form.customer_id = this.form.customer_id.id;
       }

@@ -157,8 +157,8 @@ export default {
         }
         this.form.customer_name = this.service.customer_name;
         this.form.customer_phone = this.service.customer_phone;
-        this.form.description = this.service.description;
-        this.form.remark = this.service.remark;
+        this.form.description = this.service.received_description;
+        this.form.remark = this.service.received_remark;
         this.form.customer_address = this.service.township;
         this.form.receive_staff = this.service.staff_id;
         this.form.receive_staff = this.receptionists.find(staff => {
@@ -169,7 +169,7 @@ export default {
     },
     updateService() {
       if (this.form.receive_staff) {
-        this.form.receive_staff = this.form.receive_staff.no;
+        this.form.receive_staff = this.form.receive_staff.id;
       }
 
       

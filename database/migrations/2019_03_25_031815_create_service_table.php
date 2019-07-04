@@ -24,8 +24,8 @@ class CreateServiceTable extends Migration
             $table->string('customer_name')->nullable();
             $table->string('customer_phone')->nullable();
             $table->string('customer_address')->nullable();
-            $table->text('receieved_description')->nullable();
-            $table->text('receieved_remark')->nullable();
+            $table->text('received_description')->nullable();
+            $table->text('received_remark')->nullable();
             $table->text('service_description')->nullable();
             $table->text('service_remark')->nullable();
 

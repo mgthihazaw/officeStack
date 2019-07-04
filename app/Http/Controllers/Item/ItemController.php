@@ -145,10 +145,12 @@ class ItemController extends Controller
     }
 
     public function search(Request $request){
+        
         $query = Item::select('items.*');
         
         if($request->query('item_type')){
             $query->where('item_type_id', $request->query('item_type'));
+            
         }
 
         if($request->query('brand')){
@@ -156,8 +158,8 @@ class ItemController extends Controller
         }
 
         if($request->query('attributes')){
-            $attributes = explode(',', $request->query('attributes'));
-            foreach ($attributes as $key => $attribute) {
+            // $attributes = explode(',', $request->query('attributes'));
+            foreach ($request->query('attributes') as $key => $attribute) {
                 $index = $key + 1;
                 $query->leftjoin("attribute_item as col".$index, "items.id", "=", "col".$index."."."item_id")
                         ->leftjoin("attributes as a".$index, "col".$index.".attribute_id", "=", "a".$index."."."id")

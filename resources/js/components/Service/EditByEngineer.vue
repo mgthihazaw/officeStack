@@ -189,7 +189,7 @@ export default {
       }
       if (this.form.secret) {
         let id = this.$route.params.id;
-        this.form.service_engineer = this.form.service_engineer.no;
+        this.form.service_engineer = this.form.service_engineer.id;
         axios
           .put(`/api/services/${id}`, this.form)
           .then(response => {

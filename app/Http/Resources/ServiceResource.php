@@ -18,18 +18,18 @@ class ServiceResource extends JsonResource
             'id' => $this->id,
             'customer_name' => $this->customer_id == null ? $this->customer_name : $this->customer->person_business->name,
             'customer_phone' => $this->customer_id == null ? $this->customer_phone : $this->customer->person_business->phone,
-            'township' => $this->customer_id == null ? $this->township : $this->customer->person_business->address->location->name,
+            'customer_address' => $this->customer_id == null ? $this->customer_address : $this->customer->person_business->address_line,
             'staff' => $this->staff->person_business->name,
             'staff_id' => $this->staff->id,
             'service_engineer' => $this->service_engineer === null ? '----' : $this->service_engineer->person_business->name,
             'customer_id' => $this->customer_id,
-            'description' => $this->description,
-            'remark' => $this->remark,
+            'received_description' => $this->received_description,
+            'received_remark' => $this->received_remark,
             'pending' => $this->pending,
             'service_description' => $this->service_description,
             'service_remark' => $this->service_remark,
             'created_at' =>$this->created_at,
-            'service_items' => $this->service_items,
+            //'service_items' => $this->service_items,
         ];
     }
 }

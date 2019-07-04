@@ -34,12 +34,12 @@
               <tr v-for="(service,index) in service_list" :key="service.id" class="animated fadeIn">
                 <td>{{ index+1 }}</td>
                 <td>{{ service.customer_name }}</td>
-                <td>{{ service.township }}</td>
+                <td>{{ service.customer_address }}</td>
                 <td>{{ service.customer_phone }}</td>
                 <td>{{ service.staff }}</td>
                 <td>{{ service.service_engineer }}</td>
-                <td>{{ service.description | subStr }}</td>
-                <td>{{ service.remark | subStr }}</td>
+                <td>{{ service.received_description | subStr }}</td>
+                <td>{{ service.received_remark | subStr }}</td>
                 <td>
                   <span
                     class="badge"

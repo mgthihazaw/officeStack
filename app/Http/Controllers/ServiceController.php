@@ -79,13 +79,13 @@ class ServiceController extends Controller
             ]);
 
             Service::create([
-                'received_id' => 1,
+                'business_id' => auth()->user()->business->id,
                 'customer_name' => $customer_name,
                 'customer_phone' => $customer_phone,
-                'township' => $customer_address,
+                'customer_address' => $customer_address,
                 'staff_id' => $staff_id,
-                'description' => $description,
-                'remark' => $remark,
+                'received_description' => $description,
+                'received_remark' => $remark,
             ]);
         }
 

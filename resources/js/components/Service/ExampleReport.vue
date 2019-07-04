@@ -4,8 +4,7 @@
 
     <div class="container_fluid" v-else>
       <div>
-        
-        <div >
+        <div class>
           <div class="row pageHeader">
             <div class="mt-3 col-6">
               <img :src="'/images/logo/1.png'" alt="microstack" width="300px">
@@ -31,7 +30,7 @@
             </div>
           </div>
 
-          <div class="mt-3" >
+          <div class="mt-3">
             <div>
               <div class="row customerParent">
                 <div class="col-6">
@@ -108,12 +107,12 @@
                   <div class="row">
                     <div class="des mb-4 col-6">
                       <h6 class="mb-3">Received Description</h6>
-                      {{ service.received_description}}
+                      {{ service.description}}
                     </div>
 
                     <div class="des mb-4 col-6">
                       <h6 class="mb-3">Received Remarks</h6>
-                      {{ service.received_remark}}
+                      {{ service.remark}}
                     </div>
                   </div>
 
@@ -129,56 +128,83 @@
                     </div>
                   </div>
 
-                  <div class="p-0" v-if="serviceItems.length>0">
-                    
-                    <table class="table table-hover">
-                    <tbody>
-                      <tr class="heading"></tr>
-                      <tr class="heading">
-                        <th style="width: 100px">No.</th>
-                        <th>Name</th>
+                  <div class="tb">
+                    <div>
+                      <h4>Service Cost</h4>
+                    </div>
 
-                        <th>Quantity</th>
-                        <th>Unit Price</th>
-                        <th>Amount</th>
-                        <th style="width: 100px">
-                          
-                        </th>
-                      </tr>
+                    <div class="saveform m-3">
+                      <form @submit.prevent="save">
+                        <div class="row">
+                          <div class="col-4">
+                            <input
+                              class="form-control"
+                              type="text"
+                              placeholder="Enter input Item"
+                              v-model="form.item"
+                            >
+                          </div>
+                          <div class="col-3">
+                            <input
+                              class="form-control"
+                              type="number"
+                              v-model.number="form.quantity"
+                              placeholder="Enter quantity"
+                            >
+                          </div>
+                          <div class="col-3">
+                            <input
+                              class="form-control"
+                              type="number"
+                              v-model.number="form.price"
+                              placeholder="Enter Price"
+                            >
+                          </div>
+                          <div class="col-2 pl-5">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <button class="btn btn-primary" type="submit">
+                              <i class="far fa-save"></i>
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
 
-                      <tr v-for="(item,index) in serviceItems" :key="index" class="animated fadeIn" >
-                        <td>{{ index+1 }}</td>
-                        <td class="ml-2">
-                          {{ item.brand.name }}
-                          <span
-                            v-for="(attribute,index) in item.attributes"
+                    <!-- /.card-header -->
+                    <div class="p-0">
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <th style="width: 60%">Item</th>
+                            <th>Quantity</th>
+                            <th style="width: 150px">Price</th>
+                            <th></th>
+                          </tr>
+
+                          <tr
+                            v-for="(data,index) in serviceItems"
                             :key="index"
-                          >{{ attribute.name }} &nbsp;</span>
-                        </td>
-
-                        <td class="ml-2"><input type="number" class="form-control" v-model="item.quantity"><span class="inputData" >{{ item.quantity }}</span></td>
-
-                        <td class="ml-2"><input type="number" v-model="item.price" class="form-control"><span class="inputData">{{ item.price }}</span></td>
-                        <td class="ml-2"><input type="number" v-model="item.price" class="form-control"> <span class="inputData">{{ item.price }}</span></td>
-                        <td>
-                          <button class="btn btn-danger btn-sm" @click="deleteCost(index)">
+                            class="animated pulse"
+                          >
+                            <td>{{data.item}}</td>
+                            <td style="padding-left:30px;">{{data.quantity}}</td>
+                            <td style="padding-left:10px;">{{data.price}}</td>
+                            <td>
+                              <button class="btn btn-danger btn-sm" @click="deleteCost(index)">
                                 <i class="fas fa-minus"></i>
-                           </button>
-                        </td>
-                      </tr>
-                      <tr v-if="serviceItems.length>0">
+                              </button>
+                            </td>
+                          </tr>
+                          <tr v-if="serviceItems.length>0">
                             <td ><p class="text-bold">Total</p></td>
                             <td style="padding-left:30px;"></td>
-                            <td></td>
-                            <td></td>
-                            <td style="padding-left:10px;"><p class="text-bold ml-2">{{ total }}</p></td>
-                            <td><button class="btn btn-secondary btn-lg">Save <i class="fas fa-save"></i></button></td>
+                            <td style="padding-left:10px;"><p class="text-bold">{{ total }}</p></td>
                           </tr>
-                    </tbody>
-                  </table>
-                      
+                        </tbody>
+                      </table>
                     </div>
-                
+                    <!-- /.card-body -->
+                  </div>
                   <!-- /.card -->
                 </div>
               </div>
@@ -186,70 +212,71 @@
           </div>
         </div>
         <button class="btn btn-success printBtn" @click="print">Print Preview</button>
-        <button type="button" class="btn btn-info printBtn" data-toggle="modal" data-target="#modal-xl">
-                  Add Item <i class=" ml-2 fas fa-plus-circle fa-1x"></i>
-        </button>
       </div>
-
-
-       <!--------------------Modal--------------------------->
-      <div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title text-info">Add Item for Service</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body bg-light">
-              
-               <search></search>
-
-
-
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              
-            </div>
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-      </div>
-        <!--------------------Modal--------------------------->
     </div>
   </div>
 </template>
 
 <script>
 import Unauthorized403 from "../errors/Unauthorized403";
-import Search from "./Search";
 
 export default {
   components: {
-    unauthorized: Unauthorized403,
-    Search
+    unauthorized: Unauthorized403
   },
   data() {
     return {
+      form: {
+        item: "",
+        quantity: 1,
+        price: 0,
+        service_id: this.$route.params.id
+      },
+      serviceItems: [],
       total: 0,
       show: false,
       authorized: false,
-      service: "",
-      serviceItems: [],
-      
+      service: ""
     };
   },
   methods: {
-  
+    save() {
+      if (this.form.item != "") {
+        axios.post("/api/service-item", this.form).then(response => {
+          this.serviceItems.push(response.data);
+          this.total = 0;
+          this.serviceItems.forEach(element => {
+            this.total += parseInt(element.price);
+          });
+          this.form.quantity = "";
+          this.form.item = "";
+          this.form.price = "";
+        });
+      }
+    },
+    deleteCost(index) {
+      // console.log(this.serviceItems[index].id);
+      axios
+        .delete(`/api/service-item/${this.serviceItems[index].id}`)
+        .then(response => {
+          this.serviceItems.splice(index, 1);
+          this.total = 0;
+          this.serviceItems.forEach(element => {
+            this.total += parseInt(element.price);
+          });
+        });
+    },
     loadService() {
       let id = this.$route.params.id;
       axios
         .get("/api/services/" + id)
         .then(res => {
           this.service = res.data.data;
+          if (this.service.service_items != null)
+            this.serviceItems = this.service.service_items;
+          this.serviceItems.forEach(element => {
+            this.total += parseInt(element.price);
+          });
         })
         .catch(err => {
           console.log(err);
@@ -266,14 +293,6 @@ export default {
     }
   },
   created() {
-    Bus.$on('addItemForService',(item)=>{
-      console.log(this.serviceItems.includes(item))
-      if(!this.serviceItems.includes(item)){
-        this.serviceItems.push({...item,quantity: 1})
-      }
-      //  this.serviceItems.push(item)
-      
-    })
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
        Gate.setUser(response.data.user.roles,response.data.user.permissions);
@@ -330,12 +349,6 @@ h6 {
   button {
     display: none;
   }
-  input {
-    display: none;
-  }
-  span.inputData{
-  display: block;
-}
   .des {
     display: none;
   }
@@ -347,8 +360,5 @@ h6 {
 .tb {
   padding: 0;
   margin: 0;
-}
-.inputData{
-  display :none;
 }
 </style>
