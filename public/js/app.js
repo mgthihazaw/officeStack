@@ -72275,7 +72275,7 @@ var content = __webpack_require__(185);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("46b6eee4", content, false, {});
+var update = __webpack_require__(2)("6b6e1d9e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -72589,7 +72589,7 @@ var content = __webpack_require__(189);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("5049ff10", content, false, {});
+var update = __webpack_require__(2)("adbb9ec6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -72613,7 +72613,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nspan[data-v-6bdc8b8e] {\r\n  cursor: pointer;\n}\n.card[data-v-6bdc8b8e] {\r\n  background: rgba(222, 222, 222, 0.7);\n}\nbutton.submit[data-v-6bdc8b8e] {\r\n  background-color: #31bcaa;\r\n  border: 1px solid #31ccaa;\r\n  color: white;\r\n  padding: 8px 0px;\r\n  font-family: \"Arial\", sans-serif;\r\n  border-radius: 5px !important;\n}\nbutton.submit[data-v-6bdc8b8e]:hover {\r\n  color: white;\n}\ninput[data-v-6bdc8b8e] {\r\n  font-family: \"Arial\", sans-serif;\r\n  font-weight: 400;\n}\ninput[type=\"text\"][data-v-6bdc8b8e]:focus,\r\ninput[type=\"password\"][data-v-6bdc8b8e]:focus {\r\n  outline: none !important;\r\n  border-color: #31eeaa;\r\n  -webkit-box-shadow: 0 0 10px #31eeaa;\r\n          box-shadow: 0 0 10px #31eeaa;\n}\r\n", ""]);
+exports.push([module.i, "\nspan[data-v-6bdc8b8e] {\n  cursor: pointer;\n}\n.card[data-v-6bdc8b8e] {\n  background: rgba(222, 222, 222, 0.7);\n}\nbutton.submit[data-v-6bdc8b8e] {\n  background-color: #31bcaa;\n  border: 1px solid #31ccaa;\n  color: white;\n  padding: 8px 0px;\n  font-family: \"Arial\", sans-serif;\n  border-radius: 5px !important;\n}\nbutton.submit[data-v-6bdc8b8e]:hover {\n  color: white;\n}\ninput[data-v-6bdc8b8e] {\n  font-family: \"Arial\", sans-serif;\n  font-weight: 400;\n}\ninput[type=\"text\"][data-v-6bdc8b8e]:focus,\ninput[type=\"password\"][data-v-6bdc8b8e]:focus {\n  outline: none !important;\n  border-color: #31eeaa;\n  -webkit-box-shadow: 0 0 10px #31eeaa;\n          box-shadow: 0 0 10px #31eeaa;\n}\n", ""]);
 
 // exports
 
@@ -73433,7 +73433,7 @@ var content = __webpack_require__(197);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("3d0e98f9", content, false, {});
+var update = __webpack_require__(2)("0186cde8", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73473,7 +73473,7 @@ var content = __webpack_require__(199);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("6662ee3a", content, false, {});
+var update = __webpack_require__(2)("2890ee4d", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73497,7 +73497,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\ntd[data-v-e9cf7384] {\r\n  line-height: 1.4em;\r\n  font-family: \"Zawgyi\";\n}\n.table[data-v-e9cf7384]{\r\n   \r\n    font-family: Poppins-Regular;\r\n    font-size: 15px;\r\n    color: #666666;\r\n    line-height: 1.2;\r\n    font-weight: unset !important;\n}\ntable[data-v-e9cf7384] {\r\n  font-family: Poppins-Regular;\r\n  border: 1px solid rgb(111, 161, 136); \r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-e9cf7384]{\r\n      background:  rgb(168, 180, 176);\n}\n.heading th[data-v-e9cf7384]{\r\n    padding-top:20px;\r\n    padding-bottom: 20px;\n}\ntbody tr[data-v-e9cf7384]{\r\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-e9cf7384] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-e9cf7384] {\r\n    background: #E9ECEF;\n}\n.createroute[data-v-e9cf7384]{\r\n\tdisplay: block;\r\n\tfloat:right;\n}\r\n", ""]);
+exports.push([module.i, "\ntd[data-v-e9cf7384] {\n  line-height: 1.4em;\n  font-family: \"Zawgyi\";\n}\n.table[data-v-e9cf7384]{\n   \n    font-family: Poppins-Regular;\n    font-size: 15px;\n    color: #666666;\n    line-height: 1.2;\n    font-weight: unset !important;\n}\ntable[data-v-e9cf7384] {\n  font-family: Poppins-Regular;\n  border: 1px solid rgb(111, 161, 136); \n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-e9cf7384]{\n      background:  rgb(168, 180, 176);\n}\n.heading th[data-v-e9cf7384]{\n    padding-top:20px;\n    padding-bottom: 20px;\n}\ntbody tr[data-v-e9cf7384]{\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-e9cf7384] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-e9cf7384] {\n    background: #E9ECEF;\n}\n.createroute[data-v-e9cf7384]{\n\tdisplay: block;\n\tfloat:right;\n}\n", ""]);
 
 // exports
 
@@ -73687,7 +73687,7 @@ var content = __webpack_require__(202);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("ac790010", content, false, {});
+var update = __webpack_require__(2)("d5cb6950", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73752,7 +73752,7 @@ var content = __webpack_require__(205);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("2dfe04db", content, false, {});
+var update = __webpack_require__(2)("706a8c4e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73792,7 +73792,7 @@ var content = __webpack_require__(207);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("9c707616", content, false, {});
+var update = __webpack_require__(2)("52650acf", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73816,7 +73816,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-27ca711a] {\r\n  color: #d8000c !important;\r\n\r\n  margin-bottom: 10px;\r\n  font-style: italic;\n}\n.formcolor[data-v-27ca711a] {\r\n  \r\n    background: #EBEFF2;\r\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-radius:30px;\n}\r\n", ""]);
+exports.push([module.i, "\n.error[data-v-27ca711a] {\n  color: #d8000c !important;\n\n  margin-bottom: 10px;\n  font-style: italic;\n}\n.formcolor[data-v-27ca711a] {\n  \n    background: #EBEFF2;\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n    border-radius:30px;\n}\n", ""]);
 
 // exports
 
@@ -73829,6 +73829,9 @@ exports.push([module.i, "\n.error[data-v-27ca711a] {\r\n  color: #d8000c !import
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__);
+//
+//
+//
 //
 //
 //
@@ -74031,11 +74034,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return console.log(error.response.data);
       });
     },
-    loadDepartments: function loadDepartments() {
+    loadDepartments: function loadDepartments(event) {
       var _this2 = this;
 
-      axios.get("/api/departments").then(function (response) {
-        return _this2.departments = response.data;
+      var business_id = event.target.value;
+      axios.get("/api/businesses/" + business_id + "/departments").then(function (response) {
+        _this2.departments = response.data.data;
+        _this2.$refs.department.disabled = false;
       }).catch(function (error) {
         return console.log(error.response.data);
       });
@@ -74043,8 +74048,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     loadRoles: function loadRoles(event) {
       var _this3 = this;
 
-      var id = event.target.value;
-      axios.get("/api/departments/" + id + "/roles").then(function (response) {
+      var department_id = event.target.value;
+      axios.get("/api/departments/" + department_id + "/roles").then(function (response) {
         _this3.roles = response.data;
         _this3.$refs.role.disabled = false;
       }).catch(function (error) {
@@ -74154,7 +74159,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.loadStates();
     this.loadData();
     this.loadBusinesses();
-    this.loadDepartments();
   }
 });
 
@@ -74357,7 +74361,11 @@ var render = function() {
                                       }
                                     ],
                                     staticClass: "form-control",
-                                    attrs: { type: "text", id: "address" },
+                                    attrs: {
+                                      type: "text",
+                                      id: "address",
+                                      placeholder: "Address Line"
+                                    },
                                     domProps: { value: _vm.form.address_line },
                                     on: {
                                       input: function($event) {
@@ -74404,26 +74412,32 @@ var render = function() {
                                     staticClass: "form-control",
                                     attrs: { name: "business", id: "business" },
                                     on: {
-                                      change: function($event) {
-                                        var $$selectedVal = Array.prototype.filter
-                                          .call($event.target.options, function(
-                                            o
-                                          ) {
-                                            return o.selected
-                                          })
-                                          .map(function(o) {
-                                            var val =
-                                              "_value" in o ? o._value : o.value
-                                            return val
-                                          })
-                                        _vm.$set(
-                                          _vm.form,
-                                          "business",
-                                          $event.target.multiple
-                                            ? $$selectedVal
-                                            : $$selectedVal[0]
-                                        )
-                                      }
+                                      change: [
+                                        function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.$set(
+                                            _vm.form,
+                                            "business",
+                                            $event.target.multiple
+                                              ? $$selectedVal
+                                              : $$selectedVal[0]
+                                          )
+                                        },
+                                        _vm.loadDepartments
+                                      ]
                                     }
                                   },
                                   [
@@ -74472,10 +74486,12 @@ var render = function() {
                                         expression: "form.department"
                                       }
                                     ],
+                                    ref: "department",
                                     staticClass: "form-control",
                                     attrs: {
                                       name: "department",
-                                      id: "department"
+                                      id: "department",
+                                      disabled: "true"
                                     },
                                     on: {
                                       change: [
@@ -74587,7 +74603,7 @@ var render = function() {
                                   [
                                     _c(
                                       "option",
-                                      { attrs: { value: "", disabled: "" } },
+                                      { attrs: { selected: "", disabled: "" } },
                                       [_vm._v("Choose Role/Job Title")]
                                     ),
                                     _vm._v(" "),
@@ -74742,7 +74758,7 @@ var content = __webpack_require__(211);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("228f527e", content, false, {});
+var update = __webpack_require__(2)("3124de34", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -74782,7 +74798,7 @@ var content = __webpack_require__(213);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("d792aa9a", content, false, {});
+var update = __webpack_require__(2)("5980c1e6", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -74806,7 +74822,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-686aa968] {\r\n  color: #d8000c !important;\r\n\r\n  margin-bottom: 10px;\r\n  font-style: italic;\n}\n.formcolor[data-v-686aa968] {\r\n  background: #ebeff2;\r\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-radius: 30px;\n}\r\n", ""]);
+exports.push([module.i, "\n.error[data-v-686aa968] {\n  color: #d8000c !important;\n\n  margin-bottom: 10px;\n  font-style: italic;\n}\n.formcolor[data-v-686aa968] {\n  background: #ebeff2;\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n  border-radius: 30px;\n}\n", ""]);
 
 // exports
 
@@ -74819,6 +74835,27 @@ exports.push([module.i, "\n.error[data-v-686aa968] {\r\n  color: #d8000c !import
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -74972,6 +75009,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         state: "",
         business: "",
         department: "",
+        username: "",
+        password: "",
         role: ""
       },
       roles: [],
@@ -74999,31 +75038,54 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return console.log(error.response.data);
       });
     },
-    loadDepartments: function loadDepartments() {
+    changeDepartments: function changeDepartments(event) {
       var _this2 = this;
 
-      axios.get("/api/departments").then(function (response) {
-        return _this2.departments = response.data;
+      var business_id = event.target.value;
+      axios.get("/api/businesses/" + business_id + "/departments").then(function (response) {
+        _this2.departments = response.data.data;
+        _this2.form.department = 0;
+        _this2.form.role = 0;
+        _this2.roles = [];
+      }).catch(function (error) {
+        return console.log(error.response);
+      });
+    },
+    loadDepartments: function loadDepartments(business) {
+      var _this3 = this;
+
+      axios.get("/api/businesses/" + business + "/departments").then(function (response) {
+        _this3.departments = response.data.data;
+      }).catch(function (error) {
+        return console.log(error.response.data);
+      });
+    },
+    changeRoles: function changeRoles(event) {
+      var _this4 = this;
+
+      var department_id = event.target.value;
+      axios.get("/api/departments/" + department_id + "/roles").then(function (response) {
+        _this4.roles = response.data;
       }).catch(function (error) {
         return console.log(error.response.data);
       });
     },
     loadRoles: function loadRoles(department) {
-      var _this3 = this;
+      var _this5 = this;
 
-      this.form.role = '';
-      axios.get("/api/departments/" + department.id + "/roles").then(function (response) {
-        _this3.roles = response.data;
-        console.log(_this3.roles);
+      axios.get("/api/departments/" + department + "/roles").then(function (response) {
+        _this5.roles = response.data;
+        //this.form.role = ''
+        //console.log(this.roles);
       }).catch(function (error) {
         return console.log(error.response.data);
       });
     },
     loadStates: function loadStates() {
-      var _this4 = this;
+      var _this6 = this;
 
       axios.get("/api/states").then(function (response) {
-        _this4.states = response.data.filter(function (state) {
+        _this6.states = response.data.filter(function (state) {
           return state.id != 1;
         });
       }).catch(function (error) {
@@ -75031,11 +75093,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     loadTownships: function loadTownships(state) {
-      var _this5 = this;
+      var _this7 = this;
 
       if (state) {
         axios.get("/api/states/" + state.id + "/townships").then(function (response) {
-          _this5.townships = response.data;
+          _this7.townships = response.data;
           // console.log(this.townships.includes(this.township));
         }).catch(function (error) {
           return console.log(error.response.data);
@@ -75047,18 +75109,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.$router.push("/staffs");
     },
     submit: function submit() {
-      var _this6 = this;
+      var _this8 = this;
 
       this.form.state = this.form.state.id;
-      this.form.department = this.form.department.id;
+      this.form.department = this.form.department;
       this.form.township = this.form.township.name;
 
       axios.put("/api/staffs/" + this.staff.id, this.form).then(function (response) {
         //console.log(response);
         Bus.$emit("afterUpdated");
-        _this6.$router.push("/staffs");
+        _this8.$router.push("/staffs");
       }).catch(function (error) {
-        _this6.errs = error.response.data.errors;
+        if (error.response.status == 422) {
+          _this8.errs = error.response.data.errors;
+          _this8.form.state = _this8.staff.state;
+          _this8.loadTownships(_this8.form.state);
+
+          _this8.form.township = _this8.staff.township;
+          _this8.form.address_line = _this8.staff.address;
+        }
       });
     },
     addTag: function addTag(newTag) {
@@ -75085,51 +75154,53 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   created: function created() {
-    var _this7 = this;
+    var _this9 = this;
+
+    this.loadStates();
+    this.loadBusinesses();
+    // this.loadDepartments();
+    var id = this.$route.params.id;
+
+    axios.get("/api/staffs/" + id).then(function (response) {
+      _this9.staff = response.data.data;
+      console.log(_this9.staff);
+      _this9.form.name = _this9.staff.name;
+      _this9.form.phone = _this9.staff.phone;
+      _this9.form.state = _this9.staff.state;
+      _this9.form.username = _this9.staff.username;
+      _this9.loadTownships(_this9.form.state);
+
+      _this9.form.township = _this9.staff.township;
+      _this9.form.address_line = _this9.staff.address;
+
+      _this9.form.business = _this9.staff.business.id;
+      _this9.loadDepartments(_this9.form.business);
+      _this9.form.department = _this9.staff.department.id;
+      _this9.loadRoles(_this9.form.department);
+      _this9.form.role = _this9.staff.role.id;
+
+      // axios
+      //   .get(`/api/departments/${this.form.department.id}/roles`)
+      //   .then(response => {
+      //     this.roles = response.data;
+      //   })
+      //   .catch(error => console.log(error.response.data));
+    }).catch(function (error) {
+      console.log(error);
+    });
 
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
         if (!Gate.isDeveloper()) {
-          _this7.shows();
-          _this7.authorized = false;
+          _this9.shows();
+          _this9.authorized = false;
         } else {
-          _this7.shows();
-          _this7.authorized = true;
+          _this9.shows();
+          _this9.authorized = true;
         }
       });
     }
-    this.loadStates();
-    this.loadBusinesses();
-    this.loadDepartments();
-  },
-  mounted: function mounted() {
-    var _this8 = this;
-
-    var id = this.$route.params.id;
-    axios.get("/api/staffs/" + id).then(function (response) {
-      _this8.staff = response.data.data;
-
-      _this8.form.name = _this8.staff.name;
-      _this8.form.phone = _this8.staff.phone;
-      _this8.form.state = _this8.staff.state;
-      _this8.loadTownships(_this8.form.state);
-
-      _this8.form.township = _this8.staff.township;
-      _this8.form.address_line = _this8.staff.address;
-
-      _this8.form.business = _this8.staff.business.id;
-      _this8.form.department = _this8.staff.departments;
-      _this8.form.role = _this8.staff.roles.id;
-
-      axios.get("/api/departments/" + _this8.form.department.id + "/roles").then(function (response) {
-        _this8.roles = response.data;
-      }).catch(function (error) {
-        return console.log(error.response.data);
-      });
-    }).catch(function (error) {
-      console.log(error);
-    });
   }
 });
 
@@ -75391,28 +75462,35 @@ var render = function() {
                                     }
                                   ],
                                   staticClass: "form-control",
-                                  attrs: { name: "business", id: "business" },
+                                  attrs: {
+                                    name: "business",
+                                    id: "business",
+                                    required: ""
+                                  },
                                   on: {
-                                    change: function($event) {
-                                      var $$selectedVal = Array.prototype.filter
-                                        .call($event.target.options, function(
-                                          o
-                                        ) {
-                                          return o.selected
-                                        })
-                                        .map(function(o) {
-                                          var val =
-                                            "_value" in o ? o._value : o.value
-                                          return val
-                                        })
-                                      _vm.$set(
-                                        _vm.form,
-                                        "business",
-                                        $event.target.multiple
-                                          ? $$selectedVal
-                                          : $$selectedVal[0]
-                                      )
-                                    }
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "business",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                      _vm.changeDepartments
+                                    ]
                                   }
                                 },
                                 [
@@ -75437,43 +75515,85 @@ var render = function() {
                               )
                             ]),
                             _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group" },
-                              [
-                                _c("label", { attrs: { for: "department" } }, [
-                                  _vm._v("Department")
-                                ]),
-                                _vm._v(" "),
-                                _vm.errs.department
-                                  ? _c(
-                                      "div",
-                                      { staticClass: "error text-muted" },
-                                      [_vm._v(_vm._s(_vm.errs.department[0]))]
-                                    )
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                _c("multiselect", {
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "department" } }, [
+                                _vm._v("Department")
+                              ]),
+                              _vm._v(" "),
+                              _vm.errs.department
+                                ? _c(
+                                    "div",
+                                    { staticClass: "error text-muted" },
+                                    [_vm._v(_vm._s(_vm.errs.department[0]))]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c(
+                                "select",
+                                {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.department,
+                                      expression: "form.department"
+                                    }
+                                  ],
+                                  ref: "department",
+                                  staticClass: "form-control",
                                   attrs: {
-                                    "tag-placeholder": "Add this as new tag",
-                                    placeholder: "Search or add a tag",
-                                    "block-keys": ["Delete"],
-                                    label: "name",
-                                    "track-by": "name",
-                                    options: _vm.departments
+                                    name: "department",
+                                    id: "department",
+                                    placeholder: "Choose Department",
+                                    required: ""
                                   },
-                                  on: { input: _vm.loadRoles },
-                                  model: {
-                                    value: _vm.form.department,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.form, "department", $$v)
-                                    },
-                                    expression: "form.department"
+                                  on: {
+                                    change: [
+                                      function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "department",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                      _vm.changeRoles
+                                    ]
                                   }
-                                })
-                              ],
-                              1
-                            ),
+                                },
+                                [
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "0", disabled: "" } },
+                                    [_vm._v("Select Department")]
+                                  ),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.departments, function(department) {
+                                    return _c(
+                                      "option",
+                                      {
+                                        key: department.id,
+                                        domProps: { value: department.id }
+                                      },
+                                      [_vm._v(_vm._s(department.name))]
+                                    )
+                                  })
+                                ],
+                                2
+                              )
+                            ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "form-group" }, [
                               _c("label", { attrs: { for: "role" } }, [
@@ -75499,7 +75619,9 @@ var render = function() {
                                       expression: "form.role"
                                     }
                                   ],
+                                  ref: "role",
                                   staticClass: "form-control",
+                                  attrs: { required: "" },
                                   on: {
                                     change: function($event) {
                                       var $$selectedVal = Array.prototype.filter
@@ -75524,7 +75646,11 @@ var render = function() {
                                   }
                                 },
                                 [
-                                  _c("option", [_vm._v("Select Role")]),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "0", disabled: "" } },
+                                    [_vm._v("Select Role")]
+                                  ),
                                   _vm._v(" "),
                                   _vm._l(_vm.roles, function(role) {
                                     return _c(
@@ -75539,6 +75665,86 @@ var render = function() {
                                 ],
                                 2
                               )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "username" } }, [
+                                _vm._v("Username")
+                              ]),
+                              _vm._v(" "),
+                              _vm.errs.username
+                                ? _c(
+                                    "div",
+                                    { staticClass: "error text-muted" },
+                                    [_vm._v(_vm._s(_vm.errs.username[0]))]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.username,
+                                    expression: "form.username"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text", id: "username" },
+                                domProps: { value: _vm.form.username },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      "username",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "password" } }, [
+                                _vm._v("Password")
+                              ]),
+                              _vm._v(" "),
+                              _vm.errs.password
+                                ? _c(
+                                    "div",
+                                    { staticClass: "error text-muted" },
+                                    [_vm._v(_vm._s(_vm.errs.password[0]))]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.form.password,
+                                    expression: "form.password"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text", id: "password" },
+                                domProps: { value: _vm.form.password },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      _vm.form,
+                                      "password",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "modal-footer" }, [
@@ -75611,7 +75817,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\r\n              Add New\r\n              "
+                                  "\n              Add New\n              "
                                 ),
                                 _c("i", { staticClass: "fa fa-plus" })
                               ]
@@ -75664,9 +75870,9 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("td", [
                                     _vm._v(
-                                      "\r\n                " +
+                                      "\n                " +
                                         _vm._s(staff.address) +
-                                        "\r\n                \r\n                \r\n              "
+                                        "\n                \n                \n              "
                                     )
                                   ]),
                                   _vm._v(" "),
@@ -75676,17 +75882,17 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("td", [
                                     _vm._v(
-                                      "\r\n                  " +
-                                        _vm._s(staff.departments.name) +
-                                        "\r\n              "
+                                      "\n                  " +
+                                        _vm._s(staff.department.name) +
+                                        "\n              "
                                     )
                                   ]),
                                   _vm._v(" "),
                                   _c("td", [
                                     _vm._v(
-                                      "\r\n                  " +
-                                        _vm._s(staff.roles.name) +
-                                        "\r\n              "
+                                      "\n                  " +
+                                        _vm._s(staff.role.name) +
+                                        "\n              "
                                     )
                                   ]),
                                   _vm._v(" "),
@@ -75809,7 +76015,7 @@ var content = __webpack_require__(219);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("533e4c22", content, false, {});
+var update = __webpack_require__(2)("6f2c2d89", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -75833,7 +76039,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-2cf8d420],\r\nh2[data-v-2cf8d420],\r\nh3[data-v-2cf8d420],\r\nh4[data-v-2cf8d420],\r\nh5[data-v-2cf8d420] {\r\n  font-weight: 500;\r\n  line-height: 1.4em;\n}\nh6[data-v-2cf8d420] {\r\n  font-weight: bold;\r\n  line-height: 1.4em;\n}\n.customerParent[data-v-2cf8d420] {\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-2cf8d420] {\r\n  margin: 0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-2cf8d420] {\r\n  padding-top: 20px;\n}\n.des[data-v-2cf8d420] {\r\n  background-color: #eff0f1;\r\n  border-left: 3px solid #59997b;\n}\n@media print {\n.printBtn[data-v-2cf8d420] {\r\n    display: none;\n}\nbutton[data-v-2cf8d420] {\r\n    display: none;\n}\n.des[data-v-2cf8d420] {\r\n    display: none;\n}\n.saveform[data-v-2cf8d420] {\r\n    display: none;\r\n    margin: 0;\n}\n}\n.tb[data-v-2cf8d420] {\r\n  padding: 0;\r\n  margin: 0;\n}\r\n", ""]);
+exports.push([module.i, "\nh1[data-v-2cf8d420],\nh2[data-v-2cf8d420],\nh3[data-v-2cf8d420],\nh4[data-v-2cf8d420],\nh5[data-v-2cf8d420] {\n  font-weight: 500;\n  line-height: 1.4em;\n}\nh6[data-v-2cf8d420] {\n  font-weight: bold;\n  line-height: 1.4em;\n}\n.customerParent[data-v-2cf8d420] {\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-2cf8d420] {\n  margin: 0;\n  padding: 0px;\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-2cf8d420] {\n  padding-top: 20px;\n}\n.des[data-v-2cf8d420] {\n  background-color: #eff0f1;\n  border-left: 3px solid #59997b;\n}\n@media print {\n.printBtn[data-v-2cf8d420] {\n    display: none;\n}\nbutton[data-v-2cf8d420] {\n    display: none;\n}\n.des[data-v-2cf8d420] {\n    display: none;\n}\n.saveform[data-v-2cf8d420] {\n    display: none;\n    margin: 0;\n}\n}\n.tb[data-v-2cf8d420] {\n  padding: 0;\n  margin: 0;\n}\n", ""]);
 
 // exports
 
@@ -76747,7 +76953,7 @@ var content = __webpack_require__(224);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("3588196d", content, false, {});
+var update = __webpack_require__(2)("7ef3a58c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76771,7 +76977,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\ntd[data-v-f7aa5b50] {\r\n  font-family: \"Zawgyi-One\";\n}\r\n/* .table{\r\n    width:100%;\r\n    height: 100%;\r\n} */\n.table[data-v-f7aa5b50]{\r\n   \r\n    font-family: Poppins-Regular;\r\n    font-size: 15px;\r\n    color: #666666;\r\n    line-height: 1.2;\r\n    font-weight: unset !important;\n}\ntable[data-v-f7aa5b50] {\r\n  font-family: Poppins-Regular;\r\n  border: 1px solid rgb(111, 161, 136); \r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-f7aa5b50]{\r\n      background:  rgb(168, 180, 176);\n}\n.heading th[data-v-f7aa5b50]{\r\n    padding-top:20px;\r\n    padding-bottom: 20px;\n}\ntbody tr[data-v-f7aa5b50]{\r\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-f7aa5b50] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-f7aa5b50] {\r\n    background: #E9ECEF;\n}\n.createroute[data-v-f7aa5b50]{\r\n\tdisplay: block;\r\n\tfloat:right;\n}\r\n", ""]);
+exports.push([module.i, "\ntd[data-v-f7aa5b50] {\n  font-family: \"Zawgyi-One\";\n}\n/* .table{\n    width:100%;\n    height: 100%;\n} */\n.table[data-v-f7aa5b50] {\n  font-family: Poppins-Regular;\n  font-size: 15px;\n  color: #666666;\n  line-height: 1.2;\n  font-weight: unset !important;\n}\ntable[data-v-f7aa5b50] {\n  font-family: Poppins-Regular;\n  border: 1px solid rgb(111, 161, 136);\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-f7aa5b50] {\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-f7aa5b50] {\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\ntbody tr[data-v-f7aa5b50] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-f7aa5b50] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-f7aa5b50] {\n  background: #e9ecef;\n}\n.createroute[data-v-f7aa5b50] {\n  display: block;\n  float: right;\n}\n", ""]);
 
 // exports
 
@@ -76784,7 +76990,6 @@ exports.push([module.i, "\ntd[data-v-f7aa5b50] {\r\n  font-family: \"Zawgyi-One\
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__);
-//
 //
 //
 //
@@ -76994,7 +77199,7 @@ var render = function() {
                             ? _c(
                                 "router-link",
                                 {
-                                  staticClass: "btn btn-success text-white ",
+                                  staticClass: "btn btn-success text-white",
                                   attrs: { to: "/services/create" }
                                 },
                                 [_vm._v("New Service")]
@@ -77005,7 +77210,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("table", { staticClass: "table  table-hover " }, [
+                    _c("table", { staticClass: "table table-hover" }, [
                       _c("thead", [
                         _c("tr", { staticClass: "heading" }, [
                           _c("th", [_vm._v("No")]),
@@ -77259,7 +77464,7 @@ var content = __webpack_require__(229);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("3d6b9016", content, false, {});
+var update = __webpack_require__(2)("7fd81789", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -77299,7 +77504,7 @@ var content = __webpack_require__(231);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("14417794", content, false, {});
+var update = __webpack_require__(2)("20822fae", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -77323,7 +77528,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n@media (max-width: 768px) {\n.col-md-4 {\r\n    margin-bottom: 15px;\n}\n}\n.error {\r\n  color: red;\n}\n.formcolor {\r\n  \r\n    background: #EBEFF2;\r\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-radius:30px;\n}\r\n", ""]);
+exports.push([module.i, "\n@media (max-width: 768px) {\n.col-md-4 {\n    margin-bottom: 15px;\n}\n}\n.error {\n  color: red;\n}\n.formcolor {\n  \n    background: #EBEFF2;\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n    border-radius:30px;\n}\n", ""]);
 
 // exports
 
@@ -78173,7 +78378,7 @@ var content = __webpack_require__(238);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("8df4007c", content, false, {});
+var update = __webpack_require__(2)("091af196", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -78213,7 +78418,7 @@ var content = __webpack_require__(240);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("9038b21e", content, false, {});
+var update = __webpack_require__(2)("d1587ed2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -78237,7 +78442,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-6c3cd162] {\r\n  color: red;\n}\n.formcolor[data-v-6c3cd162] {\r\n  \r\n    background: #EBEFF2;\r\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-radius:30px;\n}\n.formheading[data-v-6c3cd162] {\r\n  padding-top: 10px;\n}\r\n", ""]);
+exports.push([module.i, "\n.error[data-v-6c3cd162] {\n  color: red;\n}\n.formcolor[data-v-6c3cd162] {\n  \n    background: #EBEFF2;\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n    border-radius:30px;\n}\n.formheading[data-v-6c3cd162] {\n  padding-top: 10px;\n}\n", ""]);
 
 // exports
 
@@ -78854,7 +79059,7 @@ var content = __webpack_require__(245);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("c84daac4", content, false, {});
+var update = __webpack_require__(2)("43749bde", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -78894,7 +79099,7 @@ var content = __webpack_require__(247);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("fe4a3f16", content, false, {});
+var update = __webpack_require__(2)("069da8ca", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -78918,7 +79123,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-4581f116] {\r\n  color: red;\n}\n.formcolor[data-v-4581f116] {\r\n  \r\n    background: #EBEFF2;\r\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-radius:30px;\n}\r\n", ""]);
+exports.push([module.i, "\n.error[data-v-4581f116] {\n  color: red;\n}\n.formcolor[data-v-4581f116] {\n  \n    background: #EBEFF2;\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n    border-radius:30px;\n}\n", ""]);
 
 // exports
 
@@ -79182,7 +79387,7 @@ var render = function() {
               staticStyle: { cursor: "pointer" },
               on: { click: _vm.back }
             }),
-            _vm._v("\r\n          Edit By Engineer\r\n        ")
+            _vm._v("\n          Edit By Engineer\n        ")
           ])
         ]),
         _vm._v(" "),
@@ -79637,7 +79842,7 @@ var content = __webpack_require__(253);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("28d17a72", content, false, {});
+var update = __webpack_require__(2)("a130ea26", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79661,7 +79866,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-703e1eec],h2[data-v-703e1eec],h3[data-v-703e1eec],h4[data-v-703e1eec],h5[data-v-703e1eec]{\r\n  font-weight:500;\r\n  line-height: 1.4em;\n}\nh6[data-v-703e1eec]{\r\n  font-weight:bold;\r\n  line-height: 1.4em;\n}\n.customerParent[data-v-703e1eec] {\r\n  \r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\r\n  margin:0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\r\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\r\n  background-color: #eff0f1;\r\n  border-left: 3px solid #7e7e7e;\n}\n@media print {\n.printBtn[data-v-703e1eec] {\r\n    display:none;\n}\n.main-footer[data-v-703e1eec]{\r\n    display:none;\n}\n}\r\n\r\n  \r\n\r\n", ""]);
+exports.push([module.i, "\nh1[data-v-703e1eec],h2[data-v-703e1eec],h3[data-v-703e1eec],h4[data-v-703e1eec],h5[data-v-703e1eec]{\n  font-weight:500;\n  line-height: 1.4em;\n}\nh6[data-v-703e1eec]{\n  font-weight:bold;\n  line-height: 1.4em;\n}\n.customerParent[data-v-703e1eec] {\n  \n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\n  margin:0;\n  padding: 0px;\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\n  background-color: #eff0f1;\n  border-left: 3px solid #7e7e7e;\n}\n@media print {\n.printBtn[data-v-703e1eec] {\n    display:none;\n}\n.main-footer[data-v-703e1eec]{\n    display:none;\n}\n}\n\n  \n\n", ""]);
 
 // exports
 
@@ -80171,7 +80376,7 @@ var content = __webpack_require__(258);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("7703da08", content, false, {});
+var update = __webpack_require__(2)("7ab6cf96", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -80195,7 +80400,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.callout[data-v-aa3d923e] {\r\n  background-color: #eff0f1;\r\n  border-left: 3px solid #7e7e7e;\n}\n.invoice-box[data-v-aa3d923e] {\r\n  margin: auto;\r\n  padding: 30px;\r\n  border: 1px solid #eee;\r\n  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\r\n          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\r\n  font-size: 16px;\r\n  line-height: 24px;\r\n  font-family: \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial, sans-serif;\r\n  color: #555;\n}\n.invoice-box table[data-v-aa3d923e] {\r\n  width: 100%;\r\n  line-height: inherit;\r\n  text-align: left;\n}\n.invoice-box table td[data-v-aa3d923e] {\r\n  padding: 5px;\r\n  vertical-align: top;\n}\n.invoice-box table tr td[data-v-aa3d923e]:nth-child(2) {\r\n  text-align: right;\n}\n.invoice-box table tr.top table td[data-v-aa3d923e] {\r\n  padding-bottom: 20px;\n}\n.invoice-box table tr.top table td.title[data-v-aa3d923e] {\r\n  font-size: 45px;\r\n  line-height: 45px;\r\n  color: #333;\n}\n.invoice-box table tr.information table td[data-v-aa3d923e] {\r\n  padding-bottom: 40px;\n}\n.invoice-box table tr.heading td[data-v-aa3d923e] {\r\n  background: #eee;\r\n  border-bottom: 1px solid #ddd;\r\n  font-weight: bold;\n}\n.invoice-box table tr.details td[data-v-aa3d923e] {\r\n  padding-bottom: 20px;\n}\n.invoice-box table tr.item td[data-v-aa3d923e] {\r\n  border-bottom: 1px solid #eee;\n}\n.invoice-box table tr.item.last td[data-v-aa3d923e] {\r\n  border-bottom: none;\n}\n.invoice-box table tr.total td[data-v-aa3d923e]:nth-child(2) {\r\n  border-top: 2px solid #eee;\r\n  font-weight: bold;\n}\n@media only screen and (max-width: 600px) {\n.invoice-box table tr.top table td[data-v-aa3d923e] {\r\n    width: 100%;\r\n    display: block;\r\n    text-align: center;\n}\n.invoice-box table tr.information table td[data-v-aa3d923e] {\r\n    width: 100%;\r\n    display: block;\r\n    text-align: center;\n}\n}\r\n\r\n/** RTL **/\n.rtl[data-v-aa3d923e] {\r\n  direction: rtl;\r\n  font-family: Tahoma, \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial,\r\n    sans-serif;\n}\n.rtl table[data-v-aa3d923e] {\r\n  text-align: right;\n}\n.rtl table tr td[data-v-aa3d923e]:nth-child(2) {\r\n  text-align: left;\n}\r\n", ""]);
+exports.push([module.i, "\n.callout[data-v-aa3d923e] {\n  background-color: #eff0f1;\n  border-left: 3px solid #7e7e7e;\n}\n.invoice-box[data-v-aa3d923e] {\n  margin: auto;\n  padding: 30px;\n  border: 1px solid #eee;\n  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\n          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\n  font-size: 16px;\n  line-height: 24px;\n  font-family: \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial, sans-serif;\n  color: #555;\n}\n.invoice-box table[data-v-aa3d923e] {\n  width: 100%;\n  line-height: inherit;\n  text-align: left;\n}\n.invoice-box table td[data-v-aa3d923e] {\n  padding: 5px;\n  vertical-align: top;\n}\n.invoice-box table tr td[data-v-aa3d923e]:nth-child(2) {\n  text-align: right;\n}\n.invoice-box table tr.top table td[data-v-aa3d923e] {\n  padding-bottom: 20px;\n}\n.invoice-box table tr.top table td.title[data-v-aa3d923e] {\n  font-size: 45px;\n  line-height: 45px;\n  color: #333;\n}\n.invoice-box table tr.information table td[data-v-aa3d923e] {\n  padding-bottom: 40px;\n}\n.invoice-box table tr.heading td[data-v-aa3d923e] {\n  background: #eee;\n  border-bottom: 1px solid #ddd;\n  font-weight: bold;\n}\n.invoice-box table tr.details td[data-v-aa3d923e] {\n  padding-bottom: 20px;\n}\n.invoice-box table tr.item td[data-v-aa3d923e] {\n  border-bottom: 1px solid #eee;\n}\n.invoice-box table tr.item.last td[data-v-aa3d923e] {\n  border-bottom: none;\n}\n.invoice-box table tr.total td[data-v-aa3d923e]:nth-child(2) {\n  border-top: 2px solid #eee;\n  font-weight: bold;\n}\n@media only screen and (max-width: 600px) {\n.invoice-box table tr.top table td[data-v-aa3d923e] {\n    width: 100%;\n    display: block;\n    text-align: center;\n}\n.invoice-box table tr.information table td[data-v-aa3d923e] {\n    width: 100%;\n    display: block;\n    text-align: center;\n}\n}\n\n/** RTL **/\n.rtl[data-v-aa3d923e] {\n  direction: rtl;\n  font-family: Tahoma, \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial,\n    sans-serif;\n}\n.rtl table[data-v-aa3d923e] {\n  text-align: right;\n}\n.rtl table tr td[data-v-aa3d923e]:nth-child(2) {\n  text-align: left;\n}\n", ""]);
 
 // exports
 
@@ -80600,7 +80805,7 @@ var content = __webpack_require__(263);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("d1750f20", content, false, {});
+var update = __webpack_require__(2)("dcee1860", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -80624,7 +80829,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n\r\n/*======================\r\n    404 page\r\n=======================*/\n.page_404[data-v-bf1bf6a0]{\r\n\tpadding:40px 0; \r\n\tbackground:#fff; \r\n\tfont-family: 'Arvo', serif;\n}\n.page_404  img[data-v-bf1bf6a0]{ width:100%;\n}\n.four_zero_four_bg[data-v-bf1bf6a0]{\r\n \tbackground-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);\r\n    height: 400px;\r\n    background-position: center;\n}\n.four_zero_four_bg h1[data-v-bf1bf6a0]{\r\n \tfont-size:80px;\n}\n.four_zero_four_bg h3[data-v-bf1bf6a0]{\r\n\tfont-size:80px;\n}\n.link_404[data-v-bf1bf6a0]{\t\t\t \r\n\tcolor: #fff!important;\r\n    padding: 10px 20px;\r\n    background: #39ac31;\r\n    margin: 20px 0;\r\n    display: inline-block;\r\n    border : 1px solid #39be31;\n}\n.contant_box_404[data-v-bf1bf6a0]{ \r\n\tmargin-top:-50px;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*======================\n    404 page\n=======================*/\n.page_404[data-v-bf1bf6a0]{\n\tpadding:40px 0; \n\tbackground:#fff; \n\tfont-family: 'Arvo', serif;\n}\n.page_404  img[data-v-bf1bf6a0]{ width:100%;\n}\n.four_zero_four_bg[data-v-bf1bf6a0]{\n \tbackground-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);\n    height: 400px;\n    background-position: center;\n}\n.four_zero_four_bg h1[data-v-bf1bf6a0]{\n \tfont-size:80px;\n}\n.four_zero_four_bg h3[data-v-bf1bf6a0]{\n\tfont-size:80px;\n}\n.link_404[data-v-bf1bf6a0]{\t\t\t \n\tcolor: #fff!important;\n    padding: 10px 20px;\n    background: #39ac31;\n    margin: 20px 0;\n    display: inline-block;\n    border : 1px solid #39be31;\n}\n.contant_box_404[data-v-bf1bf6a0]{ \n\tmargin-top:-50px;\n}\n\n", ""]);
 
 // exports
 
@@ -80787,7 +80992,7 @@ var content = __webpack_require__(268);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("5381807c", content, false, {});
+var update = __webpack_require__(2)("51d8fa6e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -81588,7 +81793,7 @@ var content = __webpack_require__(273);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("48b59940", content, false, {});
+var update = __webpack_require__(2)("b8416874", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -81612,7 +81817,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-47efc0b2] {\r\n  width: 100%;\r\n  height: 100%;\r\n  font-family: 'Poppins', sans-serif !important;\r\n  font-size: 15px;\r\n\r\n  line-height: 1.2;\r\n  font-weight: unset !important;\r\n  padding-top: 20px;\r\n\r\n  padding-bottom: 20px;\n}\ntable[data-v-47efc0b2] {\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-47efc0b2] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-47efc0b2] {\r\n  padding: 20px;\n}\ntbody tr[data-v-47efc0b2] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-47efc0b2] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-47efc0b2] {\r\n  background: #e9ecef;\n}\r\n", ""]);
+exports.push([module.i, "\n.table[data-v-47efc0b2] {\n  width: 100%;\n  height: 100%;\n  font-family: 'Poppins', sans-serif !important;\n  font-size: 15px;\n\n  line-height: 1.2;\n  font-weight: unset !important;\n  padding-top: 20px;\n\n  padding-bottom: 20px;\n}\ntable[data-v-47efc0b2] {\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-47efc0b2] {\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-47efc0b2] {\n  padding: 20px;\n}\ntbody tr[data-v-47efc0b2] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-47efc0b2] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-47efc0b2] {\n  background: #e9ecef;\n}\n", ""]);
 
 // exports
 
@@ -82103,7 +82308,7 @@ var content = __webpack_require__(278);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("6e6bc4c1", content, false, {});
+var update = __webpack_require__(2)("9e4f6798", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -82143,7 +82348,7 @@ var content = __webpack_require__(280);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("d8721ab2", content, false, {});
+var update = __webpack_require__(2)("7ff92e0d", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -82167,7 +82372,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-1df20866] {\r\n  width: 100%;\r\n  height: 100%;\r\n  font-family: Poppins-Regular;\r\n  font-size: 15px;\r\n\r\n  line-height: 1.2;\r\n  font-weight: unset !important;\r\n  padding-top: 20px;\r\n\r\n  padding-bottom: 20px;\n}\ntable[data-v-1df20866] {\r\n  border: 1px solid rgb(111, 161, 136);\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-1df20866] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-1df20866] {\r\n  padding: 20px;\n}\ntbody tr[data-v-1df20866] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-1df20866] {\r\n  padding: 0.9em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody:hover td[data-v-1df20866] {\r\n  background: #e9ecef;\n}\n.formcolor[data-v-1df20866] {\r\n  background: #ebeff2;\r\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-radius: 30px;\n}\n.form-group .form-control[data-v-1df20866] {\r\n  padding: 1.35rem 0.75rem;\n}\r\n", ""]);
+exports.push([module.i, "\n.table[data-v-1df20866] {\n  width: 100%;\n  height: 100%;\n  font-family: Poppins-Regular;\n  font-size: 15px;\n\n  line-height: 1.2;\n  font-weight: unset !important;\n  padding-top: 20px;\n\n  padding-bottom: 20px;\n}\ntable[data-v-1df20866] {\n  border: 1px solid rgb(111, 161, 136);\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-1df20866] {\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-1df20866] {\n  padding: 20px;\n}\ntbody tr[data-v-1df20866] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-1df20866] {\n  padding: 0.9em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody:hover td[data-v-1df20866] {\n  background: #e9ecef;\n}\n.formcolor[data-v-1df20866] {\n  background: #ebeff2;\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n  border-radius: 30px;\n}\n.form-group .form-control[data-v-1df20866] {\n  padding: 1.35rem 0.75rem;\n}\n", ""]);
 
 // exports
 
@@ -83802,7 +84007,7 @@ var content = __webpack_require__(285);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("1849262d", content, false, {});
+var update = __webpack_require__(2)("3c24fbda", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -83934,7 +84139,7 @@ var content = __webpack_require__(290);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("f73b6fcc", content, false, {});
+var update = __webpack_require__(2)("79298718", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -83958,7 +84163,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\ntable[data-v-adccd65c] {\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-adccd65c] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-adccd65c] {\r\n  padding: 20px;\n}\ntbody tr[data-v-adccd65c] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-adccd65c] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-adccd65c] {\r\n  background: #e9ecef;\n}\r\n", ""]);
+exports.push([module.i, "\ntable[data-v-adccd65c] {\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-adccd65c] {\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-adccd65c] {\n  padding: 20px;\n}\ntbody tr[data-v-adccd65c] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-adccd65c] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-adccd65c] {\n  background: #e9ecef;\n}\n", ""]);
 
 // exports
 
@@ -84635,7 +84840,7 @@ var content = __webpack_require__(298);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("f293c87c", content, false, {});
+var update = __webpack_require__(2)("20cb4d1c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -84659,7 +84864,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-5cccd692]{\r\n    width:100%;\r\n    height: 100%;\r\n    font-family: Poppins-Regular;\r\n    font-size: 15px;\r\n    color: #666666;\r\n    line-height: 1.2;\r\n    font-weight: unset !important;\r\n    padding-top: 20px;\n}\ntable[data-v-5cccd692] {\r\n  border: 1px solid rgb(111, 161, 136); \r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-5cccd692]{\r\n    background:  rgb(91, 189, 176);\n}\n.heading th[data-v-5cccd692]{\r\n    padding:20px;\n}\ntbody tr[data-v-5cccd692]{\r\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-5cccd692] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-5cccd692] {\r\n    background: #E9ECEF;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.table[data-v-5cccd692]{\n    width:100%;\n    height: 100%;\n    font-family: Poppins-Regular;\n    font-size: 15px;\n    color: #666666;\n    line-height: 1.2;\n    font-weight: unset !important;\n    padding-top: 20px;\n}\ntable[data-v-5cccd692] {\n  border: 1px solid rgb(111, 161, 136); \n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-5cccd692]{\n    background:  rgb(91, 189, 176);\n}\n.heading th[data-v-5cccd692]{\n    padding:20px;\n}\ntbody tr[data-v-5cccd692]{\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-5cccd692] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-5cccd692] {\n    background: #E9ECEF;\n}\n\n", ""]);
 
 // exports
 

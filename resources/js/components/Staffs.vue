@@ -41,10 +41,10 @@
               </td>
               <td>{{ staff.business.name }}</td>
               <td>
-                  {{ staff.departments.name }}
+                  {{ staff.department.name }}
               </td>
               <td>
-                  {{ staff.roles.name }}
+                  {{ staff.role.name }}
               </td>
               <td>
                 <button class="btn btn-info btn-sm text-white" @click="editStaff(staff)">

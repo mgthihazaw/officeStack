@@ -29,9 +29,9 @@ class StaffUpdateRequest extends FormRequest
             'address_line' => 'required',
             'name' => 'required',
             'phone' => 'required|string',
-            'role' => 'required|integer',
-            'business' => 'required|integer',
-            'department' => 'required|integer',
+            'role' => 'required|integer|exists:roles,id',
+            'business' => 'required|integer|exists:businesses,id',
+            'department' => 'required|integer|exists:departments,id',
         ];
     }
 }

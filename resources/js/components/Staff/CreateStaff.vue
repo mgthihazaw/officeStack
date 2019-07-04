@@ -61,7 +61,7 @@
                         v-model="form.address_line"
                         class="form-control"
                         id="address"
-                        
+                        placeholder="Address Line"
                       >
                     </div>
                   </div>
@@ -76,6 +76,7 @@
                       id="business"
                       v-model="form.business"
                       class="form-control"
+                      @change="loadDepartments"
                     >
                       <option value disabled>Choose Office/Business</option>
                       <option
@@ -95,6 +96,8 @@
                       v-model="form.department"
                       class="form-control"
                       @change="loadRoles"
+                      disabled="true"
+                      ref="department"
                     >
                       <option value disabled>Choose Department</option>
                       <option
@@ -116,7 +119,7 @@
                       class="form-control"
                       disabled="true"
                     >
-                      <option value disabled>Choose Role/Job Title</option>
+                      <option selected disabled>Choose Role/Job Title</option>
                       <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
                     </select>
                   </div>
@@ -196,16 +199,20 @@ export default {
         .then(response => (this.businesses = response.data.data))
         .catch(error => console.log(error.response.data));
     },
-    loadDepartments() {
+    loadDepartments(event) {
+      let business_id = event.target.value;
       axios
-        .get("/api/departments")
-        .then(response => (this.departments = response.data))
+        .get(`/api/businesses/${business_id}/departments`)
+        .then(response => {
+          this.departments = response.data.data
+          this.$refs.department.disabled = false;
+        })
         .catch(error => console.log(error.response.data));
     },
     loadRoles(event) {
-      let id = event.target.value;
+      let department_id = event.target.value;
       axios
-        .get(`/api/departments/${id}/roles`)
+        .get(`/api/departments/${department_id}/roles`)
         .then(response => {
           this.roles = response.data;
           this.$refs.role.disabled = false;
@@ -310,7 +317,6 @@ export default {
     this.loadStates();
     this.loadData();
     this.loadBusinesses();
-    this.loadDepartments();
   },
  
   

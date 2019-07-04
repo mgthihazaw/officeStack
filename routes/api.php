@@ -24,11 +24,11 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function(){
 	Route::post('me', 'AuthController@me')->middleware('jwt');
 });
 
-Route::apiResource('/businesses', 'BusinessController');
-
 Route::group(['middleware' => 'jwt'], function(){
+	Route::apiResource('businesses', 'BusinessController');
+	Route::apiResource('businesses.departments', 'Business\BusinessDepartmentController', ['only' => ['index']]);
 
-	Route::apiResource('/staffs', 'StaffController');
+	Route::apiResource('staffs', 'StaffController');
 	Route::get('/receptionists', 'StaffController@getReceptionists');
 	Route::get('/service_engineers', 'StaffController@getServiceEngineers');
 	Route::put('/staffs/{staff}/changeAccount','StaffController@changeAccount');

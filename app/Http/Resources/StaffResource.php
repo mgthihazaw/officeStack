@@ -28,12 +28,13 @@ class StaffResource extends JsonResource
             'id' => $this->id,
             'name' => $this->person_business->name,
             'phone' => $this->person_business->phone,
+            'username' => $this->username,
             'address' => $this->person_business->address_line,
             'township' => new TownshipResource($this->person_business->township),
             'state' => new StateResource($this->person_business->township->state),
-            'roles' => new RoleResource($this->roles()->first()),
+            'role' => new RoleResource($this->roles()->first()),
             'business' => new BusinessResource($this->business),
-            'departments' => new DepartmentResource($this->roles()->first()->department)
+            'department' => new DepartmentResource($this->roles()->first()->department)
         ];
     }
 }

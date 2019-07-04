@@ -66,10 +66,6 @@
                      <input type="text" class="form-control" placeholder="Enter Address" v-model="form.address_line">
                     </div>
                   </div>
-
-
-
-
                 </div>
 
                 <div class="form-group">
@@ -80,7 +76,8 @@
                     id="business"
                     v-model="form.business"
                     class="form-control"
-                    
+                    @change="changeDepartments"
+                    required
                   >
                     <option value disabled>Choose Office/Business</option>
                     <option
@@ -95,25 +92,49 @@
                   <label for="department">Department</label>
                   <div class="error text-muted" v-if="errs.department">{{errs.department[0]}}</div>
 
-                  <multiselect
+                  <select
+                    name="department"
+                    id="department"
                     v-model="form.department"
-                    tag-placeholder="Add this as new tag"
-                    placeholder="Search or add a tag"
-                    :block-keys="['Delete']"
-                    label="name"
-                    track-by="name"
-                    :options="departments"
-                    @input="loadRoles"
-                  ></multiselect>
+                    class="form-control"
+                    ref="department"
+                    @change="changeRoles"
+                    placeholder="Choose Department"
+                    required
+                  >
+                    <option value="0" disabled>Select Department</option>
+                    <option
+                      v-for="department in departments"
+                      :key="department.id"
+                      :value="department.id"
+                    >{{ department.name }}</option>
+                  </select>
                 </div>
 
                 <div class="form-group">
                   <label for="role">Role/Job Title</label>
                   <div class="error text-muted" v-if="errs.role">{{errs.role[0]}}</div>
-                  <select v-model="form.role" class="form-control">
-                    <option >Select Role</option>
+                  <select 
+                    v-model="form.role" 
+                    class="form-control"
+                    ref="role"
+                    required 
+                    >
+                    <option value="0" disabled>Select Role</option>
                     <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
                   </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="username">Username</label>
+                  <div class="error text-muted" v-if="errs.username">{{errs.username[0]}}</div>
+                  <input type="text" class="form-control" id="username" v-model="form.username" />
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Password</label>
+                  <div class="error text-muted" v-if="errs.password">{{errs.password[0]}}</div>
+                  <input type="text" class="form-control" id="password" v-model="form.password" />
                 </div>
 
                 <div class="modal-footer">
@@ -151,6 +172,8 @@ export default {
         state: "",
         business: "",
         department: "",
+        username: "",
+        password: "",
         role: ""
       },
       roles: [],
@@ -174,19 +197,43 @@ export default {
         .then(response => (this.businesses = response.data.data))
         .catch(error => console.log(error.response.data));
     },
-    loadDepartments() {
+    changeDepartments(event) {
+      let business_id = event.target.value
       axios
-        .get("/api/departments")
-        .then(response => (this.departments = response.data))
+        .get(`/api/businesses/${business_id}/departments`)
+        .then(response => {
+          this.departments = response.data.data
+            this.form.department = 0;
+            this.form.role = 0;
+            this.roles = [];
+        })
+        .catch(error => console.log(error.response));
+    },
+    loadDepartments(business) {
+      axios
+        .get(`/api/businesses/${business}/departments`)
+        .then(response => {
+          this.departments = response.data.data
+        })
+        .catch(error => console.log(error.response.data));
+    },
+    changeRoles(event) {
+      let department_id = event.target.value
+      axios
+        .get(`/api/departments/${department_id}/roles`)
+        .then(response => {
+          this.roles = response.data;
+
+        })
         .catch(error => console.log(error.response.data));
     },
     loadRoles(department) {
-      this.form.role=''
       axios
-        .get(`/api/departments/${department.id}/roles`)
+        .get(`/api/departments/${department}/roles`)
         .then(response => {
           this.roles = response.data;
-          console.log(this.roles);
+          //this.form.role = ''
+          //console.log(this.roles);
         })
         .catch(error => console.log(error.response.data));
     },
@@ -217,7 +264,7 @@ export default {
     },
     submit() {
       this.form.state = this.form.state.id
-      this.form.department = this.form.department.id
+      this.form.department = this.form.department
       this.form.township = this.form.township.name
 
       axios
@@ -228,7 +275,14 @@ export default {
           this.$router.push("/staffs");
         })
         .catch(error => {
-          this.errs = error.response.data.errors;
+          if(error.response.status == 422){
+            this.errs = error.response.data.errors;
+            this.form.state = this.staff.state;
+            this.loadTownships(this.form.state);
+
+            this.form.township = this.staff.township;
+            this.form.address_line= this.staff.address
+          }
         });
     },
     addTag(newTag) {
@@ -263,55 +317,55 @@ export default {
   },
 
   created() {
-    if (User.isLoggedIn()) {
-      axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        if (!Gate.isDeveloper()) {
-          this.shows();
-          this.authorized = false;
-        } else {
-          this.shows();
-          this.authorized = true;
-        }
-      });
-    }
     this.loadStates();
     this.loadBusinesses();
-    this.loadDepartments();
-  },
-  mounted() {
+    // this.loadDepartments();
     let id = this.$route.params.id;
+
     axios
       .get(`/api/staffs/${id}`)
       .then(response => {
         this.staff = response.data.data;
-
+        console.log(this.staff);
         this.form.name = this.staff.name;
         this.form.phone = this.staff.phone;
         this.form.state = this.staff.state;
+        this.form.username = this.staff.username;
         this.loadTownships(this.form.state);
 
         this.form.township = this.staff.township;
         this.form.address_line= this.staff.address
         
-
         this.form.business = this.staff.business.id;
-        this.form.department = this.staff.departments;
-        this.form.role = this.staff.roles.id;
+        this.loadDepartments(this.form.business);
+        this.form.department = this.staff.department.id;
+        this.loadRoles(this.form.department);
+        this.form.role = this.staff.role.id;
   
-        axios
-          .get(`/api/departments/${this.form.department.id}/roles`)
-          .then(response => {
-            this.roles = response.data;
-          })
-          .catch(error => console.log(error.response.data));
-
-        
+        // axios
+        //   .get(`/api/departments/${this.form.department.id}/roles`)
+        //   .then(response => {
+        //     this.roles = response.data;
+        //   })
+        //   .catch(error => console.log(error.response.data));
       })
       .catch(error => {
         console.log(error);
       });
-  }
+
+      if (User.isLoggedIn()) {
+        axios.post("/api/auth/me").then(response => {
+          Gate.setUser(response.data.user.roles, response.data.user.permissions);
+          if (!Gate.isDeveloper()) {
+            this.shows();
+            this.authorized = false;
+          } else {
+            this.shows();
+            this.authorized = true;
+          }
+        });
+      }
+  },
 };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
