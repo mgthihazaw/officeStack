@@ -4,11 +4,10 @@
 
     <div class="container_fluid" v-else>
       <div>
-        
-        <div >
+        <div>
           <div class="row pageHeader">
             <div class="mt-3 col-6">
-              <img :src="'/images/logo/1.png'" alt="microstack" width="300px">
+              <img :src="'/images/logo/1.png'" alt="microstack" width="300px" />
             </div>
             <div class="col-6 pt-2">
               <div class="row">
@@ -31,7 +30,7 @@
             </div>
           </div>
 
-          <div class="mt-3" >
+          <div class="mt-3">
             <div>
               <div class="row customerParent">
                 <div class="col-6">
@@ -128,57 +127,111 @@
                       {{ service.service_remark}}
                     </div>
                   </div>
-
-                  <div class="p-0" v-if="serviceItems.length>0">
+    
+                  <div class="p-0" >
                     
                     <table class="table table-hover">
-                    <tbody>
-                      <tr class="heading"></tr>
-                      <tr class="heading">
-                        <th style="width: 100px">No.</th>
-                        <th>Name</th>
+                      <tbody>
+                        
+                        <tr class="heading" v-if="serviceItems.length>0">
+                          <th style="width: 100px">No.</th>
+                          <th>Name</th>
 
-                        <th>Quantity</th>
-                        <th>Unit Price</th>
-                        <th>Amount</th>
-                        <th style="width: 100px">
-                          
-                        </th>
-                      </tr>
+                          <th>Quantity</th>
+                          <th>Unit Price</th>
+                          <th>Amount</th>
+                          <th style="width: 100px"><button class="btn btn-secondary">
+                        Save &nbsp;<i class="fas fa-save"></i>
+                      </button></th>
+                        </tr>
 
-                      <tr v-for="(item,index) in serviceItems" :key="index" class="animated fadeIn" >
-                        <td>{{ index+1 }}</td>
-                        <td class="ml-2">
-                          {{ item.brand.name }}
-                          <span
-                            v-for="(attribute,index) in item.attributes"
-                            :key="index"
-                          >{{ attribute.name }} &nbsp;</span>
-                        </td>
+                        <tr
+                          v-for="(item,index) in serviceItems"
+                          :key="index"
+                          class="animated fadeIn"
+                        >
+                          <td>{{ index+1 }}</td>
+                          <td class="ml-2">
+                            {{ item.brand.name }}
+                            <span
+                              v-for="(attribute,index) in item.attributes"
+                              :key="index"
+                            >{{ attribute.name }} &nbsp;</span>
+                          </td>
 
-                        <td class="ml-2"><input type="number" class="form-control" v-model="item.quantity"><span class="inputData" >{{ item.quantity }}</span></td>
+                          <td class="ml-2">
+                            <input type="number" class="form-control" v-model="item.quantity" />
+                            <span class="inputData">{{ item.quantity }}</span>
+                          </td>
 
-                        <td class="ml-2"><input type="number" v-model="item.price" class="form-control"><span class="inputData">{{ item.price }}</span></td>
-                        <td class="ml-2"><input type="number" v-model="item.price" class="form-control"> <span class="inputData">{{ item.price }}</span></td>
-                        <td>
-                          <button class="btn btn-danger btn-sm" @click="deleteCost(index)">
-                                <i class="fas fa-minus"></i>
-                           </button>
-                        </td>
-                      </tr>
-                      <tr v-if="serviceItems.length>0">
-                            <td ><p class="text-bold">Total</p></td>
-                            <td style="padding-left:30px;"></td>
-                            <td></td>
-                            <td></td>
-                            <td style="padding-left:10px;"><p class="text-bold ml-2">{{ total }}</p></td>
-                            <td><button class="btn btn-secondary btn-lg">Save <i class="fas fa-save"></i></button></td>
-                          </tr>
-                    </tbody>
-                  </table>
-                      
-                    </div>
-                
+                          <td class="ml-2">
+                            <input type="number" v-model="item.price" class="form-control" />
+                            <span class="inputData">{{ item.price }}</span>
+                          </td>
+                          <td class="ml-2">
+                            <input type="number" v-model="item.amount" class="form-control" />
+                            <span class="inputData">{{ item.amount }}</span>
+                          </td>
+                          <td>
+                            <button class="btn btn-danger btn-sm" @click="deleteItem(index)">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr v-for="(extra,key) in extra_fees" :key="key+10">
+                          <td></td>
+                          <td ></td>
+                          <td></td>
+                          <td>
+                            <p class="text-bold">
+                              <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter new Fee"
+                                v-model="extra.name"
+                              />
+                              <span class="inputData">{{ extra.name }}</span>
+                            </p>
+                          </td>
+                          <td style="padding-left:10px;">
+                            <input
+                              type="number"
+                              class="form-control"
+                              placeholder="e.g.5000"
+                              v-model="extra.price"
+                            />
+                            <span class="inputData">{{ extra.price }}</span>
+                          </td>
+                          <td>
+                            <button class="btn btn-danger btn-sm" @click="deleteFee(key)">
+                              <i class="fas fa-minus"></i>
+                            </button>
+                          </td>
+                        </tr>
+                        <tr v-if="serviceItems.length>0">
+                          <td>
+                            <p class="text-bold"></p>
+                          </td>
+                          <td style="padding-left:30px;"></td>
+                          <td></td>
+                          <td>Total</td>
+                          <td style="padding-left:10px;">
+                            <p class="text-bold ml-2">{{ getTotal }}</p>
+                          </td>
+                          <td>
+                            <button class="btn btn-info" @click="addExtra">
+                              New Fee
+                              <i class="fas fa-plus"></i>
+                            </button>
+                          </td>
+                          <td>
+                            
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
                   <!-- /.card -->
                 </div>
               </div>
@@ -186,13 +239,18 @@
           </div>
         </div>
         <button class="btn btn-success printBtn" @click="print">Print Preview</button>
-        <button type="button" class="btn btn-info printBtn" data-toggle="modal" data-target="#modal-xl">
-                  Add Item <i class=" ml-2 fas fa-plus-circle fa-1x"></i>
+        <button
+          type="button"
+          class="btn btn-info printBtn"
+          data-toggle="modal"
+          data-target="#modal-xl"
+        >
+          Add Item
+          <i class="ml-2 fas fa-plus-circle fa-1x"></i>
         </button>
       </div>
 
-
-       <!--------------------Modal--------------------------->
+      <!--------------------Modal--------------------------->
       <div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
@@ -203,22 +261,17 @@
               </button>
             </div>
             <div class="modal-body bg-light">
-              
-               <search></search>
-
-
-
+              <search></search>
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              
             </div>
           </div>
           <!-- /.modal-content -->
         </div>
         <!-- /.modal-dialog -->
       </div>
-        <!--------------------Modal--------------------------->
+      <!--------------------Modal--------------------------->
     </div>
   </div>
 </template>
@@ -239,11 +292,10 @@ export default {
       authorized: false,
       service: "",
       serviceItems: [],
-      
+      extra_fees: []
     };
   },
   methods: {
-  
     loadService() {
       let id = this.$route.params.id;
       axios
@@ -263,20 +315,37 @@ export default {
     },
     print() {
       window.print();
+    },
+    addExtra() {
+      this.extra_fees.push({ name: "", price: 0 });
+    },
+    deleteItem(index) {
+      
+          this.serviceItems.splice(index, 1);
+        
+    },
+    deleteFee(key){
+       this.extra_fees.splice(key, 1);
     }
+
   },
   created() {
-    Bus.$on('addItemForService',(item)=>{
-      console.log(this.serviceItems.includes(item))
-      if(!this.serviceItems.includes(item)){
-        this.serviceItems.push({...item,quantity: 1})
-      }
-      //  this.serviceItems.push(item)
-      
-    })
+    Bus.$on("addItemForService", item => {
+      item = { ...item, quantity: 1, amount: item.price };
+
+      this.serviceItems.push(item);
+      this.serviceItems = this.serviceItems.reduce((serviceItem, current) => {
+        const x = serviceItem.find(item => item.id === current.id);
+        if (!x) {
+          return serviceItem.concat([current]);
+        } else {
+          return serviceItem;
+        }
+      }, []);
+    });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
-       Gate.setUser(response.data.user.roles,response.data.user.permissions);
+        Gate.setUser(response.data.user.roles, response.data.user.permissions);
 
         if (!(Gate.isSaleperson() || Gate.isServiceEngineer())) {
           this.shows();
@@ -289,6 +358,36 @@ export default {
     }
 
     this.loadService();
+  },
+  watch: {
+    serviceItems: {
+      handler: function(after, before) {
+        before.forEach(data => {
+          data.amount = data.quantity * data.price;
+          // console.log(data.quantity, data.price);
+        });
+      },
+      deep: true
+    }
+  },
+  computed: {
+    getTotal() {
+      this.total = 0;
+      let data;
+
+      data = this.serviceItems.forEach(serviceItem => {
+        this.total += serviceItem.amount;
+        return this.total;
+      });
+      if(this.extra_fees.length>0){
+        data=this.extra_fees.forEach(extra_fee => {
+        this.total += parseInt(extra_fee.price);
+        return this.total;
+      });
+      }
+
+      return this.total;
+    }
   }
 };
 </script>
@@ -333,9 +432,9 @@ h6 {
   input {
     display: none;
   }
-  span.inputData{
-  display: block;
-}
+  span.inputData {
+    display: block;
+  }
   .des {
     display: none;
   }
@@ -348,7 +447,7 @@ h6 {
   padding: 0;
   margin: 0;
 }
-.inputData{
-  display :none;
+.inputData {
+  display: none;
 }
 </style>

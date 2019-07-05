@@ -135,6 +135,7 @@ export default {
         .get("/api/items")
         .then(res => {
           this.items = res.data.data;
+          
         })
         .catch(err => {
           console.log(err);
@@ -183,7 +184,7 @@ export default {
       }
       if (this.attributes.length > 0) {
         this.attributes.forEach((attr, key) => {
-          this.searchForm.attributes[key] = `${attr.name}`;
+          this.searchForm.attributes[key] = `${attr.id}`;
         });
       }
       console.log(this.searchForm);
@@ -193,8 +194,12 @@ export default {
       });
     },
     addItemForService(item){
+      // item.quantity = 1
+      // item.amount = item.price
+     
         Bus.$emit('addItemForService',item)
     },
+    
     clearForm() {
       (this.searchForm.item_type = ""), (this.searchForm.brand = "");
       this.searchForm.attributes = [];

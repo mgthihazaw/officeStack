@@ -76039,7 +76039,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-2cf8d420],\r\nh2[data-v-2cf8d420],\r\nh3[data-v-2cf8d420],\r\nh4[data-v-2cf8d420],\r\nh5[data-v-2cf8d420] {\r\n  font-weight: 500;\r\n  line-height: 1.4em;\n}\nh6[data-v-2cf8d420] {\r\n  font-weight: bold;\r\n  line-height: 1.4em;\n}\n.customerParent[data-v-2cf8d420] {\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-2cf8d420] {\r\n  margin: 0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-2cf8d420] {\r\n  padding-top: 20px;\n}\n.des[data-v-2cf8d420] {\r\n  background-color: #eff0f1;\r\n  border-left: 3px solid #59997b;\n}\n@media print {\n.printBtn[data-v-2cf8d420] {\r\n    display: none;\n}\nbutton[data-v-2cf8d420] {\r\n    display: none;\n}\ninput[data-v-2cf8d420] {\r\n    display: none;\n}\nspan.inputData[data-v-2cf8d420]{\r\n  display: block;\n}\n.des[data-v-2cf8d420] {\r\n    display: none;\n}\n.saveform[data-v-2cf8d420] {\r\n    display: none;\r\n    margin: 0;\n}\n}\n.tb[data-v-2cf8d420] {\r\n  padding: 0;\r\n  margin: 0;\n}\n.inputData[data-v-2cf8d420]{\r\n  display :none;\n}\r\n", ""]);
+exports.push([module.i, "\nh1[data-v-2cf8d420],\r\nh2[data-v-2cf8d420],\r\nh3[data-v-2cf8d420],\r\nh4[data-v-2cf8d420],\r\nh5[data-v-2cf8d420] {\r\n  font-weight: 500;\r\n  line-height: 1.4em;\n}\nh6[data-v-2cf8d420] {\r\n  font-weight: bold;\r\n  line-height: 1.4em;\n}\n.customerParent[data-v-2cf8d420] {\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-2cf8d420] {\r\n  margin: 0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-2cf8d420] {\r\n  padding-top: 20px;\n}\n.des[data-v-2cf8d420] {\r\n  background-color: #eff0f1;\r\n  border-left: 3px solid #59997b;\n}\n@media print {\n.printBtn[data-v-2cf8d420] {\r\n    display: none;\n}\nbutton[data-v-2cf8d420] {\r\n    display: none;\n}\ninput[data-v-2cf8d420] {\r\n    display: none;\n}\nspan.inputData[data-v-2cf8d420] {\r\n    display: block;\n}\n.des[data-v-2cf8d420] {\r\n    display: none;\n}\n.saveform[data-v-2cf8d420] {\r\n    display: none;\r\n    margin: 0;\n}\n}\n.tb[data-v-2cf8d420] {\r\n  padding: 0;\r\n  margin: 0;\n}\n.inputData[data-v-2cf8d420] {\r\n  display: none;\n}\r\n", ""]);
 
 // exports
 
@@ -76281,6 +76281,59 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -76296,8 +76349,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       show: false,
       authorized: false,
       service: "",
-      serviceItems: []
-
+      serviceItems: [],
+      extra_fees: []
     };
   },
 
@@ -76320,17 +76373,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     },
     print: function print() {
       window.print();
+    },
+    addExtra: function addExtra() {
+      this.extra_fees.push({ name: "", price: 0 });
+    },
+    deleteItem: function deleteItem(index) {
+
+      this.serviceItems.splice(index, 1);
+    },
+    deleteFee: function deleteFee(key) {
+      this.extra_fees.splice(key, 1);
     }
   },
   created: function created() {
     var _this2 = this;
 
-    Bus.$on('addItemForService', function (item) {
-      console.log(_this2.serviceItems.includes(item));
-      if (!_this2.serviceItems.includes(item)) {
-        _this2.serviceItems.push(_extends({}, item, { quantity: 1 }));
-      }
-      //  this.serviceItems.push(item)
+    Bus.$on("addItemForService", function (item) {
+      item = _extends({}, item, { quantity: 1, amount: item.price });
+
+      _this2.serviceItems.push(item);
+      _this2.serviceItems = _this2.serviceItems.reduce(function (serviceItem, current) {
+        var x = serviceItem.find(function (item) {
+          return item.id === current.id;
+        });
+        if (!x) {
+          return serviceItem.concat([current]);
+        } else {
+          return serviceItem;
+        }
+      }, []);
     });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(function (response) {
@@ -76347,6 +76418,39 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     }
 
     this.loadService();
+  },
+
+  watch: {
+    serviceItems: {
+      handler: function handler(after, before) {
+        before.forEach(function (data) {
+          data.amount = data.quantity * data.price;
+          // console.log(data.quantity, data.price);
+        });
+      },
+      deep: true
+    }
+  },
+  computed: {
+    getTotal: function getTotal() {
+      var _this3 = this;
+
+      this.total = 0;
+      var data = void 0;
+
+      data = this.serviceItems.forEach(function (serviceItem) {
+        _this3.total += serviceItem.amount;
+        return _this3.total;
+      });
+      if (this.extra_fees.length > 0) {
+        data = this.extra_fees.forEach(function (extra_fee) {
+          _this3.total += parseInt(extra_fee.price);
+          return _this3.total;
+        });
+      }
+
+      return this.total;
+    }
   }
 });
 
@@ -76671,7 +76775,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
       if (this.attributes.length > 0) {
         this.attributes.forEach(function (attr, key) {
-          _this5.searchForm.attributes[key] = "" + attr.name;
+          _this5.searchForm.attributes[key] = "" + attr.id;
         });
       }
       console.log(this.searchForm);
@@ -76681,6 +76785,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     addItemForService: function addItemForService(item) {
+      // item.quantity = 1
+      // item.amount = item.price
+
       Bus.$emit('addItemForService', item);
     },
     clearForm: function clearForm() {
@@ -77163,18 +77270,16 @@ var render = function() {
                               ])
                             ]),
                             _vm._v(" "),
-                            _vm.serviceItems.length > 0
-                              ? _c("div", { staticClass: "p-0" }, [
+                            _c("div", { staticClass: "p-0" }, [
+                              _c(
+                                "table",
+                                { staticClass: "table table-hover" },
+                                [
                                   _c(
-                                    "table",
-                                    { staticClass: "table table-hover" },
+                                    "tbody",
                                     [
-                                      _c(
-                                        "tbody",
-                                        [
-                                          _c("tr", { staticClass: "heading" }),
-                                          _vm._v(" "),
-                                          _c("tr", { staticClass: "heading" }, [
+                                      _vm.serviceItems.length > 0
+                                        ? _c("tr", { staticClass: "heading" }, [
                                             _c(
                                               "th",
                                               {
@@ -77191,315 +77296,406 @@ var render = function() {
                                             _vm._v(" "),
                                             _c("th", [_vm._v("Amount")]),
                                             _vm._v(" "),
-                                            _c("th", {
-                                              staticStyle: { width: "100px" }
-                                            })
-                                          ]),
-                                          _vm._v(" "),
-                                          _vm._l(_vm.serviceItems, function(
-                                            item,
-                                            index
-                                          ) {
-                                            return _c(
-                                              "tr",
+                                            _c(
+                                              "th",
                                               {
-                                                key: index,
-                                                staticClass: "animated fadeIn"
+                                                staticStyle: { width: "100px" }
                                               },
                                               [
-                                                _c("td", [
-                                                  _vm._v(_vm._s(index + 1))
-                                                ]),
-                                                _vm._v(" "),
                                                 _c(
-                                                  "td",
-                                                  { staticClass: "ml-2" },
+                                                  "button",
+                                                  {
+                                                    staticClass:
+                                                      "btn btn-secondary"
+                                                  },
                                                   [
                                                     _vm._v(
-                                                      "\n                        " +
-                                                        _vm._s(
-                                                          item.brand.name
-                                                        ) +
-                                                        "\n                        "
+                                                      "\n                      Save  "
                                                     ),
-                                                    _vm._l(
-                                                      item.attributes,
-                                                      function(
-                                                        attribute,
-                                                        index
-                                                      ) {
-                                                        return _c(
-                                                          "span",
-                                                          { key: index },
-                                                          [
-                                                            _vm._v(
-                                                              _vm._s(
-                                                                attribute.name
-                                                              ) + "  "
-                                                            )
-                                                          ]
-                                                        )
-                                                      }
-                                                    )
-                                                  ],
-                                                  2
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "td",
-                                                  { staticClass: "ml-2" },
-                                                  [
-                                                    _c("input", {
-                                                      directives: [
-                                                        {
-                                                          name: "model",
-                                                          rawName: "v-model",
-                                                          value: item.quantity,
-                                                          expression:
-                                                            "item.quantity"
-                                                        }
-                                                      ],
-                                                      staticClass:
-                                                        "form-control",
-                                                      attrs: { type: "number" },
-                                                      domProps: {
-                                                        value: item.quantity
-                                                      },
-                                                      on: {
-                                                        input: function(
-                                                          $event
-                                                        ) {
-                                                          if (
-                                                            $event.target
-                                                              .composing
-                                                          ) {
-                                                            return
-                                                          }
-                                                          _vm.$set(
-                                                            item,
-                                                            "quantity",
-                                                            $event.target.value
-                                                          )
-                                                        }
-                                                      }
-                                                    }),
-                                                    _c(
-                                                      "span",
-                                                      {
-                                                        staticClass: "inputData"
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(item.quantity)
-                                                        )
-                                                      ]
-                                                    )
+                                                    _c("i", {
+                                                      staticClass: "fas fa-save"
+                                                    })
                                                   ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "td",
-                                                  { staticClass: "ml-2" },
-                                                  [
-                                                    _c("input", {
-                                                      directives: [
-                                                        {
-                                                          name: "model",
-                                                          rawName: "v-model",
-                                                          value: item.price,
-                                                          expression:
-                                                            "item.price"
-                                                        }
-                                                      ],
-                                                      staticClass:
-                                                        "form-control",
-                                                      attrs: { type: "number" },
-                                                      domProps: {
-                                                        value: item.price
-                                                      },
-                                                      on: {
-                                                        input: function(
-                                                          $event
-                                                        ) {
-                                                          if (
-                                                            $event.target
-                                                              .composing
-                                                          ) {
-                                                            return
-                                                          }
-                                                          _vm.$set(
-                                                            item,
-                                                            "price",
-                                                            $event.target.value
-                                                          )
-                                                        }
-                                                      }
-                                                    }),
-                                                    _c(
-                                                      "span",
-                                                      {
-                                                        staticClass: "inputData"
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(item.price)
-                                                        )
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "td",
-                                                  { staticClass: "ml-2" },
-                                                  [
-                                                    _c("input", {
-                                                      directives: [
-                                                        {
-                                                          name: "model",
-                                                          rawName: "v-model",
-                                                          value: item.price,
-                                                          expression:
-                                                            "item.price"
-                                                        }
-                                                      ],
-                                                      staticClass:
-                                                        "form-control",
-                                                      attrs: { type: "number" },
-                                                      domProps: {
-                                                        value: item.price
-                                                      },
-                                                      on: {
-                                                        input: function(
-                                                          $event
-                                                        ) {
-                                                          if (
-                                                            $event.target
-                                                              .composing
-                                                          ) {
-                                                            return
-                                                          }
-                                                          _vm.$set(
-                                                            item,
-                                                            "price",
-                                                            $event.target.value
-                                                          )
-                                                        }
-                                                      }
-                                                    }),
-                                                    _vm._v(" "),
-                                                    _c(
-                                                      "span",
-                                                      {
-                                                        staticClass: "inputData"
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(item.price)
-                                                        )
-                                                      ]
-                                                    )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _c(
-                                                    "button",
-                                                    {
-                                                      staticClass:
-                                                        "btn btn-danger btn-sm",
-                                                      on: {
-                                                        click: function(
-                                                          $event
-                                                        ) {
-                                                          return _vm.deleteCost(
-                                                            index
-                                                          )
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fas fa-minus"
-                                                      })
-                                                    ]
-                                                  )
-                                                ])
+                                                )
                                               ]
                                             )
-                                          }),
+                                          ])
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm._l(_vm.serviceItems, function(
+                                        item,
+                                        index
+                                      ) {
+                                        return _c(
+                                          "tr",
+                                          {
+                                            key: index,
+                                            staticClass: "animated fadeIn"
+                                          },
+                                          [
+                                            _c("td", [
+                                              _vm._v(_vm._s(index + 1))
+                                            ]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              { staticClass: "ml-2" },
+                                              [
+                                                _vm._v(
+                                                  "\n                          " +
+                                                    _vm._s(item.brand.name) +
+                                                    "\n                          "
+                                                ),
+                                                _vm._l(
+                                                  item.attributes,
+                                                  function(attribute, index) {
+                                                    return _c(
+                                                      "span",
+                                                      { key: index },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            attribute.name
+                                                          ) + "  "
+                                                        )
+                                                      ]
+                                                    )
+                                                  }
+                                                )
+                                              ],
+                                              2
+                                            ),
+                                            _vm._v(" "),
+                                            _c("td", { staticClass: "ml-2" }, [
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: item.quantity,
+                                                    expression: "item.quantity"
+                                                  }
+                                                ],
+                                                staticClass: "form-control",
+                                                attrs: { type: "number" },
+                                                domProps: {
+                                                  value: item.quantity
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      item,
+                                                      "quantity",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "inputData" },
+                                                [_vm._v(_vm._s(item.quantity))]
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", { staticClass: "ml-2" }, [
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: item.price,
+                                                    expression: "item.price"
+                                                  }
+                                                ],
+                                                staticClass: "form-control",
+                                                attrs: { type: "number" },
+                                                domProps: { value: item.price },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      item,
+                                                      "price",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "inputData" },
+                                                [_vm._v(_vm._s(item.price))]
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", { staticClass: "ml-2" }, [
+                                              _c("input", {
+                                                directives: [
+                                                  {
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: item.amount,
+                                                    expression: "item.amount"
+                                                  }
+                                                ],
+                                                staticClass: "form-control",
+                                                attrs: { type: "number" },
+                                                domProps: {
+                                                  value: item.amount
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
+                                                    }
+                                                    _vm.$set(
+                                                      item,
+                                                      "amount",
+                                                      $event.target.value
+                                                    )
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "inputData" },
+                                                [_vm._v(_vm._s(item.amount))]
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass:
+                                                    "btn btn-danger btn-sm",
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.deleteItem(
+                                                        index
+                                                      )
+                                                    }
+                                                  }
+                                                },
+                                                [
+                                                  _c("i", {
+                                                    staticClass: "fas fa-minus"
+                                                  })
+                                                ]
+                                              )
+                                            ])
+                                          ]
+                                        )
+                                      }),
+                                      _vm._v(" "),
+                                      _vm._l(_vm.extra_fees, function(
+                                        extra,
+                                        key
+                                      ) {
+                                        return _c("tr", { key: key + 10 }, [
+                                          _c("td"),
                                           _vm._v(" "),
-                                          _vm.serviceItems.length > 0
-                                            ? _c("tr", [
-                                                _c("td", [
-                                                  _c(
-                                                    "p",
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td"),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "p",
+                                              { staticClass: "text-bold" },
+                                              [
+                                                _c("input", {
+                                                  directives: [
                                                     {
-                                                      staticClass: "text-bold"
-                                                    },
-                                                    [_vm._v("Total")]
-                                                  )
-                                                ]),
-                                                _vm._v(" "),
-                                                _c("td", {
-                                                  staticStyle: {
-                                                    "padding-left": "30px"
+                                                      name: "model",
+                                                      rawName: "v-model",
+                                                      value: extra.name,
+                                                      expression: "extra.name"
+                                                    }
+                                                  ],
+                                                  staticClass: "form-control",
+                                                  attrs: {
+                                                    type: "text",
+                                                    placeholder: "Enter new Fee"
+                                                  },
+                                                  domProps: {
+                                                    value: extra.name
+                                                  },
+                                                  on: {
+                                                    input: function($event) {
+                                                      if (
+                                                        $event.target.composing
+                                                      ) {
+                                                        return
+                                                      }
+                                                      _vm.$set(
+                                                        extra,
+                                                        "name",
+                                                        $event.target.value
+                                                      )
+                                                    }
                                                   }
                                                 }),
                                                 _vm._v(" "),
-                                                _c("td"),
-                                                _vm._v(" "),
-                                                _c("td"),
-                                                _vm._v(" "),
                                                 _c(
-                                                  "td",
+                                                  "span",
+                                                  { staticClass: "inputData" },
+                                                  [_vm._v(_vm._s(extra.name))]
+                                                )
+                                              ]
+                                            )
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "td",
+                                            {
+                                              staticStyle: {
+                                                "padding-left": "10px"
+                                              }
+                                            },
+                                            [
+                                              _c("input", {
+                                                directives: [
                                                   {
-                                                    staticStyle: {
-                                                      "padding-left": "10px"
+                                                    name: "model",
+                                                    rawName: "v-model",
+                                                    value: extra.price,
+                                                    expression: "extra.price"
+                                                  }
+                                                ],
+                                                staticClass: "form-control",
+                                                attrs: {
+                                                  type: "number",
+                                                  placeholder: "e.g.5000"
+                                                },
+                                                domProps: {
+                                                  value: extra.price
+                                                },
+                                                on: {
+                                                  input: function($event) {
+                                                    if (
+                                                      $event.target.composing
+                                                    ) {
+                                                      return
                                                     }
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "p",
-                                                      {
-                                                        staticClass:
-                                                          "text-bold ml-2"
-                                                      },
-                                                      [
-                                                        _vm._v(
-                                                          _vm._s(_vm.total)
-                                                        )
-                                                      ]
+                                                    _vm.$set(
+                                                      extra,
+                                                      "price",
+                                                      $event.target.value
                                                     )
-                                                  ]
-                                                ),
-                                                _vm._v(" "),
-                                                _c("td", [
-                                                  _c(
-                                                    "button",
-                                                    {
-                                                      staticClass:
-                                                        "btn btn-secondary btn-lg"
-                                                    },
-                                                    [
-                                                      _vm._v("Save "),
-                                                      _c("i", {
-                                                        staticClass:
-                                                          "fas fa-save"
-                                                      })
-                                                    ]
-                                                  )
-                                                ])
-                                              ])
-                                            : _vm._e()
-                                        ],
-                                        2
-                                      )
-                                    ]
+                                                  }
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _c(
+                                                "span",
+                                                { staticClass: "inputData" },
+                                                [_vm._v(_vm._s(extra.price))]
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("td", [
+                                            _c(
+                                              "button",
+                                              {
+                                                staticClass:
+                                                  "btn btn-danger btn-sm",
+                                                on: {
+                                                  click: function($event) {
+                                                    return _vm.deleteFee(key)
+                                                  }
+                                                }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass: "fas fa-minus"
+                                                })
+                                              ]
+                                            )
+                                          ])
+                                        ])
+                                      }),
+                                      _vm._v(" "),
+                                      _vm.serviceItems.length > 0
+                                        ? _c("tr", [
+                                            _c("td", [
+                                              _c("p", {
+                                                staticClass: "text-bold"
+                                              })
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td", {
+                                              staticStyle: {
+                                                "padding-left": "30px"
+                                              }
+                                            }),
+                                            _vm._v(" "),
+                                            _c("td"),
+                                            _vm._v(" "),
+                                            _c("td", [_vm._v("Total")]),
+                                            _vm._v(" "),
+                                            _c(
+                                              "td",
+                                              {
+                                                staticStyle: {
+                                                  "padding-left": "10px"
+                                                }
+                                              },
+                                              [
+                                                _c(
+                                                  "p",
+                                                  {
+                                                    staticClass:
+                                                      "text-bold ml-2"
+                                                  },
+                                                  [_vm._v(_vm._s(_vm.getTotal))]
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c("td", [
+                                              _c(
+                                                "button",
+                                                {
+                                                  staticClass: "btn btn-info",
+                                                  on: { click: _vm.addExtra }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                            New Fee\n                            "
+                                                  ),
+                                                  _c("i", {
+                                                    staticClass: "fas fa-plus"
+                                                  })
+                                                ]
+                                              )
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("td")
+                                          ])
+                                        : _vm._e()
+                                    ],
+                                    2
                                   )
-                                ])
-                              : _vm._e()
+                                ]
+                              )
+                            ])
                           ])
                         ])
                       ])
@@ -77526,8 +77722,8 @@ var render = function() {
                       }
                     },
                     [
-                      _vm._v("\n                Add Item "),
-                      _c("i", { staticClass: " ml-2 fas fa-plus-circle fa-1x" })
+                      _vm._v("\n        Add Item\n        "),
+                      _c("i", { staticClass: "ml-2 fas fa-plus-circle fa-1x" })
                     ]
                   )
                 ]),
@@ -83682,6 +83878,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.form.item_type_id = this.itemType.id;
       this.form.brand = this.brand.name;
+      this.form.price_one = this.form.price;
 
       //Validation Of Attribute
       this.form.attributes.forEach(function (attribute, key) {

@@ -580,6 +580,7 @@ export default {
     updateItem(id) {
       this.form.item_type_id = this.itemType.id;
       this.form.brand = this.brand.name;
+      this.form.price_one = this.form.price
 
       //Validation Of Attribute
       this.form.attributes.forEach((attribute, key) => {

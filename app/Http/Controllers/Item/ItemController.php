@@ -162,8 +162,8 @@ class ItemController extends Controller
             foreach ($request->query('attributes') as $key => $attribute) {
                 $index = $key + 1;
                 $query->leftjoin("attribute_item as col".$index, "items.id", "=", "col".$index."."."item_id")
-                        ->leftjoin("attributes as a".$index, "col".$index.".attribute_id", "=", "a".$index."."."id")
-                        ->where("a".$index."."."name", $attribute);
+                       
+                        ->where("col".$index."."."attribute_id", $attribute);
             }
         }
 
