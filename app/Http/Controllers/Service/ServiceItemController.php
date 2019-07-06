@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\Service;
 
-use App\Service;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServiceItem\ServiceItemStoreRequest;
 use App\Http\Resources\ServiceItem\ServiceItemResource;
-
+use App\Service;
+use Illuminate\Http\Request;
 
 class ServiceItemController extends Controller
 {
@@ -27,15 +26,16 @@ class ServiceItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ServiceItemStoreRequest $request,Service $service)
+    public function store(ServiceItemStoreRequest $request, Service $service)
     {
-        foreach($request->all() as $service_items){
-            foreach($service_items as $service_item){
-                $item_id = $service_item['item_id'];
-                $service->items()->syncWithoutDetaching([ $item_id => ['price' => $service_item['price'], 'quantity' => $service_item['quantity']]]);
-            }
-        }
         
+        foreach ($request->all() as $service_item) {
+
+            $item_id = $service_item['item_id'];
+            $service->items()->sync([$item_id => ['price' => $service_item['price'], 'quantity' => $service_item['quantity']]]);
+
+        }
+
         return response()->json($service, 201);
     }
 

@@ -127,12 +127,10 @@
                       {{ service.service_remark}}
                     </div>
                   </div>
-    
-                  <div class="p-0" >
-                    
+
+                  <div class="p-0">
                     <table class="table table-hover">
                       <tbody>
-                        
                         <tr class="heading" v-if="serviceItems.length>0">
                           <th style="width: 100px">No.</th>
                           <th>Name</th>
@@ -140,9 +138,7 @@
                           <th>Quantity</th>
                           <th>Unit Price</th>
                           <th>Amount</th>
-                          <th style="width: 100px"><button class="btn btn-secondary">
-                        Save &nbsp;<i class="fas fa-save"></i>
-                      </button></th>
+                          <th style="width: 100px"></th>
                         </tr>
 
                         <tr
@@ -178,37 +174,8 @@
                             </button>
                           </td>
                         </tr>
-                        <tr v-for="(extra,key) in extra_fees" :key="key+10">
-                          <td></td>
-                          <td ></td>
-                          <td></td>
-                          <td>
-                            <p class="text-bold">
-                              <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Enter new Fee"
-                                v-model="extra.name"
-                              />
-                              <span class="inputData">{{ extra.name }}</span>
-                            </p>
-                          </td>
-                          <td style="padding-left:10px;">
-                            <input
-                              type="number"
-                              class="form-control"
-                              placeholder="e.g.5000"
-                              v-model="extra.price"
-                            />
-                            <span class="inputData">{{ extra.price }}</span>
-                          </td>
-                          <td>
-                            <button class="btn btn-danger btn-sm" @click="deleteFee(key)">
-                              <i class="fas fa-minus"></i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr v-if="serviceItems.length>0">
+
+                        <tr v-if="serviceItems.length > 0">
                           <td>
                             <p class="text-bold"></p>
                           </td>
@@ -219,14 +186,12 @@
                             <p class="text-bold ml-2">{{ getTotal }}</p>
                           </td>
                           <td>
-                            <button class="btn btn-info" @click="addExtra">
-                              New Fee
-                              <i class="fas fa-plus"></i>
+                            <button class="btn btn-secondary" @click="save">
+                              Save &nbsp;
+                              <i class="fas fa-save"></i>
                             </button>
                           </td>
-                          <td>
-                            
-                          </td>
+                          <td></td>
                         </tr>
                       </tbody>
                     </table>
@@ -238,7 +203,11 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-success printBtn" @click="print">Print Preview</button>
+        <button
+          class="btn btn-success printBtn"
+          @click="print"
+          :disabled="printDisable"
+        >Print Preview</button>
         <button
           type="button"
           class="btn btn-info printBtn"
@@ -292,7 +261,7 @@ export default {
       authorized: false,
       service: "",
       serviceItems: [],
-      extra_fees: []
+      printDisable: false
     };
   },
   methods: {
@@ -316,18 +285,30 @@ export default {
     print() {
       window.print();
     },
-    addExtra() {
-      this.extra_fees.push({ name: "", price: 0 });
-    },
-    deleteItem(index) {
-      
-          this.serviceItems.splice(index, 1);
-        
-    },
-    deleteFee(key){
-       this.extra_fees.splice(key, 1);
-    }
 
+    deleteItem(index) {
+      this.serviceItems.splice(index, 1);
+      this.printDisable=true
+
+    },
+    save(){
+      let data = []
+      this.serviceItems.forEach( serviceItem => {
+        let newData = {'item_id' : serviceItem.id,'quantity' : serviceItem.quantity ,'price' : serviceItem.price}
+        data.push(newData) 
+      })
+      
+      console.log(data)
+      axios.post(`/api/services/${this.service.id}/items`,data)
+      .then( response => {
+        console.log(response)
+        this.printDisable = false
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+    }
   },
   created() {
     Bus.$on("addItemForService", item => {
@@ -342,6 +323,8 @@ export default {
           return serviceItem;
         }
       }, []);
+
+      this.printDisable = true;
     });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
@@ -379,17 +362,8 @@ export default {
         this.total += serviceItem.amount;
         return this.total;
       });
-      if(this.extra_fees.length>0){
-        data=this.extra_fees.forEach(extra_fee => {
-        this.total += parseInt(extra_fee.price);
-        return this.total;
-      });
-      }
-
-      return this.total;
     }
-  },
-  
+  }
 };
 </script>
 
