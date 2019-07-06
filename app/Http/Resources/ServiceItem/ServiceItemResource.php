@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Resources;
+namespace App\Http\Resources\ServiceItem;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\ServiceItem\ItemResource;
 
-class ServiceResource extends JsonResource
+class ServiceItemResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -29,6 +30,8 @@ class ServiceResource extends JsonResource
             'service_description' => $this->service_description,
             'service_remark' => $this->service_remark,
             'created_at' =>$this->created_at,
+            'items' => ItemResource::collection($this->items)
+            //'items' => $this->items
         ];
     }
 }

@@ -29,7 +29,7 @@ class ItemUpdateRequest extends FormRequest
             'brand' => 'required|string',
             'item_type_id' => 'required|integer|exists:item_types,id',
             'model_no' => 'unique:items,model_no,'.$this->item->id,
-            'attributes' => ['required',new AssociativeArray()],
+            'attributes' => ['sometimes',new AssociativeArray()],
         ];
     }
 }

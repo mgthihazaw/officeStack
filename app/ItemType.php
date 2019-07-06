@@ -15,4 +15,8 @@ class ItemType extends Model
     public function items(){
     	return $this->hasMany('App\Item');
     }
+
+    public function brands(){
+    	return $this->belongsToMany('App\Brand','brand_item_type');
+    }
 }

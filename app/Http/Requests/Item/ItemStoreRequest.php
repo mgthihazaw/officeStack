@@ -29,7 +29,7 @@ class ItemStoreRequest extends FormRequest
             'brand' => 'required|max:100',
             'item_type_id' => 'required|integer|exists:item_types,id',
             'model_no' => 'unique:items,model_no',
-            'attributes' => ['required',new AssociativeArray()],
+            'attributes' => ['sometimes',new AssociativeArray()],
             'attributes.*.*' => 'string',
         ];
     }

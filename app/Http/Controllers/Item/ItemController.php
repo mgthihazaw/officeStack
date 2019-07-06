@@ -37,6 +37,7 @@ class ItemController extends Controller
      */
     public function store(ItemStoreRequest $request)
     {
+        //return $request->all();
         return DB::transaction(function () use($request){
             $attributes = array();
           
@@ -60,9 +61,7 @@ class ItemController extends Controller
 
             $brand = Brand::firstOrCreate(['name' => $request->brand]);
 
-            $item_types = $brand->item_types->pluck('id')->toArray();
-
-            $brand->item_types()->sync(array_push($item_types, $request->item_type_id));
+            $brand->item_types()->syncWithoutDetaching($request->item_type_id);
 
             $item = Item::create([
                 'price_one' => $request->price_one,

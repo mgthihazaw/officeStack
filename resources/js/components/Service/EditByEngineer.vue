@@ -34,12 +34,12 @@
 
             <div class="pb-5">
               <h5 class="card-title">Description</h5>
-              <p class="card-text text-secondary">{{ service.description}}</p>
+              <p class="card-text text-secondary">{{ service.received_description}}</p>
             </div>
 
             <div class="pb-5">
               <h5 class="card-title">Remarks</h5>
-              <p class="card-text text-secondary">{{ service.remark}}</p>
+              <p class="card-text text-secondary">{{ service.received_remark}}</p>
             </div>
           </div>
 

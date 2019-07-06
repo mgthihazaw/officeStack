@@ -13,7 +13,7 @@ class Service extends Model
    	public function staff(){
    		return $this->belongsTo('App\Staff');
    	}
-
+    
    	public function service_engineer(){
    		return $this->belongsTo('App\Staff');
    	}
@@ -21,7 +21,7 @@ class Service extends Model
    	public function customer(){
    		return $this->belongsTo('App\Customer');
 	   }
-	   public function service_items(){
-		   return $this->hasMany('App\ServiceItem');
+	   public function items(){
+		   return $this->belongsToMany('App\Item','service_item')->withPivot('quantity','price');
 	   }
 }

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Service;
 
 use Illuminate\Http\Request;
 use App\Service;
 use App\Customer;
 use App\Http\Resources\ServiceResource;
+use App\Http\Controllers\Controller;
 use Auth;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\AuthorizationException;

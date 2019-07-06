@@ -73497,7 +73497,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\ntd[data-v-e9cf7384] {\r\n  line-height: 1.4em;\r\n  font-family: \"Zawgyi\";\n}\n.table[data-v-e9cf7384]{\r\n   \r\n    font-family: Poppins-Regular;\r\n    font-size: 15px;\r\n    color: #666666;\r\n    line-height: 1.2;\r\n    font-weight: unset !important;\n}\ntable[data-v-e9cf7384] {\r\n  font-family: Poppins-Regular;\r\n  border: 1px solid rgb(111, 161, 136); \r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-e9cf7384]{\r\n      background:  rgb(168, 180, 176);\n}\n.heading th[data-v-e9cf7384]{\r\n    padding-top:20px;\r\n    padding-bottom: 20px;\n}\ntbody tr[data-v-e9cf7384]{\r\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-e9cf7384] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-e9cf7384] {\r\n    background: #E9ECEF;\n}\n.createroute[data-v-e9cf7384]{\r\n\tdisplay: block;\r\n\tfloat:right;\n}\r\n", ""]);
+exports.push([module.i, "\ntd[data-v-e9cf7384] {\r\n  font-family: \"Zawgyi-One\";\n}\n.table[data-v-e9cf7384]{\r\n   \r\n    font-family: Poppins-Regular;\r\n    font-size: 15px;\r\n    color: #666666;\r\n    line-height: 1.2;\r\n    font-weight: unset !important;\n}\ntable[data-v-e9cf7384] {\r\n  font-family: Poppins-Regular;\r\n  border: 1px solid rgb(111, 161, 136); \r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-e9cf7384]{\r\n      background:  rgb(168, 180, 176);\n}\n.heading th[data-v-e9cf7384]{\r\n    padding-top:20px;\r\n    padding-bottom: 20px;\n}\ntbody tr[data-v-e9cf7384]{\r\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-e9cf7384] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-e9cf7384] {\r\n    background: #E9ECEF;\n}\n.createroute[data-v-e9cf7384]{\r\n\tdisplay: block;\r\n\tfloat:right;\n}\r\n", ""]);
 
 // exports
 
@@ -76359,7 +76359,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       var _this = this;
 
       var id = this.$route.params.id;
-      axios.get("/api/services/" + id).then(function (res) {
+      axios.get("/api/services/" + id + "/items").then(function (res) {
         _this.service = res.data.data;
       }).catch(function (err) {
         console.log(err);
@@ -76452,6 +76452,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       return this.total;
     }
   }
+
 });
 
 /***/ }),
@@ -77731,6 +77732,7 @@ var render = function() {
                 _c(
                   "div",
                   {
+                    ref: "modal",
                     staticClass: "modal fade",
                     staticStyle: { display: "none" },
                     attrs: { id: "modal-xl", "aria-hidden": "true" }
@@ -80368,7 +80370,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text text-secondary" }, [
-                  _vm._v(_vm._s(_vm.service.description))
+                  _vm._v(_vm._s(_vm.service.received_description))
                 ])
               ]),
               _vm._v(" "),
@@ -80376,7 +80378,7 @@ var render = function() {
                 _c("h5", { staticClass: "card-title" }, [_vm._v("Remarks")]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text text-secondary" }, [
-                  _vm._v(_vm._s(_vm.service.remark))
+                  _vm._v(_vm._s(_vm.service.received_remark))
                 ])
               ])
             ]),

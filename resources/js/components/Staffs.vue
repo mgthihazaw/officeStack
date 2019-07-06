@@ -165,9 +165,9 @@ export default {
 };
 </script>
 <style scoped>
+
 td {
-  line-height: 1.4em;
-  font-family: "Zawgyi";
+  font-family: "Zawgyi-One";
 }
 
 .table{

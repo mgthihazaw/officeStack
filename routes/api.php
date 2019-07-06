@@ -40,7 +40,8 @@ Route::group(['middleware' => 'jwt'], function(){
 
 	Route::apiResource('departments', 'DepartmentController');
 
-	Route::apiResource('services', 'ServiceController');
+	Route::apiResource('services', 'Service\ServiceController');
+	Route::apiResource('services.items', 'Service\ServiceItemController', ['only' => ['index','store']]);
 
 	Route::apiResource('customers', 'CustomerController');
 
@@ -56,6 +57,8 @@ Route::group(['middleware' => 'jwt'], function(){
 
 	Route::apiResource('itemtypes', 'Item\ItemTypeController');
 	Route::apiResource('itemtypes.attributegroups', 'Item\ItemTypeAttributeGroupController', ['only' => ['index', 'store']]);
+	Route::apiResource('itemtypes.brands', 'ItemType\ItemTypeBrandController', ['only' => ['index']]);
+
 
 	Route::apiResource('attributegroups', 'AttributeGroup\AttributeGroupController');
 	Route::apiResource('attributegroups.attributes', 'AttributeGroup\AttributeGroupAttributeController', ['only' => ['index']]);

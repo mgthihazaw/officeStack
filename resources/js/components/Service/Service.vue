@@ -251,7 +251,7 @@
       </div>
 
       <!--------------------Modal--------------------------->
-      <div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true">
+      <div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true" ref="modal">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
@@ -299,7 +299,7 @@ export default {
     loadService() {
       let id = this.$route.params.id;
       axios
-        .get("/api/services/" + id)
+        .get("/api/services/" + id + "/items")
         .then(res => {
           this.service = res.data.data;
         })
@@ -388,7 +388,8 @@ export default {
 
       return this.total;
     }
-  }
+  },
+  
 };
 </script>
 
