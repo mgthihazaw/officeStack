@@ -14,33 +14,34 @@
       <table class="table table-hover">
         <tbody>
           <tr class="heading">
-            <th >#</th>
+            <th>#</th>
             <th>Attribute Group Name</th>
-            
+
             <th>Item Type</th>
             <th>Date</th>
             <th style="width: 200px">Action</th>
           </tr>
           <tr v-for="(attribute,index) in attributes" :key="index" class="animated fadeIn">
-            <td>{{ index+1 }}</td>
+            <td>{{ paginationData.meta.from + index }}</td>
             <td>{{ attribute.name }}</td>
-             
+
             <td>{{ attribute.item_type.name}}</td>
             <td>{{ attribute.update_at | myDate}}</td>
             <td style="width: 200px">
               <button class="btn btn-warning btn-sm text-white" @click="editAttribute(attribute)">
                 <i class="fa fa-edit"></i>
               </button>
-              
+
               <button class="btn btn-danger btn-sm" @click="deleteAttribute(attribute.id)">
                 <i class="fa fa-times"></i>
               </button>
             </td>
-            
           </tr>
-          
+         
         </tbody>
+         
       </table>
+      <pagination :data="paginationData" @pagination-change-page="getAttribute"></pagination>
     </div>
 
     <!------------------------MODAL DIALOG------------------------>
@@ -71,25 +72,24 @@
                   v-model="form.item_type_id"
                   ref="item"
                   class="form-control"
-                 
                 >
                   <option value disabled>Choose Item Type</option>
                   <option v-for="type in types" :key="type.id" :value="type.id">{{ type.name }}</option>
                 </select>
               </div>
-              <div class="form-group ">
-                
-              
-                   <label for="name">Attribute Value:</label>
-                     <input type="text" class="form-control" v-model="form.name">
-                
-               
+              <div class="form-group">
+                <label for="name">Attribute Value:</label>
+                <input type="text" class="form-control" v-model="form.name" />
               </div>
-              
             </form>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" @click="cancel">Close</button>
-              <button type="submit" class="btn btn-primary" v-if="!edit" @click="submitAttribute">Create</button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                v-if="!edit"
+                @click="submitAttribute"
+              >Create</button>
               <button type="submit" class="btn btn-primary" @click="updateAttribute" v-else>Update</button>
             </div>
           </div>
@@ -104,34 +104,25 @@
 export default {
   data() {
     return {
+      paginationData: {},
       edit: false,
       attributes: [],
-      types: [],
       
+      types: [],
+
       form: {
         id: "",
         attribute: "",
         item_type_id: ""
-      },
-      
+      }
     };
   },
   methods: {
-    getAttribute() {
-      axios
-        .get("/api/attributegroups")
-        .then(res => {
-          this.attributes = res.data.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
-     getItemType() {
+    
+    getItemType() {
       axios
         .get("/api/itemtypes")
         .then(res => {
-          
           this.types = res.data.data;
         })
         .catch(err => {
@@ -141,18 +132,16 @@ export default {
     createAttribute() {
       $("#newAttribute").modal("show");
     },
-    submitAttribute(){
-      axios.post('/api/attributegroups',this.form)
-      .then(res =>{
-        console.log(res)
-        this.cancel()
-            Toast.fire({
-            type: "success",
-            title: "Successfully Created "
-          });
-          Bus.$emit("afterAttributeChange");
-
-      })
+    submitAttribute() {
+      axios.post("/api/attributegroups", this.form).then(res => {
+        console.log(res);
+        this.cancel();
+        Toast.fire({
+          type: "success",
+          title: "Successfully Created "
+        });
+        Bus.$emit("afterAttributeChange");
+      });
     },
     deleteAttribute(id) {
       swal
@@ -168,7 +157,7 @@ export default {
         .then(result => {
           if (result.value) {
             //Send Delete Request to sever
-            axios.delete("/api/attributegroups/"+id).then(res => {
+            axios.delete("/api/attributegroups/" + id).then(res => {
               Bus.$emit("afterAttributeChange");
               swal.fire("Deleted!", res.data.message, "success");
             });
@@ -180,30 +169,27 @@ export default {
             title: err.response.data.message
           });
         });
-    
-    
     },
 
     cancel() {
       $("#newAttribute").modal("hide");
-       this.form = {
-           id: "",
-           attribute: "",
-           item_type_id: ""
-          };
+      this.form = {
+        id: "",
+        attribute: "",
+        item_type_id: ""
+      };
     },
-    editAttribute(attribute){
+    editAttribute(attribute) {
       this.edit = true;
       $("#newAttribute").modal("show");
       this.form.name = attribute.name;
       this.form.id = attribute.id;
-      this.form.item_type_id=attribute.item_type.id
+      this.form.item_type_id = attribute.item_type.id;
     },
-     updateAttribute() {
+    updateAttribute() {
       axios
         .put(`api/attributegroups/${this.form.id}`, this.form)
         .then(res => {
-          
           this.cancel();
           Toast.fire({
             type: "success",
@@ -216,13 +202,24 @@ export default {
         });
       this.edit = false;
     },
-     
+    getAttribute(page = 1) {
+      axios
+        .get("/api/attributegroups?page=" + page)
+
+        .then(res => {
+          this.paginationData = res.data;
+          this.attributes = res.data.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    }
   },
   created() {
-    this.getAttribute()
+    this.getAttribute();
     this.getItemType();
-    Bus.$on("afterAttributeChange",()=>{
-      this.getAttribute()
+    Bus.$on("afterAttributeChange", () => {
+      this.getAttribute();
     });
   }
 };
@@ -230,8 +227,6 @@ export default {
 
 
 <style scoped>
-
-
 table {
   border-collapse: collapse;
   border-radius: 1em;

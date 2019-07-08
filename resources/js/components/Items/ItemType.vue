@@ -1,44 +1,41 @@
 <template>
   <div class="row">
-    
-      <div class="mb-2 col-md-12 row">
-        <div class="col-md-5">
-          <button class="btn btn-outline-success btn-lg" @click.prevent="createType">
-            Add New
-            <i class="fa fa-plus"></i>
-          </button>
-        </div>
-        <h3 class="px-4 pt-2 col-md-4 text-left">ITEM TYPE TABLE</h3>
+    <div class="mb-2 col-md-12 row">
+      <div class="col-md-5">
+        <button class="btn btn-outline-success btn-lg" @click.prevent="createType">
+          Add New
+          <i class="fa fa-plus"></i>
+        </button>
       </div>
+      <h3 class="px-4 pt-2 col-md-4 text-left">ITEM TYPE TABLE</h3>
+    </div>
 
-      
-      <div class="col-md-12">
-        <table class="table table-hover">
-          <tbody>
-            <tr class="heading">
-              <th style="width: 200px">#</th>
-              <th>Name</th>
-              <th>Date</th>
-              <th style="width: 200px">Action</th>
-            </tr>
-            <tr v-for="(type,index) in itemTypes" :key="index" class="animated fadeIn">
-              <td>{{ index+1 }}</td>
-              <td>{{ type.name }}</td>
-              <td>{{ type.update_at | myDate}}</td>
-              <td>
-                <button class="btn btn-warning btn-sm text-white" @click="editType(type)">
-                  <i class="fa fa-edit"></i>
-                </button>
-                <button class="btn btn-danger btn-sm" @click="deleteType(type.id)">
-                  <i class="fa fa-times"></i>
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      
-    
+    <div class="col-md-12">
+      <table class="table table-hover">
+        <tbody>
+          <tr class="heading">
+            <th style="width: 200px">#</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th style="width: 200px">Action</th>
+          </tr>
+          <tr v-for="(type,index) in itemTypes" :key="index" class="animated fadeIn">
+            <td>{{ paginationData.meta.from + index }}</td>
+            <td>{{ type.name }}</td>
+            <td>{{ type.update_at | myDate}}</td>
+            <td>
+              <button class="btn btn-warning btn-sm text-white" @click="editType(type)">
+                <i class="fa fa-edit"></i>
+              </button>
+              <button class="btn btn-danger btn-sm" @click="deleteType(type.id)">
+                <i class="fa fa-times"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <pagination :data="paginationData" @pagination-change-page="getItemTypes"></pagination>
+    </div>
 
     <!------------------------MODAL DIALOG------------------------>
     <div
@@ -62,7 +59,7 @@
             <form method="POST">
               <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control" id="name" v-model="form.name">
+                <input type="text" class="form-control" id="name" v-model="form.name" />
               </div>
             </form>
             <div class="modal-footer">
@@ -83,6 +80,7 @@ export default {
   data() {
     return {
       edit: false,
+      paginationData: {},
       itemTypes: [],
       form: {
         id: "",
@@ -91,21 +89,10 @@ export default {
     };
   },
   methods: {
-    getItemType() {
-      axios
-        .get("/api/itemtypes")
-        .then(res => {
-          this.itemTypes = res.data.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
-    },
     saveType() {
       axios
         .post("api/itemtypes", this.form)
         .then(res => {
-          
           this.cancel();
           Toast.fire({
             type: "success",
@@ -133,7 +120,11 @@ export default {
             //Send Delete Request to sever
             axios.delete("/api/itemtypes/" + id).then(res => {
               Bus.$emit("afterTypeDeleted");
-              swal.fire("Deleted!", "Item Type is Successfully Deleted", "success");
+              swal.fire(
+                "Deleted!",
+                "Item Type is Successfully Deleted",
+                "success"
+              );
             });
           }
         })
@@ -154,7 +145,6 @@ export default {
       axios
         .put(`api/itemtypes/${this.form.id}`, this.form)
         .then(res => {
-          
           this.cancel();
           Toast.fire({
             type: "success",
@@ -174,18 +164,24 @@ export default {
     cancel() {
       $("#newType").modal("hide");
       this.form = {
-            id: "",
-            name: ""
-          };
+        id: "",
+        name: ""
+      };
+    },
+    getItemTypes(page = 1) {
+      axios.get("/api/itemtypes?page=" + page).then(response => {
+        this.paginationData = response.data;
+        this.itemTypes = response.data.data;
+      });
     }
   },
   created() {
-    this.getItemType();
+    this.getItemTypes();
     Bus.$on("afterTypeCreated", () => {
-      this.getItemType();
+      this.getItemTypes();
     });
     Bus.$on("afterTypeDeleted", () => {
-      this.getItemType();
+      this.getItemTypes();
     });
   }
 };
@@ -196,7 +192,7 @@ export default {
 .table {
   width: 100%;
   height: 100%;
-  font-family: 'Poppins', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   font-size: 15px;
 
   line-height: 1.2;
@@ -209,7 +205,6 @@ table {
   border-collapse: collapse;
   border-radius: 1em;
   overflow: hidden;
-  
 }
 .heading {
   background: rgb(168, 180, 176);

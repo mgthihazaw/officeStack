@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ItemType;
 use App\ItemType;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Brand\BrandResource;
 
 class ItemTypeBrandController extends Controller
 {
@@ -14,9 +15,9 @@ class ItemTypeBrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(ItemType $itemtype)
-    {
+    {   
         $brands = $itemtype->brands;
-        return $brands;
+        return BrandResource::collection($brands);
     }
 
     /**

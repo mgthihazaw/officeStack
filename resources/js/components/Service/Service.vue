@@ -186,7 +186,7 @@
                             <p class="text-bold ml-2">{{ getTotal }}</p>
                           </td>
                           <td>
-                            <button class="btn btn-secondary" @click="save">
+                            <button class="btn btn-secondary" @click="save" :disabled="!printDisable">
                               Save &nbsp;
                               <i class="fas fa-save"></i>
                             </button>
@@ -271,6 +271,12 @@ export default {
         .get("/api/services/" + id + "/items")
         .then(res => {
           this.service = res.data.data;
+          if(this.service.items.length > 0){
+             this.service.items.forEach( item => {
+        let newData = { ...item, amount: item.price };
+        this.serviceItems.push(newData) 
+      })
+          }
         })
         .catch(err => {
           console.log(err);
@@ -301,7 +307,7 @@ export default {
       console.log(data)
       axios.post(`/api/services/${this.service.id}/items`,data)
       .then( response => {
-        console.log(response)
+        // console.log(response)
         this.printDisable = false
       })
       .catch(err => {
@@ -362,6 +368,7 @@ export default {
         this.total += serviceItem.amount;
         return this.total;
       });
+      return this.total
     }
   }
 };
@@ -394,7 +401,7 @@ h6 {
   padding-top: 20px;
 }
 .des {
-  background-color: #eff0f1;
+  background-color: #ffffff;
   border-left: 3px solid #59997b;
 }
 @media print {
@@ -412,6 +419,7 @@ h6 {
   }
   .des {
     display: none;
+    
   }
   .saveform {
     display: none;

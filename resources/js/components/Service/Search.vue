@@ -18,7 +18,7 @@
                       deselectLabel="Deselect"
                       :options="itemTypes"
                       :reset-after="false"
-                      @input="loadItem"
+                      @input="loadItem($event,1)"
                       @select="loadAttributeGroup"
                     ></multiselect>
                   </div>
@@ -27,7 +27,7 @@
                       v-model="brand"
                       track-by="name"
                       :block-keys="['Delete']"
-                      placeholder="Choose Item Type"
+                      placeholder="Choose Item Brand"
                       label="name"
                       selectLabel="Select"
                       deselectLabel="Deselect"
@@ -46,7 +46,7 @@
                       group-values="attributes"
                       group-label="name"
                       :group-select="false"
-                      placeholder="Type to search"
+                      placeholder="Choose Attribute"
                       track-by="name"
                       label="name"
                       @input="loadItem"
@@ -90,13 +90,14 @@
                         <td class="ml-2">{{ item. price}}</td>
 
                         <td>
-                          <button type="button" class="btn btn-primary btn-circle" @click="addItemForService(item)">
+                          <button type="button" class="btn btn-primary btn-circle" @click="addItemForService($event,item)">
                             <i class="fas fa-plus-circle fa-2x"></i>
                           </button>
                         </td>
                       </tr>
                     </tbody>
                   </table>
+                  <pagination :data="paginationData" @pagination-change-page="getResults"></pagination>
                 </div>
               </div>
               <div v-else class="text-center">
@@ -115,6 +116,7 @@ export default {
   data() {
     return {
       items: "",
+      paginationData : {},
       itemTypes: [],
       itemType: "",
       type: [],
@@ -161,21 +163,34 @@ export default {
           console.log(err);
         });
     },
+    
     loadAttributeGroup(type) {
       // console.log("getAttr",type)
       if (type) {
         axios
           .get(`/api/itemtypes/${type.id}/attributegroups`)
           .then(res => {
+            
             this.attributeGroups = res.data.data;
             
           })
           .catch(err => {
             console.log(err);
           });
+         axios
+        .get(`/api/itemtypes/${type.id}/brands`)
+        .then(res => {
+          // console.log(res.data)
+          this.brands = res.data.data;
+        })
+        .catch(err => {
+          console.log(err);
+        });
       }
     },
-    loadItem() {
+    loadItem(data) {
+      // console.log("page"+page)
+      // console.log("data"+data)
       if (this.itemType) {
         this.searchForm.item_type = this.itemType.id;
       }
@@ -189,6 +204,28 @@ export default {
       }
       console.log(this.searchForm);
       axios.get("/api/search/items", { params: this.searchForm }).then(res => {
+        this.paginationData = res.data
+        console.log(res.data)
+        this.items = res.data.data;
+        this.clearForm();
+      });
+    },
+    getResults(page = 1){
+        if (this.itemType) {
+        this.searchForm.item_type = this.itemType.id;
+      }
+      if (this.brand) {
+        this.searchForm.brand = this.brand.id;
+      }
+      if (this.attributes.length > 0) {
+        this.attributes.forEach((attr, key) => {
+          this.searchForm.attributes[key] = `${attr.id}`;
+        });
+      }
+      console.log(this.searchForm);
+      axios.get("/api/search/items?page="+ page, { params: this.searchForm }).then(res => {
+        this.paginationData = res.data
+        console.log(res.data)
         this.items = res.data.data;
         this.clearForm();
       });
@@ -206,9 +243,9 @@ export default {
     }
   },
   created() {
-    this.getItems();
+    // this.getItems();
     this.getItemType();
-    this.getBrand();
+    // this.getBrand();
   }
 };
 </script>

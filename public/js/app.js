@@ -31650,7 +31650,7 @@ if (__WEBPACK_IMPORTED_MODULE_5__Helpers_User_js__["a" /* default */].isLoggedIn
 	});
 }
 
-Vue.component('v-select', __WEBPACK_IMPORTED_MODULE_4_vue_select___default.a);
+Vue.component('pagination', __webpack_require__(318));
 
 Vue.component('app-home', __webpack_require__(145));
 
@@ -72275,7 +72275,7 @@ var content = __webpack_require__(185);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("6b6e1d9e", content, false, {});
+var update = __webpack_require__(2)("46b6eee4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -72299,7 +72299,7 @@ exports = module.exports = __webpack_require__(1)(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto|Ubuntu);", ""]);
 
 // module
-exports.push([module.i, "\ninput[data-v-31d277f6]{\n    font-weight : 700 !important;\n}\n.nav-item .nav-link p[data-v-31d277f6]{\n    font-weight : 400;\n    font-size : 12px;\n    font-family: 'Roboto', sans-serif;\n}\n.info a[data-v-31d277f6]{\n    font-family : 'Ubuntu', sans-serif;\n}\n.logout[data-v-31d277f6]{\n    border-top : 1px solid rgba(200,200,200,0.3);\n}\n", ""]);
+exports.push([module.i, "\ninput[data-v-31d277f6]{\n        font-weight : 700 !important;\n}\n.nav-item .nav-link p[data-v-31d277f6]{\n        font-weight : 400;\n        font-size : 12px;\n        font-family: 'Roboto', sans-serif;\n}\n.info a[data-v-31d277f6]{\n        font-family : 'Ubuntu', sans-serif;\n}\n.logout[data-v-31d277f6]{\n        border-top : 1px solid rgba(200,200,200,0.3);\n}\n@media print {\n.main-footer[data-v-31d277f6] {\n    display: none;\n}\n}\n", ""]);
 
 // exports
 
@@ -72589,7 +72589,7 @@ var content = __webpack_require__(189);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("adbb9ec6", content, false, {});
+var update = __webpack_require__(2)("5049ff10", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -72613,7 +72613,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nspan[data-v-6bdc8b8e] {\n  cursor: pointer;\n}\n.card[data-v-6bdc8b8e] {\n  background: rgba(222, 222, 222, 0.7);\n}\nbutton.submit[data-v-6bdc8b8e] {\n  background-color: #31bcaa;\n  border: 1px solid #31ccaa;\n  color: white;\n  padding: 8px 0px;\n  font-family: \"Arial\", sans-serif;\n  border-radius: 5px !important;\n}\nbutton.submit[data-v-6bdc8b8e]:hover {\n  color: white;\n}\ninput[data-v-6bdc8b8e] {\n  font-family: \"Arial\", sans-serif;\n  font-weight: 400;\n}\ninput[type=\"text\"][data-v-6bdc8b8e]:focus,\ninput[type=\"password\"][data-v-6bdc8b8e]:focus {\n  outline: none !important;\n  border-color: #31eeaa;\n  -webkit-box-shadow: 0 0 10px #31eeaa;\n          box-shadow: 0 0 10px #31eeaa;\n}\n", ""]);
+exports.push([module.i, "\nspan[data-v-6bdc8b8e] {\r\n  cursor: pointer;\n}\n.card[data-v-6bdc8b8e] {\r\n  background: rgba(222, 222, 222, 0.7);\n}\nbutton.submit[data-v-6bdc8b8e] {\r\n  background-color: #31bcaa;\r\n  border: 1px solid #31ccaa;\r\n  color: white;\r\n  padding: 8px 0px;\r\n  font-family: \"Arial\", sans-serif;\r\n  border-radius: 5px !important;\n}\nbutton.submit[data-v-6bdc8b8e]:hover {\r\n  color: white;\n}\ninput[data-v-6bdc8b8e] {\r\n  font-family: \"Arial\", sans-serif;\r\n  font-weight: 400;\n}\ninput[type=\"text\"][data-v-6bdc8b8e]:focus,\r\ninput[type=\"password\"][data-v-6bdc8b8e]:focus {\r\n  outline: none !important;\r\n  border-color: #31eeaa;\r\n  -webkit-box-shadow: 0 0 10px #31eeaa;\r\n          box-shadow: 0 0 10px #31eeaa;\n}\r\n", ""]);
 
 // exports
 
@@ -72976,7 +72976,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Welcome")])])
+    return _c("div", [_c("h1", [_vm._v("Welcome to Microstack d")])])
   }
 ]
 render._withStripped = true
@@ -73433,7 +73433,7 @@ var content = __webpack_require__(197);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("0186cde8", content, false, {});
+var update = __webpack_require__(2)("3d0e98f9", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73473,7 +73473,7 @@ var content = __webpack_require__(199);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("2890ee4d", content, false, {});
+var update = __webpack_require__(2)("6662ee3a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73497,7 +73497,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\ntd[data-v-e9cf7384] {\n  font-family: \"Zawgyi-One\";\n}\n.table[data-v-e9cf7384]{\n   \n    font-family: Poppins-Regular;\n    font-size: 15px;\n    color: #666666;\n    line-height: 1.2;\n    font-weight: unset !important;\n}\ntable[data-v-e9cf7384] {\n  font-family: Poppins-Regular;\n  border: 1px solid rgb(111, 161, 136); \n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-e9cf7384]{\n      background:  rgb(168, 180, 176);\n}\n.heading th[data-v-e9cf7384]{\n    padding-top:20px;\n    padding-bottom: 20px;\n}\ntbody tr[data-v-e9cf7384]{\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-e9cf7384] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-e9cf7384] {\n    background: #E9ECEF;\n}\n.createroute[data-v-e9cf7384]{\n\tdisplay: block;\n\tfloat:right;\n}\n", ""]);
+exports.push([module.i, "\ntd[data-v-e9cf7384] {\r\n  font-family: \"Zawgyi-One\";\n}\n.table[data-v-e9cf7384]{\r\n   \r\n    font-family: Poppins-Regular;\r\n    font-size: 15px;\r\n    color: #666666;\r\n    line-height: 1.2;\r\n    font-weight: unset !important;\n}\ntable[data-v-e9cf7384] {\r\n  font-family: Poppins-Regular;\r\n  border: 1px solid rgb(111, 161, 136); \r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-e9cf7384]{\r\n      background:  rgb(168, 180, 176);\n}\n.heading th[data-v-e9cf7384]{\r\n    padding-top:20px;\r\n    padding-bottom: 20px;\n}\ntbody tr[data-v-e9cf7384]{\r\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-e9cf7384] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-e9cf7384] {\r\n    background: #E9ECEF;\n}\n.createroute[data-v-e9cf7384]{\r\n\tdisplay: block;\r\n\tfloat:right;\n}\r\n", ""]);
 
 // exports
 
@@ -73687,7 +73687,7 @@ var content = __webpack_require__(202);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("d5cb6950", content, false, {});
+var update = __webpack_require__(2)("ac790010", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73752,7 +73752,7 @@ var content = __webpack_require__(205);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("706a8c4e", content, false, {});
+var update = __webpack_require__(2)("2dfe04db", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73792,7 +73792,7 @@ var content = __webpack_require__(207);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("52650acf", content, false, {});
+var update = __webpack_require__(2)("9c707616", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -73816,7 +73816,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-27ca711a] {\n  color: #d8000c !important;\n\n  margin-bottom: 10px;\n  font-style: italic;\n}\n.formcolor[data-v-27ca711a] {\n  \n    background: #EBEFF2;\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n    border-radius:30px;\n}\n", ""]);
+exports.push([module.i, "\n.error[data-v-27ca711a] {\r\n  color: #d8000c !important;\r\n\r\n  margin-bottom: 10px;\r\n  font-style: italic;\n}\n.formcolor[data-v-27ca711a] {\r\n  \r\n    background: #EBEFF2;\r\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-radius:30px;\n}\r\n", ""]);
 
 // exports
 
@@ -74758,7 +74758,7 @@ var content = __webpack_require__(211);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("3124de34", content, false, {});
+var update = __webpack_require__(2)("228f527e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -74798,7 +74798,7 @@ var content = __webpack_require__(213);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("5980c1e6", content, false, {});
+var update = __webpack_require__(2)("d792aa9a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -74822,7 +74822,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-686aa968] {\n  color: #d8000c !important;\n\n  margin-bottom: 10px;\n  font-style: italic;\n}\n.formcolor[data-v-686aa968] {\n  background: #ebeff2;\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n  border-radius: 30px;\n}\n", ""]);
+exports.push([module.i, "\n.error[data-v-686aa968] {\r\n  color: #d8000c !important;\r\n\r\n  margin-bottom: 10px;\r\n  font-style: italic;\n}\n.formcolor[data-v-686aa968] {\r\n  background: #ebeff2;\r\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-radius: 30px;\n}\r\n", ""]);
 
 // exports
 
@@ -75817,7 +75817,7 @@ var render = function() {
                               },
                               [
                                 _vm._v(
-                                  "\n              Add New\n              "
+                                  "\r\n              Add New\r\n              "
                                 ),
                                 _c("i", { staticClass: "fa fa-plus" })
                               ]
@@ -75870,9 +75870,9 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("td", [
                                     _vm._v(
-                                      "\n                " +
+                                      "\r\n                " +
                                         _vm._s(staff.address) +
-                                        "\n                \n                \n              "
+                                        "\r\n                \r\n                \r\n              "
                                     )
                                   ]),
                                   _vm._v(" "),
@@ -75882,17 +75882,17 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("td", [
                                     _vm._v(
-                                      "\n                  " +
+                                      "\r\n                  " +
                                         _vm._s(staff.department.name) +
-                                        "\n              "
+                                        "\r\n              "
                                     )
                                   ]),
                                   _vm._v(" "),
                                   _c("td", [
                                     _vm._v(
-                                      "\n                  " +
+                                      "\r\n                  " +
                                         _vm._s(staff.role.name) +
-                                        "\n              "
+                                        "\r\n              "
                                     )
                                   ]),
                                   _vm._v(" "),
@@ -76015,7 +76015,7 @@ var content = __webpack_require__(219);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("6f2c2d89", content, false, {});
+var update = __webpack_require__(2)("533e4c22", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76039,7 +76039,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-2cf8d420],\nh2[data-v-2cf8d420],\nh3[data-v-2cf8d420],\nh4[data-v-2cf8d420],\nh5[data-v-2cf8d420] {\n  font-weight: 500;\n  line-height: 1.4em;\n}\nh6[data-v-2cf8d420] {\n  font-weight: bold;\n  line-height: 1.4em;\n}\n.customerParent[data-v-2cf8d420] {\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-2cf8d420] {\n  margin: 0;\n  padding: 0px;\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-2cf8d420] {\n  padding-top: 20px;\n}\n.des[data-v-2cf8d420] {\n  background-color: #eff0f1;\n  border-left: 3px solid #59997b;\n}\n@media print {\n.printBtn[data-v-2cf8d420] {\n    display: none;\n}\nbutton[data-v-2cf8d420] {\n    display: none;\n}\ninput[data-v-2cf8d420] {\n    display: none;\n}\nspan.inputData[data-v-2cf8d420] {\n    display: block;\n}\n.des[data-v-2cf8d420] {\n    display: none;\n}\n.saveform[data-v-2cf8d420] {\n    display: none;\n    margin: 0;\n}\n}\n.tb[data-v-2cf8d420] {\n  padding: 0;\n  margin: 0;\n}\n.inputData[data-v-2cf8d420] {\n  display: none;\n}\n", ""]);
+exports.push([module.i, "\nh1[data-v-2cf8d420],\r\nh2[data-v-2cf8d420],\r\nh3[data-v-2cf8d420],\r\nh4[data-v-2cf8d420],\r\nh5[data-v-2cf8d420] {\r\n  font-weight: 500;\r\n  line-height: 1.4em;\n}\nh6[data-v-2cf8d420] {\r\n  font-weight: bold;\r\n  line-height: 1.4em;\n}\n.customerParent[data-v-2cf8d420] {\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-2cf8d420] {\r\n  margin: 0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-2cf8d420] {\r\n  padding-top: 20px;\n}\n.des[data-v-2cf8d420] {\r\n  background-color: #ffffff;\r\n  border-left: 3px solid #59997b;\n}\n@media print {\n.printBtn[data-v-2cf8d420] {\r\n    display: none;\n}\nbutton[data-v-2cf8d420] {\r\n    display: none;\n}\ninput[data-v-2cf8d420] {\r\n    display: none;\n}\nspan.inputData[data-v-2cf8d420] {\r\n    display: block;\n}\n.des[data-v-2cf8d420] {\r\n    display: none;\n}\n.saveform[data-v-2cf8d420] {\r\n    display: none;\r\n    margin: 0;\n}\n}\n.tb[data-v-2cf8d420] {\r\n  padding: 0;\r\n  margin: 0;\n}\n.inputData[data-v-2cf8d420] {\r\n  display: none;\n}\r\n", ""]);
 
 // exports
 
@@ -76330,6 +76330,12 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       var id = this.$route.params.id;
       axios.get("/api/services/" + id + "/items").then(function (res) {
         _this.service = res.data.data;
+        if (_this.service.items.length > 0) {
+          _this.service.items.forEach(function (item) {
+            var newData = _extends({}, item, { amount: item.price });
+            _this.serviceItems.push(newData);
+          });
+        }
       }).catch(function (err) {
         console.log(err);
       });
@@ -76358,7 +76364,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
       console.log(data);
       axios.post("/api/services/" + this.service.id + "/items", data).then(function (response) {
-        console.log(response);
+        // console.log(response)
         _this2.printDisable = false;
       }).catch(function (err) {
         console.log(err);
@@ -76424,6 +76430,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
         _this4.total += serviceItem.amount;
         return _this4.total;
       });
+      return this.total;
     }
   }
 });
@@ -76491,7 +76498,7 @@ var content = __webpack_require__(223);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("0474686a", content, false, {});
+var update = __webpack_require__(2)("7bf03e12", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76531,7 +76538,7 @@ var content = __webpack_require__(225);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("af967cbc", content, false, {});
+var update = __webpack_require__(2)("1f25f07c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -76555,7 +76562,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.btn-circle[data-v-9d165ee6] {\n  width: 30px;\n  height: 30px;\n  padding: 6px 0px;\n  border-radius: 15px;\n  text-align: center;\n  font-size: 12px;\n  line-height: 1.42857;\n}\n.table[data-v-9d165ee6] {\n  width: 100%;\n  height: 100%;\n  font-family: \"Poppins\", sans-serif !important;\n  font-size: 15px;\n\n  line-height: 1.2;\n  font-weight: unset !important;\n  padding-top: 20px;\n\n  padding-bottom: 20px;\n}\ntable[data-v-9d165ee6] {\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-9d165ee6] {\n  background: rgb(140, 177, 226);\n}\n.heading th[data-v-9d165ee6] {\n  padding: 20px;\n}\ntbody tr[data-v-9d165ee6] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-9d165ee6] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgb(140, 177, 226);\n}\n.table-hover tbody tr:hover td[data-v-9d165ee6] {\n  background: #e9ecef;\n}\n", ""]);
+exports.push([module.i, "\n.btn-circle[data-v-9d165ee6] {\r\n  width: 30px;\r\n  height: 30px;\r\n  padding: 6px 0px;\r\n  border-radius: 15px;\r\n  text-align: center;\r\n  font-size: 12px;\r\n  line-height: 1.42857;\n}\n.table[data-v-9d165ee6] {\r\n  width: 100%;\r\n  height: 100%;\r\n  font-family: \"Poppins\", sans-serif !important;\r\n  font-size: 15px;\r\n\r\n  line-height: 1.2;\r\n  font-weight: unset !important;\r\n  padding-top: 20px;\r\n\r\n  padding-bottom: 20px;\n}\ntable[data-v-9d165ee6] {\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-9d165ee6] {\r\n  background: rgb(140, 177, 226);\n}\n.heading th[data-v-9d165ee6] {\r\n  padding: 20px;\n}\ntbody tr[data-v-9d165ee6] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-9d165ee6] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgb(140, 177, 226);\n}\n.table-hover tbody tr:hover td[data-v-9d165ee6] {\r\n  background: #e9ecef;\n}\r\n", ""]);
 
 // exports
 
@@ -76678,11 +76685,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       items: "",
+      paginationData: {},
       itemTypes: [],
       itemType: "",
       type: [],
@@ -76732,15 +76741,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       // console.log("getAttr",type)
       if (type) {
         axios.get("/api/itemtypes/" + type.id + "/attributegroups").then(function (res) {
+
           _this4.attributeGroups = res.data.data;
+        }).catch(function (err) {
+          console.log(err);
+        });
+        axios.get("/api/itemtypes/" + type.id + "/brands").then(function (res) {
+          // console.log(res.data)
+          _this4.brands = res.data.data;
         }).catch(function (err) {
           console.log(err);
         });
       }
     },
-    loadItem: function loadItem() {
+    loadItem: function loadItem(data) {
       var _this5 = this;
 
+      // console.log("page"+page)
+      // console.log("data"+data)
       if (this.itemType) {
         this.searchForm.item_type = this.itemType.id;
       }
@@ -76754,8 +76772,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
       console.log(this.searchForm);
       axios.get("/api/search/items", { params: this.searchForm }).then(function (res) {
+        _this5.paginationData = res.data;
+        console.log(res.data);
         _this5.items = res.data.data;
         _this5.clearForm();
+      });
+    },
+    getResults: function getResults() {
+      var _this6 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      if (this.itemType) {
+        this.searchForm.item_type = this.itemType.id;
+      }
+      if (this.brand) {
+        this.searchForm.brand = this.brand.id;
+      }
+      if (this.attributes.length > 0) {
+        this.attributes.forEach(function (attr, key) {
+          _this6.searchForm.attributes[key] = "" + attr.id;
+        });
+      }
+      console.log(this.searchForm);
+      axios.get("/api/search/items?page=" + page, { params: this.searchForm }).then(function (res) {
+        _this6.paginationData = res.data;
+        console.log(res.data);
+        _this6.items = res.data.data;
+        _this6.clearForm();
       });
     },
     addItemForService: function addItemForService(item) {
@@ -76770,9 +76814,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   created: function created() {
-    this.getItems();
+    // this.getItems();
     this.getItemType();
-    this.getBrand();
+    // this.getBrand();
   }
 });
 
@@ -76808,7 +76852,9 @@ var render = function() {
                           "reset-after": false
                         },
                         on: {
-                          input: _vm.loadItem,
+                          input: function($event) {
+                            return _vm.loadItem($event, 1)
+                          },
                           select: _vm.loadAttributeGroup
                         },
                         model: {
@@ -76831,7 +76877,7 @@ var render = function() {
                         attrs: {
                           "track-by": "name",
                           "block-keys": ["Delete"],
-                          placeholder: "Choose Item Type",
+                          placeholder: "Choose Item Brand",
                           label: "name",
                           selectLabel: "Select",
                           deselectLabel: "Deselect",
@@ -76866,7 +76912,7 @@ var render = function() {
                             "group-values": "attributes",
                             "group-label": "name",
                             "group-select": false,
-                            placeholder: "Type to search",
+                            placeholder: "Choose Attribute",
                             "track-by": "name",
                             label: "name"
                           },
@@ -76901,80 +76947,98 @@ var render = function() {
             _c("div", { staticClass: "card-footer" }, [
               _vm.items.length > 0
                 ? _c("div", { staticClass: "itemTable" }, [
-                    _c("div", { staticClass: "p-0 col-md-12" }, [
-                      _c("table", { staticClass: "table table-hover" }, [
-                        _c(
-                          "tbody",
-                          [
-                            _c("tr", { staticClass: "heading" }),
-                            _vm._v(" "),
-                            _vm._m(0),
-                            _vm._v(" "),
-                            _vm._l(_vm.items, function(item, index) {
-                              return _c(
-                                "tr",
-                                { key: index, staticClass: "animated fadeIn" },
-                                [
-                                  _c("td", [_vm._v(_vm._s(index + 1))]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    { staticClass: "ml-2" },
-                                    [
-                                      _vm._v(
-                                        "\n                        " +
-                                          _vm._s(item.brand.name) +
-                                          "\n                        "
-                                      ),
-                                      _vm._l(item.attributes, function(
-                                        attribute,
-                                        index
-                                      ) {
-                                        return _c("span", { key: index }, [
-                                          _vm._v(_vm._s(attribute.name) + "  ")
-                                        ])
-                                      })
-                                    ],
-                                    2
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "ml-2" }, [
-                                    _vm._v(_vm._s(item.item_type.name))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", { staticClass: "ml-2" }, [
-                                    _vm._v(_vm._s(item.price))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("td", [
+                    _c(
+                      "div",
+                      { staticClass: "p-0 col-md-12" },
+                      [
+                        _c("table", { staticClass: "table table-hover" }, [
+                          _c(
+                            "tbody",
+                            [
+                              _c("tr", { staticClass: "heading" }),
+                              _vm._v(" "),
+                              _vm._m(0),
+                              _vm._v(" "),
+                              _vm._l(_vm.items, function(item, index) {
+                                return _c(
+                                  "tr",
+                                  {
+                                    key: index,
+                                    staticClass: "animated fadeIn"
+                                  },
+                                  [
+                                    _c("td", [_vm._v(_vm._s(index + 1))]),
+                                    _vm._v(" "),
                                     _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "btn btn-primary btn-circle",
-                                        attrs: { type: "button" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.addItemForService(item)
-                                          }
-                                        }
-                                      },
+                                      "td",
+                                      { staticClass: "ml-2" },
                                       [
-                                        _c("i", {
-                                          staticClass:
-                                            "fas fa-plus-circle fa-2x"
+                                        _vm._v(
+                                          "\n                        " +
+                                            _vm._s(item.brand.name) +
+                                            "\n                        "
+                                        ),
+                                        _vm._l(item.attributes, function(
+                                          attribute,
+                                          index
+                                        ) {
+                                          return _c("span", { key: index }, [
+                                            _vm._v(
+                                              _vm._s(attribute.name) + "  "
+                                            )
+                                          ])
                                         })
-                                      ]
-                                    )
-                                  ])
-                                ]
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      ])
-                    ])
+                                      ],
+                                      2
+                                    ),
+                                    _vm._v(" "),
+                                    _c("td", { staticClass: "ml-2" }, [
+                                      _vm._v(_vm._s(item.item_type.name))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", { staticClass: "ml-2" }, [
+                                      _vm._v(_vm._s(item.price))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "btn btn-primary btn-circle",
+                                          attrs: { type: "button" },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.addItemForService(
+                                                $event,
+                                                item
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass:
+                                              "fas fa-plus-circle fa-2x"
+                                          })
+                                        ]
+                                      )
+                                    ])
+                                  ]
+                                )
+                              })
+                            ],
+                            2
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("pagination", {
+                          attrs: { data: _vm.paginationData },
+                          on: { "pagination-change-page": _vm.getResults }
+                        })
+                      ],
+                      1
+                    )
                   ])
                 : _c("div", { staticClass: "text-center" }, [
                     _c("h1", { staticClass: "text-info" }, [
@@ -77500,6 +77564,9 @@ var render = function() {
                                                 {
                                                   staticClass:
                                                     "btn btn-secondary",
+                                                  attrs: {
+                                                    disabled: !_vm.printDisable
+                                                  },
                                                   on: { click: _vm.save }
                                                 },
                                                 [
@@ -77697,7 +77764,7 @@ var content = __webpack_require__(231);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("7ef3a58c", content, false, {});
+var update = __webpack_require__(2)("3588196d", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -77721,7 +77788,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\ntd[data-v-f7aa5b50] {\n  font-family: \"Zawgyi-One\";\n}\n/* .table{\n    width:100%;\n    height: 100%;\n} */\n.table[data-v-f7aa5b50] {\n  font-family: Poppins-Regular;\n  font-size: 15px;\n  color: #666666;\n  line-height: 1.2;\n  font-weight: unset !important;\n}\ntable[data-v-f7aa5b50] {\n  font-family: Poppins-Regular;\n  border: 1px solid rgb(111, 161, 136);\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-f7aa5b50] {\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-f7aa5b50] {\n  padding-top: 20px;\n  padding-bottom: 20px;\n}\ntbody tr[data-v-f7aa5b50] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-f7aa5b50] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-f7aa5b50] {\n  background: #e9ecef;\n}\n.createroute[data-v-f7aa5b50] {\n  display: block;\n  float: right;\n}\n", ""]);
+exports.push([module.i, "\ntd[data-v-f7aa5b50] {\r\n  font-family: \"Zawgyi-One\";\n}\r\n/* .table{\r\n    width:100%;\r\n    height: 100%;\r\n} */\n.table[data-v-f7aa5b50] {\r\n  font-family: Poppins-Regular;\r\n  font-size: 15px;\r\n  color: #666666;\r\n  line-height: 1.2;\r\n  font-weight: unset !important;\n}\ntable[data-v-f7aa5b50] {\r\n  font-family: Poppins-Regular;\r\n  border: 1px solid rgb(111, 161, 136);\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-f7aa5b50] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-f7aa5b50] {\r\n  padding-top: 20px;\r\n  padding-bottom: 20px;\n}\ntbody tr[data-v-f7aa5b50] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-f7aa5b50] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-f7aa5b50] {\r\n  background: #e9ecef;\n}\n.createroute[data-v-f7aa5b50] {\r\n  display: block;\r\n  float: right;\n}\r\n", ""]);
 
 // exports
 
@@ -78218,7 +78285,7 @@ var content = __webpack_require__(236);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("7fd81789", content, false, {});
+var update = __webpack_require__(2)("3d6b9016", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -78258,7 +78325,7 @@ var content = __webpack_require__(238);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("20822fae", content, false, {});
+var update = __webpack_require__(2)("14417794", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -78282,7 +78349,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n@media (max-width: 768px) {\n.col-md-4 {\n    margin-bottom: 15px;\n}\n}\n.error {\n  color: red;\n}\n.formcolor {\n  \n    background: #EBEFF2;\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n    border-radius:30px;\n}\n", ""]);
+exports.push([module.i, "\n* {\r\n  font-family: \"Zawgyi-One\";\n}\n@media (max-width: 768px) {\n.col-md-4 {\r\n    margin-bottom: 15px;\n}\n}\n.error {\r\n  color: red;\n}\n.formcolor {\r\n  \r\n    background: #EBEFF2;\r\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-radius:30px;\n}\r\n", ""]);
 
 // exports
 
@@ -79132,7 +79199,7 @@ var content = __webpack_require__(245);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("091af196", content, false, {});
+var update = __webpack_require__(2)("8df4007c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79172,7 +79239,7 @@ var content = __webpack_require__(247);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("d1587ed2", content, false, {});
+var update = __webpack_require__(2)("9038b21e", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79196,7 +79263,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-6c3cd162] {\n  color: red;\n}\n.formcolor[data-v-6c3cd162] {\n  \n    background: #EBEFF2;\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n    border-radius:30px;\n}\n.formheading[data-v-6c3cd162] {\n  padding-top: 10px;\n}\n", ""]);
+exports.push([module.i, "\n.error[data-v-6c3cd162] {\r\n  color: red;\n}\n.formcolor[data-v-6c3cd162] {\r\n  \r\n    background: #EBEFF2;\r\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-radius:30px;\n}\n.formheading[data-v-6c3cd162] {\r\n  padding-top: 10px;\n}\r\n", ""]);
 
 // exports
 
@@ -79813,7 +79880,7 @@ var content = __webpack_require__(252);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("43749bde", content, false, {});
+var update = __webpack_require__(2)("c84daac4", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79853,7 +79920,7 @@ var content = __webpack_require__(254);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("069da8ca", content, false, {});
+var update = __webpack_require__(2)("fe4a3f16", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -79877,7 +79944,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-4581f116] {\n  color: red;\n}\n.formcolor[data-v-4581f116] {\n  \n    background: #EBEFF2;\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n    border-radius:30px;\n}\n", ""]);
+exports.push([module.i, "\n.error[data-v-4581f116] {\r\n  color: red;\n}\n.formcolor[data-v-4581f116] {\r\n  background: #ebeff2;\r\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-radius: 30px;\n}\r\n", ""]);
 
 // exports
 
@@ -79888,6 +79955,9 @@ exports.push([module.i, "\n.error[data-v-4581f116] {\n  color: red;\n}\n.formcol
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -80062,7 +80132,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       axios.get("/api/services/" + id).then(function (res) {
         _this2.service = res.data.data;
         if (_this2.service.service_engineer) {
-
           _this2.form.service_description = _this2.service.service_description;
           _this2.form.service_remark = _this2.service.service_remark;
         }
@@ -80081,7 +80150,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var id = this.$route.params.id;
         this.form.service_engineer = this.form.service_engineer.id;
         axios.put("/api/services/" + id, this.form).then(function (response) {
-
           if (response.status == 200) {
             Toast.fire({
               type: "success",
@@ -80106,7 +80174,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           }
         });
       } else {
-
         $("#secretModal").modal("show");
       }
     },
@@ -80114,7 +80181,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       $("#secretModal").modal("hide");
     },
     back: function back() {
-      this.$router.go(-1);
+      this.$router.push("/services");
     }
   },
   created: function created() {
@@ -80133,13 +80200,17 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "formcolor animated fadeInRight" }, [
-      _c("div", { staticClass: " col-md-12" }, [
+      _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "m-3" }, [
           _c("h3", { staticClass: "text-capitalize text-dark" }, [
             _c("i", {
               staticClass: "fas fa-arrow-circle-left green",
               staticStyle: { cursor: "pointer" },
-              on: { click: _vm.back }
+              on: {
+                click: function($event) {
+                  return _vm.back()
+                }
+              }
             }),
             _vm._v("\n          Edit By Engineer\n        ")
           ])
@@ -80152,31 +80223,19 @@ var render = function() {
             _c("div", { staticClass: "col-5" }, [
               _c("div", { staticClass: "pb-3" }, [
                 _c("h6", { staticClass: "card-title" }, [
-                  _vm._v("Customer Name")
+                  _vm._v("Customer Information")
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text text-secondary" }, [
                   _vm._v(_vm._s(_vm.service.customer_name))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "pb-3" }, [
-                _c("h5", { staticClass: "card-title" }, [
-                  _vm._v("Customer Phone")
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text text-secondary" }, [
+                  _vm._v(_vm._s(_vm.service.customer_address))
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "card-text text-secondary" }, [
                   _vm._v(_vm._s(_vm.service.customer_phone))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "pb-3" }, [
-                _c("h5", { staticClass: "card-title" }, [
-                  _vm._v("Customer Address")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text text-secondary" }, [
-                  _vm._v(_vm._s(_vm.service.township))
                 ])
               ]),
               _vm._v(" "),
@@ -80190,21 +80249,31 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "pb-5" }, [
-                _c("h5", { staticClass: "card-title" }, [
-                  _vm._v("Description")
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text text-secondary" }, [
-                  _vm._v(_vm._s(_vm.service.received_description))
+              _c("div", { staticClass: "info-box bg-light my-4 py-4" }, [
+                _c("div", { staticClass: "info-box-content" }, [
+                  _c("h5", { staticClass: "info-box-text text-dark" }, [
+                    _vm._v("Received Description")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { staticClass: "info-box-number  text-muted mb-0" },
+                    [_vm._v(_vm._s(_vm.service.received_description))]
+                  )
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "pb-5" }, [
-                _c("h5", { staticClass: "card-title" }, [_vm._v("Remarks")]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-text text-secondary" }, [
-                  _vm._v(_vm._s(_vm.service.received_remark))
+              _c("div", { staticClass: "info-box bg-light my-1 py-4" }, [
+                _c("div", { staticClass: "info-box-content" }, [
+                  _c("h5", { staticClass: "info-box-text text-dark" }, [
+                    _vm._v("Received Remarks")
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    { staticClass: "info-box-number  text-muted mb-0" },
+                    [_vm._v(_vm._s(_vm.service.received_remark))]
+                  )
                 ])
               ])
             ]),
@@ -80596,7 +80665,7 @@ var content = __webpack_require__(260);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("a130ea26", content, false, {});
+var update = __webpack_require__(2)("28d17a72", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -80620,7 +80689,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-703e1eec],h2[data-v-703e1eec],h3[data-v-703e1eec],h4[data-v-703e1eec],h5[data-v-703e1eec]{\n  font-weight:500;\n  line-height: 1.4em;\n}\nh6[data-v-703e1eec]{\n  font-weight:bold;\n  line-height: 1.4em;\n}\n.customerParent[data-v-703e1eec] {\n  \n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\n  margin:0;\n  padding: 0px;\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\n  background-color: #eff0f1;\n  border-left: 3px solid #7e7e7e;\n}\n@media print {\n.printBtn[data-v-703e1eec] {\n    display:none;\n}\n.main-footer[data-v-703e1eec]{\n    display:none;\n}\n}\n\n  \n\n", ""]);
+exports.push([module.i, "\nh1[data-v-703e1eec],h2[data-v-703e1eec],h3[data-v-703e1eec],h4[data-v-703e1eec],h5[data-v-703e1eec]{\r\n  font-weight:500;\r\n  line-height: 1.4em;\n}\nh6[data-v-703e1eec]{\r\n  font-weight:bold;\r\n  line-height: 1.4em;\n}\n.customerParent[data-v-703e1eec] {\r\n  \r\n  border-bottom: 1px solid #7e7e7e;\n}\n.pageHeader[data-v-703e1eec] {\r\n  margin:0;\r\n  padding: 0px;\r\n  border-bottom: 1px solid #7e7e7e;\n}\n.staff[data-v-703e1eec] {\r\n  padding-top: 20px;\n}\n.callout[data-v-703e1eec] {\r\n  background-color: #eff0f1;\r\n  border-left: 3px solid #7e7e7e;\n}\n@media print {\n.printBtn[data-v-703e1eec] {\r\n    display:none;\n}\n.main-footer[data-v-703e1eec]{\r\n    display:none;\n}\n}\r\n\r\n  \r\n\r\n", ""]);
 
 // exports
 
@@ -81130,7 +81199,7 @@ var content = __webpack_require__(265);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("7ab6cf96", content, false, {});
+var update = __webpack_require__(2)("7703da08", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -81154,7 +81223,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.callout[data-v-aa3d923e] {\n  background-color: #eff0f1;\n  border-left: 3px solid #7e7e7e;\n}\n.invoice-box[data-v-aa3d923e] {\n  margin: auto;\n  padding: 30px;\n  border: 1px solid #eee;\n  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\n          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\n  font-size: 16px;\n  line-height: 24px;\n  font-family: \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial, sans-serif;\n  color: #555;\n}\n.invoice-box table[data-v-aa3d923e] {\n  width: 100%;\n  line-height: inherit;\n  text-align: left;\n}\n.invoice-box table td[data-v-aa3d923e] {\n  padding: 5px;\n  vertical-align: top;\n}\n.invoice-box table tr td[data-v-aa3d923e]:nth-child(2) {\n  text-align: right;\n}\n.invoice-box table tr.top table td[data-v-aa3d923e] {\n  padding-bottom: 20px;\n}\n.invoice-box table tr.top table td.title[data-v-aa3d923e] {\n  font-size: 45px;\n  line-height: 45px;\n  color: #333;\n}\n.invoice-box table tr.information table td[data-v-aa3d923e] {\n  padding-bottom: 40px;\n}\n.invoice-box table tr.heading td[data-v-aa3d923e] {\n  background: #eee;\n  border-bottom: 1px solid #ddd;\n  font-weight: bold;\n}\n.invoice-box table tr.details td[data-v-aa3d923e] {\n  padding-bottom: 20px;\n}\n.invoice-box table tr.item td[data-v-aa3d923e] {\n  border-bottom: 1px solid #eee;\n}\n.invoice-box table tr.item.last td[data-v-aa3d923e] {\n  border-bottom: none;\n}\n.invoice-box table tr.total td[data-v-aa3d923e]:nth-child(2) {\n  border-top: 2px solid #eee;\n  font-weight: bold;\n}\n@media only screen and (max-width: 600px) {\n.invoice-box table tr.top table td[data-v-aa3d923e] {\n    width: 100%;\n    display: block;\n    text-align: center;\n}\n.invoice-box table tr.information table td[data-v-aa3d923e] {\n    width: 100%;\n    display: block;\n    text-align: center;\n}\n}\n\n/** RTL **/\n.rtl[data-v-aa3d923e] {\n  direction: rtl;\n  font-family: Tahoma, \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial,\n    sans-serif;\n}\n.rtl table[data-v-aa3d923e] {\n  text-align: right;\n}\n.rtl table tr td[data-v-aa3d923e]:nth-child(2) {\n  text-align: left;\n}\n", ""]);
+exports.push([module.i, "\n.callout[data-v-aa3d923e] {\r\n  background-color: #eff0f1;\r\n  border-left: 3px solid #7e7e7e;\n}\n.invoice-box[data-v-aa3d923e] {\r\n  margin: auto;\r\n  padding: 30px;\r\n  border: 1px solid #eee;\r\n  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\r\n          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);\r\n  font-size: 16px;\r\n  line-height: 24px;\r\n  font-family: \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial, sans-serif;\r\n  color: #555;\n}\n.invoice-box table[data-v-aa3d923e] {\r\n  width: 100%;\r\n  line-height: inherit;\r\n  text-align: left;\n}\n.invoice-box table td[data-v-aa3d923e] {\r\n  padding: 5px;\r\n  vertical-align: top;\n}\n.invoice-box table tr td[data-v-aa3d923e]:nth-child(2) {\r\n  text-align: right;\n}\n.invoice-box table tr.top table td[data-v-aa3d923e] {\r\n  padding-bottom: 20px;\n}\n.invoice-box table tr.top table td.title[data-v-aa3d923e] {\r\n  font-size: 45px;\r\n  line-height: 45px;\r\n  color: #333;\n}\n.invoice-box table tr.information table td[data-v-aa3d923e] {\r\n  padding-bottom: 40px;\n}\n.invoice-box table tr.heading td[data-v-aa3d923e] {\r\n  background: #eee;\r\n  border-bottom: 1px solid #ddd;\r\n  font-weight: bold;\n}\n.invoice-box table tr.details td[data-v-aa3d923e] {\r\n  padding-bottom: 20px;\n}\n.invoice-box table tr.item td[data-v-aa3d923e] {\r\n  border-bottom: 1px solid #eee;\n}\n.invoice-box table tr.item.last td[data-v-aa3d923e] {\r\n  border-bottom: none;\n}\n.invoice-box table tr.total td[data-v-aa3d923e]:nth-child(2) {\r\n  border-top: 2px solid #eee;\r\n  font-weight: bold;\n}\n@media only screen and (max-width: 600px) {\n.invoice-box table tr.top table td[data-v-aa3d923e] {\r\n    width: 100%;\r\n    display: block;\r\n    text-align: center;\n}\n.invoice-box table tr.information table td[data-v-aa3d923e] {\r\n    width: 100%;\r\n    display: block;\r\n    text-align: center;\n}\n}\r\n\r\n/** RTL **/\n.rtl[data-v-aa3d923e] {\r\n  direction: rtl;\r\n  font-family: Tahoma, \"Helvetica Neue\", \"Helvetica\", Helvetica, Arial,\r\n    sans-serif;\n}\n.rtl table[data-v-aa3d923e] {\r\n  text-align: right;\n}\n.rtl table tr td[data-v-aa3d923e]:nth-child(2) {\r\n  text-align: left;\n}\r\n", ""]);
 
 // exports
 
@@ -81559,7 +81628,7 @@ var content = __webpack_require__(270);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("dcee1860", content, false, {});
+var update = __webpack_require__(2)("d1750f20", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -81583,7 +81652,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*======================\n    404 page\n=======================*/\n.page_404[data-v-bf1bf6a0]{\n\tpadding:40px 0; \n\tbackground:#fff; \n\tfont-family: 'Arvo', serif;\n}\n.page_404  img[data-v-bf1bf6a0]{ width:100%;\n}\n.four_zero_four_bg[data-v-bf1bf6a0]{\n \tbackground-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);\n    height: 400px;\n    background-position: center;\n}\n.four_zero_four_bg h1[data-v-bf1bf6a0]{\n \tfont-size:80px;\n}\n.four_zero_four_bg h3[data-v-bf1bf6a0]{\n\tfont-size:80px;\n}\n.link_404[data-v-bf1bf6a0]{\t\t\t \n\tcolor: #fff!important;\n    padding: 10px 20px;\n    background: #39ac31;\n    margin: 20px 0;\n    display: inline-block;\n    border : 1px solid #39be31;\n}\n.contant_box_404[data-v-bf1bf6a0]{ \n\tmargin-top:-50px;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n\r\n/*======================\r\n    404 page\r\n=======================*/\n.page_404[data-v-bf1bf6a0]{\r\n\tpadding:40px 0; \r\n\tbackground:#fff; \r\n\tfont-family: 'Arvo', serif;\n}\n.page_404  img[data-v-bf1bf6a0]{ width:100%;\n}\n.four_zero_four_bg[data-v-bf1bf6a0]{\r\n \tbackground-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);\r\n    height: 400px;\r\n    background-position: center;\n}\n.four_zero_four_bg h1[data-v-bf1bf6a0]{\r\n \tfont-size:80px;\n}\n.four_zero_four_bg h3[data-v-bf1bf6a0]{\r\n\tfont-size:80px;\n}\n.link_404[data-v-bf1bf6a0]{\t\t\t \r\n\tcolor: #fff!important;\r\n    padding: 10px 20px;\r\n    background: #39ac31;\r\n    margin: 20px 0;\r\n    display: inline-block;\r\n    border : 1px solid #39be31;\n}\n.contant_box_404[data-v-bf1bf6a0]{ \r\n\tmargin-top:-50px;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -81746,7 +81815,7 @@ var content = __webpack_require__(275);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("51d8fa6e", content, false, {});
+var update = __webpack_require__(2)("5381807c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -82547,7 +82616,7 @@ var content = __webpack_require__(280);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("b8416874", content, false, {});
+var update = __webpack_require__(2)("48b59940", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -82571,7 +82640,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-47efc0b2] {\n  width: 100%;\n  height: 100%;\n  font-family: 'Poppins', sans-serif !important;\n  font-size: 15px;\n\n  line-height: 1.2;\n  font-weight: unset !important;\n  padding-top: 20px;\n\n  padding-bottom: 20px;\n}\ntable[data-v-47efc0b2] {\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-47efc0b2] {\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-47efc0b2] {\n  padding: 20px;\n}\ntbody tr[data-v-47efc0b2] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-47efc0b2] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-47efc0b2] {\n  background: #e9ecef;\n}\n", ""]);
+exports.push([module.i, "\n.table[data-v-47efc0b2] {\r\n  width: 100%;\r\n  height: 100%;\r\n  font-family: \"Poppins\", sans-serif !important;\r\n  font-size: 15px;\r\n\r\n  line-height: 1.2;\r\n  font-weight: unset !important;\r\n  padding-top: 20px;\r\n\r\n  padding-bottom: 20px;\n}\ntable[data-v-47efc0b2] {\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-47efc0b2] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-47efc0b2] {\r\n  padding: 20px;\n}\ntbody tr[data-v-47efc0b2] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-47efc0b2] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-47efc0b2] {\r\n  background: #e9ecef;\n}\r\n", ""]);
 
 // exports
 
@@ -82659,14 +82728,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       edit: false,
+      paginationData: {},
       itemTypes: [],
       form: {
         id: "",
@@ -82676,21 +82743,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
 
   methods: {
-    getItemType: function getItemType() {
+    saveType: function saveType() {
       var _this = this;
 
-      axios.get("/api/itemtypes").then(function (res) {
-        _this.itemTypes = res.data.data;
-      }).catch(function (err) {
-        console.log(err);
-      });
-    },
-    saveType: function saveType() {
-      var _this2 = this;
-
       axios.post("api/itemtypes", this.form).then(function (res) {
-
-        _this2.cancel();
+        _this.cancel();
         Toast.fire({
           type: "success",
           title: "Item Type is Successfully Created"
@@ -82731,11 +82788,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.form.id = type.id;
     },
     updateType: function updateType() {
-      var _this3 = this;
+      var _this2 = this;
 
       axios.put("api/itemtypes/" + this.form.id, this.form).then(function (res) {
-
-        _this3.cancel();
+        _this2.cancel();
         Toast.fire({
           type: "success",
           title: "Item Type is Updated"
@@ -82755,17 +82811,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         id: "",
         name: ""
       };
+    },
+    getItemTypes: function getItemTypes() {
+      var _this3 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      axios.get("/api/itemtypes?page=" + page).then(function (response) {
+        _this3.paginationData = response.data;
+        _this3.itemTypes = response.data.data;
+      });
     }
   },
   created: function created() {
     var _this4 = this;
 
-    this.getItemType();
+    this.getItemTypes();
     Bus.$on("afterTypeCreated", function () {
-      _this4.getItemType();
+      _this4.getItemTypes();
     });
     Bus.$on("afterTypeDeleted", function () {
-      _this4.getItemType();
+      _this4.getItemTypes();
     });
   }
 });
@@ -82793,7 +82859,7 @@ var render = function() {
             }
           },
           [
-            _vm._v("\n          Add New\n          "),
+            _vm._v("\n        Add New\n        "),
             _c("i", { staticClass: "fa fa-plus" })
           ]
         )
@@ -82804,55 +82870,73 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("table", { staticClass: "table table-hover" }, [
-        _c(
-          "tbody",
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.itemTypes, function(type, index) {
-              return _c("tr", { key: index, staticClass: "animated fadeIn" }, [
-                _c("td", [_vm._v(_vm._s(index + 1))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(type.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(_vm._f("myDate")(type.update_at)))]),
-                _vm._v(" "),
-                _c("td", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-warning btn-sm text-white",
-                      on: {
-                        click: function($event) {
-                          return _vm.editType(type)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-edit" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger btn-sm",
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteType(type.id)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-times" })]
-                  )
-                ])
-              ])
-            })
-          ],
-          2
-        )
-      ])
-    ]),
+    _c(
+      "div",
+      { staticClass: "col-md-12" },
+      [
+        _c("table", { staticClass: "table table-hover" }, [
+          _c(
+            "tbody",
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(_vm.itemTypes, function(type, index) {
+                return _c(
+                  "tr",
+                  { key: index, staticClass: "animated fadeIn" },
+                  [
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.paginationData.meta.from + index))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(type.name))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("myDate")(type.update_at)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-warning btn-sm text-white",
+                          on: {
+                            click: function($event) {
+                              return _vm.editType(type)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-edit" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteType(type.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-times" })]
+                      )
+                    ])
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("pagination", {
+          attrs: { data: _vm.paginationData },
+          on: { "pagination-change-page": _vm.getItemTypes }
+        })
+      ],
+      1
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -83062,7 +83146,7 @@ var content = __webpack_require__(285);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("9e4f6798", content, false, {});
+var update = __webpack_require__(2)("6e6bc4c1", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -83102,7 +83186,7 @@ var content = __webpack_require__(287);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("7ff92e0d", content, false, {});
+var update = __webpack_require__(2)("d8721ab2", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -83126,7 +83210,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-1df20866] {\n  width: 100%;\n  height: 100%;\n  font-family: Poppins-Regular;\n  font-size: 15px;\n\n  line-height: 1.2;\n  font-weight: unset !important;\n  padding-top: 20px;\n\n  padding-bottom: 20px;\n}\ntable[data-v-1df20866] {\n  border: 1px solid rgb(111, 161, 136);\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-1df20866] {\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-1df20866] {\n  padding: 20px;\n}\ntbody tr[data-v-1df20866] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-1df20866] {\n  padding: 0.9em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody:hover td[data-v-1df20866] {\n  background: #e9ecef;\n}\n.formcolor[data-v-1df20866] {\n  background: #ebeff2;\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\n  border-radius: 30px;\n}\n.form-group .form-control[data-v-1df20866] {\n  padding: 1.35rem 0.75rem;\n}\n", ""]);
+exports.push([module.i, "\n.table[data-v-1df20866] {\r\n  width: 100%;\r\n  height: 100%;\r\n  font-family: Poppins-Regular;\r\n  font-size: 15px;\r\n\r\n  line-height: 1.2;\r\n  font-weight: unset !important;\r\n  padding-top: 20px;\r\n\r\n  padding-bottom: 20px;\n}\ntable[data-v-1df20866] {\r\n  border: 1px solid rgb(111, 161, 136);\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-1df20866] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-1df20866] {\r\n  padding: 20px;\n}\ntbody tr[data-v-1df20866] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-1df20866] {\r\n  padding: 0.9em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody:hover td[data-v-1df20866] {\r\n  background: #e9ecef;\n}\n.formcolor[data-v-1df20866] {\r\n  background: #ebeff2;\r\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-radius: 30px;\n}\n.form-group .form-control[data-v-1df20866] {\r\n  padding: 1.35rem 0.75rem;\n}\r\n", ""]);
 
 // exports
 
@@ -83141,6 +83225,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
 //
 //
 //
@@ -83546,8 +83632,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       itemTypes: [],
       itemType: [],
       brands: [],
-      brand: [],
+      brand: "",
       attributeGroups: [],
+      paginationData: {},
       attributes: [],
       form: {
         id: "",
@@ -83561,9 +83648,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
 
   methods: {
-    changeData: function changeData() {
-      alert("Hello");
-    },
     loadItemType: function loadItemType() {
       var _this = this;
 
@@ -83596,7 +83680,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getItems: function getItems() {
       var _this3 = this;
 
-      axios.get("/api/items").then(function (res) {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      axios.get("/api/items?page=" + page).then(function (res) {
+        _this3.paginationData = res.data;
         _this3.items = res.data.data;
       }).catch(function (err) {
         console.log(err);
@@ -83758,21 +83845,29 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.attributes = [];
     },
     addBrandTag: function addBrandTag(newTag) {
+      var data_id = 0;
+      if (this.brands.length > 0) {
+        data_id = this.brands.length;
+      }
       var tag = {
         name: newTag,
-        id: this.brands.length
+        id: data_id
       };
       this.brands.push(tag);
-      this.brand.township = tag;
+      this.brand = tag;
     },
-    addTag: function addTag(newTag, itemType, itemTypes) {
+    addTag: function addTag(newTag, attribute, attributes) {
+      var attr_id = 0;
+      if (attributes.length > 0) {
+        attr_id = attributes.length;
+      }
       var tag = {
         name: newTag,
-        id: 0
+        id: attr_id
       };
-
-      itemTypes.push(tag);
-      itemType = tag;
+      console.log(attribute);
+      attributes.push(tag);
+      this.attributes[attribute] = tag;
     },
     getPermis: function getPermis() {
       var _this8 = this;
@@ -83844,161 +83939,195 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "p-0 col-md-12" }, [
-                        _c(
-                          "table",
-                          { staticClass: "table table-hover" },
-                          [
-                            _vm._m(0),
-                            _vm._v(" "),
-                            _vm._l(_vm.items, function(item, index) {
-                              return _c(
-                                "tbody",
-                                { key: index, staticClass: "animated fadeIn" },
-                                [
-                                  _c("tr", [
-                                    _c("td", [_vm._v(_vm._s(index + 1))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        "\n                " +
-                                          _vm._s(item.brand.name) +
-                                          "\n                "
-                                      ),
-                                      _c("span", [
-                                        _vm._v(_vm._s(item.model_no))
+                      _c(
+                        "div",
+                        { staticClass: "p-0 col-md-12" },
+                        [
+                          _c(
+                            "table",
+                            { staticClass: "table table-hover" },
+                            [
+                              _vm._m(0),
+                              _vm._v(" "),
+                              _vm._l(_vm.items, function(item, index) {
+                                return _c(
+                                  "tbody",
+                                  {
+                                    key: index,
+                                    staticClass: "animated fadeIn"
+                                  },
+                                  [
+                                    _c("tr", [
+                                      _c("td", [
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm.paginationData.meta.from + index
+                                          )
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          "\n                " +
+                                            _vm._s(item.brand.name) +
+                                            "\n                "
+                                        ),
+                                        _c("span", [
+                                          _vm._v(_vm._s(item.model_no))
+                                        ])
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(_vm._s(item.item_type.name))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [_vm._v(_vm._s(item.price))]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          _vm._s(
+                                            _vm._f("myDate")(item.update_at)
+                                          )
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-info btn-sm text-white",
+                                            attrs: {
+                                              "data-toggle": "collapse",
+                                              "data-target": "#demo" + index
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-eye"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-warning btn-sm text-white",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.editItem(item.id)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-edit"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass:
+                                              "btn btn-danger btn-sm",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.deleteItem(item.id)
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-times"
+                                            })
+                                          ]
+                                        )
                                       ])
                                     ]),
                                     _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(_vm._s(item.item_type.name))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [_vm._v(_vm._s(item.price))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        _vm._s(_vm._f("myDate")(item.update_at))
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass:
-                                            "btn btn-info btn-sm text-white",
-                                          attrs: {
-                                            "data-toggle": "collapse",
-                                            "data-target": "#demo" + index
-                                          }
-                                        },
-                                        [_c("i", { staticClass: "fa fa-eye" })]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass:
-                                            "btn btn-warning btn-sm text-white",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.editItem(item.id)
-                                            }
-                                          }
-                                        },
-                                        [_c("i", { staticClass: "fa fa-edit" })]
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger btn-sm",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.deleteItem(item.id)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-times"
-                                          })
-                                        ]
-                                      )
-                                    ])
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "tr",
-                                    {
-                                      staticClass: "collapse animated fadeIn",
-                                      attrs: { id: "demo" + index }
-                                    },
-                                    [
-                                      _c("td", { attrs: { colspan: "6" } }, [
-                                        _c("div", { staticClass: "card " }, [
-                                          _c(
-                                            "div",
-                                            { staticClass: "card-body " },
-                                            [
-                                              _c(
-                                                "h4",
-                                                { staticClass: "card-title" },
-                                                [
-                                                  _vm._v(
-                                                    "\n                      " +
-                                                      _vm._s(item.brand.name) +
-                                                      "\n                      "
-                                                  ),
-                                                  _c("span", [
-                                                    _vm._v(
-                                                      _vm._s(item.model_no)
-                                                    )
-                                                  ]),
-                                                  _vm._v(
-                                                    "\n                          =>      \n                      " +
-                                                      _vm._s(item.price_one) +
-                                                      "\n                    "
-                                                  )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _vm._l(item.attributes, function(
-                                                attribute,
-                                                index
-                                              ) {
-                                                return _c(
-                                                  "p",
-                                                  {
-                                                    key: index,
-                                                    staticClass: "card-text"
-                                                  },
+                                    _c(
+                                      "tr",
+                                      {
+                                        staticClass: "collapse animated fadeIn",
+                                        attrs: { id: "demo" + index }
+                                      },
+                                      [
+                                        _c("td", { attrs: { colspan: "6" } }, [
+                                          _c("div", { staticClass: "card " }, [
+                                            _c(
+                                              "div",
+                                              { staticClass: "card-body " },
+                                              [
+                                                _c(
+                                                  "h4",
+                                                  { staticClass: "card-title" },
                                                   [
                                                     _vm._v(
-                                                      _vm._s(
-                                                        attribute.attribute_group
-                                                      ) +
-                                                        " : " +
-                                                        _vm._s(attribute.name)
+                                                      "\n                      " +
+                                                        _vm._s(
+                                                          item.brand.name
+                                                        ) +
+                                                        "\n                      "
+                                                    ),
+                                                    _c("span", [
+                                                      _vm._v(
+                                                        _vm._s(item.model_no)
+                                                      )
+                                                    ]),
+                                                    _vm._v(
+                                                      "\n                          =>      \n                      " +
+                                                        _vm._s(item.price) +
+                                                        "\n                    "
                                                     )
                                                   ]
+                                                ),
+                                                _vm._v(" "),
+                                                _vm._l(
+                                                  item.attributes,
+                                                  function(attribute, index) {
+                                                    return _c(
+                                                      "p",
+                                                      {
+                                                        key: index,
+                                                        staticClass: "card-text"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            attribute.attribute_group
+                                                          ) +
+                                                            " : " +
+                                                            _vm._s(
+                                                              attribute.name
+                                                            )
+                                                        )
+                                                      ]
+                                                    )
+                                                  }
                                                 )
-                                              })
-                                            ],
-                                            2
-                                          )
+                                              ],
+                                              2
+                                            )
+                                          ])
                                         ])
-                                      ])
-                                    ]
-                                  )
-                                ]
-                              )
-                            })
-                          ],
-                          2
-                        )
-                      ])
+                                      ]
+                                    )
+                                  ]
+                                )
+                              })
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("pagination", {
+                            attrs: { data: _vm.paginationData },
+                            on: { "pagination-change-page": _vm.getItems }
+                          })
+                        ],
+                        1
+                      )
                     ]
                   )
                 : _vm._e(),
@@ -84042,7 +84171,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c(
                                       "div",
-                                      { staticClass: "col-md-8" },
+                                      { staticClass: "col-md-9" },
                                       [
                                         _c("multiselect", {
                                           attrs: {
@@ -84074,7 +84203,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "col-md-8" },
+                                    { staticClass: "col-md-9" },
                                     [
                                       _c("multiselect", {
                                         attrs: {
@@ -84102,7 +84231,7 @@ var render = function() {
                                 _c("div", { staticClass: "form-group row" }, [
                                   _vm._m(3),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-8" }, [
+                                  _c("div", { staticClass: "col-md-9" }, [
                                     _c("input", {
                                       directives: [
                                         {
@@ -84138,7 +84267,7 @@ var render = function() {
                                 _c("div", { staticClass: "form-group row" }, [
                                   _vm._m(4),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-2" }, [
+                                  _c("div", { staticClass: "col-md-3" }, [
                                     _c("input", {
                                       directives: [
                                         {
@@ -84152,7 +84281,7 @@ var render = function() {
                                       attrs: {
                                         type: "number",
                                         id: "exampleInputtext1",
-                                        placeholder: "Enter Item Price One"
+                                        placeholder: "Enter Price One"
                                       },
                                       domProps: { value: _vm.form.price_one },
                                       on: {
@@ -84170,7 +84299,7 @@ var render = function() {
                                     })
                                   ]),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-2" }, [
+                                  _c("div", { staticClass: "col-md-3" }, [
                                     _c("input", {
                                       directives: [
                                         {
@@ -84184,7 +84313,7 @@ var render = function() {
                                       attrs: {
                                         type: "number",
                                         id: "exampleInputtext1",
-                                        placeholder: "Enter Item Price Two"
+                                        placeholder: "Enter Price Two(optional)"
                                       },
                                       domProps: { value: _vm.form.price_two },
                                       on: {
@@ -84202,7 +84331,7 @@ var render = function() {
                                     })
                                   ]),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-2" }, [
+                                  _c("div", { staticClass: "col-md-3" }, [
                                     _c("input", {
                                       directives: [
                                         {
@@ -84216,7 +84345,8 @@ var render = function() {
                                       attrs: {
                                         type: "number",
                                         id: "exampleInputtext1",
-                                        placeholder: "Enter Item Price Three"
+                                        placeholder:
+                                          "Enter  Price Three(optional)"
                                       },
                                       domProps: { value: _vm.form.price_three },
                                       on: {
@@ -84260,7 +84390,7 @@ var render = function() {
                                             [
                                               _c(
                                                 "div",
-                                                { staticClass: "col-md-4" },
+                                                { staticClass: "col-md-3" },
                                                 [
                                                   _c(
                                                     "label",
@@ -84283,14 +84413,14 @@ var render = function() {
                                               _vm._v(" "),
                                               _c(
                                                 "div",
-                                                { staticClass: "col-md-8" },
+                                                { staticClass: "col-md-9" },
                                                 [
                                                   _c("multiselect", {
                                                     attrs: {
                                                       options:
                                                         attributeGroup.attributes,
                                                       placeholder:
-                                                        "Choose Item Type",
+                                                        "Choose Attribute",
                                                       label: "name",
                                                       "close-on-select": true,
                                                       "show-labels": false,
@@ -84301,7 +84431,7 @@ var render = function() {
                                                       tag: function($event) {
                                                         return _vm.addTag(
                                                           $event,
-                                                          _vm.attributes[index],
+                                                          index,
                                                           attributeGroup.attributes
                                                         )
                                                       }
@@ -84409,7 +84539,7 @@ var render = function() {
                                     _vm._v(" "),
                                     _c(
                                       "div",
-                                      { staticClass: "col-md-8" },
+                                      { staticClass: "col-md-9" },
                                       [
                                         _c("multiselect", {
                                           attrs: {
@@ -84440,7 +84570,7 @@ var render = function() {
                                   _vm._v(" "),
                                   _c(
                                     "div",
-                                    { staticClass: "col-md-8" },
+                                    { staticClass: "col-md-9" },
                                     [
                                       _c("multiselect", {
                                         attrs: {
@@ -84469,7 +84599,7 @@ var render = function() {
                                 _c("div", { staticClass: "form-group row" }, [
                                   _vm._m(7),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-8" }, [
+                                  _c("div", { staticClass: "col-md-9" }, [
                                     _c("input", {
                                       directives: [
                                         {
@@ -84505,7 +84635,7 @@ var render = function() {
                                 _c("div", { staticClass: "form-group row" }, [
                                   _vm._m(8),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-2" }, [
+                                  _c("div", { staticClass: "col-md-3" }, [
                                     _c("input", {
                                       directives: [
                                         {
@@ -84537,7 +84667,7 @@ var render = function() {
                                     })
                                   ]),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-2" }, [
+                                  _c("div", { staticClass: "col-md-3" }, [
                                     _c("input", {
                                       directives: [
                                         {
@@ -84569,7 +84699,7 @@ var render = function() {
                                     })
                                   ]),
                                   _vm._v(" "),
-                                  _c("div", { staticClass: "col-md-2" }, [
+                                  _c("div", { staticClass: "col-md-3" }, [
                                     _c("input", {
                                       directives: [
                                         {
@@ -84627,7 +84757,7 @@ var render = function() {
                                             [
                                               _c(
                                                 "div",
-                                                { staticClass: "col-md-4" },
+                                                { staticClass: "col-md-3" },
                                                 [
                                                   _c(
                                                     "label",
@@ -84650,14 +84780,14 @@ var render = function() {
                                               _vm._v(" "),
                                               _c(
                                                 "div",
-                                                { staticClass: "col-md-8" },
+                                                { staticClass: "col-md-9" },
                                                 [
                                                   _c("multiselect", {
                                                     attrs: {
                                                       options:
                                                         attributeGroup.attributes,
                                                       placeholder:
-                                                        "Choose Item Type",
+                                                        "Choose Attribute",
                                                       "block-keys": ["Delete"],
                                                       label: "name",
                                                       "track-by": "name",
@@ -84667,7 +84797,7 @@ var render = function() {
                                                       tag: function($event) {
                                                         return _vm.addTag(
                                                           $event,
-                                                          _vm.attributes[index],
+                                                          index,
                                                           attributeGroup.attributes
                                                         )
                                                       }
@@ -84768,7 +84898,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c(
         "label",
         { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
@@ -84780,7 +84910,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c("label", { staticClass: "pt-2", attrs: { for: "secret" } }, [
         _vm._v("Item Brand")
       ])
@@ -84790,7 +84920,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c(
         "label",
         { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
@@ -84802,7 +84932,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c(
         "label",
         { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
@@ -84814,7 +84944,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c(
         "label",
         { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
@@ -84826,7 +84956,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c("label", { staticClass: "pt-2", attrs: { for: "secret" } }, [
         _vm._v("Item Brand")
       ])
@@ -84836,7 +84966,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c(
         "label",
         { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
@@ -84848,7 +84978,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
+    return _c("div", { staticClass: "col-md-3" }, [
       _c(
         "label",
         { staticClass: "pt-2", attrs: { for: "exampleInputtext1" } },
@@ -84928,7 +85058,7 @@ var content = __webpack_require__(292);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("3c24fbda", content, false, {});
+var update = __webpack_require__(2)("1849262d", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -85060,7 +85190,7 @@ var content = __webpack_require__(297);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("79298718", content, false, {});
+var update = __webpack_require__(2)("f73b6fcc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -85084,7 +85214,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\ntable[data-v-adccd65c] {\n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-adccd65c] {\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-adccd65c] {\n  padding: 20px;\n}\ntbody tr[data-v-adccd65c] {\n  background: rgb(243, 243, 243);\n}\ntd[data-v-adccd65c] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-adccd65c] {\n  background: #e9ecef;\n}\n", ""]);
+exports.push([module.i, "\ntable[data-v-adccd65c] {\r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-adccd65c] {\r\n  background: rgb(168, 180, 176);\n}\n.heading th[data-v-adccd65c] {\r\n  padding: 20px;\n}\ntbody tr[data-v-adccd65c] {\r\n  background: rgb(243, 243, 243);\n}\ntd[data-v-adccd65c] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-adccd65c] {\r\n  background: #e9ecef;\n}\r\n", ""]);
 
 // exports
 
@@ -85201,8 +85331,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      paginationData: {},
       edit: false,
       attributes: [],
+
       types: [],
 
       form: {
@@ -85210,26 +85342,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         attribute: "",
         item_type_id: ""
       }
-
     };
   },
 
   methods: {
-    getAttribute: function getAttribute() {
+    getItemType: function getItemType() {
       var _this = this;
 
-      axios.get("/api/attributegroups").then(function (res) {
-        _this.attributes = res.data.data;
-      }).catch(function (err) {
-        console.log(err);
-      });
-    },
-    getItemType: function getItemType() {
-      var _this2 = this;
-
       axios.get("/api/itemtypes").then(function (res) {
-
-        _this2.types = res.data.data;
+        _this.types = res.data.data;
       }).catch(function (err) {
         console.log(err);
       });
@@ -85238,11 +85359,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       $("#newAttribute").modal("show");
     },
     submitAttribute: function submitAttribute() {
-      var _this3 = this;
+      var _this2 = this;
 
-      axios.post('/api/attributegroups', this.form).then(function (res) {
+      axios.post("/api/attributegroups", this.form).then(function (res) {
         console.log(res);
-        _this3.cancel();
+        _this2.cancel();
         Toast.fire({
           type: "success",
           title: "Successfully Created "
@@ -85290,11 +85411,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.form.item_type_id = attribute.item_type.id;
     },
     updateAttribute: function updateAttribute() {
-      var _this4 = this;
+      var _this3 = this;
 
       axios.put("api/attributegroups/" + this.form.id, this.form).then(function (res) {
-
-        _this4.cancel();
+        _this3.cancel();
         Toast.fire({
           type: "success",
           title: "Sucessfully Updated"
@@ -85304,6 +85424,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log(err);
       });
       this.edit = false;
+    },
+    getAttribute: function getAttribute() {
+      var _this4 = this;
+
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+
+      axios.get("/api/attributegroups?page=" + page).then(function (res) {
+        _this4.paginationData = res.data;
+        _this4.attributes = res.data.data;
+      }).catch(function (err) {
+        console.log(err);
+      });
     }
   },
   created: function created() {
@@ -85351,59 +85483,75 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-md-12" }, [
-      _c("table", { staticClass: "table table-hover" }, [
-        _c(
-          "tbody",
-          [
-            _vm._m(0),
-            _vm._v(" "),
-            _vm._l(_vm.attributes, function(attribute, index) {
-              return _c("tr", { key: index, staticClass: "animated fadeIn" }, [
-                _c("td", [_vm._v(_vm._s(index + 1))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(attribute.name))]),
-                _vm._v(" "),
-                _c("td", [_vm._v(_vm._s(attribute.item_type.name))]),
-                _vm._v(" "),
-                _c("td", [
-                  _vm._v(_vm._s(_vm._f("myDate")(attribute.update_at)))
-                ]),
-                _vm._v(" "),
-                _c("td", { staticStyle: { width: "200px" } }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-warning btn-sm text-white",
-                      on: {
-                        click: function($event) {
-                          return _vm.editAttribute(attribute)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-edit" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger btn-sm",
-                      on: {
-                        click: function($event) {
-                          return _vm.deleteAttribute(attribute.id)
-                        }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-times" })]
-                  )
-                ])
-              ])
-            })
-          ],
-          2
-        )
-      ])
-    ]),
+    _c(
+      "div",
+      { staticClass: "col-md-12" },
+      [
+        _c("table", { staticClass: "table table-hover" }, [
+          _c(
+            "tbody",
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _vm._l(_vm.attributes, function(attribute, index) {
+                return _c(
+                  "tr",
+                  { key: index, staticClass: "animated fadeIn" },
+                  [
+                    _c("td", [
+                      _vm._v(_vm._s(_vm.paginationData.meta.from + index))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(attribute.name))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(attribute.item_type.name))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      _vm._v(_vm._s(_vm._f("myDate")(attribute.update_at)))
+                    ]),
+                    _vm._v(" "),
+                    _c("td", { staticStyle: { width: "200px" } }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-warning btn-sm text-white",
+                          on: {
+                            click: function($event) {
+                              return _vm.editAttribute(attribute)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-edit" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteAttribute(attribute.id)
+                            }
+                          }
+                        },
+                        [_c("i", { staticClass: "fa fa-times" })]
+                      )
+                    ])
+                  ]
+                )
+              })
+            ],
+            2
+          )
+        ]),
+        _vm._v(" "),
+        _c("pagination", {
+          attrs: { data: _vm.paginationData },
+          on: { "pagination-change-page": _vm.getAttribute }
+        })
+      ],
+      1
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -85519,7 +85667,7 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group " }, [
+                  _c("div", { staticClass: "form-group" }, [
                     _c("label", { attrs: { for: "name" } }, [
                       _vm._v("Attribute Value:")
                     ]),
@@ -85761,7 +85909,7 @@ var content = __webpack_require__(305);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("20cb4d1c", content, false, {});
+var update = __webpack_require__(2)("f293c87c", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -85785,7 +85933,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.table[data-v-5cccd692]{\n    width:100%;\n    height: 100%;\n    font-family: Poppins-Regular;\n    font-size: 15px;\n    color: #666666;\n    line-height: 1.2;\n    font-weight: unset !important;\n    padding-top: 20px;\n}\ntable[data-v-5cccd692] {\n  border: 1px solid rgb(111, 161, 136); \n  border-collapse: collapse;\n  border-radius: 1em;\n  overflow: hidden;\n}\n.heading[data-v-5cccd692]{\n    background:  rgb(91, 189, 176);\n}\n.heading th[data-v-5cccd692]{\n    padding:20px;\n}\ntbody tr[data-v-5cccd692]{\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-5cccd692] {\n  padding: 1em;\n  background: #fff;\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-5cccd692] {\n    background: #E9ECEF;\n}\n\n", ""]);
+exports.push([module.i, "\n.table[data-v-5cccd692]{\r\n    width:100%;\r\n    height: 100%;\r\n    font-family: Poppins-Regular;\r\n    font-size: 15px;\r\n    color: #666666;\r\n    line-height: 1.2;\r\n    font-weight: unset !important;\r\n    padding-top: 20px;\n}\ntable[data-v-5cccd692] {\r\n  border: 1px solid rgb(111, 161, 136); \r\n  border-collapse: collapse;\r\n  border-radius: 1em;\r\n  overflow: hidden;\n}\n.heading[data-v-5cccd692]{\r\n    background:  rgb(91, 189, 176);\n}\n.heading th[data-v-5cccd692]{\r\n    padding:20px;\n}\ntbody tr[data-v-5cccd692]{\r\n    background:  rgb(243, 243, 243);\n}\ntd[data-v-5cccd692] {\r\n  padding: 1em;\r\n  background: #fff;\r\n  border-bottom: 1px solid rgba(191, 236, 197, 0.87);\n}\n.table-hover tbody tr:hover td[data-v-5cccd692] {\r\n    background: #E9ECEF;\n}\r\n\r\n", ""]);
 
 // exports
 
@@ -86063,6 +86211,1379 @@ function plugin(Vue, options) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 314 */,
+/* 315 */,
+/* 316 */,
+/* 317 */,
+/* 318 */
+/***/ (function(module, exports) {
+
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "fb15");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "0d58":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.14 / 15.2.3.14 Object.keys(O)
+var $keys = __webpack_require__("ce10");
+var enumBugKeys = __webpack_require__("e11e");
+
+module.exports = Object.keys || function keys(O) {
+  return $keys(O, enumBugKeys);
+};
+
+
+/***/ }),
+
+/***/ "11e9":
+/***/ (function(module, exports, __webpack_require__) {
+
+var pIE = __webpack_require__("52a7");
+var createDesc = __webpack_require__("4630");
+var toIObject = __webpack_require__("6821");
+var toPrimitive = __webpack_require__("6a99");
+var has = __webpack_require__("69a8");
+var IE8_DOM_DEFINE = __webpack_require__("c69a");
+var gOPD = Object.getOwnPropertyDescriptor;
+
+exports.f = __webpack_require__("9e1e") ? gOPD : function getOwnPropertyDescriptor(O, P) {
+  O = toIObject(O);
+  P = toPrimitive(P, true);
+  if (IE8_DOM_DEFINE) try {
+    return gOPD(O, P);
+  } catch (e) { /* empty */ }
+  if (has(O, P)) return createDesc(!pIE.f.call(O, P), O[P]);
+};
+
+
+/***/ }),
+
+/***/ "1495":
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP = __webpack_require__("86cc");
+var anObject = __webpack_require__("cb7c");
+var getKeys = __webpack_require__("0d58");
+
+module.exports = __webpack_require__("9e1e") ? Object.defineProperties : function defineProperties(O, Properties) {
+  anObject(O);
+  var keys = getKeys(Properties);
+  var length = keys.length;
+  var i = 0;
+  var P;
+  while (length > i) dP.f(O, P = keys[i++], Properties[P]);
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "230e":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+var document = __webpack_require__("7726").document;
+// typeof document.createElement is 'object' in old IE
+var is = isObject(document) && isObject(document.createElement);
+module.exports = function (it) {
+  return is ? document.createElement(it) : {};
+};
+
+
+/***/ }),
+
+/***/ "2aba":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("7726");
+var hide = __webpack_require__("32e9");
+var has = __webpack_require__("69a8");
+var SRC = __webpack_require__("ca5a")('src');
+var $toString = __webpack_require__("fa5b");
+var TO_STRING = 'toString';
+var TPL = ('' + $toString).split(TO_STRING);
+
+__webpack_require__("8378").inspectSource = function (it) {
+  return $toString.call(it);
+};
+
+(module.exports = function (O, key, val, safe) {
+  var isFunction = typeof val == 'function';
+  if (isFunction) has(val, 'name') || hide(val, 'name', key);
+  if (O[key] === val) return;
+  if (isFunction) has(val, SRC) || hide(val, SRC, O[key] ? '' + O[key] : TPL.join(String(key)));
+  if (O === global) {
+    O[key] = val;
+  } else if (!safe) {
+    delete O[key];
+    hide(O, key, val);
+  } else if (O[key]) {
+    O[key] = val;
+  } else {
+    hide(O, key, val);
+  }
+// add fake Function#toString for correct work wrapped methods / constructors with methods like LoDash isNative
+})(Function.prototype, TO_STRING, function toString() {
+  return typeof this == 'function' && this[SRC] || $toString.call(this);
+});
+
+
+/***/ }),
+
+/***/ "2aeb":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
+var anObject = __webpack_require__("cb7c");
+var dPs = __webpack_require__("1495");
+var enumBugKeys = __webpack_require__("e11e");
+var IE_PROTO = __webpack_require__("613b")('IE_PROTO');
+var Empty = function () { /* empty */ };
+var PROTOTYPE = 'prototype';
+
+// Create object with fake `null` prototype: use iframe Object with cleared prototype
+var createDict = function () {
+  // Thrash, waste and sodomy: IE GC bug
+  var iframe = __webpack_require__("230e")('iframe');
+  var i = enumBugKeys.length;
+  var lt = '<';
+  var gt = '>';
+  var iframeDocument;
+  iframe.style.display = 'none';
+  __webpack_require__("fab2").appendChild(iframe);
+  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
+  // createDict = iframe.contentWindow.Object;
+  // html.removeChild(iframe);
+  iframeDocument = iframe.contentWindow.document;
+  iframeDocument.open();
+  iframeDocument.write(lt + 'script' + gt + 'document.F=Object' + lt + '/script' + gt);
+  iframeDocument.close();
+  createDict = iframeDocument.F;
+  while (i--) delete createDict[PROTOTYPE][enumBugKeys[i]];
+  return createDict();
+};
+
+module.exports = Object.create || function create(O, Properties) {
+  var result;
+  if (O !== null) {
+    Empty[PROTOTYPE] = anObject(O);
+    result = new Empty();
+    Empty[PROTOTYPE] = null;
+    // add "__proto__" for Object.getPrototypeOf polyfill
+    result[IE_PROTO] = O;
+  } else result = createDict();
+  return Properties === undefined ? result : dPs(result, Properties);
+};
+
+
+/***/ }),
+
+/***/ "2d00":
+/***/ (function(module, exports) {
+
+module.exports = false;
+
+
+/***/ }),
+
+/***/ "2d95":
+/***/ (function(module, exports) {
+
+var toString = {}.toString;
+
+module.exports = function (it) {
+  return toString.call(it).slice(8, -1);
+};
+
+
+/***/ }),
+
+/***/ "32e9":
+/***/ (function(module, exports, __webpack_require__) {
+
+var dP = __webpack_require__("86cc");
+var createDesc = __webpack_require__("4630");
+module.exports = __webpack_require__("9e1e") ? function (object, key, value) {
+  return dP.f(object, key, createDesc(1, value));
+} : function (object, key, value) {
+  object[key] = value;
+  return object;
+};
+
+
+/***/ }),
+
+/***/ "4588":
+/***/ (function(module, exports) {
+
+// 7.1.4 ToInteger
+var ceil = Math.ceil;
+var floor = Math.floor;
+module.exports = function (it) {
+  return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
+};
+
+
+/***/ }),
+
+/***/ "4630":
+/***/ (function(module, exports) {
+
+module.exports = function (bitmap, value) {
+  return {
+    enumerable: !(bitmap & 1),
+    configurable: !(bitmap & 2),
+    writable: !(bitmap & 4),
+    value: value
+  };
+};
+
+
+/***/ }),
+
+/***/ "52a7":
+/***/ (function(module, exports) {
+
+exports.f = {}.propertyIsEnumerable;
+
+
+/***/ }),
+
+/***/ "5537":
+/***/ (function(module, exports, __webpack_require__) {
+
+var core = __webpack_require__("8378");
+var global = __webpack_require__("7726");
+var SHARED = '__core-js_shared__';
+var store = global[SHARED] || (global[SHARED] = {});
+
+(module.exports = function (key, value) {
+  return store[key] || (store[key] = value !== undefined ? value : {});
+})('versions', []).push({
+  version: core.version,
+  mode: __webpack_require__("2d00") ? 'pure' : 'global',
+  copyright: '© 2019 Denis Pushkarev (zloirock.ru)'
+});
+
+
+/***/ }),
+
+/***/ "5ca1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var global = __webpack_require__("7726");
+var core = __webpack_require__("8378");
+var hide = __webpack_require__("32e9");
+var redefine = __webpack_require__("2aba");
+var ctx = __webpack_require__("9b43");
+var PROTOTYPE = 'prototype';
+
+var $export = function (type, name, source) {
+  var IS_FORCED = type & $export.F;
+  var IS_GLOBAL = type & $export.G;
+  var IS_STATIC = type & $export.S;
+  var IS_PROTO = type & $export.P;
+  var IS_BIND = type & $export.B;
+  var target = IS_GLOBAL ? global : IS_STATIC ? global[name] || (global[name] = {}) : (global[name] || {})[PROTOTYPE];
+  var exports = IS_GLOBAL ? core : core[name] || (core[name] = {});
+  var expProto = exports[PROTOTYPE] || (exports[PROTOTYPE] = {});
+  var key, own, out, exp;
+  if (IS_GLOBAL) source = name;
+  for (key in source) {
+    // contains in native
+    own = !IS_FORCED && target && target[key] !== undefined;
+    // export native or passed
+    out = (own ? target : source)[key];
+    // bind timers to global for call from export context
+    exp = IS_BIND && own ? ctx(out, global) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
+    // extend global
+    if (target) redefine(target, key, out, type & $export.U);
+    // export
+    if (exports[key] != out) hide(exports, key, exp);
+    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
+  }
+};
+global.core = core;
+// type bitmap
+$export.F = 1;   // forced
+$export.G = 2;   // global
+$export.S = 4;   // static
+$export.P = 8;   // proto
+$export.B = 16;  // bind
+$export.W = 32;  // wrap
+$export.U = 64;  // safe
+$export.R = 128; // real proto method for `library`
+module.exports = $export;
+
+
+/***/ }),
+
+/***/ "5dbc":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+var setPrototypeOf = __webpack_require__("8b97").set;
+module.exports = function (that, target, C) {
+  var S = target.constructor;
+  var P;
+  if (S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && isObject(P) && setPrototypeOf) {
+    setPrototypeOf(that, P);
+  } return that;
+};
+
+
+/***/ }),
+
+/***/ "613b":
+/***/ (function(module, exports, __webpack_require__) {
+
+var shared = __webpack_require__("5537")('keys');
+var uid = __webpack_require__("ca5a");
+module.exports = function (key) {
+  return shared[key] || (shared[key] = uid(key));
+};
+
+
+/***/ }),
+
+/***/ "626a":
+/***/ (function(module, exports, __webpack_require__) {
+
+// fallback for non-array-like ES3 and non-enumerable old V8 strings
+var cof = __webpack_require__("2d95");
+// eslint-disable-next-line no-prototype-builtins
+module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
+  return cof(it) == 'String' ? it.split('') : Object(it);
+};
+
+
+/***/ }),
+
+/***/ "6821":
+/***/ (function(module, exports, __webpack_require__) {
+
+// to indexed object, toObject with fallback for non-array-like ES3 strings
+var IObject = __webpack_require__("626a");
+var defined = __webpack_require__("be13");
+module.exports = function (it) {
+  return IObject(defined(it));
+};
+
+
+/***/ }),
+
+/***/ "69a8":
+/***/ (function(module, exports) {
+
+var hasOwnProperty = {}.hasOwnProperty;
+module.exports = function (it, key) {
+  return hasOwnProperty.call(it, key);
+};
+
+
+/***/ }),
+
+/***/ "6a99":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.1 ToPrimitive(input [, PreferredType])
+var isObject = __webpack_require__("d3f4");
+// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// and the second argument - flag - preferred type is a string
+module.exports = function (it, S) {
+  if (!isObject(it)) return it;
+  var fn, val;
+  if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
+  if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
+  throw TypeError("Can't convert object to primitive value");
+};
+
+
+/***/ }),
+
+/***/ "7726":
+/***/ (function(module, exports) {
+
+// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
+var global = module.exports = typeof window != 'undefined' && window.Math == Math
+  ? window : typeof self != 'undefined' && self.Math == Math ? self
+  // eslint-disable-next-line no-new-func
+  : Function('return this')();
+if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+
+
+/***/ }),
+
+/***/ "77f1":
+/***/ (function(module, exports, __webpack_require__) {
+
+var toInteger = __webpack_require__("4588");
+var max = Math.max;
+var min = Math.min;
+module.exports = function (index, length) {
+  index = toInteger(index);
+  return index < 0 ? max(index + length, 0) : min(index, length);
+};
+
+
+/***/ }),
+
+/***/ "79e5":
+/***/ (function(module, exports) {
+
+module.exports = function (exec) {
+  try {
+    return !!exec();
+  } catch (e) {
+    return true;
+  }
+};
+
+
+/***/ }),
+
+/***/ "8378":
+/***/ (function(module, exports) {
+
+var core = module.exports = { version: '2.6.5' };
+if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+
+
+/***/ }),
+
+/***/ "86cc":
+/***/ (function(module, exports, __webpack_require__) {
+
+var anObject = __webpack_require__("cb7c");
+var IE8_DOM_DEFINE = __webpack_require__("c69a");
+var toPrimitive = __webpack_require__("6a99");
+var dP = Object.defineProperty;
+
+exports.f = __webpack_require__("9e1e") ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+  anObject(O);
+  P = toPrimitive(P, true);
+  anObject(Attributes);
+  if (IE8_DOM_DEFINE) try {
+    return dP(O, P, Attributes);
+  } catch (e) { /* empty */ }
+  if ('get' in Attributes || 'set' in Attributes) throw TypeError('Accessors not supported!');
+  if ('value' in Attributes) O[P] = Attributes.value;
+  return O;
+};
+
+
+/***/ }),
+
+/***/ "8b97":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Works with __proto__ only. Old v8 can't work with null proto objects.
+/* eslint-disable no-proto */
+var isObject = __webpack_require__("d3f4");
+var anObject = __webpack_require__("cb7c");
+var check = function (O, proto) {
+  anObject(O);
+  if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
+};
+module.exports = {
+  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
+    function (test, buggy, set) {
+      try {
+        set = __webpack_require__("9b43")(Function.call, __webpack_require__("11e9").f(Object.prototype, '__proto__').set, 2);
+        set(test, []);
+        buggy = !(test instanceof Array);
+      } catch (e) { buggy = true; }
+      return function setPrototypeOf(O, proto) {
+        check(O, proto);
+        if (buggy) O.__proto__ = proto;
+        else set(O, proto);
+        return O;
+      };
+    }({}, false) : undefined),
+  check: check
+};
+
+
+/***/ }),
+
+/***/ "9093":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
+var $keys = __webpack_require__("ce10");
+var hiddenKeys = __webpack_require__("e11e").concat('length', 'prototype');
+
+exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O) {
+  return $keys(O, hiddenKeys);
+};
+
+
+/***/ }),
+
+/***/ "9b43":
+/***/ (function(module, exports, __webpack_require__) {
+
+// optional / simple context binding
+var aFunction = __webpack_require__("d8e8");
+module.exports = function (fn, that, length) {
+  aFunction(fn);
+  if (that === undefined) return fn;
+  switch (length) {
+    case 1: return function (a) {
+      return fn.call(that, a);
+    };
+    case 2: return function (a, b) {
+      return fn.call(that, a, b);
+    };
+    case 3: return function (a, b, c) {
+      return fn.call(that, a, b, c);
+    };
+  }
+  return function (/* ...args */) {
+    return fn.apply(that, arguments);
+  };
+};
+
+
+/***/ }),
+
+/***/ "9def":
+/***/ (function(module, exports, __webpack_require__) {
+
+// 7.1.15 ToLength
+var toInteger = __webpack_require__("4588");
+var min = Math.min;
+module.exports = function (it) {
+  return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
+};
+
+
+/***/ }),
+
+/***/ "9e1e":
+/***/ (function(module, exports, __webpack_require__) {
+
+// Thank's IE8 for his funny defineProperty
+module.exports = !__webpack_require__("79e5")(function () {
+  return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "aa77":
+/***/ (function(module, exports, __webpack_require__) {
+
+var $export = __webpack_require__("5ca1");
+var defined = __webpack_require__("be13");
+var fails = __webpack_require__("79e5");
+var spaces = __webpack_require__("fdef");
+var space = '[' + spaces + ']';
+var non = '\u200b\u0085';
+var ltrim = RegExp('^' + space + space + '*');
+var rtrim = RegExp(space + space + '*$');
+
+var exporter = function (KEY, exec, ALIAS) {
+  var exp = {};
+  var FORCE = fails(function () {
+    return !!spaces[KEY]() || non[KEY]() != non;
+  });
+  var fn = exp[KEY] = FORCE ? exec(trim) : spaces[KEY];
+  if (ALIAS) exp[ALIAS] = fn;
+  $export($export.P + $export.F * FORCE, 'String', exp);
+};
+
+// 1 -> String#trimLeft
+// 2 -> String#trimRight
+// 3 -> String#trim
+var trim = exporter.trim = function (string, TYPE) {
+  string = String(defined(string));
+  if (TYPE & 1) string = string.replace(ltrim, '');
+  if (TYPE & 2) string = string.replace(rtrim, '');
+  return string;
+};
+
+module.exports = exporter;
+
+
+/***/ }),
+
+/***/ "be13":
+/***/ (function(module, exports) {
+
+// 7.2.1 RequireObjectCoercible(argument)
+module.exports = function (it) {
+  if (it == undefined) throw TypeError("Can't call method on  " + it);
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "c366":
+/***/ (function(module, exports, __webpack_require__) {
+
+// false -> Array#indexOf
+// true  -> Array#includes
+var toIObject = __webpack_require__("6821");
+var toLength = __webpack_require__("9def");
+var toAbsoluteIndex = __webpack_require__("77f1");
+module.exports = function (IS_INCLUDES) {
+  return function ($this, el, fromIndex) {
+    var O = toIObject($this);
+    var length = toLength(O.length);
+    var index = toAbsoluteIndex(fromIndex, length);
+    var value;
+    // Array#includes uses SameValueZero equality algorithm
+    // eslint-disable-next-line no-self-compare
+    if (IS_INCLUDES && el != el) while (length > index) {
+      value = O[index++];
+      // eslint-disable-next-line no-self-compare
+      if (value != value) return true;
+    // Array#indexOf ignores holes, Array#includes - not
+    } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
+      if (O[index] === el) return IS_INCLUDES || index || 0;
+    } return !IS_INCLUDES && -1;
+  };
+};
+
+
+/***/ }),
+
+/***/ "c5f6":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var global = __webpack_require__("7726");
+var has = __webpack_require__("69a8");
+var cof = __webpack_require__("2d95");
+var inheritIfRequired = __webpack_require__("5dbc");
+var toPrimitive = __webpack_require__("6a99");
+var fails = __webpack_require__("79e5");
+var gOPN = __webpack_require__("9093").f;
+var gOPD = __webpack_require__("11e9").f;
+var dP = __webpack_require__("86cc").f;
+var $trim = __webpack_require__("aa77").trim;
+var NUMBER = 'Number';
+var $Number = global[NUMBER];
+var Base = $Number;
+var proto = $Number.prototype;
+// Opera ~12 has broken Object#toString
+var BROKEN_COF = cof(__webpack_require__("2aeb")(proto)) == NUMBER;
+var TRIM = 'trim' in String.prototype;
+
+// 7.1.3 ToNumber(argument)
+var toNumber = function (argument) {
+  var it = toPrimitive(argument, false);
+  if (typeof it == 'string' && it.length > 2) {
+    it = TRIM ? it.trim() : $trim(it, 3);
+    var first = it.charCodeAt(0);
+    var third, radix, maxCode;
+    if (first === 43 || first === 45) {
+      third = it.charCodeAt(2);
+      if (third === 88 || third === 120) return NaN; // Number('+0x1') should be NaN, old V8 fix
+    } else if (first === 48) {
+      switch (it.charCodeAt(1)) {
+        case 66: case 98: radix = 2; maxCode = 49; break; // fast equal /^0b[01]+$/i
+        case 79: case 111: radix = 8; maxCode = 55; break; // fast equal /^0o[0-7]+$/i
+        default: return +it;
+      }
+      for (var digits = it.slice(2), i = 0, l = digits.length, code; i < l; i++) {
+        code = digits.charCodeAt(i);
+        // parseInt parses a string to a first unavailable symbol
+        // but ToNumber should return NaN if a string contains unavailable symbols
+        if (code < 48 || code > maxCode) return NaN;
+      } return parseInt(digits, radix);
+    }
+  } return +it;
+};
+
+if (!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')) {
+  $Number = function Number(value) {
+    var it = arguments.length < 1 ? 0 : value;
+    var that = this;
+    return that instanceof $Number
+      // check on 1..constructor(foo) case
+      && (BROKEN_COF ? fails(function () { proto.valueOf.call(that); }) : cof(that) != NUMBER)
+        ? inheritIfRequired(new Base(toNumber(it)), that, $Number) : toNumber(it);
+  };
+  for (var keys = __webpack_require__("9e1e") ? gOPN(Base) : (
+    // ES3:
+    'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
+    // ES6 (in case, if modules with ES6 Number statics required before):
+    'EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,' +
+    'MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger'
+  ).split(','), j = 0, key; keys.length > j; j++) {
+    if (has(Base, key = keys[j]) && !has($Number, key)) {
+      dP($Number, key, gOPD(Base, key));
+    }
+  }
+  $Number.prototype = proto;
+  proto.constructor = $Number;
+  __webpack_require__("2aba")(global, NUMBER, $Number);
+}
+
+
+/***/ }),
+
+/***/ "c69a":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = !__webpack_require__("9e1e") && !__webpack_require__("79e5")(function () {
+  return Object.defineProperty(__webpack_require__("230e")('div'), 'a', { get: function () { return 7; } }).a != 7;
+});
+
+
+/***/ }),
+
+/***/ "ca5a":
+/***/ (function(module, exports) {
+
+var id = 0;
+var px = Math.random();
+module.exports = function (key) {
+  return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
+};
+
+
+/***/ }),
+
+/***/ "cb7c":
+/***/ (function(module, exports, __webpack_require__) {
+
+var isObject = __webpack_require__("d3f4");
+module.exports = function (it) {
+  if (!isObject(it)) throw TypeError(it + ' is not an object!');
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "ce10":
+/***/ (function(module, exports, __webpack_require__) {
+
+var has = __webpack_require__("69a8");
+var toIObject = __webpack_require__("6821");
+var arrayIndexOf = __webpack_require__("c366")(false);
+var IE_PROTO = __webpack_require__("613b")('IE_PROTO');
+
+module.exports = function (object, names) {
+  var O = toIObject(object);
+  var i = 0;
+  var result = [];
+  var key;
+  for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
+  // Don't enum bug & hidden keys
+  while (names.length > i) if (has(O, key = names[i++])) {
+    ~arrayIndexOf(result, key) || result.push(key);
+  }
+  return result;
+};
+
+
+/***/ }),
+
+/***/ "d3f4":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  return typeof it === 'object' ? it !== null : typeof it === 'function';
+};
+
+
+/***/ }),
+
+/***/ "d8e8":
+/***/ (function(module, exports) {
+
+module.exports = function (it) {
+  if (typeof it != 'function') throw TypeError(it + ' is not a function!');
+  return it;
+};
+
+
+/***/ }),
+
+/***/ "e11e":
+/***/ (function(module, exports) {
+
+// IE 8- don't enum bug keys
+module.exports = (
+  'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
+).split(',');
+
+
+/***/ }),
+
+/***/ "fa5b":
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__("5537")('native-function-to-string', Function.toString);
+
+
+/***/ }),
+
+/***/ "fab2":
+/***/ (function(module, exports, __webpack_require__) {
+
+var document = __webpack_require__("7726").document;
+module.exports = document && document.documentElement;
+
+
+/***/ }),
+
+/***/ "fb15":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
+// This file is imported into lib/wc client bundles.
+
+if (typeof window !== 'undefined') {
+  var i
+  if ((i = window.document.currentScript) && (i = i.src.match(/(.+\/)[^/]+\.js(\?.*)?$/))) {
+    __webpack_require__.p = i[1] // eslint-disable-line
+  }
+}
+
+// Indicate to webpack that this file can be concatenated
+/* harmony default export */ var setPublicPath = (null);
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"0fa2e68e-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=template&id=7f71b5a7&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('renderless-laravel-vue-pagination',{attrs:{"data":_vm.data,"limit":_vm.limit,"show-disabled":_vm.showDisabled,"size":_vm.size,"align":_vm.align},on:{"pagination-change-page":_vm.onPaginationChangePage},scopedSlots:_vm._u([{key:"default",fn:function(ref){
+var data = ref.data;
+var limit = ref.limit;
+var showDisabled = ref.showDisabled;
+var size = ref.size;
+var align = ref.align;
+var computed = ref.computed;
+var prevButtonEvents = ref.prevButtonEvents;
+var nextButtonEvents = ref.nextButtonEvents;
+var pageButtonEvents = ref.pageButtonEvents;
+return (computed.total > computed.perPage)?_c('ul',{staticClass:"pagination",class:{
+            'pagination-sm': size == 'small',
+            'pagination-lg': size == 'large',
+            'justify-content-center': align == 'center',
+            'justify-content-end': align == 'right'
+        }},[(computed.prevPageUrl || showDisabled)?_c('li',{staticClass:"page-item pagination-prev-nav",class:{'disabled': !computed.prevPageUrl}},[_c('a',_vm._g({staticClass:"page-link",attrs:{"href":"#","aria-label":"Previous","tabindex":!computed.prevPageUrl && -1}},prevButtonEvents),[_vm._t("prev-nav",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("«")]),_c('span',{staticClass:"sr-only"},[_vm._v("Previous")])])],2)]):_vm._e(),_vm._l((computed.pageRange),function(page,key){return _c('li',{key:key,staticClass:"page-item pagination-page-nav",class:{ 'active': page == computed.currentPage }},[_c('a',_vm._g({staticClass:"page-link",attrs:{"href":"#"}},pageButtonEvents(page)),[_vm._v("\n                "+_vm._s(page)+"\n                "),(page == computed.currentPage)?_c('span',{staticClass:"sr-only"},[_vm._v("(current)")]):_vm._e()])])}),(computed.nextPageUrl || showDisabled)?_c('li',{staticClass:"page-item pagination-next-nav",class:{'disabled': !computed.nextPageUrl}},[_c('a',_vm._g({staticClass:"page-link",attrs:{"href":"#","aria-label":"Next","tabindex":!computed.nextPageUrl && -1}},nextButtonEvents),[_vm._t("next-nav",[_c('span',{attrs:{"aria-hidden":"true"}},[_vm._v("»")]),_c('span',{staticClass:"sr-only"},[_vm._v("Next")])])],2)]):_vm._e()],2):_vm._e()}}],null,true)})}
+var staticRenderFns = []
+
+
+// CONCATENATED MODULE: ./src/LaravelVuePagination.vue?vue&type=template&id=7f71b5a7&
+
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es6.number.constructor.js
+var es6_number_constructor = __webpack_require__("c5f6");
+
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/RenderlessLaravelVuePagination.vue?vue&type=script&lang=js&
+
+/* harmony default export */ var RenderlessLaravelVuePaginationvue_type_script_lang_js_ = ({
+  props: {
+    data: {
+      type: Object,
+      default: function _default() {}
+    },
+    limit: {
+      type: Number,
+      default: 0
+    },
+    showDisabled: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: 'default',
+      validator: function validator(value) {
+        return ['small', 'default', 'large'].indexOf(value) !== -1;
+      }
+    },
+    align: {
+      type: String,
+      default: 'left',
+      validator: function validator(value) {
+        return ['left', 'center', 'right'].indexOf(value) !== -1;
+      }
+    }
+  },
+  computed: {
+    isApiResource: function isApiResource() {
+      return !!this.data.meta;
+    },
+    currentPage: function currentPage() {
+      return this.isApiResource ? this.data.meta.current_page : this.data.current_page;
+    },
+    firstPageUrl: function firstPageUrl() {
+      return this.isApiResource ? this.data.links.first : null;
+    },
+    from: function from() {
+      return this.isApiResource ? this.data.meta.from : this.data.from;
+    },
+    lastPage: function lastPage() {
+      return this.isApiResource ? this.data.meta.last_page : this.data.last_page;
+    },
+    lastPageUrl: function lastPageUrl() {
+      return this.isApiResource ? this.data.links.last : null;
+    },
+    nextPageUrl: function nextPageUrl() {
+      return this.isApiResource ? this.data.links.next : this.data.next_page_url;
+    },
+    perPage: function perPage() {
+      return this.isApiResource ? this.data.meta.per_page : this.data.per_page;
+    },
+    prevPageUrl: function prevPageUrl() {
+      return this.isApiResource ? this.data.links.prev : this.data.prev_page_url;
+    },
+    to: function to() {
+      return this.isApiResource ? this.data.meta.to : this.data.to;
+    },
+    total: function total() {
+      return this.isApiResource ? this.data.meta.total : this.data.total;
+    },
+    pageRange: function pageRange() {
+      if (this.limit === -1) {
+        return 0;
+      }
+
+      if (this.limit === 0) {
+        return this.lastPage;
+      }
+
+      var current = this.currentPage;
+      var last = this.lastPage;
+      var delta = this.limit;
+      var left = current - delta;
+      var right = current + delta + 1;
+      var range = [];
+      var pages = [];
+      var l;
+
+      for (var i = 1; i <= last; i++) {
+        if (i === 1 || i === last || i >= left && i < right) {
+          range.push(i);
+        }
+      }
+
+      range.forEach(function (i) {
+        if (l) {
+          if (i - l === 2) {
+            pages.push(l + 1);
+          } else if (i - l !== 1) {
+            pages.push('...');
+          }
+        }
+
+        pages.push(i);
+        l = i;
+      });
+      return pages;
+    }
+  },
+  methods: {
+    previousPage: function previousPage() {
+      this.selectPage(this.currentPage - 1);
+    },
+    nextPage: function nextPage() {
+      this.selectPage(this.currentPage + 1);
+    },
+    selectPage: function selectPage(page) {
+      if (page === '...') {
+        return;
+      }
+
+      this.$emit('pagination-change-page', page);
+    }
+  },
+  render: function render() {
+    var _this = this;
+
+    return this.$scopedSlots.default({
+      data: this.data,
+      limit: this.limit,
+      showDisabled: this.showDisabled,
+      size: this.size,
+      align: this.align,
+      computed: {
+        isApiResource: this.isApiResource,
+        currentPage: this.currentPage,
+        firstPageUrl: this.firstPageUrl,
+        from: this.from,
+        lastPage: this.lastPage,
+        lastPageUrl: this.lastPageUrl,
+        nextPageUrl: this.nextPageUrl,
+        perPage: this.perPage,
+        prevPageUrl: this.prevPageUrl,
+        to: this.to,
+        total: this.total,
+        pageRange: this.pageRange
+      },
+      prevButtonEvents: {
+        click: function click(e) {
+          e.preventDefault();
+
+          _this.previousPage();
+        }
+      },
+      nextButtonEvents: {
+        click: function click(e) {
+          e.preventDefault();
+
+          _this.nextPage();
+        }
+      },
+      pageButtonEvents: function pageButtonEvents(page) {
+        return {
+          click: function click(e) {
+            e.preventDefault();
+
+            _this.selectPage(page);
+          }
+        };
+      }
+    });
+  }
+});
+// CONCATENATED MODULE: ./src/RenderlessLaravelVuePagination.vue?vue&type=script&lang=js&
+ /* harmony default export */ var src_RenderlessLaravelVuePaginationvue_type_script_lang_js_ = (RenderlessLaravelVuePaginationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/runtime/componentNormalizer.js
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () { injectStyles.call(this, this.$root.$options.shadowRoot) }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functioal component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
+
+// CONCATENATED MODULE: ./src/RenderlessLaravelVuePagination.vue
+var RenderlessLaravelVuePagination_render, RenderlessLaravelVuePagination_staticRenderFns
+
+
+
+
+/* normalize component */
+
+var component = normalizeComponent(
+  src_RenderlessLaravelVuePaginationvue_type_script_lang_js_,
+  RenderlessLaravelVuePagination_render,
+  RenderlessLaravelVuePagination_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var RenderlessLaravelVuePagination = (component.exports);
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/LaravelVuePagination.vue?vue&type=script&lang=js&
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ var LaravelVuePaginationvue_type_script_lang_js_ = ({
+  props: {
+    data: {
+      type: Object,
+      default: function _default() {}
+    },
+    limit: {
+      type: Number,
+      default: 0
+    },
+    showDisabled: {
+      type: Boolean,
+      default: false
+    },
+    size: {
+      type: String,
+      default: 'default',
+      validator: function validator(value) {
+        return ['small', 'default', 'large'].indexOf(value) !== -1;
+      }
+    },
+    align: {
+      type: String,
+      default: 'left',
+      validator: function validator(value) {
+        return ['left', 'center', 'right'].indexOf(value) !== -1;
+      }
+    }
+  },
+  methods: {
+    onPaginationChangePage: function onPaginationChangePage(page) {
+      this.$emit('pagination-change-page', page);
+    }
+  },
+  components: {
+    RenderlessLaravelVuePagination: RenderlessLaravelVuePagination
+  }
+});
+// CONCATENATED MODULE: ./src/LaravelVuePagination.vue?vue&type=script&lang=js&
+ /* harmony default export */ var src_LaravelVuePaginationvue_type_script_lang_js_ = (LaravelVuePaginationvue_type_script_lang_js_); 
+// CONCATENATED MODULE: ./src/LaravelVuePagination.vue
+
+
+
+
+
+/* normalize component */
+
+var LaravelVuePagination_component = normalizeComponent(
+  src_LaravelVuePaginationvue_type_script_lang_js_,
+  render,
+  staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* harmony default export */ var LaravelVuePagination = (LaravelVuePagination_component.exports);
+// CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+
+
+/* harmony default export */ var entry_lib = __webpack_exports__["default"] = (LaravelVuePagination);
+
+
+
+/***/ }),
+
+/***/ "fdef":
+/***/ (function(module, exports) {
+
+module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
+  '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
+
+
+/***/ })
+
+/******/ })["default"];
+//# sourceMappingURL=laravel-vue-pagination.common.js.map
 
 /***/ })
 /******/ ]);

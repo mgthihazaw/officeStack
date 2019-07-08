@@ -28,7 +28,7 @@
             </tbody>
             <tbody v-for="(item,index) in items" :key="index" class="animated fadeIn">
               <tr>
-                <td>{{ index+1 }}</td>
+                <td>{{ paginationData.meta.from + index }}</td>
                 <td>
                   {{ item.brand.name }}
                   <span>{{ item.model_no }}</span>
@@ -36,7 +36,7 @@
 
                 <td>{{ item.item_type.name }}</td>
 
-                <td>{{ item. price }}</td>
+                <td>{{ item.price }}</td>
                 <td>{{ item.update_at | myDate}}</td>
                 <td>
                   <button
@@ -62,7 +62,7 @@
                         {{ item.brand.name }}
                         <span>{{ item.model_no }}</span>
                         &nbsp;&nbsp;&nbsp; =>  &nbsp;&nbsp;&nbsp;&nbsp;
-                        {{ item.price_one }}
+                        {{ item.price }}
                       </h4>
                       
                       <p
@@ -74,8 +74,10 @@
                   </div>
                 </td>
               </tr>
+              
             </tbody>
           </table>
+          <pagination :data="paginationData" @pagination-change-page="getItems"></pagination>
         </div>
         <!-- /.card-body -->
       </div>
@@ -99,10 +101,10 @@
                 <h5>1.Insert Item Information</h5>
 
                 <div class="form-group row pt-4">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputtext1" class="pt-2">Item Type</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-9">
                     <multiselect
                       :options="itemTypes"
                       label="name"
@@ -116,10 +118,10 @@
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="secret" class="pt-2">Item Brand</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-9">
                     <multiselect
                       tag-placeholder="Create New Brand"
                       :options="brands"
@@ -134,10 +136,10 @@
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputtext1" class="pt-2">Model No</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-9">
                     <input
                       type="text"
                       class="form-control"
@@ -149,33 +151,33 @@
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputtext1" class="pt-2">Item Price</label>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <input
                       type="number"
                       class="form-control "
                       id="exampleInputtext1"
-                      placeholder="Enter Item Price One"
+                      placeholder="Enter Price One"
                       v-model="form.price_one"
                     >
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <input
                       type="number"
                       class="form-control "
                       id="exampleInputtext1"
-                      placeholder="Enter Item Price Two"
+                      placeholder="Enter Price Two(optional)"
                       v-model="form.price_two"
                     >
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <input
                       type="number"
                       class="form-control "
                       id="exampleInputtext1"
-                      placeholder="Enter Item Price Three"
+                      placeholder="Enter  Price Three(optional)"
                       v-model="form.price_three"
                     >
                   </div>
@@ -189,21 +191,21 @@
                     v-for="(attributeGroup,index) in attributeGroups"
                     :key="index"
                   >
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                       <label for="exampleInputtext1" class="pt-2">{{ attributeGroup.name }}</label>
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                       <multiselect
                         :options="attributeGroup.attributes"
                         v-model="attributes[index]"
-                        placeholder="Choose Item Type"
+                        placeholder="Choose Attribute"
                         label="name"
                         :close-on-select="true"
                         :show-labels="false"
                         :block-keys="['Delete']"
                         :taggable="true"
-                        @tag="addTag($event,attributes[index],attributeGroup.attributes)"
+                        @tag="addTag($event,index,attributeGroup.attributes)"
                       ></multiselect>
                     </div>
                   </div>
@@ -247,10 +249,10 @@
                 <h5>1.Insert Item Information</h5>
 
                 <div class="form-group row pt-4">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputtext1" class="pt-2">Item Type</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-9">
                     <multiselect
                       v-model="itemType"
                       track-by="name"
@@ -265,10 +267,10 @@
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="secret" class="pt-2">Item Brand</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-9">
                     <multiselect
                       v-model="brand"
                       track-by="name"
@@ -284,10 +286,10 @@
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputtext1" class="pt-2">Model No</label>
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-9">
                     <input
                       type="text"
                       class="form-control"
@@ -299,10 +301,10 @@
                 </div>
 
                 <div class="form-group row">
-                  <div class="col-md-4">
+                  <div class="col-md-3">
                     <label for="exampleInputtext1" class="pt-2">Item Price</label>
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <input
                       type="number"
                       class="form-control"
@@ -311,7 +313,7 @@
                       v-model="form.price"
                     >
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <input
                       type="number"
                       class="form-control"
@@ -320,7 +322,7 @@
                       v-model="form.price_two"
                     >
                   </div>
-                  <div class="col-md-2">
+                  <div class="col-md-3">
                     <input
                       type="number"
                       class="form-control"
@@ -339,20 +341,20 @@
                     v-for="(attributeGroup,index) in attributeGroups"
                     :key="index"
                   >
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                       <label for="exampleInputtext1" class="pt-2">{{ attributeGroup.name }}</label>
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                       <multiselect
                         :options="attributeGroup.attributes"
                         v-model="attributes[index]"
-                        placeholder="Choose Item Type"
+                        placeholder="Choose Attribute"
                         :block-keys="['Delete']"
                          label="name"
                          track-by="name"
                         :taggable="true"
-                        @tag="addTag($event,attributes[index],attributeGroup.attributes)"
+                        @tag="addTag($event,index,attributeGroup.attributes)"
                       ></multiselect>
                     </div>
                   </div>
@@ -403,8 +405,9 @@ export default {
       itemTypes: [],
       itemType: [],
       brands: [],
-      brand: [],
+      brand: "",
       attributeGroups: [],
+      paginationData : {},
       attributes: [],
       form: {
         id: "",
@@ -417,9 +420,7 @@ export default {
     };
   },
   methods: {
-    changeData() {
-      alert("Hello");
-    },
+    
     loadItemType() {
       axios
         .get(`/api/itemtypes`)
@@ -451,16 +452,18 @@ export default {
           });
       }
     },
-    getItems() {
+    getItems(page = 1) {
       axios
-        .get("/api/items")
+        .get("/api/items?page=" + page)
         .then(res => {
+          this.paginationData = res.data;
           this.items = res.data.data;
         })
         .catch(err => {
           console.log(err);
         });
     },
+   
     getItem(id) {
       axios
         .get("/api/items/" + id)
@@ -642,22 +645,30 @@ export default {
       this.attributes = [];
     },
     addBrandTag(newTag) {
+      let data_id=0
+      if(this.brands.length>0){
+        data_id = this.brands.length
+      }
       const tag = {
         name: newTag,
-        id: this.brands.length
+        id: data_id
       };
       this.brands.push(tag);
-      this.brand.township = tag;
+      this.brand = tag;
     },
 
-    addTag(newTag, itemType, itemTypes) {
+    addTag(newTag, attribute, attributes) {
+      let attr_id =0
+      if(attributes.length>0){
+         attr_id = attributes.length
+      }
       const tag = {
         name: newTag,
-        id: 0
+        id: attr_id
       };
-
-      itemTypes.push(tag);
-      itemType = tag;
+       console.log(attribute)
+      attributes.push(tag);
+      this.attributes[attribute] = tag;
     },
     getPermis() {
       if (User.isLoggedIn()) {

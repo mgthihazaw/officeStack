@@ -79,7 +79,7 @@ if (User.isLoggedIn()) {
 		})
 }
 
-Vue.component('v-select', vSelect)
+Vue.component('pagination', require('laravel-vue-pagination'));
 
 Vue.component('app-home', require('./components/AppHome.vue'));
 

@@ -251,4 +251,11 @@
     .logout{
         border-top : 1px solid rgba(200,200,200,0.3);
     }
+    @media print {
+  .main-footer {
+    display: none;
+  }
+  
+  
+}
 </style>

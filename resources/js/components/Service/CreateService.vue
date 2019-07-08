@@ -246,6 +246,9 @@ export default {
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scopde>
+* {
+  font-family: "Zawgyi-One";
+}
 @media (max-width: 768px) {
   .col-md-4 {
     margin-bottom: 15px;

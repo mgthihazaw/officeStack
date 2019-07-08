@@ -146,6 +146,8 @@ class ItemController extends Controller
     public function search(Request $request){
         
         $query = Item::select('items.*');
+        $query = Item::query();
+
         
         if($request->query('item_type')){
             $query->where('item_type_id', $request->query('item_type'));
@@ -167,9 +169,29 @@ class ItemController extends Controller
         }
 
         DB::enableQueryLog();
-        $results = $query->get();
+        $results = $query->paginate(10);
         // dd(DB::getQueryLog());
-
-        return response()->json(['data' => ItemResource::collection($results)], 200);
+  
+        $items = ItemResource::collection($results->getCollection());
+       
+        return response()->json([
+            'data' => $items,
+            'meta' => ['total' => $results->total(),
+                'from' =>($results->perPage()* ($results->currentPage()-1))+1,
+                'count' => $results->count(),
+                'per_page' => $results->perPage(),
+                // 'current_page' => $results->currentPage(),
+                'total_pages' => $results->lastPage(),
+                'next_page' => $results->nextPageUrl(),
+                'previous_page' => $results->previousPageUrl(),
+                'last_page' => $results->lastPage()
+            ],
+            "links" => [
+                'first' => $results->url(1),
+                'last' => $results->lastPage(),
+                'next' => $results->nextPageUrl(),
+                'previous' => $results->previousPageUrl()
+            ]
+        ], 200);
     }
 }
