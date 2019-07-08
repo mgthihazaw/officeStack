@@ -22,6 +22,7 @@ class Service extends Model
    		return $this->belongsTo('App\Customer');
 	   }
 	   public function items(){
-		   return $this->belongsToMany('App\Item','service_item')->withPivot('quantity','price');
+		   return $this->belongsToMany('App\Item','service_item')
+                     ->withPivot('quantity','price');
 	   }
 }
