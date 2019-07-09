@@ -58,7 +58,7 @@
                       <h6 class="text-dark">Customer Address</h6>
                     </div>
                     <div class="col-8">
-                      <p class="text-dark">{{ service.township}}</p>
+                      <p class="text-dark">{{ service.customer_address}}</p>
                     </div>
                   </div>
                 </div>
@@ -370,6 +370,13 @@ export default {
       });
       return this.total
     }
+  },
+  beforeDestroy() {
+    //While Modal is opened Route change has modal errors.That is dixed this error
+    $("#modal-xl").modal("hide");
+    $(document.body).removeClass("modal-open");
+     $(document.body).css('padding-right',"0px")
+    $(".modal-backdrop").remove();
   }
 };
 </script>

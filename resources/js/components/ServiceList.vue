@@ -15,7 +15,7 @@
             </div>
           </div>
 
-          <table class="table table-hover">
+          <table class="table table-hover ">
             <thead>
               <tr class="heading">
                 <th>No</th>

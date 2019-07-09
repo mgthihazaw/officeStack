@@ -37,9 +37,7 @@
               </button>
             </td>
           </tr>
-         
         </tbody>
-         
       </table>
       <pagination :data="paginationData" @pagination-change-page="getAttribute"></pagination>
     </div>
@@ -77,7 +75,6 @@
                   <option v-for="type in types" :key="type.id" :value="type.id">{{ type.name }}</option>
                 </select>
                 <div class="error text-muted" v-if="errors.item_type_id">Item type field is required</div>
-                
               </div>
               <div class="form-group">
                 <label for="name">Attribute Value:</label>
@@ -110,9 +107,9 @@ export default {
       paginationData: {},
       edit: false,
       attributes: [],
-      
+
       types: [],
-      errors : "",
+      errors: "",
       form: {
         id: "",
         attribute: "",
@@ -121,7 +118,6 @@ export default {
     };
   },
   methods: {
-    
     getItemType() {
       axios
         .get("/api/itemtypes")
@@ -136,26 +132,30 @@ export default {
       $("#newAttribute").modal("show");
     },
     submitAttribute() {
-      axios.post("/api/attributegroups", this.form)
-      .then(res => {
-        console.log(res);
-        this.cancel();
-        Toast.fire({
-          type: "success",
-          title: "Successfully Created "
-        });
-        Bus.$emit("afterAttributeChange");
-      })
-      .catch( err => {
-         Toast.fire({
+      axios
+        .post("/api/attributegroups", this.form)
+        .then(res => {
+          console.log(res);
+          this.cancel();
+          Toast.fire({
+            type: "success",
+            title: "Successfully Created "
+          });
+          Bus.$emit("afterAttributeChange");
+        })
+        .catch(err => {
+          Toast.fire({
             type: "error",
             title: err.response.data.message
           });
           this.errors = err.response.data.errors;
-          
-          setTimeout(function(){ 
-            this.errors =""
-           }.bind(this), 3000);
+
+          setTimeout(
+            function() {
+              this.errors = "";
+            }.bind(this),
+            3000
+          );
         });
     },
     deleteAttribute(id) {
@@ -213,18 +213,20 @@ export default {
           Bus.$emit("afterAttributeChange");
           this.edit = false;
         })
-        .catch( err => {
-         Toast.fire({
+        .catch(err => {
+          Toast.fire({
             type: "error",
             title: err.response.data.message
           });
           this.errors = err.response.data.errors;
-          
-          setTimeout(function(){ 
-            this.errors =""
-           }.bind(this), 3000);
+
+          setTimeout(
+            function() {
+              this.errors = "";
+            }.bind(this),
+            3000
+          );
         });
-      
     },
     getAttribute(page = 1) {
       axios
@@ -245,6 +247,13 @@ export default {
     Bus.$on("afterAttributeChange", () => {
       this.getAttribute();
     });
+  },
+  beforeDestroy() {
+    //While Modal is opened Route change has modal errors.That is dixed this error
+    $("#newAttribute").modal("hide");
+    $(document.body).removeClass("modal-open");
+     $(document.body).css('padding-right',"0px")
+    $(".modal-backdrop").remove();
   }
 };
 </script >

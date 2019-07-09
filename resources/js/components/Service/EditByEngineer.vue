@@ -243,6 +243,13 @@ export default {
   created() {
     this.loadService();
     this.loadServiceEngineers();
+  },
+  beforeDestroy() {
+    //While Modal is opened Route change has modal errors.That is dixed this error
+    $("#secretModal").modal("hide");
+    $(document.body).removeClass("modal-open");
+     $(document.body).css('padding-right',"0px")
+    $(".modal-backdrop").remove();
   }
 };
 </script>

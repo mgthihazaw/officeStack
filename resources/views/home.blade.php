@@ -25,6 +25,10 @@
                 background-size : cover;
                 background-origin : center;
             }
+            element.style {
+                
+                padding-right: 0px !important;
+            }
         </style>
     </head>
     <body class="hold-transition sidebar-mini">

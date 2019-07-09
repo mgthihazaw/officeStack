@@ -75870,7 +75870,7 @@ var render = function() {
                           )
                         ]),
                         _vm._v(" "),
-                        _c("table", { staticClass: "table  table-hover " }, [
+                        _c("table", { staticClass: "table table-hover" }, [
                           _c("thead", [
                             _c("tr", { staticClass: "heading" }, [
                               _c("th", [_vm._v("No")]),
@@ -76471,6 +76471,13 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       });
       return this.total;
     }
+  },
+  beforeDestroy: function beforeDestroy() {
+    //While Modal is opened Route change has modal errors.That is dixed this error
+    $("#modal-xl").modal("hide");
+    $(document.body).removeClass("modal-open");
+    $(document.body).css('padding-right', "0px");
+    $(".modal-backdrop").remove();
   }
 });
 
@@ -77221,7 +77228,7 @@ var render = function() {
                               _vm._v(" "),
                               _c("div", { staticClass: "col-8" }, [
                                 _c("p", { staticClass: "text-dark" }, [
-                                  _vm._v(_vm._s(_vm.service.township))
+                                  _vm._v(_vm._s(_vm.service.customer_address))
                                 ])
                               ])
                             ])
@@ -78054,7 +78061,7 @@ var render = function() {
                       )
                     ]),
                     _vm._v(" "),
-                    _c("table", { staticClass: "table table-hover" }, [
+                    _c("table", { staticClass: "table table-hover " }, [
                       _c("thead", [
                         _c("tr", { staticClass: "heading" }, [
                           _c("th", [_vm._v("No")]),
@@ -80235,6 +80242,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   created: function created() {
     this.loadService();
     this.loadServiceEngineers();
+  },
+  beforeDestroy: function beforeDestroy() {
+    //While Modal is opened Route change has modal errors.That is dixed this error
+    $("#secretModal").modal("hide");
+    $(document.body).removeClass("modal-open");
+    $(document.body).css('padding-right', "0px");
+    $(".modal-backdrop").remove();
   }
 });
 
@@ -82900,6 +82914,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     Bus.$on("afterTypeDeleted", function () {
       _this4.getItemTypes();
     });
+  },
+  beforeDestroy: function beforeDestroy() {
+    //While Modal is opened Route change has modal errors.That is dixed this error
+    $("#newType").modal("hide");
+    $(document.body).removeClass("modal-open");
+    $(document.body).css('padding-right', "0px");
+    $(".modal-backdrop").remove();
   }
 });
 
@@ -83965,7 +83986,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         name: newTag,
         id: attr_id
       };
-      console.log(attribute);
+      //  console.log(attribute)
       attributes.push(tag);
       this.attributes[attribute] = tag;
     },
@@ -85495,9 +85516,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -85635,6 +85653,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     Bus.$on("afterAttributeChange", function () {
       _this5.getAttribute();
     });
+  },
+  beforeDestroy: function beforeDestroy() {
+    //While Modal is opened Route change has modal errors.That is dixed this error
+    $("#newAttribute").modal("hide");
+    $(document.body).removeClass("modal-open");
+    $(document.body).css('padding-right', "0px");
+    $(".modal-backdrop").remove();
   }
 });
 
@@ -86023,9 +86048,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	created: function created() {
-		Bus.$emit('logout');
-	}
+  mounted: function mounted() {
+    var _this = this;
+
+    swal.fire({
+      title: "Are you sure to logout?",
+
+      type: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes,Logout"
+    }).then(function (result) {
+      if (result.value) {
+        //Send Delete Request to sever
+        Bus.$emit('logout');
+      } else {
+        _this.$router.go(-1);
+      }
+    });
+  }
 });
 
 /***/ }),

@@ -87,7 +87,7 @@ export default {
         id: "",
         name: ""
       },
-      errors :""
+      errors: ""
     };
   },
   methods: {
@@ -108,10 +108,13 @@ export default {
             title: err.response.data.message
           });
           this.errors = err.response.data.errors;
-          
-          setTimeout(function(){ 
-            this.errors =""
-           }.bind(this), 3000);
+
+          setTimeout(
+            function() {
+              this.errors = "";
+            }.bind(this),
+            3000
+          );
         });
     },
     deleteType(id) {
@@ -162,19 +165,22 @@ export default {
           });
           Bus.$emit("afterTypeCreated");
         })
-        
-          .catch(err => {
+
+        .catch(err => {
           Toast.fire({
             type: "error",
             title: err.response.data.message
           });
           this.errors = err.response.data.errors;
-          
-          setTimeout(function(){ 
-            this.errors =""
-           }.bind(this), 3000);
+
+          setTimeout(
+            function() {
+              this.errors = "";
+            }.bind(this),
+            3000
+          );
         });
-        
+
       this.edit = false;
     },
 
@@ -203,6 +209,13 @@ export default {
     Bus.$on("afterTypeDeleted", () => {
       this.getItemTypes();
     });
+  },
+  beforeDestroy() {
+    //While Modal is opened Route change has modal errors.That is dixed this error
+    $("#newType").modal("hide");
+    $(document.body).removeClass("modal-open");
+    $(document.body).css('padding-right',"0px")
+    $(".modal-backdrop").remove();
   }
 };
 </script >

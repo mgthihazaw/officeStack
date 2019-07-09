@@ -694,7 +694,7 @@ export default {
         name: newTag,
         id: attr_id
       };
-       console.log(attribute)
+      //  console.log(attribute)
       attributes.push(tag);
       this.attributes[attribute] = tag;
     },
