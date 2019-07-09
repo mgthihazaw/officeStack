@@ -28,7 +28,7 @@ class ItemUpdateRequest extends FormRequest
             'price_one' => 'required|integer|min:1|max:999999', 
             'brand' => 'required|string',
             'item_type_id' => 'required|integer|exists:item_types,id',
-            'model_no' => 'unique:items,model_no,'.$this->item->id,
+            // 'model_no' => 'unique:items,model_no,'.$this->item->id,
             'attributes' => ['sometimes',new AssociativeArray()],
         ];
     }

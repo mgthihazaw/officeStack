@@ -108,12 +108,12 @@
                     <div class="row">
                       <div class="callout callout-info mb-4 col-6">
                       <h6 class="mb-3">Received Description</h6>
-                      {{ service.description}}
+                      {{ service.received_description}}
                     </div>
 
                     <div class="callout callout-info mb-4 col-6">
                       <h6 class="mb-3">Received Remarks</h6>
-                      {{ service.remark}}
+                      {{ service.received_remark }}
                     </div>
                     </div>
                   </div>

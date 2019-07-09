@@ -186,10 +186,7 @@
                             <p class="text-bold ">{{ getTotal }}</p>
                           </td>
                           <td>
-                            <button class="btn btn-secondary" @click="save" :disabled="!printDisable">
-                              Save &nbsp;
-                              <i class="fas fa-save"></i>
-                            </button>
+                            
                           </td>
                           <td></td>
                         </tr>
@@ -205,8 +202,8 @@
         </div>
         <button
           class="btn btn-success printBtn"
-          @click="print"
-          :disabled="printDisable"
+          @click="save"
+          
         >Print Preview</button>
         <button
           type="button"
@@ -261,7 +258,7 @@ export default {
       authorized: false,
       service: "",
       serviceItems: [],
-      printDisable: false
+      
     };
   },
   methods: {
@@ -288,27 +285,26 @@ export default {
     shows() {
       this.show = true;
     },
-    print() {
-      window.print();
-    },
+    
 
     deleteItem(index) {
       this.serviceItems.splice(index, 1);
-      this.printDisable=true
+      
 
     },
     save(){
+      window.print()
       let data = []
       this.serviceItems.forEach( serviceItem => {
         let newData = {'item_id' : serviceItem.id,'quantity' : serviceItem.quantity ,'price' : serviceItem.price}
         data.push(newData) 
       })
       
-      console.log(data)
+      // console.log(data)
       axios.post(`/api/services/${this.service.id}/items`,data)
       .then( response => {
         // console.log(response)
-        this.printDisable = false
+        
       })
       .catch(err => {
         console.log(err)
@@ -330,7 +326,7 @@ export default {
         }
       }, []);
 
-      this.printDisable = true;
+      
     });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {

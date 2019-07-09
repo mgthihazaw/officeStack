@@ -29,14 +29,14 @@
               <div class="info-box bg-light my-4 py-4">
                 <div class="info-box-content">
                   <h5 class="info-box-text text-dark">Received Description</h5>
-                  <span class="info-box-number  text-muted mb-0">{{ service.received_description}}</span>
+                  <span class="info-box-number  text-info mb-0">{{ service.received_description}}</span>
                 </div>
               </div>
               
               <div class="info-box bg-light my-1 py-4">
                 <div class="info-box-content">
                   <h5 class="info-box-text text-dark">Received Remarks</h5>
-                  <span class="info-box-number  text-muted mb-0">{{ service.received_remark}}</span>
+                  <span class="info-box-number  text-info mb-0">{{ service.received_remark}}</span>
                 </div>
               </div>
               

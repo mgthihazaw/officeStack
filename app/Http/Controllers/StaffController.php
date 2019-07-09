@@ -195,7 +195,7 @@ class StaffController extends Controller
     public function changeAccount(Staff $staff,Request $request)
     {
         $request->validate([
-            'newPassword' => 'required|confirmed|string|min:6',
+            'newPassword' => 'required|confirmed',
             'oldPassword' =>'required'
         ]);
         
@@ -212,7 +212,7 @@ class StaffController extends Controller
     public function changeSecret(Staff $staff,Request $request){
         
         $request->validate([
-            'newSecret' => 'required|confirmed|string|min:6',
+            'newSecret' => 'required|confirmed',
             'password' =>'required'
         ]);
         if(Hash::check($request->password,$staff->password)){

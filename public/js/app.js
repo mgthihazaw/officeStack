@@ -76339,9 +76339,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
 
 
 
@@ -76357,8 +76354,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       show: false,
       authorized: false,
       service: "",
-      serviceItems: [],
-      printDisable: false
+      serviceItems: []
+
     };
   },
 
@@ -76385,39 +76382,34 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     shows: function shows() {
       this.show = true;
     },
-    print: function print() {
-      window.print();
-    },
     deleteItem: function deleteItem(index) {
       this.serviceItems.splice(index, 1);
-      this.printDisable = true;
     },
     save: function save() {
-      var _this2 = this;
-
+      window.print();
       var data = [];
       this.serviceItems.forEach(function (serviceItem) {
         var newData = { 'item_id': serviceItem.id, 'quantity': serviceItem.quantity, 'price': serviceItem.price };
         data.push(newData);
       });
 
-      console.log(data);
+      // console.log(data)
       axios.post("/api/services/" + this.service.id + "/items", data).then(function (response) {
         // console.log(response)
-        _this2.printDisable = false;
+
       }).catch(function (err) {
         console.log(err);
       });
     }
   },
   created: function created() {
-    var _this3 = this;
+    var _this2 = this;
 
     Bus.$on("addItemForService", function (item) {
       item = _extends({}, item, { quantity: 1, amount: item.price });
 
-      _this3.serviceItems.push(item);
-      _this3.serviceItems = _this3.serviceItems.reduce(function (serviceItem, current) {
+      _this2.serviceItems.push(item);
+      _this2.serviceItems = _this2.serviceItems.reduce(function (serviceItem, current) {
         var x = serviceItem.find(function (item) {
           return item.id === current.id;
         });
@@ -76427,19 +76419,17 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
           return serviceItem;
         }
       }, []);
-
-      _this3.printDisable = true;
     });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
 
         if (!Gate.isSaleperson()) {
-          _this3.shows();
-          _this3.authorized = false;
+          _this2.shows();
+          _this2.authorized = false;
         } else {
-          _this3.shows();
-          _this3.authorized = true;
+          _this2.shows();
+          _this2.authorized = true;
         }
       });
     }
@@ -76460,14 +76450,14 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
   },
   computed: {
     getTotal: function getTotal() {
-      var _this4 = this;
+      var _this3 = this;
 
       this.total = 0;
       var data = void 0;
 
       data = this.serviceItems.forEach(function (serviceItem) {
-        _this4.total += serviceItem.amount;
-        return _this4.total;
+        _this3.total += serviceItem.amount;
+        return _this3.total;
       });
       return this.total;
     }
@@ -77598,27 +77588,7 @@ var render = function() {
                                               ]
                                             ),
                                             _vm._v(" "),
-                                            _c("td", [
-                                              _c(
-                                                "button",
-                                                {
-                                                  staticClass:
-                                                    "btn btn-secondary",
-                                                  attrs: {
-                                                    disabled: !_vm.printDisable
-                                                  },
-                                                  on: { click: _vm.save }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                            Save  \n                            "
-                                                  ),
-                                                  _c("i", {
-                                                    staticClass: "fas fa-save"
-                                                  })
-                                                ]
-                                              )
-                                            ]),
+                                            _c("td"),
                                             _vm._v(" "),
                                             _c("td")
                                           ])
@@ -77639,8 +77609,7 @@ var render = function() {
                     "button",
                     {
                       staticClass: "btn btn-success printBtn",
-                      attrs: { disabled: _vm.printDisable },
-                      on: { click: _vm.print }
+                      on: { click: _vm.save }
                     },
                     [_vm._v("Print Preview")]
                   ),
@@ -78964,7 +78933,7 @@ var render = function() {
                             { staticClass: "form-group" },
                             [
                               _c("label", { attrs: { for: "remark" } }, [
-                                _vm._v("Product Remarks")
+                                _vm._v("Service Remarks")
                               ]),
                               _vm._v(" "),
                               _c("textarea", {
@@ -80319,7 +80288,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "span",
-                    { staticClass: "info-box-number  text-muted mb-0" },
+                    { staticClass: "info-box-number  text-info mb-0" },
                     [_vm._v(_vm._s(_vm.service.received_description))]
                   )
                 ])
@@ -80333,7 +80302,7 @@ var render = function() {
                   _vm._v(" "),
                   _c(
                     "span",
-                    { staticClass: "info-box-number  text-muted mb-0" },
+                    { staticClass: "info-box-number  text-info mb-0" },
                     [_vm._v(_vm._s(_vm.service.received_remark))]
                   )
                 ])
@@ -81145,7 +81114,7 @@ var render = function() {
                                   ]),
                                   _vm._v(
                                     "\n                    " +
-                                      _vm._s(_vm.service.description) +
+                                      _vm._s(_vm.service.received_description) +
                                       "\n                  "
                                   )
                                 ]
@@ -81162,7 +81131,7 @@ var render = function() {
                                   ]),
                                   _vm._v(
                                     "\n                    " +
-                                      _vm._s(_vm.service.remark) +
+                                      _vm._s(_vm.service.received_remark) +
                                       "\n                  "
                                   )
                                 ]
@@ -86044,10 +86013,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      prevRoute: '/'
+    };
+  },
   mounted: function mounted() {
     var _this = this;
 
@@ -86062,10 +86034,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }).then(function (result) {
       if (result.value) {
         //Send Delete Request to sever
-        Bus.$emit('logout');
+        Bus.$emit("logout");
       } else {
-        _this.$router.go(-1);
+        if (_this.prevRoute) {
+          _this.$router.push(_this.prevRoute.fullPath);
+        }
       }
+    });
+  },
+  beforeRouteEnter: function beforeRouteEnter(to, from, next) {
+    next(function (vm) {
+      vm.prevRoute = from;
     });
   }
 });
