@@ -114,6 +114,7 @@
                       :block-keys="['Delete']"
                       @select="loadAttributeGroup"
                     ></multiselect>
+                    <div class="error text-muted" v-if="errors.item_type_id">Item type field is required</div>
                   </div>
                 </div>
 
@@ -132,6 +133,7 @@
                       :block-keys="['Delete']"
                       @tag="addBrandTag"
                     ></multiselect>
+                    <div class="error text-muted" v-if="errors.brand">Item brand field is required</div>
                   </div>
                 </div>
 
@@ -147,7 +149,9 @@
                       v-model="form.model_no"
                       placeholder="Enter Model Number"
                     >
+                    
                   </div>
+
                 </div>
 
                 <div class="form-group row">
@@ -162,6 +166,7 @@
                       placeholder="Enter Price One"
                       v-model="form.price_one"
                     >
+                    <div class="error text-muted" v-if="errors.price_one">Item price1 is required</div>
                   </div>
                   <div class="col-md-3">
                     <input
@@ -263,6 +268,7 @@
                       :reset-after="false"
                       @input="loadAttributeGroup"
                     ></multiselect>
+                    <div class="error text-muted" v-if="errors.item_type_id">Item type field is required</div>
                   </div>
                 </div>
 
@@ -282,6 +288,7 @@
                       :taggable="true"
                       @tag="addBrandTag"
                     ></multiselect>
+                    <div class="error text-muted" v-if="errors.brand">Item brand field is required</div>
                   </div>
                 </div>
 
@@ -312,6 +319,7 @@
                       placeholder="Enter Item Price One"
                       v-model="form.price"
                     >
+                    <div class="error text-muted" v-if="errors.price_one">Item price1 is required</div>
                   </div>
                   <div class="col-md-3">
                     <input
@@ -416,7 +424,8 @@ export default {
         model_no: "",
         item_type_id: "",
         attributes: []
-      }
+      },
+      errors : ""
     };
   },
   methods: {
@@ -550,7 +559,18 @@ export default {
           Bus.$emit("afterItemChange");
         })
         .catch(err => {
-          console.log(err);
+          // console.log(err.response.data);
+          
+          Toast.fire({
+            type: "error",
+            title: err.response.data.message
+          });
+          this.errors = err.response.data.errors;
+          
+          setTimeout(function(){ 
+            this.errors =""
+           }.bind(this), 3000);
+        
         });
     },
     deleteItem(id) {
@@ -618,7 +638,15 @@ export default {
           Bus.$emit("afterItemChange");
         })
         .catch(err => {
-          console.log(err);
+          Toast.fire({
+            type: "error",
+            title: err.response.data.message
+          });
+          this.errors = err.response.data.errors;
+          
+          setTimeout(function(){ 
+            this.errors =""
+           }.bind(this), 3000);
         });
     },
     showItem(id) {
@@ -747,5 +775,10 @@ td {
 }
 .form-group .form-control {
   padding: 1.35rem 0.75rem;
+}
+.error {
+  color: #d8000c !important;
+  margin-top: 2px;
+  font-style: italic;
 }
 </style>

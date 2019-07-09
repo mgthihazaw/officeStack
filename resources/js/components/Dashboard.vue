@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Welcome to Microstack d</h1>
+        <h1>Welcome to Microstack</h1>
     </div>
 </template>
 

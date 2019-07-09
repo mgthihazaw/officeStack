@@ -183,6 +183,10 @@ export default {
           this.$router.push("/services");
         })
         .catch(error => {
+          Toast.fire({
+            type: "error",
+            title: error.response.data.message
+          });
           this.form.receive_staff = this.receptionists.find(staff => {
             return staff.no === this.form.receive_staff;
           });

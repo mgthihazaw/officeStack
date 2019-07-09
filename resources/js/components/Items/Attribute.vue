@@ -76,10 +76,13 @@
                   <option value disabled>Choose Item Type</option>
                   <option v-for="type in types" :key="type.id" :value="type.id">{{ type.name }}</option>
                 </select>
+                <div class="error text-muted" v-if="errors.item_type_id">Item type field is required</div>
+                
               </div>
               <div class="form-group">
                 <label for="name">Attribute Value:</label>
                 <input type="text" class="form-control" v-model="form.name" />
+                <div class="error text-muted" v-if="errors.name">Attribute name field is required</div>
               </div>
             </form>
             <div class="modal-footer">
@@ -109,7 +112,7 @@ export default {
       attributes: [],
       
       types: [],
-
+      errors : "",
       form: {
         id: "",
         attribute: "",
@@ -133,7 +136,8 @@ export default {
       $("#newAttribute").modal("show");
     },
     submitAttribute() {
-      axios.post("/api/attributegroups", this.form).then(res => {
+      axios.post("/api/attributegroups", this.form)
+      .then(res => {
         console.log(res);
         this.cancel();
         Toast.fire({
@@ -141,7 +145,18 @@ export default {
           title: "Successfully Created "
         });
         Bus.$emit("afterAttributeChange");
-      });
+      })
+      .catch( err => {
+         Toast.fire({
+            type: "error",
+            title: err.response.data.message
+          });
+          this.errors = err.response.data.errors;
+          
+          setTimeout(function(){ 
+            this.errors =""
+           }.bind(this), 3000);
+        });
     },
     deleteAttribute(id) {
       swal
@@ -196,11 +211,20 @@ export default {
             title: "Sucessfully Updated"
           });
           Bus.$emit("afterAttributeChange");
+          this.edit = false;
         })
-        .catch(err => {
-          console.log(err);
+        .catch( err => {
+         Toast.fire({
+            type: "error",
+            title: err.response.data.message
+          });
+          this.errors = err.response.data.errors;
+          
+          setTimeout(function(){ 
+            this.errors =""
+           }.bind(this), 3000);
         });
-      this.edit = false;
+      
     },
     getAttribute(page = 1) {
       axios
@@ -249,6 +273,11 @@ td {
 }
 .table-hover tbody tr:hover td {
   background: #e9ecef;
+}
+.error {
+  color: #d8000c !important;
+  margin-top: 2px;
+  font-style: italic;
 }
 </style>
 

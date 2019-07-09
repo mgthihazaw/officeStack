@@ -13,15 +13,17 @@
           <div class="row">
             <div class="col-12">
               <form @submit.prevent="submit" method="POST">
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <p class="error text-muted" v-if="errs.name">{{errs.name[0]}}</p>
-                  <input type="text" class="form-control" id="name" v-model="form.name" />
-                </div>
-                <div class="form-group">
-                  <label for="phone1">Phone Numbers</label>
-                  <div class="error text-muted" v-if="errs.phone">{{errs.phone[0]}}</div>
-                  <input type="text" class="form-control" id="phone1" v-model="form.phone" />
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="name">Name</label>
+                    <p class="error text-muted" v-if="errs.name">{{errs.name[0]}}</p>
+                    <input type="text" class="form-control" id="name" v-model="form.name" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="phone1">Phone Numbers</label>
+                    <div class="error text-muted" v-if="errs.phone">{{errs.phone[0]}}</div>
+                    <input type="text" class="form-control" id="phone1" v-model="form.phone" />
+                  </div>
                 </div>
 
                 <div class="form-group">
@@ -30,8 +32,9 @@
                     class="error text-muted"
                     v-if="errs['address.township'] || errs['address.block'] || errs['address.home_no'] || errs['address.street'] || errs['address.state.id']"
                   >Your address is not completed</div>
+
                   <div class="row">
-                    <div class="col-12">
+                    <div class="col-md-4">
                       <multiselect
                         v-model="form.state"
                         track-by="name"
@@ -44,10 +47,7 @@
                         @select="form.township=''"
                       ></multiselect>
                     </div>
-                  </div>
-
-                  <div class="row mt-2">
-                    <div class="col-12">
+                    <div class="col-md-4">
                       <multiselect
                         :options="townships"
                         label="name"
@@ -59,17 +59,22 @@
                         track-by="name"
                       ></multiselect>
                     </div>
-                  </div>
-
-                  <div class="row mt-2">
-                    <div class="col-12">
-                     <input type="text" class="form-control" placeholder="Enter Address" v-model="form.address_line">
+                    <div class="col-md-4">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Address"
+                        v-model="form.address_line"
+                      />
                     </div>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="business">Office/Business</label>
+                
+
+                <div class="form-group row">
+                  <div class="col-md-4">
+                    <label for="business">Office/Business</label>
                   <div class="error text-muted" v-if="errs.business">{{errs.business[0]}}</div>
                   <select
                     name="business"
@@ -86,10 +91,10 @@
                       :value="business.id"
                     >{{ business.name }}</option>
                   </select>
-                </div>
+                  </div>
 
-                <div class="form-group">
-                  <label for="department">Department</label>
+                  <div class="col-md-4">
+                    <label for="department">Department</label>
                   <div class="error text-muted" v-if="errs.department">{{errs.department[0]}}</div>
 
                   <select
@@ -109,32 +114,29 @@
                       :value="department.id"
                     >{{ department.name }}</option>
                   </select>
-                </div>
+                  </div>
 
-                <div class="form-group">
-                  <label for="role">Role/Job Title</label>
+                  <div class="col-md-4">
+                    <label for="role">Role/Job Title</label>
                   <div class="error text-muted" v-if="errs.role">{{errs.role[0]}}</div>
-                  <select 
-                    v-model="form.role" 
-                    class="form-control"
-                    ref="role"
-                    required 
-                    >
+                  <select v-model="form.role" class="form-control" ref="role" required>
                     <option value="0" disabled>Select Role</option>
                     <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
                   </select>
+                  </div>
                 </div>
 
-                <div class="form-group">
-                  <label for="username">Username</label>
-                  <div class="error text-muted" v-if="errs.username">{{errs.username[0]}}</div>
-                  <input type="text" class="form-control" id="username" v-model="form.username" />
-                </div>
-
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <div class="error text-muted" v-if="errs.password">{{errs.password[0]}}</div>
-                  <input type="text" class="form-control" id="password" v-model="form.password" />
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="username">Username</label>
+                    <div class="error text-muted" v-if="errs.username">{{errs.username[0]}}</div>
+                    <input type="text" class="form-control" id="username" v-model="form.username" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="password">Password</label>
+                    <div class="error text-muted" v-if="errs.password">{{errs.password[0]}}</div>
+                    <input type="text" class="form-control" id="password" v-model="form.password" />
+                  </div>
                 </div>
 
                 <div class="modal-footer">
@@ -198,14 +200,14 @@ export default {
         .catch(error => console.log(error.response.data));
     },
     changeDepartments(event) {
-      let business_id = event.target.value
+      let business_id = event.target.value;
       axios
         .get(`/api/businesses/${business_id}/departments`)
         .then(response => {
-          this.departments = response.data.data
-            this.form.department = 0;
-            this.form.role = 0;
-            this.roles = [];
+          this.departments = response.data.data;
+          this.form.department = 0;
+          this.form.role = 0;
+          this.roles = [];
         })
         .catch(error => console.log(error.response));
     },
@@ -213,17 +215,16 @@ export default {
       axios
         .get(`/api/businesses/${business}/departments`)
         .then(response => {
-          this.departments = response.data.data
+          this.departments = response.data.data;
         })
         .catch(error => console.log(error.response.data));
     },
     changeRoles(event) {
-      let department_id = event.target.value
+      let department_id = event.target.value;
       axios
         .get(`/api/departments/${department_id}/roles`)
         .then(response => {
           this.roles = response.data;
-
         })
         .catch(error => console.log(error.response.data));
     },
@@ -263,32 +264,51 @@ export default {
       this.$router.push("/staffs");
     },
     submit() {
-      this.form.state = this.form.state.id
-      this.form.department = this.form.department
-      this.form.township = this.form.township.name
+      if (this.form.state) {
+        this.form.state = this.form.state.id;
+      }
+
+      this.form.department = this.form.department;
+      this.form.township = this.form.township.name;
 
       axios
         .put(`/api/staffs/${this.staff.id}`, this.form)
         .then(response => {
           //console.log(response);
+          if (response.status == 201) {
+            Toast.fire({
+              type: "success",
+              title: "Staff Successfully Updated"
+            });
+          }
           Bus.$emit("afterUpdated");
           this.$router.push("/staffs");
         })
         .catch(error => {
-          if(error.response.status == 422){
+          Toast.fire({
+            type: "error",
+            title: error.response.data.message
+          });
+          if (error.response.status == 422) {
             this.errs = error.response.data.errors;
             this.form.state = this.staff.state;
             this.loadTownships(this.form.state);
 
             this.form.township = this.staff.township;
-            this.form.address_line= this.staff.address
+            this.form.address_line = this.staff.address;
           }
+          setTimeout(
+            function() {
+              this.errs = "";
+            }.bind(this),
+            3000
+          );
         });
     },
     addTag(newTag) {
-      let townshipId = 0
-      if(this.townships.length>0){
-        townshipId = this.townships.length
+      let townshipId = 0;
+      if (this.townships.length > 0) {
+        townshipId = this.townships.length;
       }
       const tag = {
         name: newTag,
@@ -297,7 +317,7 @@ export default {
       this.townships.push(tag);
       this.form.township = tag;
     },
-    
+
     shows() {
       this.show = true;
     }
@@ -334,14 +354,14 @@ export default {
         this.loadTownships(this.form.state);
 
         this.form.township = this.staff.township;
-        this.form.address_line= this.staff.address
-        
+        this.form.address_line = this.staff.address;
+
         this.form.business = this.staff.business.id;
         this.loadDepartments(this.form.business);
         this.form.department = this.staff.department.id;
         this.loadRoles(this.form.department);
         this.form.role = this.staff.role.id;
-  
+
         // axios
         //   .get(`/api/departments/${this.form.department.id}/roles`)
         //   .then(response => {
@@ -353,19 +373,19 @@ export default {
         console.log(error);
       });
 
-      if (User.isLoggedIn()) {
-        axios.post("/api/auth/me").then(response => {
-          Gate.setUser(response.data.user.roles, response.data.user.permissions);
-          if (!Gate.isDeveloper()) {
-            this.shows();
-            this.authorized = false;
-          } else {
-            this.shows();
-            this.authorized = true;
-          }
-        });
-      }
-  },
+    if (User.isLoggedIn()) {
+      axios.post("/api/auth/me").then(response => {
+        Gate.setUser(response.data.user.roles, response.data.user.permissions);
+        if (!Gate.isDeveloper()) {
+          this.shows();
+          this.authorized = false;
+        } else {
+          this.shows();
+          this.authorized = true;
+        }
+      });
+    }
+  }
 };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>

@@ -90,7 +90,7 @@
                         <td class="ml-2">{{ item. price}}</td>
 
                         <td>
-                          <button type="button" class="btn btn-primary btn-circle" @click="addItemForService($event,item)">
+                          <button type="button" class="btn btn-primary btn-circle" @click="addItemForService(item)">
                             <i class="fas fa-plus-circle fa-2x"></i>
                           </button>
                         </td>
@@ -202,10 +202,10 @@ export default {
           this.searchForm.attributes[key] = `${attr.id}`;
         });
       }
-      console.log(this.searchForm);
+      // console.log(this.searchForm);
       axios.get("/api/search/items", { params: this.searchForm }).then(res => {
         this.paginationData = res.data
-        console.log(res.data)
+        // console.log(res.data)
         this.items = res.data.data;
         this.clearForm();
       });
@@ -222,10 +222,10 @@ export default {
           this.searchForm.attributes[key] = `${attr.id}`;
         });
       }
-      console.log(this.searchForm);
+      // console.log(this.searchForm);
       axios.get("/api/search/items?page="+ page, { params: this.searchForm }).then(res => {
         this.paginationData = res.data
-        console.log(res.data)
+        // console.log(res.data)
         this.items = res.data.data;
         this.clearForm();
       });
@@ -233,7 +233,7 @@ export default {
     addItemForService(item){
       // item.quantity = 1
       // item.amount = item.price
-     
+      //  console.log(item)
         Bus.$emit('addItemForService',item)
     },
     

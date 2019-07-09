@@ -13,16 +13,19 @@
           <div class="row">
             <div class="col-12">
               <form @submit.prevent="submit" method="POST">
-                <div class="form-group">
-                  <label for="name">Name</label>
+                <div class="form-group row">
+                  <div class="col-md-6">
+                    <label for="name">Name</label>
                   <div class="error text-muted" v-if="errs.name">{{errs.name[0]}}</div>
                   <input type="text" class="form-control" id="name" v-model="form.name">
-                </div>
-                <div class="form-group">
-                  <label for="phone1">Phone Numbers</label>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="phone1">Phone Numbers</label>
                   <div class="error text-muted" v-if="errs.phone">{{errs.phone[0]}}</div>
                   <input type="text" class="form-control" id="phone1" v-model="form.phone">
+                  </div>
                 </div>
+                
 
                 <div class="form-group">
                   <label for="address">Address</label>
@@ -278,6 +281,9 @@ export default {
             title: error.response.data.message
           });
           this.errs = error.response.data.errors;
+          setTimeout(function(){
+            this.errs = ""
+          }.bind(this),3000)
         });
     },
     close() {

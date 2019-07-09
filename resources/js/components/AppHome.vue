@@ -66,14 +66,7 @@
               </p>
             </router-link>
           </li>
-          <li class="nav-item">
-            <router-link to="/profile" class="nav-link">
-              <i class="nav-icon indigo fas fa-user"></i>
-              <p>
-                PROFILE
-              </p>
-            </router-link>
-          </li>
+          
           
 
           <li class="nav-item">
@@ -127,7 +120,15 @@
           </li>
 
 
-
+         <li class="nav-item">
+            <router-link to="/profile" class="nav-link">
+              
+              <i class="fas fa-user-cog nav-icon indigo"></i>
+              <p>
+                Account Setting
+              </p>
+            </router-link>
+          </li>
 
 
 

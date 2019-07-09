@@ -202,11 +202,18 @@ export default {
           }
         })
         .catch(error => {
+          Toast.fire({
+            type: "error",
+            title: error.response.data.message
+          });
+          
           if (error.response.status == 422) {
+            
             this.form_errors = error.response.data.errors;
             this.form.receive_staff = this.receptionists.find(staff => {
               return staff.no === this.form.receive_staff;
             });
+            
           }
         });
     },

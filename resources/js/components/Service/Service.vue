@@ -183,7 +183,7 @@
                           <td></td>
                           <td>Total</td>
                           <td style="padding-left:10px;">
-                            <p class="text-bold ml-2">{{ getTotal }}</p>
+                            <p class="text-bold ">{{ getTotal }}</p>
                           </td>
                           <td>
                             <button class="btn btn-secondary" @click="save" :disabled="!printDisable">
@@ -336,7 +336,7 @@ export default {
       axios.post("/api/auth/me").then(response => {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
 
-        if (!(Gate.isSaleperson() || Gate.isServiceEngineer())) {
+        if (!(Gate.isSaleperson() )) {
           this.shows();
           this.authorized = false;
         } else {

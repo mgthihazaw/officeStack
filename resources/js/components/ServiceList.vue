@@ -73,7 +73,7 @@
                   <router-link
                     :to="'/services/'+service.id+'/show'"
                     class="btn btn-success btn-sm text-white"
-                    v-if="service.pending == 1"
+                    v-if="User.isSaleperson() && service.pending == 1"
                   >
                     <i class="fas fa-print"></i>
                   </router-link>
