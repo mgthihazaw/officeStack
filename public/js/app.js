@@ -76339,6 +76339,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 
 
@@ -76377,7 +76378,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       });
     },
     back: function back() {
-      this.$router.go(-1);
+      this.$router.push("/services");
     },
     shows: function shows() {
       this.show = true;
@@ -77608,6 +77609,19 @@ var render = function() {
                   _c(
                     "button",
                     {
+                      staticClass: "btn btn-secondary printBtn",
+                      on: {
+                        click: function($event) {
+                          return _vm.back()
+                        }
+                      }
+                    },
+                    [_vm._v("Back")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
                       staticClass: "btn btn-success printBtn",
                       on: { click: _vm.save }
                     },
@@ -78505,6 +78519,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 
@@ -78659,36 +78676,7 @@ var render = function() {
                           }
                         },
                         [
-                          _c("div", { staticClass: "form-group row" }, [
-                            _c(
-                              "div",
-                              { staticClass: "col-md-4" },
-                              [
-                                _c("multiselect", {
-                                  attrs: {
-                                    options: _vm.customers,
-                                    "track-by": "name",
-                                    "block-keys": ["Delete"],
-                                    placeholder: "Choose Existing Customer",
-                                    label: "name"
-                                  },
-                                  on: {
-                                    input: function($event) {
-                                      return _vm.makeDisable()
-                                    }
-                                  },
-                                  model: {
-                                    value: _vm.form.customer_id,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.form, "customer_id", $$v)
-                                    },
-                                    expression: "form.customer_id"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]),
+                          _c("label", [_vm._v("Customer Information")]),
                           _vm._v(" "),
                           _c("div", { staticClass: "form-group row" }, [
                             _c(
@@ -78843,6 +78831,8 @@ var render = function() {
                               "div",
                               { staticClass: "col-12" },
                               [
+                                _c("label", [_vm._v("Received Staff")]),
+                                _vm._v(" "),
                                 _c("multiselect", {
                                   attrs: {
                                     "track-by": "name",
@@ -79408,6 +79398,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -79451,12 +79443,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         }
         _this2.form.customer_name = _this2.service.customer_name;
         _this2.form.customer_phone = _this2.service.customer_phone;
+        _this2.form.customer_address = _this2.service.customer_address;
         _this2.form.description = _this2.service.received_description;
         _this2.form.remark = _this2.service.received_remark;
-        _this2.form.customer_address = _this2.service.township;
+
         _this2.form.receive_staff = _this2.service.staff_id;
         _this2.form.receive_staff = _this2.receptionists.find(function (staff) {
-          return staff.no == _this2.form.receive_staff;
+          return staff.id == _this2.form.receive_staff;
         });
         _this2.show = _this2.service.pending;
       });
@@ -79524,6 +79517,8 @@ var render = function() {
                 }
               },
               [
+                _c("label", [_vm._v("Customer Information")]),
+                _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
                   _c(
                     "div",
@@ -79663,6 +79658,8 @@ var render = function() {
                     2
                   )
                 ]),
+                _vm._v(" "),
+                _c("label", [_vm._v("Received Staff")]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
                   _c(
@@ -80182,6 +80179,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: "error",
             title: error.response.data.message
           });
+          _this3.form.secret = "";
           if (error.response.status == 422) {
             _this3.form_errors = error.response.data.errors;
             _this3.form.service_engineer = _this3.service_engineers.find(function (staff) {
@@ -80194,7 +80192,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               return staff.no === _this3.form.service_engineer;
             });
 
-            _this3.form.secret = "";
+            // this.form.secret = "";
           }
         });
       } else {
@@ -80863,6 +80861,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -80894,7 +80894,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     back: function back() {
-      this.$router.go(-1);
+
+      this.$router.push("/services");
     },
     shows: function shows() {
       this.show = true;
@@ -81142,6 +81143,19 @@ var render = function() {
                       ])
                     ])
                   ]),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary printBtn",
+                      on: {
+                        click: function($event) {
+                          return _vm.back()
+                        }
+                      }
+                    },
+                    [_vm._v("Back")]
+                  ),
                   _vm._v(" "),
                   _c(
                     "button",

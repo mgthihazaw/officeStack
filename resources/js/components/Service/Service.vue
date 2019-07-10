@@ -200,6 +200,7 @@
             </div>
           </div>
         </div>
+        <button class="btn btn-secondary printBtn" @click="back()" >Back</button>
         <button
           class="btn btn-success printBtn"
           @click="save"
@@ -280,7 +281,7 @@ export default {
         });
     },
     back() {
-      this.$router.go(-1);
+      this.$router.push("/services");
     },
     shows() {
       this.show = true;

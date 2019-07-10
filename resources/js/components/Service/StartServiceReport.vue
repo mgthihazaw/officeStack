@@ -5,6 +5,8 @@
     <div class="container_fluid" v-else>
       <div>
         <div class="">
+          
+          
           <div class="row pageHeader ">
             <div class="mt-3 col-6">
               <img :src="'/images/logo/1.png'" alt="microstack" width="300px">
@@ -122,7 +124,7 @@
             </div>
           </div>
         </div>
-      
+      <button class="btn btn-secondary printBtn" @click="back()" >Back</button>
       <button class="btn btn-success printBtn" @click="print">Print Preview</button>
       </div>
     </div>
@@ -159,7 +161,9 @@ export default {
         });
     },
     back() {
-      this.$router.go(-1);
+      
+      this.$router.push("/services");
+    
     },
     shows(){
       this.show=true

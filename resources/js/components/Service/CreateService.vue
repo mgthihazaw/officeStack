@@ -11,7 +11,7 @@
       <div class="row mt-4">
         <div class="col-12 ">
           <form @submit.prevent="addNewService">
-            <div class="form-group row">
+            <!-- <div class="form-group row">
               <div class="col-md-4">
                 <multiselect
                   :options="customers"
@@ -23,8 +23,10 @@
                   label="name"
                 ></multiselect>
               </div>
-            </div>
+            </div> -->
+            <label >Customer Information</label>
             <div class="form-group row">
+              
               <div class="col-md-4">
                 <input
                   type="text"
@@ -71,6 +73,7 @@
 
             <div class="form-group row">
               <div class="col-12">
+                <label >Received Staff</label>
                 <multiselect
                   v-model="form.receive_staff"
                   track-by="name"

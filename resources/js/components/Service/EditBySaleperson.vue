@@ -9,6 +9,7 @@
     <div class="row mt-4">
       <div class="col-12">
         <form @submit.prevent="updateService">
+          <label >Customer Information</label>
           <div class="form-group row">
             <div class="col-md-4">
               <input
@@ -53,8 +54,9 @@
               >{{ error }}</div>
             </div>
           </div>
-
+           <label >Received Staff</label>
           <div class="form-group row">
+            
             <div class="col-12">
               <multiselect
                 v-model="form.receive_staff"
@@ -157,12 +159,13 @@ export default {
         }
         this.form.customer_name = this.service.customer_name;
         this.form.customer_phone = this.service.customer_phone;
+        this.form.customer_address = this.service.customer_address;
         this.form.description = this.service.received_description;
         this.form.remark = this.service.received_remark;
-        this.form.customer_address = this.service.township;
+      
         this.form.receive_staff = this.service.staff_id;
         this.form.receive_staff = this.receptionists.find(staff => {
-          return staff.no == this.form.receive_staff;
+          return staff.id == this.form.receive_staff;
         });
         this.show = this.service.pending;
       });

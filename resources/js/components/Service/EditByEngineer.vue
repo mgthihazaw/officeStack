@@ -207,6 +207,7 @@ export default {
             type: "error",
             title: error.response.data.message
           });
+          this.form.secret = ""
             if (error.response.status == 422) {
               this.form_errors = error.response.data.errors;
               this.form.service_engineer = this.service_engineers.find(
@@ -226,7 +227,7 @@ export default {
                 }
               );
 
-              this.form.secret = "";
+              // this.form.secret = "";
             }
           });
       } else {
