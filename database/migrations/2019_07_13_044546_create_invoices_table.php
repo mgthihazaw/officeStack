@@ -15,9 +15,8 @@ class CreateInvoicesTable extends Migration
     {
         Schema::create('invoices', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('service_id')->unsigned();
             $table->integer('total_price');
-            $table->foreign('service_id')->references('id')->on('services');
+        
             $table->integer('invoiceable_id')->unsigned();
             $table->string('invoiceable_type');
             $table->date('opened_date');

@@ -200,24 +200,18 @@
             </div>
           </div>
         </div>
-        <button class="btn btn-secondary printBtn" @click="back()" >Back</button>
-        <button
-          class="btn btn-success printBtn"
-          @click="save"
-          
-        >Print Preview</button>
-        <button
-          type="button"
-          class="btn btn-info printBtn"
-          data-toggle="modal"
-          data-target="#modal-xl"
-        >
-          Add Item
-          <i class="ml-2 fas fa-plus-circle fa-1x"></i>
-        </button>
+        <div class="button_group pb-4">
+          <button class="btn btn-secondary printBtn" @click="back()" >Back</button>
+          <button class="btn btn-success printBtn" @click="save">Print Preview</button>
+          <button type="button" class="btn btn-info printBtn text-white" data-toggle="modal" data-target="#modal-xl">
+            Add Item
+            <i class="ml-2 fas fa-plus-circle fa-1x"></i>
+          </button>
+        </div>
+        
       </div>
 
-      <!--------------------Modal--------------------------->
+      
       <div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true" ref="modal">
         <div class="modal-dialog modal-xl">
           <div class="modal-content">
@@ -238,7 +232,7 @@
         </div>
         <!-- /.modal-dialog -->
       </div>
-      <!--------------------Modal--------------------------->
+      <!-- Modal-->
     </div>
   </div>
 </template>
@@ -296,15 +290,17 @@ export default {
     save(){
       window.print()
       let data = []
-      
+  
       this.serviceItems.forEach( serviceItem => {
-        
-        let newData = {'item_id' : serviceItem.id,'quantity' : serviceItem.quantity ,'price' : serviceItem.price }
+        let newData = {
+          'item_id' : serviceItem.id,
+          'quantity' : serviceItem.quantity ,
+          'price' : serviceItem.price 
+        }
         data.push(newData) 
       })
-      
-      console.log(data)
-      data['total_price'] =this.total
+
+      console.log('Before send',data)
       axios.post(`/api/services/${this.service.id}/items`,data)
       .then( response => {
         // console.log(response)
@@ -410,6 +406,7 @@ h6 {
 .des {
   background-color: #ffffff;
   border-left: 3px solid #59997b;
+  padding: 10px;
 }
 @media print {
   .printBtn {

@@ -30,8 +30,10 @@ class ServiceItemController extends Controller
      */
     public function store(ServiceItemStoreRequest $request, Service $service)
     {
+        $total_price = 0;
         $service->items()->detach();
         foreach ($request->all() as $key => $service_item) {
+            $total_price += $service_item['quantity'] * $service_item['price'];
             ItemService::updateOrCreate([
                 'service_id' => $service->id,
                 'item_id' => $service_item['item_id'],
@@ -40,9 +42,11 @@ class ServiceItemController extends Controller
             ]);
         }
 
-        $service->invoice()->updateOrCreate([
-            'total_price' => $request->total_price,
-            'opened_date' => date('d-m-Y')
+        $service->invoice()->create([
+            'total_price' => $total_price,
+            'invoiceable_id' => $service->id,
+            'invoiceable_type' => get_class($service),
+            'opened_date' => now()->format('Y-m-d')
         ]);
 
         return response()->json($service, 201);

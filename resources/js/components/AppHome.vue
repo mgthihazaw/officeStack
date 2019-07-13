@@ -56,7 +56,7 @@
             </div>
 
             <div class="info">
-              <a class="d-block">{{ username }}</a>
+              <a class="d-block text-white">{{ username | username }}</a>
             </div>
           </div>
 
@@ -226,6 +226,13 @@ export default {
       this.isLoggedIn = false;
       window.location.replace("/");
     });
+  },
+  filters : {
+    username: function (value) {
+      if (!value) return ''
+      value = value.toString()
+      return value.charAt(0).toUpperCase() + value.slice(1)
+    }
   }
 };
 </script>

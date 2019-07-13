@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 03, 2019 at 10:26 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Host: localhost
+-- Generation Time: Jul 13, 2019 at 05:26 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -36,36 +36,6 @@ CREATE TABLE `attributes` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `attributes`
---
-
-INSERT INTO `attributes` (`id`, `name`, `attribute_group_id`, `created_at`, `updated_at`) VALUES
-(1, 'SATA', 1, '2019-07-02 20:56:10', '2019-07-02 20:56:10'),
-(2, '500 GB', 2, '2019-07-02 20:56:10', '2019-07-02 20:56:10'),
-(3, 'SSD', 3, '2019-07-02 20:56:10', '2019-07-02 20:56:10'),
-(4, '5400 Rpm', 4, '2019-07-02 20:56:10', '2019-07-02 20:56:10'),
-(5, 'Desktop', 5, '2019-07-02 20:56:10', '2019-07-02 20:56:10'),
-(6, 'Serial SATA', 1, '2019-07-02 20:58:13', '2019-07-02 20:58:13'),
-(7, '8 TB', 2, '2019-07-02 20:58:13', '2019-07-02 20:58:13'),
-(8, 'HDD', 3, '2019-07-02 20:58:13', '2019-07-02 20:58:13'),
-(9, '7200 Rpm', 4, '2019-07-02 20:58:13', '2019-07-02 20:58:13'),
-(10, 'WD Purple', 6, '2019-07-02 20:58:13', '2019-07-02 20:58:13'),
-(11, 'SATA 6Gb/s', 1, '2019-07-02 21:01:54', '2019-07-02 21:01:54'),
-(12, '4 TB', 2, '2019-07-02 21:01:54', '2019-07-02 21:01:54'),
-(13, '10000 Rpm', 4, '2019-07-02 21:01:54', '2019-07-02 21:01:54'),
-(14, 'WD Green', 6, '2019-07-02 21:01:54', '2019-07-02 21:01:54'),
-(15, 'BARRACUDA', 6, '2019-07-02 21:05:03', '2019-07-02 21:05:03'),
-(16, 'PCIe Gen3 ×4, NVMe', 1, '2019-07-02 21:07:06', '2019-07-02 21:07:06'),
-(17, '1 TB', 2, '2019-07-02 21:07:06', '2019-07-02 21:07:06'),
-(18, 'FIRECUDA', 6, '2019-07-02 21:07:06', '2019-07-02 21:07:06'),
-(19, 'DDR2 DIMMS', 7, '2019-07-02 21:10:39', '2019-07-02 21:10:39'),
-(20, '2 GB', 9, '2019-07-02 21:10:39', '2019-07-02 21:10:39'),
-(21, '800 MHz', 8, '2019-07-02 21:10:39', '2019-07-02 21:10:39'),
-(22, 'DDR4 DIMMS', 7, '2019-07-02 21:12:23', '2019-07-02 21:12:23'),
-(23, '8 GB', 9, '2019-07-02 21:12:23', '2019-07-02 21:12:23'),
-(24, '2400 MHz', 8, '2019-07-02 21:12:23', '2019-07-02 21:12:23');
-
 -- --------------------------------------------------------
 
 --
@@ -85,16 +55,19 @@ CREATE TABLE `attribute_groups` (
 --
 
 INSERT INTO `attribute_groups` (`id`, `name`, `item_type_id`, `created_at`, `updated_at`) VALUES
-(1, 'Interface Type', 1, '2019-07-02 20:55:10', '2019-07-02 20:55:10'),
-(2, 'Storage Capacity', 1, '2019-07-02 20:55:18', '2019-07-02 20:55:18'),
-(3, 'Storage Type', 1, '2019-07-02 20:55:22', '2019-07-02 20:55:22'),
-(4, 'Disk Rotational Speed', 1, '2019-07-02 20:55:28', '2019-07-02 20:55:28'),
-(5, 'Application', 1, '2019-07-02 20:55:38', '2019-07-02 20:55:38'),
-(6, 'Series', 1, '2019-07-02 20:55:42', '2019-07-02 20:55:42'),
-(7, 'RAM Type', 2, '2019-07-02 20:55:51', '2019-07-02 20:55:51'),
-(8, 'RAM Speed', 2, '2019-07-02 20:55:54', '2019-07-02 20:55:54'),
-(9, 'Storage Capacity', 2, '2019-07-02 20:56:02', '2019-07-02 20:56:02'),
-(10, 'Cache', 1, '2019-07-02 21:04:34', '2019-07-02 21:04:34');
+(1, 'Interface Type', 1, '2019-07-13 14:46:00', '2019-07-13 14:46:00'),
+(2, 'Storage Capacity', 1, '2019-07-13 14:46:01', '2019-07-13 14:46:01'),
+(3, 'Storage Type', 1, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(4, 'Form Factor', 1, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(5, 'Disk Rotatiional Speed', 1, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(6, 'Series', 1, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(7, 'Cache Memory', 1, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(8, 'RAM Type', 2, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(9, 'Storage Capacity', 2, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(10, 'RAM Speed', 2, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(11, 'Chipset Type', 3, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(12, 'RAM Memory Technology', 3, '2019-07-13 14:46:02', '2019-07-13 14:46:02'),
+(13, 'Processor Socket', 3, '2019-07-13 14:46:02', '2019-07-13 14:46:02');
 
 -- --------------------------------------------------------
 
@@ -106,53 +79,6 @@ CREATE TABLE `attribute_item` (
   `item_id` int(10) UNSIGNED NOT NULL,
   `attribute_id` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `attribute_item`
---
-
-INSERT INTO `attribute_item` (`item_id`, `attribute_id`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5),
-(2, 6),
-(2, 7),
-(2, 8),
-(2, 9),
-(2, 5),
-(2, 10),
-(3, 11),
-(3, 12),
-(3, 8),
-(3, 13),
-(3, 5),
-(3, 14),
-(4, 11),
-(4, 7),
-(4, 3),
-(4, 13),
-(4, 5),
-(4, 15),
-(5, 11),
-(5, 12),
-(5, 3),
-(5, 13),
-(5, 5),
-(5, 15),
-(6, 16),
-(6, 17),
-(6, 3),
-(6, 9),
-(6, 5),
-(6, 18),
-(7, 19),
-(7, 20),
-(7, 21),
-(8, 22),
-(8, 23),
-(8, 24);
 
 -- --------------------------------------------------------
 
@@ -172,10 +98,8 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Western Digital', '2019-07-02 20:56:10', '2019-07-02 20:56:10'),
-(2, 'Seagate', '2019-07-02 21:05:03', '2019-07-02 21:05:03'),
-(3, 'Kingston', '2019-07-02 21:10:39', '2019-07-02 21:10:39'),
-(4, 'Corsair', '2019-07-02 21:12:23', '2019-07-02 21:12:23');
+(1, 'Windows တင္', '2019-07-13 14:55:14', '2019-07-13 14:55:14'),
+(2, 'သီခ်င္းထည့္', '2019-07-13 14:55:39', '2019-07-13 14:55:39');
 
 -- --------------------------------------------------------
 
@@ -193,10 +117,8 @@ CREATE TABLE `brand_item_type` (
 --
 
 INSERT INTO `brand_item_type` (`brand_id`, `item_type_id`) VALUES
-(1, 2),
-(2, 2),
-(3, 1),
-(4, 1);
+(1, 4),
+(2, 4);
 
 -- --------------------------------------------------------
 
@@ -262,8 +184,8 @@ CREATE TABLE `business_types` (
 --
 
 INSERT INTO `business_types` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'KTV', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(2, 'MI Office', '2019-07-02 20:40:23', '2019-07-02 20:40:23');
+(1, 'KTV', '2019-07-13 14:45:51', '2019-07-13 14:45:51'),
+(2, 'MI Office', '2019-07-13 14:45:51', '2019-07-13 14:45:51');
 
 -- --------------------------------------------------------
 
@@ -300,6 +222,27 @@ INSERT INTO `departments` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `invoices`
+--
+
+CREATE TABLE `invoices` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `total_price` int(11) NOT NULL,
+  `invoiceable_id` int(10) UNSIGNED NOT NULL,
+  `invoiceable_type` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `opened_date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `invoices`
+--
+
+INSERT INTO `invoices` (`id`, `total_price`, `invoiceable_id`, `invoiceable_type`, `opened_date`) VALUES
+(1, 20000, 1, 'App\\Service', '2019-07-13');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `items`
 --
 
@@ -320,14 +263,8 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`id`, `price_one`, `price_two`, `price_three`, `brand_id`, `item_type_id`, `model_no`, `created_at`, `updated_at`) VALUES
-(1, 60000, NULL, NULL, 1, 1, NULL, '2019-07-02 20:56:10', '2019-07-02 20:56:10'),
-(2, 200000, NULL, NULL, 1, 1, 'WD82PURZ', '2019-07-02 20:58:13', '2019-07-02 20:58:13'),
-(3, 200000, NULL, NULL, 1, 1, 'WD40EZRX', '2019-07-02 21:01:54', '2019-07-02 21:01:54'),
-(4, 220000, NULL, NULL, 2, 1, 'ST8000DM004', '2019-07-02 21:05:03', '2019-07-02 21:05:03'),
-(5, 150000, NULL, NULL, 2, 1, 'ST4000DM004', '2019-07-02 21:05:39', '2019-07-02 21:05:39'),
-(6, 150000, NULL, NULL, 2, 1, 'FireCuda 510', '2019-07-02 21:07:06', '2019-07-02 21:07:06'),
-(7, 50000, NULL, NULL, 3, 2, 'KVR800D2N6/2G', '2019-07-02 21:10:39', '2019-07-02 21:10:39'),
-(8, 200000, NULL, NULL, 4, 2, 'CMK8GX4M1A2400C16R', '2019-07-02 21:12:23', '2019-07-02 21:12:23');
+(1, 5000, NULL, NULL, 1, 4, NULL, '2019-07-13 14:55:14', '2019-07-13 14:55:14'),
+(2, 5000, NULL, NULL, 2, 4, NULL, '2019-07-13 14:55:39', '2019-07-13 14:55:39');
 
 -- --------------------------------------------------------
 
@@ -347,9 +284,10 @@ CREATE TABLE `item_types` (
 --
 
 INSERT INTO `item_types` (`id`, `name`, `created_at`, `updated_at`) VALUES
-(1, 'Hard Disk', '2019-07-02 20:53:05', '2019-07-02 20:53:05'),
-(2, 'Memory(RAM)', '2019-07-02 20:53:14', '2019-07-02 20:53:14'),
-(3, 'Motherboard', '2019-07-02 20:53:22', '2019-07-02 20:53:22');
+(1, 'Hard Disk', '2019-07-13 14:46:00', '2019-07-13 14:46:00'),
+(2, 'Memory(RAM)', '2019-07-13 14:46:00', '2019-07-13 14:46:00'),
+(3, 'Motherboard', '2019-07-13 14:46:00', '2019-07-13 14:46:00'),
+(4, 'Service', '2019-07-13 14:54:50', '2019-07-13 14:54:50');
 
 -- --------------------------------------------------------
 
@@ -368,27 +306,28 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(64, '2014_10_12_000000_create_users_table', 1),
-(65, '2014_10_12_100000_create_password_resets_table', 1),
-(66, '2019_03_21_092995_create_state_table', 1),
-(67, '2019_03_21_092996_create_township_table', 1),
-(68, '2019_03_21_093103_create_person_business_table', 1),
-(69, '2019_03_25_031719_create_business_type_table', 1),
-(70, '2019_03_25_031807_create_businesses_table', 1),
-(71, '2019_03_25_031808_create_customer_table', 1),
-(72, '2019_03_25_031809_create_departments_table', 1),
-(73, '2019_03_25_031810_business_has_departments', 1),
-(74, '2019_03_25_031811_create_staff_table', 1),
-(75, '2019_03_25_031812_entrust_setup_tables', 1),
-(76, '2019_03_25_031815_create_service_table', 1),
-(77, '2019_06_17_072740_create_brands_table', 1),
-(78, '2019_06_17_072741_create_item_types_table', 1),
-(79, '2019_06_17_072742_create_brand_item_type_table', 1),
-(80, '2019_06_17_072842_create_items_table', 1),
-(81, '2019_06_17_073610_create_attribute_group_table', 1),
-(82, '2019_06_24_051115_create_attributes_table', 1),
-(83, '2019_06_24_100204_create_attribute_item_table', 1),
-(84, '2019_07_02_063113_create_service_item_table', 1);
+(150, '2014_10_12_000000_create_users_table', 1),
+(151, '2014_10_12_100000_create_password_resets_table', 1),
+(152, '2019_03_21_092995_create_state_table', 1),
+(153, '2019_03_21_092996_create_township_table', 1),
+(154, '2019_03_21_093103_create_person_business_table', 1),
+(155, '2019_03_25_031719_create_business_type_table', 1),
+(156, '2019_03_25_031807_create_businesses_table', 1),
+(157, '2019_03_25_031808_create_customer_table', 1),
+(158, '2019_03_25_031809_create_departments_table', 1),
+(159, '2019_03_25_031810_business_has_departments', 1),
+(160, '2019_03_25_031811_create_staff_table', 1),
+(161, '2019_03_25_031812_entrust_setup_tables', 1),
+(162, '2019_03_25_031815_create_service_table', 1),
+(163, '2019_06_17_072740_create_brands_table', 1),
+(164, '2019_06_17_072741_create_item_types_table', 1),
+(165, '2019_06_17_072742_create_brand_item_type_table', 1),
+(166, '2019_06_17_072842_create_items_table', 1),
+(167, '2019_06_17_073610_create_attribute_group_table', 1),
+(168, '2019_06_24_051115_create_attributes_table', 1),
+(169, '2019_06_24_100204_create_attribute_item_table', 1),
+(170, '2019_07_02_063113_create_service_item_table', 1),
+(171, '2019_07_13_044546_create_invoices_table', 1);
 
 -- --------------------------------------------------------
 
@@ -422,22 +361,22 @@ CREATE TABLE `permissions` (
 --
 
 INSERT INTO `permissions` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'role-create', 'Create Role', 'Create New Role', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(2, 'role-list', 'Display Role Listing', 'List All Roles', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(3, 'role-update', 'Update Role', 'Update Role Information', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(4, 'role-delete', 'Delete Role', 'Delete Role', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(5, 'staff-create', 'Create Staff', 'Create New Staff', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(6, 'staff-list', 'Display Staff Listing', 'List All Staff', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(7, 'staff-update', 'Update Staff', 'Update Staff Information', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(8, 'staff-delete', 'Delete Staff', 'Delete Staff', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(9, 'service-create', 'Create Service', 'Create New Service', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(10, 'service-list', 'Display Service Listing', 'List All Service', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(11, 'service-update', 'Update Service', 'Update Service Information', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(12, 'service-delete', 'Delete Service', 'Delete Service Information', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(13, 'item-create', 'Create Item', 'Create New Item', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(14, 'item-list', 'Display Item Listing', 'List All Item', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(15, 'item-update', 'Update Item', 'Update Item Information', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(16, 'item-delete', 'Delete Item', 'Delete Item Information', '2019-07-02 20:40:23', '2019-07-02 20:40:23');
+(1, 'role-create', 'Create Role', 'Create New Role', '2019-07-13 14:45:53', '2019-07-13 14:45:53'),
+(2, 'role-list', 'Display Role Listing', 'List All Roles', '2019-07-13 14:45:53', '2019-07-13 14:45:53'),
+(3, 'role-update', 'Update Role', 'Update Role Information', '2019-07-13 14:45:53', '2019-07-13 14:45:53'),
+(4, 'role-delete', 'Delete Role', 'Delete Role', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(5, 'staff-create', 'Create Staff', 'Create New Staff', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(6, 'staff-list', 'Display Staff Listing', 'List All Staff', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(7, 'staff-update', 'Update Staff', 'Update Staff Information', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(8, 'staff-delete', 'Delete Staff', 'Delete Staff', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(9, 'service-create', 'Create Service', 'Create New Service', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(10, 'service-list', 'Display Service Listing', 'List All Service', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(11, 'service-update', 'Update Service', 'Update Service Information', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(12, 'service-delete', 'Delete Service', 'Delete Service Information', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(13, 'item-create', 'Create Item', 'Create New Item', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(14, 'item-list', 'Display Item Listing', 'List All Item', '2019-07-13 14:45:54', '2019-07-13 14:45:54'),
+(15, 'item-update', 'Update Item', 'Update Item Information', '2019-07-13 14:45:55', '2019-07-13 14:45:55'),
+(16, 'item-delete', 'Delete Item', 'Delete Item Information', '2019-07-13 14:45:55', '2019-07-13 14:45:55');
 
 -- --------------------------------------------------------
 
@@ -529,7 +468,12 @@ INSERT INTO `person_business` (`id`, `name`, `phone`, `address_line`, `township_
 (9, 'မိုးဆန္းဦး', '၀၉-၉၉၈၈၇၇၈၈', 'အမွတ္(၈) ရပ္ကြက္', 10, 2),
 (10, 'ေမာင္ေမာင္', '၀၉_၉၇၈၂၂၅၇၆၂,၀၉_၆၉၂၆၉၄၀၄၃', 'ေအာင္ခ်မ္းသာရပ္ကြက္', 3, 2),
 (11, 'ေဇာ္ေဇာ္', '၀၉-၆၉၂၅၈၆၀၉၅', 'ေစ်းခ်ိဳရပ္ကြက္', 2, 2),
-(12, 'ေက်ာ္ေက်ာ္', '၀၉_၉၉၈၈၇၇၈၈', 'ျမင့္မိုရ္ရပ္ကြက္', 1, 2);
+(12, 'ေက်ာ္ေက်ာ္', '၀၉_၉၉၈၈၇၇၈၈', 'ျမင့္မိုရ္ရပ္ကြက္', 1, 2),
+(13, 'Administrator', NULL, NULL, NULL, 2),
+(14, 'Service Engineer One', '09-111111111', 'ေဇယ်ာရပ္', 11, 2),
+(15, 'Service Engineer Two', '09-222222222', 'သလႅာ၀တီရပ္', 10, 2),
+(16, 'Receptionist_One', '09-222222222', 'အမွတ္(၁)', 12, 2),
+(17, 'Receptionist_Two', '09-222222222', 'ေဇယ်ာရပ္', 13, 2);
 
 -- --------------------------------------------------------
 
@@ -542,6 +486,7 @@ CREATE TABLE `roles` (
   `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `display_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `description` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `department_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -550,11 +495,11 @@ CREATE TABLE `roles` (
 -- Dumping data for table `roles`
 --
 
-INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Admin', 'Full Permission', '2019-07-02 20:40:23', '2019-07-02 20:40:23'),
-(2, 'developer', 'Developer', 'Full Permission', '2019-07-02 20:40:24', '2019-07-02 20:40:24'),
-(3, 'service_engineer', 'Service Engineer', 'Associated with services', '2019-07-02 20:40:24', '2019-07-02 20:40:24'),
-(4, 'receptionist', 'Receptionist', 'Associated with services and Item Sales', '2019-07-02 20:40:24', '2019-07-02 20:40:24');
+INSERT INTO `roles` (`id`, `name`, `display_name`, `description`, `department_id`, `created_at`, `updated_at`) VALUES
+(1, 'admin', 'Admin', 'Full Permission', NULL, '2019-07-13 14:45:55', '2019-07-13 14:45:55'),
+(2, 'developer', 'Developer', 'Full Permission', 2, '2019-07-13 14:45:57', '2019-07-13 14:45:57'),
+(3, 'service_engineer', 'Service Engineer', 'Associated with services', 3, '2019-07-13 14:45:58', '2019-07-13 14:45:58'),
+(4, 'receptionist', 'Receptionist', 'Associated with services and Item Sales', 1, '2019-07-13 14:45:58', '2019-07-13 14:45:58');
 
 -- --------------------------------------------------------
 
@@ -572,10 +517,10 @@ CREATE TABLE `role_staff` (
 --
 
 INSERT INTO `role_staff` (`staff_id`, `role_id`) VALUES
-(1, 2),
-(2, 2),
+(1, 1),
+(2, 3),
 (3, 3),
-(4, 3),
+(4, 4),
 (5, 4);
 
 -- --------------------------------------------------------
@@ -593,14 +538,22 @@ CREATE TABLE `services` (
   `customer_name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `customer_phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `customer_address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `receieved_description` text COLLATE utf8mb4_unicode_ci,
-  `receieved_remark` text COLLATE utf8mb4_unicode_ci,
+  `received_description` text COLLATE utf8mb4_unicode_ci,
+  `received_remark` text COLLATE utf8mb4_unicode_ci,
   `service_description` text COLLATE utf8mb4_unicode_ci,
   `service_remark` text COLLATE utf8mb4_unicode_ci,
   `pending` tinyint(1) NOT NULL DEFAULT '0',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `received_date` timestamp NULL DEFAULT NULL,
+  `finished_date` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `services`
+--
+
+INSERT INTO `services` (`id`, `staff_id`, `service_engineer_id`, `customer_id`, `business_id`, `customer_name`, `customer_phone`, `customer_address`, `received_description`, `received_remark`, `service_description`, `service_remark`, `pending`, `received_date`, `finished_date`) VALUES
+(1, 4, 2, NULL, 2, 'Customer One', '09-989898989', 'Mandalay', 'LOL', 'LOL', 'updated', 'updated', 1, '2019-07-13 14:51:15', '2019-07-13 14:52:16'),
+(2, 5, NULL, NULL, 2, 'Customer Two', '09-222222222', 'Yangon', 'OLO', 'OLO', NULL, NULL, 0, '2019-07-13 14:51:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -615,6 +568,14 @@ CREATE TABLE `service_item` (
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `service_item`
+--
+
+INSERT INTO `service_item` (`service_id`, `item_id`, `price`, `quantity`) VALUES
+(1, 1, 5000, 2),
+(1, 2, 5000, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -624,11 +585,10 @@ CREATE TABLE `service_item` (
 CREATE TABLE `staffs` (
   `id` int(10) UNSIGNED NOT NULL,
   `person_business_id` int(10) UNSIGNED NOT NULL,
-  `department_id` int(10) UNSIGNED NOT NULL,
   `business_id` int(10) UNSIGNED NOT NULL,
   `username` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `password` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `secret` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '$2y$10$VHpD4WiysupMI8RuWxBGAO6qoKehZoICzZoQeDEhK7DGmAiP4/RnK',
+  `secret` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '$2y$10$4kWBmBRkBzBq1SEuwv5hWOpKVxoEGW3rdq993HLiuCUwL0il2WNhm',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -637,12 +597,12 @@ CREATE TABLE `staffs` (
 -- Dumping data for table `staffs`
 --
 
-INSERT INTO `staffs` (`id`, `person_business_id`, `department_id`, `business_id`, `username`, `password`, `secret`, `created_at`, `updated_at`) VALUES
-(1, 7, 2, 2, 'thantzinsoe', '$2y$10$zE8q42nGRf7neiOEEL93se3MrwKWBo6KiQ2K3NoH2kw/jvw7QlyNO', '$2y$10$VHpD4WiysupMI8RuWxBGAO6qoKehZoICzZoQeDEhK7DGmAiP4/RnK', '2019-07-02 20:40:24', '2019-07-02 20:40:24'),
-(2, 8, 2, 2, 'thihazaw', '$2y$10$XoY3aPlp3gVHur62/985Pu91xda4qHs6FvAVFtTWukaw3QKw2YEtS', '$2y$10$VHpD4WiysupMI8RuWxBGAO6qoKehZoICzZoQeDEhK7DGmAiP4/RnK', '2019-07-02 20:40:24', '2019-07-02 20:40:24'),
-(3, 10, 3, 2, 'mgmg', '$2y$10$mF3DYNBsdcvye4hawG51SOUBDBRNgZyRVB603FowkQ2imTVFY36qa', '$2y$10$VHpD4WiysupMI8RuWxBGAO6qoKehZoICzZoQeDEhK7DGmAiP4/RnK', '2019-07-02 20:40:24', '2019-07-02 20:40:24'),
-(4, 11, 3, 2, 'zawzaw', '$2y$10$9.68WNtPC520.SD4v8maSumkGvGL0lK5rbdMrJUQhXN5XP30Bwvji', '$2y$10$VHpD4WiysupMI8RuWxBGAO6qoKehZoICzZoQeDEhK7DGmAiP4/RnK', '2019-07-02 20:40:24', '2019-07-02 20:40:24'),
-(5, 12, 1, 2, 'kyawkyaw', '$2y$10$HpNUfokdYZ0mS4ICeo.jgeoebiDfAscarK4.3XVxUZ2WHuW/Y5eAy', '$2y$10$VHpD4WiysupMI8RuWxBGAO6qoKehZoICzZoQeDEhK7DGmAiP4/RnK', '2019-07-02 20:40:24', '2019-07-02 20:40:24');
+INSERT INTO `staffs` (`id`, `person_business_id`, `business_id`, `username`, `password`, `secret`, `created_at`, `updated_at`) VALUES
+(1, 13, 2, 'administrator', '$2y$10$v9PRieEDtiCKb9jISTCJ0OLzXjoE7IkC3ki1xCqepnrZWuZ1XxJeO', '$2y$10$4kWBmBRkBzBq1SEuwv5hWOpKVxoEGW3rdq993HLiuCUwL0il2WNhm', '2019-07-13 14:46:00', '2019-07-13 14:46:00'),
+(2, 14, 2, 'service_engineer_one', '$2y$10$zVfB.rE2nvGNeZUZd8Yf..WcyCa.JSIXC7Lz3YjJS30/79DpFCtYC', '$2y$10$4kWBmBRkBzBq1SEuwv5hWOpKVxoEGW3rdq993HLiuCUwL0il2WNhm', '2019-07-13 14:47:48', '2019-07-13 14:47:48'),
+(3, 15, 2, 'service_engineer_two', '$2y$10$u2SOFGUBla5L80sDSFqp.OMx6Fluukqk.dC4cYOVZCzjAjANCuYP.', '$2y$10$4kWBmBRkBzBq1SEuwv5hWOpKVxoEGW3rdq993HLiuCUwL0il2WNhm', '2019-07-13 14:48:45', '2019-07-13 14:48:45'),
+(4, 16, 2, 'receptionist_one', '$2y$10$9hBVLIkU5ZNe3S5gbTZyHe32UdiuQ0B1dHJ17gRHAf5z8DJEKqQc.', '$2y$10$4kWBmBRkBzBq1SEuwv5hWOpKVxoEGW3rdq993HLiuCUwL0il2WNhm', '2019-07-13 14:49:46', '2019-07-13 14:49:46'),
+(5, 17, 2, 'receptionist_two', '$2y$10$ImVZeLohrkH2RHOIZpHt6uVJtvIFRJPOxToO8cO8lGseRKYw7BQd6', '$2y$10$4kWBmBRkBzBq1SEuwv5hWOpKVxoEGW3rdq993HLiuCUwL0il2WNhm', '2019-07-13 14:50:31', '2019-07-13 14:50:31');
 
 -- --------------------------------------------------------
 
@@ -702,7 +662,10 @@ INSERT INTO `townships` (`id`, `name`, `state_id`) VALUES
 (7, 'အင္းစိန္ ျမိဳ႕နယ္', 3),
 (8, 'ဖားကန္႕ ျမိဳ႕နယ္', 12),
 (9, 'ကန္႕ဘလူ ျမိဳ႕နယ္', 12),
-(10, 'မုံရြာ ျမိဳ႕နယ္', 12);
+(10, 'မုံရြာ ျမိဳ႕နယ္', 12),
+(11, 'ေတာင္ၾကီးျမိဳ႕', 11),
+(12, 'ဂန္႕ ေဂါျမိဳ႕', 13),
+(13, 'ျမစ္ၾကီးနားျမိဳ႕', 14);
 
 -- --------------------------------------------------------
 
@@ -796,11 +759,16 @@ ALTER TABLE `departments`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `invoices`
+--
+ALTER TABLE `invoices`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `items`
 --
 ALTER TABLE `items`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `items_model_no_unique` (`model_no`),
   ADD KEY `items_brand_id_foreign` (`brand_id`),
   ADD KEY `items_item_type_id_foreign` (`item_type_id`);
 
@@ -849,7 +817,8 @@ ALTER TABLE `person_business`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `roles_name_unique` (`name`);
+  ADD UNIQUE KEY `roles_name_unique` (`name`),
+  ADD KEY `roles_department_id_foreign` (`department_id`);
 
 --
 -- Indexes for table `role_staff`
@@ -880,7 +849,6 @@ ALTER TABLE `service_item`
 --
 ALTER TABLE `staffs`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `staffs_department_id_foreign` (`department_id`),
   ADD KEY `staffs_business_id_foreign` (`business_id`),
   ADD KEY `staffs_person_business_id_foreign` (`person_business_id`);
 
@@ -912,19 +880,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `attributes`
 --
 ALTER TABLE `attributes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `attribute_groups`
 --
 ALTER TABLE `attribute_groups`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `businesses`
@@ -951,22 +919,28 @@ ALTER TABLE `departments`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `invoices`
+--
+ALTER TABLE `invoices`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `item_types`
 --
 ALTER TABLE `item_types`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=172;
 
 --
 -- AUTO_INCREMENT for table `permissions`
@@ -978,7 +952,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `person_business`
 --
 ALTER TABLE `person_business`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -990,7 +964,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `services`
 --
 ALTER TABLE `services`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `staffs`
@@ -1008,7 +982,7 @@ ALTER TABLE `states`
 -- AUTO_INCREMENT for table `townships`
 --
 ALTER TABLE `townships`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -1089,6 +1063,12 @@ ALTER TABLE `person_business`
   ADD CONSTRAINT `person_business_township_id_foreign` FOREIGN KEY (`township_id`) REFERENCES `townships` (`id`) ON DELETE CASCADE;
 
 --
+-- Constraints for table `roles`
+--
+ALTER TABLE `roles`
+  ADD CONSTRAINT `roles_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE;
+
+--
 -- Constraints for table `role_staff`
 --
 ALTER TABLE `role_staff`
@@ -1116,7 +1096,6 @@ ALTER TABLE `service_item`
 --
 ALTER TABLE `staffs`
   ADD CONSTRAINT `staffs_business_id_foreign` FOREIGN KEY (`business_id`) REFERENCES `businesses` (`id`) ON DELETE CASCADE,
-  ADD CONSTRAINT `staffs_department_id_foreign` FOREIGN KEY (`department_id`) REFERENCES `departments` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `staffs_person_business_id_foreign` FOREIGN KEY (`person_business_id`) REFERENCES `person_business` (`id`) ON DELETE CASCADE;
 
 --

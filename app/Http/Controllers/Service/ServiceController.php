@@ -86,7 +86,7 @@ class ServiceController extends Controller
                 'staff_id' => $staff_id,
                 'received_description' => $description,
                 'received_remark' => $remark,
-                'updated_at' => NULL,
+                'received_date' => now(),
             ]);
         }
 
