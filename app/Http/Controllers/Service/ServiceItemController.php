@@ -42,7 +42,7 @@ class ServiceItemController extends Controller
 
         $service->invoice()->updateOrCreate([
             'total_price' => $request->total_price,
-            'opened_date' => Carbon::createFromFormat('/d/m/Y', now());
+            'opened_date' => date('d-m-Y')
         ]);
 
         return response()->json($service, 201);

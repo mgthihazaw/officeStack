@@ -24,7 +24,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        return StaffResource::collection(Staff::paginate(10));
+        return StaffResource::collection(Staff::where('id', '<>',1)->paginate(10));
     }
 
     /**

@@ -21,7 +21,7 @@ export class Gate{
 		}
 	}
 	can(permis){
-		console.log('permisison',this.permissions);
+		// console.log('permisison',this.permissions);
 		return this.permissions.includes(permis)
 	}
 }

@@ -35,7 +35,8 @@ class CreateServiceTable extends Migration
             $table->foreign('staff_id')->references('id')->on('staffs')->onDelete('cascade');
             $table->foreign('service_engineer_id')->references('id')->on('staffs')->onDelete('cascade');
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
-            $table->timestamps();
+            $table->timestamp('received_date')->nullable();
+            $table->timestamp('finished_date')->nullable();
         });
 
         DB::commit();

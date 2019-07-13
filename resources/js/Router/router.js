@@ -18,7 +18,7 @@ import NotFound404 from '../components/errors/NotFound404';
 import Profile from '../components/Profile';
 import ItemType from '../components/Items/ItemType';
 import Item from '../components/Items/Item';
-import EditItem from '../components/Items/ItemCRUD/EditItem';
+
 import Attribute from '../components/Items/Attribute';
 
 import Logout from '../components/Logout';
@@ -142,11 +142,7 @@ const routes = [
   
   },
   
-  { 
-    path: '/item/:id/edit',
-    name:'editItem',
-    component: EditItem
-  },
+
   {
     path: '/attribute',
     component: Attribute,

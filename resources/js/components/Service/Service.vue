@@ -296,12 +296,15 @@ export default {
     save(){
       window.print()
       let data = []
+      
       this.serviceItems.forEach( serviceItem => {
-        let newData = {'item_id' : serviceItem.id,'quantity' : serviceItem.quantity ,'price' : serviceItem.price}
+        
+        let newData = {'item_id' : serviceItem.id,'quantity' : serviceItem.quantity ,'price' : serviceItem.price }
         data.push(newData) 
       })
       
-      // console.log(data)
+      console.log(data)
+      data['total_price'] =this.total
       axios.post(`/api/services/${this.service.id}/items`,data)
       .then( response => {
         // console.log(response)

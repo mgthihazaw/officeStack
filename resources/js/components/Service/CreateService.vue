@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" >
-    <unauthorized v-if="!authorized"></unauthorized>
-    <div  v-if="authorized" class="container formcolor animated fadeInRight">
+    <unauthorized v-if="!can('service-create')"></unauthorized>
+    <div  v-else class="container formcolor animated fadeInRight">
       <div class="row ">
         <div class="col-12">
           <h3 class="pt-3">ADD NEW SERVICE</h3>
@@ -232,20 +232,29 @@ export default {
     },
     shows() {
       this.show = true;
+    },
+    can(permis) {
+      return Gate.can(permis);
     }
   },
 
   created() {
+    // if (User.isLoggedIn()) {
+    //   axios.post("/api/auth/me").then(response => {
+    //     Gate.setUser(response.data.user.roles,response.data.user.permissions);
+    //     if (!Gate.isSaleperson()) {
+    //       this.shows();
+    //       this.authorized = false;
+    //     } else {
+    //       this.shows();
+    //       this.authorized = true;
+    //     }
+    //   });
+    // }
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
         Gate.setUser(response.data.user.roles,response.data.user.permissions);
-        if (!Gate.isSaleperson()) {
-          this.shows();
-          this.authorized = false;
-        } else {
-          this.shows();
-          this.authorized = true;
-        }
+       this.shows();
       });
     }
 

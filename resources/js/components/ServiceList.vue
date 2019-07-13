@@ -1,21 +1,21 @@
 <template>
   <div v-if="show">
-    <unauthorized v-if="!authorized"></unauthorized>
+    <unauthorized v-if="!can('service-list')"></unauthorized>
     <div v-else>
       <div class="row">
         <div class="col-12">
           <div class="row mb-2">
             <h3 class="pl-5 col-10">Service List</h3>
-            <div class="col-2 text-center">
+            <div class="col-2 text-center" v-if="can('service-create')">
               <router-link
                 class="btn btn-success text-white"
                 to="/services/create"
-                v-if="User.isSaleperson()"
+                v-if="can('service-create')"
               >New Service</router-link>
             </div>
           </div>
 
-          <table class="table table-hover ">
+          <table class="table table-hover">
             <thead>
               <tr class="heading">
                 <th>No</th>
@@ -107,7 +107,6 @@ export default {
         .get("/api/services")
         .then(response => {
           this.service_list = response.data.data;
-
         })
         .catch(error => {
           if (error.response.data.type == "token_invalid") {
@@ -141,24 +140,36 @@ export default {
     },
     shows() {
       this.show = true;
+    },
+    can(permis) {
+      return Gate.can(permis);
     }
   },
 
   created() {
+    // if (User.isLoggedIn()) {
+    //   axios.post("/api/auth/me").then(response => {
+    //     Gate.setUser(response.data.user.roles, response.data.user.permissions);
+    //     this.User = Gate;
+
+    //     if (this.User.isSaleperson() || this.User.isServiceEngineer()) {
+    //       // console.log("Permis");
+    //       this.shows();
+    //       this.authorized = true;
+    //     } else {
+    //       this.shows();
+    //       this.authorized = false;
+    //       // console.log("NoPermis");
+    //     }
+    //   });
+    // }
+
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
         this.User = Gate;
 
-        if (this.User.isSaleperson() || this.User.isServiceEngineer()) {
-          // console.log("Permis");
-          this.shows();
-          this.authorized = true;
-        } else {
-          this.shows();
-          this.authorized = false;
-          // console.log("NoPermis");
-        }
+        this.shows();
       });
     }
 

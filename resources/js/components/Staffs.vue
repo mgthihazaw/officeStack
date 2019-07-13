@@ -1,12 +1,12 @@
 <template>
 <div v-if="show">
-  <unauthorized v-if="!authorized"></unauthorized>
+  <unauthorized v-if="!can('staff-create')"></unauthorized>
   <div v-else>
     
     <div class="row" v-if="(!createMode && !editMode)">
       <div class="col-12 animated zoomIn">
         <div class="mb-2 row">
-          <div class="col-md-5">
+          <div class="col-md-5" v-if="can('staff-create')">
             <button class="btn btn-outline-success btn-lg" @click="create">
               Add New
               <i class="fa fa-plus"></i>
@@ -125,21 +125,20 @@ export default {
     },
     shows(){
 			this.show=true
-		}
+    },
+    can(permis) {
+      return Gate.can(permis);
+    }
   },
   created() {
     
     
      if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.user.roles,response.data.user.permissions);
-        if (!Gate.isDeveloper()) {
-					this.shows()
-          this.authorized = false;
-        } else {
-					this.shows()
-          this.authorized = true;
-        }
+        Gate.setUser(response.data.user.roles, response.data.user.permissions);
+        this.User = Gate;
+
+        this.shows();
       });
     }
 

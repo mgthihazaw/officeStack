@@ -1,6 +1,6 @@
 <template>
   <div v-if="show">
-    <unauthorized v-if="!authorized"></unauthorized>
+    <unauthorized v-if="!can('staff-update')"></unauthorized>
     <div v-else>
       <div class="animated zoomIn">
         <div class="container formcolor">
@@ -70,59 +70,57 @@
                   </div>
                 </div>
 
-                
-
                 <div class="form-group row">
                   <div class="col-md-4">
                     <label for="business">Office/Business</label>
-                  <div class="error text-muted" v-if="errs.business">{{errs.business[0]}}</div>
-                  <select
-                    name="business"
-                    id="business"
-                    v-model="form.business"
-                    class="form-control"
-                    @change="changeDepartments"
-                    required
-                  >
-                    <option value disabled>Choose Office/Business</option>
-                    <option
-                      v-for="business in businesses"
-                      :key="business.id"
-                      :value="business.id"
-                    >{{ business.name }}</option>
-                  </select>
+                    <div class="error text-muted" v-if="errs.business">{{errs.business[0]}}</div>
+                    <select
+                      name="business"
+                      id="business"
+                      v-model="form.business"
+                      class="form-control"
+                      @change="changeDepartments"
+                      required
+                    >
+                      <option value disabled>Choose Office/Business</option>
+                      <option
+                        v-for="business in businesses"
+                        :key="business.id"
+                        :value="business.id"
+                      >{{ business.name }}</option>
+                    </select>
                   </div>
 
                   <div class="col-md-4">
                     <label for="department">Department</label>
-                  <div class="error text-muted" v-if="errs.department">{{errs.department[0]}}</div>
+                    <div class="error text-muted" v-if="errs.department">{{errs.department[0]}}</div>
 
-                  <select
-                    name="department"
-                    id="department"
-                    v-model="form.department"
-                    class="form-control"
-                    ref="department"
-                    @change="changeRoles"
-                    placeholder="Choose Department"
-                    required
-                  >
-                    <option value="0" disabled>Select Department</option>
-                    <option
-                      v-for="department in departments"
-                      :key="department.id"
-                      :value="department.id"
-                    >{{ department.name }}</option>
-                  </select>
+                    <select
+                      name="department"
+                      id="department"
+                      v-model="form.department"
+                      class="form-control"
+                      ref="department"
+                      @change="changeRoles"
+                      placeholder="Choose Department"
+                      required
+                    >
+                      <option value="0" disabled>Select Department</option>
+                      <option
+                        v-for="department in departments"
+                        :key="department.id"
+                        :value="department.id"
+                      >{{ department.name }}</option>
+                    </select>
                   </div>
 
                   <div class="col-md-4">
                     <label for="role">Role/Job Title</label>
-                  <div class="error text-muted" v-if="errs.role">{{errs.role[0]}}</div>
-                  <select v-model="form.role" class="form-control" ref="role" required>
-                    <option value="0" disabled>Select Role</option>
-                    <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
-                  </select>
+                    <div class="error text-muted" v-if="errs.role">{{errs.role[0]}}</div>
+                    <select v-model="form.role" class="form-control" ref="role" required>
+                      <option value="0" disabled>Select Role</option>
+                      <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
+                    </select>
                   </div>
                 </div>
 
@@ -320,6 +318,9 @@ export default {
 
     shows() {
       this.show = true;
+    },
+    can(permis) {
+      return Gate.can(permis);
     }
   },
 
@@ -376,13 +377,8 @@ export default {
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        if (!Gate.isDeveloper()) {
-          this.shows();
-          this.authorized = false;
-        } else {
-          this.shows();
-          this.authorized = true;
-        }
+
+        this.shows();
       });
     }
   }

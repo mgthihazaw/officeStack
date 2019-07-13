@@ -31386,7 +31386,7 @@ var Gate = function () {
 	}, {
 		key: 'can',
 		value: function can(permis) {
-			console.log('permisison', this.permissions);
+			// console.log('permisison',this.permissions);
 			return this.permissions.includes(permis);
 		}
 	}]);
@@ -69466,14 +69466,12 @@ webpackContext.id = 180;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_Items_ItemType___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__components_Items_ItemType__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_Items_Item__ = __webpack_require__(283);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_Items_Item___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__components_Items_Item__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_Items_ItemCRUD_EditItem__ = __webpack_require__(290);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_Items_ItemCRUD_EditItem___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__components_Items_ItemCRUD_EditItem__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_Items_Attribute__ = __webpack_require__(295);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_Items_Attribute___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__components_Items_Attribute__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_Logout__ = __webpack_require__(300);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_Logout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__components_Logout__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_Table_Table__ = __webpack_require__(303);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__components_Table_Table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21__components_Table_Table__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_Items_Attribute__ = __webpack_require__(295);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_Items_Attribute___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__components_Items_Attribute__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_Logout__ = __webpack_require__(300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_Logout___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__components_Logout__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_Table_Table__ = __webpack_require__(303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_Table_Table___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20__components_Table_Table__);
 
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
@@ -69561,7 +69559,7 @@ var routes = [{
   }
 }, {
   path: '/logout',
-  component: __WEBPACK_IMPORTED_MODULE_20__components_Logout___default.a,
+  component: __WEBPACK_IMPORTED_MODULE_19__components_Logout___default.a,
   meta: {
     requiresAuth: true
   }
@@ -69601,12 +69599,8 @@ var routes = [{
   }
 
 }, {
-  path: '/item/:id/edit',
-  name: 'editItem',
-  component: __WEBPACK_IMPORTED_MODULE_18__components_Items_ItemCRUD_EditItem___default.a
-}, {
   path: '/attribute',
-  component: __WEBPACK_IMPORTED_MODULE_19__components_Items_Attribute___default.a
+  component: __WEBPACK_IMPORTED_MODULE_18__components_Items_Attribute___default.a
 
 }];
 
@@ -72299,7 +72293,7 @@ exports = module.exports = __webpack_require__(1)(false);
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Roboto|Ubuntu);", ""]);
 
 // module
-exports.push([module.i, "\ninput[data-v-31d277f6]{\n        font-weight : 700 !important;\n}\n.nav-item .nav-link p[data-v-31d277f6]{\n        font-weight : 400;\n        font-size : 12px;\n        font-family: 'Roboto', sans-serif;\n}\n.info a[data-v-31d277f6]{\n        font-family : 'Ubuntu', sans-serif;\n}\n.logout[data-v-31d277f6]{\n        border-top : 1px solid rgba(200,200,200,0.3);\n}\n@media print {\n.main-footer[data-v-31d277f6] {\n    display: none;\n}\n}\n", ""]);
+exports.push([module.i, "\ninput[data-v-31d277f6] {\r\n  font-weight: 700 !important;\n}\n.nav-item .nav-link p[data-v-31d277f6] {\r\n  font-weight: 400;\r\n  font-size: 12px;\r\n  font-family: \"Roboto\", sans-serif;\n}\n.info a[data-v-31d277f6] {\r\n  font-family: \"Ubuntu\", sans-serif;\n}\n.logout[data-v-31d277f6] {\r\n  border-top: 1px solid rgba(200, 200, 200, 0.3);\n}\n@media print {\n.main-footer[data-v-31d277f6] {\r\n    display: none;\n}\n}\r\n", ""]);
 
 // exports
 
@@ -72518,10 +72512,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -72532,17 +72522,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     Dashboard: __WEBPACK_IMPORTED_MODULE_1__Dashboard_vue___default.a
   },
   data: function data() {
-
     return {
       show: false,
       User: {
-        sale: '',
-        service: '',
-        develop: '',
-        can: ''
+        sale: "",
+        service: "",
+        develop: "",
+        can: ""
       },
-      isLoggedIn: '',
-      username: ''
+      isLoggedIn: "",
+      username: ""
     };
   },
 
@@ -72557,8 +72546,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.User.develop ? true : false;
     },
     can: function can(permission) {
-      this.User.can = Gate.can(permission);
-      return Gate.can(permission) ? true : false;
+
+      return Gate.can(permission);
     }
   },
   created: function created() {
@@ -72568,21 +72557,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.isLoggedIn = User.isLoggedIn();
 
     if (this.isLoggedIn) {
-      axios.post('/api/auth/me').then(function (response) {
+      axios.post("/api/auth/me").then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        console.log(Gate.can('staff-list'));
+        _this.show = true;
         _this.User.sale = Gate.isSaleperson();
         _this.User.service = Gate.isServiceEngineer();
         _this.User.develop = Gate.isDeveloper();
-        _this.show = true;
       });
     }
 
-    Bus.$emit('getrole');
-    Bus.$on('logout', function () {
+    Bus.$emit("getrole");
+    Bus.$on("logout", function () {
       User.clear();
       this.isLoggedIn = false;
-      window.location.replace('/');
+      window.location.replace("/");
     });
   }
 });
@@ -73005,71 +72993,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.show
-    ? _c(
-        "div",
-        { staticClass: "wrapper" },
-        [
-          !_vm.isLoggedIn ? _c("login") : _vm._e(),
-          _vm._v(" "),
-          _vm.isLoggedIn
-            ? _c("div", [
-                _vm._m(0),
-                _vm._v(" "),
+  return _c(
+    "div",
+    { staticClass: "wrapper" },
+    [
+      !_vm.isLoggedIn ? _c("login") : _vm._e(),
+      _vm._v(" "),
+      _vm.isLoggedIn
+        ? _c("div", [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "aside",
+              { staticClass: "main-sidebar sidecolor elevation-4" },
+              [
                 _c(
-                  "aside",
-                  { staticClass: "main-sidebar sidecolor elevation-4" },
+                  "router-link",
+                  { staticClass: "brand-link", attrs: { to: "/" } },
                   [
+                    _c("img", {
+                      staticClass: "brand-image elevation-3",
+                      staticStyle: { opacity: ".8" },
+                      attrs: {
+                        src: "/images/logo/2.png",
+                        alt: "Microstack Logo"
+                      }
+                    }),
+                    _vm._v(" "),
                     _c(
-                      "router-link",
-                      { staticClass: "brand-link", attrs: { to: "/" } },
-                      [
-                        _c("img", {
-                          staticClass: "brand-image  elevation-3",
-                          staticStyle: { opacity: ".8" },
-                          attrs: {
-                            src: "/images/logo/2.png",
-                            alt: "Microstack Logo"
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          {
-                            staticClass:
-                              "brand-text font-weight-light text-primary"
-                          },
-                          [_c("br")]
-                        )
-                      ]
-                    ),
+                      "span",
+                      {
+                        staticClass: "brand-text font-weight-light text-primary"
+                      },
+                      [_c("br")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c("hr"),
+                _vm._v(" "),
+                _c("div", { staticClass: "sidebar" }, [
+                  _c("div", { staticClass: "user-panel mt-2 mb-3 d-flex" }, [
+                    _c("div", { staticClass: "image" }, [
+                      _c("img", {
+                        staticClass: "img-circle elevation-2",
+                        attrs: { src: "/images/profile.jpg", alt: "User Image" }
+                      })
+                    ]),
                     _vm._v(" "),
-                    _c("hr"),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "sidebar" }, [
-                      _c(
-                        "div",
-                        { staticClass: "user-panel mt-2  mb-3 d-flex" },
-                        [
-                          _c("div", { staticClass: "image" }, [
-                            _c("img", {
-                              staticClass: "img-circle elevation-2",
-                              attrs: {
-                                src: "/images/profile.jpg",
-                                alt: "User Image"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "info" }, [
-                            _c("a", { staticClass: "d-block" }, [
-                              _vm._v(_vm._s(_vm.username))
-                            ])
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("nav", { staticClass: " text-white" }, [
+                    _c("div", { staticClass: "info" }, [
+                      _c("a", { staticClass: "d-block" }, [
+                        _vm._v(_vm._s(_vm.username))
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm.show
+                    ? _c("nav", { staticClass: "text-white" }, [
                         _c(
                           "ul",
                           {
@@ -73098,11 +73078,7 @@ var render = function() {
                                         "nav-icon green fas fa-tachometer-alt"
                                     }),
                                     _vm._v(" "),
-                                    _c("p", [
-                                      _vm._v(
-                                        "\n              DASHBOARD\n            "
-                                      )
-                                    ])
+                                    _c("p", [_vm._v("DASHBOARD")])
                                   ]
                                 )
                               ],
@@ -73134,7 +73110,7 @@ var render = function() {
                               1
                             ),
                             _vm._v(" "),
-                            _vm.ServiceShow()
+                            _vm.can("service-list")
                               ? _c(
                                   "li",
                                   { staticClass: "nav-item" },
@@ -73159,7 +73135,7 @@ var render = function() {
                                 )
                               : _vm._e(),
                             _vm._v(" "),
-                            _vm.SaleShow()
+                            _vm.can("item-list")
                               ? _c(
                                   "li",
                                   { staticClass: "nav-item has-treeview" },
@@ -73260,11 +73236,7 @@ var render = function() {
                                         "fas fa-user-cog nav-icon indigo"
                                     }),
                                     _vm._v(" "),
-                                    _c("p", [
-                                      _vm._v(
-                                        "\n              Account Setting\n            "
-                                      )
-                                    ])
+                                    _c("p", [_vm._v("Account Setting")])
                                   ]
                                 )
                               ],
@@ -73296,29 +73268,29 @@ var render = function() {
                           ]
                         )
                       ])
-                    ])
-                  ],
+                    : _vm._e()
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "content-wrapper bgBody" }, [
+              _c("div", { staticClass: "content pt-4" }, [
+                _c(
+                  "div",
+                  { staticClass: "container-fluid" },
+                  [_c("router-view")],
                   1
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "content-wrapper bgBody" }, [
-                  _c("div", { staticClass: "content pt-4" }, [
-                    _c(
-                      "div",
-                      { staticClass: "container-fluid" },
-                      [_c("router-view")],
-                      1
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _vm._m(2)
+                )
               ])
-            : _vm._e()
-        ],
-        1
-      )
-    : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm._m(2)
+          ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -73369,11 +73341,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("a", { staticClass: "nav-link ", attrs: { href: "#" } }, [
+    return _c("a", { staticClass: "nav-link" }, [
       _c("i", { staticClass: "nav-icon fas fa-database green" }),
       _vm._v(" "),
       _c("p", [
-        _vm._v("\n              Items\n              "),
+        _vm._v("\n                  Items\n                  "),
         _c("i", { staticClass: "right fas fa-angle-left" })
       ])
     ])
@@ -73383,7 +73355,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("footer", { staticClass: "main-footer bg-white" }, [
-      _c("div", { staticClass: "text-center " }, [
+      _c("div", { staticClass: "text-center" }, [
         _c("strong", [_vm._v("Copyright ©Microstack Technology Co.ltd")])
       ])
     ])
@@ -73666,6 +73638,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     shows: function shows() {
       this.show = true;
+    },
+    can: function can(permis) {
+      return Gate.can(permis);
     }
   },
   created: function created() {
@@ -73674,13 +73649,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        if (!Gate.isDeveloper()) {
-          _this2.shows();
-          _this2.authorized = false;
-        } else {
-          _this2.shows();
-          _this2.authorized = true;
-        }
+        _this2.User = Gate;
+
+        _this2.shows();
       });
     }
 
@@ -73844,7 +73815,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.error[data-v-27ca711a] {\r\n  color: #d8000c !important;\r\n\r\n  margin-bottom: 10px;\r\n  font-style: italic;\n}\n.formcolor[data-v-27ca711a] {\r\n  \r\n    background: #EBEFF2;\r\n    border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n    border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n    border-radius:30px;\n}\r\n", ""]);
+exports.push([module.i, "\n.error[data-v-27ca711a] {\r\n  color: #d8000c !important;\r\n\r\n  margin-bottom: 10px;\r\n  font-style: italic;\n}\n.formcolor[data-v-27ca711a] {\r\n  background: #ebeff2;\r\n  border-left: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-right: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-top: 20px solid rgba(113, 190, 152, 0.271);\r\n  border-bottom: 2px solid rgba(113, 190, 152, 0.271);\r\n  border-radius: 30px;\n}\r\n", ""]);
 
 // exports
 
@@ -73857,9 +73828,6 @@ exports.push([module.i, "\n.error[data-v-27ca711a] {\r\n  color: #d8000c !import
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__errors_Unauthorized403__);
-//
-//
-//
 //
 //
 //
@@ -74033,8 +74001,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         password: "",
         phone: "",
         state: "",
-        township: '',
-        address_line: '',
+        township: "",
+        address_line: "",
         business: "",
         department: "",
         role: ""
@@ -74173,6 +74141,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       };
       this.townships.push(tag);
       this.form.township = tag;
+    },
+    can: function can(permis) {
+      return Gate.can(permis);
     }
   },
   created: function created() {
@@ -74181,13 +74152,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        if (!Gate.isDeveloper()) {
-          _this9.shows();
-          _this9.authorized = false;
-        } else {
-          _this9.shows();
-          _this9.authorized = true;
-        }
+
+        _this9.shows();
       });
     }
     this.loadStates();
@@ -74208,7 +74174,7 @@ var render = function() {
     ? _c(
         "div",
         [
-          !_vm.authorized
+          !_vm.can("staff-create")
             ? _c("unauthorized")
             : _c("div", [
                 _c("div", { staticClass: "animated zoomIn" }, [
@@ -75023,8 +74989,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -75198,6 +75162,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     shows: function shows() {
       this.show = true;
+    },
+    can: function can(permis) {
+      return Gate.can(permis);
     }
   },
 
@@ -75246,13 +75213,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        if (!Gate.isDeveloper()) {
-          _this9.shows();
-          _this9.authorized = false;
-        } else {
-          _this9.shows();
-          _this9.authorized = true;
-        }
+
+        _this9.shows();
       });
     }
   }
@@ -75270,7 +75232,7 @@ var render = function() {
     ? _c(
         "div",
         [
-          !_vm.authorized
+          !_vm.can("staff-update")
             ? _c("unauthorized")
             : _c("div", [
                 _c("div", { staticClass: "animated zoomIn" }, [
@@ -75867,28 +75829,31 @@ var render = function() {
     ? _c(
         "div",
         [
-          !_vm.authorized
+          !_vm.can("staff-create")
             ? _c("unauthorized")
             : _c("div", [
                 !_vm.createMode && !_vm.editMode
                   ? _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col-12 animated zoomIn" }, [
                         _c("div", { staticClass: "mb-2 row" }, [
-                          _c("div", { staticClass: "col-md-5" }, [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-outline-success btn-lg",
-                                on: { click: _vm.create }
-                              },
-                              [
-                                _vm._v(
-                                  "\r\n              Add New\r\n              "
-                                ),
-                                _c("i", { staticClass: "fa fa-plus" })
-                              ]
-                            )
-                          ]),
+                          _vm.can("staff-create")
+                            ? _c("div", { staticClass: "col-md-5" }, [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass:
+                                      "btn btn-outline-success btn-lg",
+                                    on: { click: _vm.create }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\r\n              Add New\r\n              "
+                                    ),
+                                    _c("i", { staticClass: "fa fa-plus" })
+                                  ]
+                                )
+                              ])
+                            : _vm._e(),
                           _vm._v(" "),
                           _c(
                             "h3",
@@ -76416,12 +76381,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     save: function save() {
       window.print();
       var data = [];
+
       this.serviceItems.forEach(function (serviceItem) {
+
         var newData = { 'item_id': serviceItem.id, 'quantity': serviceItem.quantity, 'price': serviceItem.price };
         data.push(newData);
       });
 
-      // console.log(data)
+      console.log(data);
+      data['total_price'] = this.total;
       axios.post("/api/services/" + this.service.id + "/items", data).then(function (response) {
         // console.log(response)
 
@@ -77990,26 +77958,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     shows: function shows() {
       this.show = true;
+    },
+    can: function can(permis) {
+      return Gate.can(permis);
     }
   },
 
   created: function created() {
     var _this2 = this;
 
+    // if (User.isLoggedIn()) {
+    //   axios.post("/api/auth/me").then(response => {
+    //     Gate.setUser(response.data.user.roles, response.data.user.permissions);
+    //     this.User = Gate;
+
+    //     if (this.User.isSaleperson() || this.User.isServiceEngineer()) {
+    //       // console.log("Permis");
+    //       this.shows();
+    //       this.authorized = true;
+    //     } else {
+    //       this.shows();
+    //       this.authorized = false;
+    //       // console.log("NoPermis");
+    //     }
+    //   });
+    // }
+
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
         _this2.User = Gate;
 
-        if (_this2.User.isSaleperson() || _this2.User.isServiceEngineer()) {
-          // console.log("Permis");
-          _this2.shows();
-          _this2.authorized = true;
-        } else {
-          _this2.shows();
-          _this2.authorized = false;
-          // console.log("NoPermis");
-        }
+        _this2.shows();
       });
     }
 
@@ -78042,7 +78022,7 @@ var render = function() {
     ? _c(
         "div",
         [
-          !_vm.authorized
+          !_vm.can("service-list")
             ? _c("unauthorized")
             : _c("div", [
                 _c("div", { staticClass: "row" }, [
@@ -78052,26 +78032,28 @@ var render = function() {
                         _vm._v("Service List")
                       ]),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "col-2 text-center" },
-                        [
-                          _vm.User.isSaleperson()
-                            ? _c(
-                                "router-link",
-                                {
-                                  staticClass: "btn btn-success text-white",
-                                  attrs: { to: "/services/create" }
-                                },
-                                [_vm._v("New Service")]
-                              )
-                            : _vm._e()
-                        ],
-                        1
-                      )
+                      _vm.can("service-create")
+                        ? _c(
+                            "div",
+                            { staticClass: "col-2 text-center" },
+                            [
+                              _vm.can("service-create")
+                                ? _c(
+                                    "router-link",
+                                    {
+                                      staticClass: "btn btn-success text-white",
+                                      attrs: { to: "/services/create" }
+                                    },
+                                    [_vm._v("New Service")]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        : _vm._e()
                     ]),
                     _vm._v(" "),
-                    _c("table", { staticClass: "table table-hover " }, [
+                    _c("table", { staticClass: "table table-hover" }, [
                       _c("thead", [
                         _c("tr", { staticClass: "heading" }, [
                           _c("th", [_vm._v("No")]),
@@ -78643,22 +78625,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     shows: function shows() {
       this.show = true;
+    },
+    can: function can(permis) {
+      return Gate.can(permis);
     }
   },
 
   created: function created() {
     var _this4 = this;
 
+    // if (User.isLoggedIn()) {
+    //   axios.post("/api/auth/me").then(response => {
+    //     Gate.setUser(response.data.user.roles,response.data.user.permissions);
+    //     if (!Gate.isSaleperson()) {
+    //       this.shows();
+    //       this.authorized = false;
+    //     } else {
+    //       this.shows();
+    //       this.authorized = true;
+    //     }
+    //   });
+    // }
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        if (!Gate.isSaleperson()) {
-          _this4.shows();
-          _this4.authorized = false;
-        } else {
-          _this4.shows();
-          _this4.authorized = true;
-        }
+        _this4.shows();
       });
     }
 
@@ -78679,14 +78670,19 @@ var render = function() {
     ? _c(
         "div",
         [
-          !_vm.authorized ? _c("unauthorized") : _vm._e(),
-          _vm._v(" "),
-          _vm.authorized
-            ? _c(
+          !_vm.can("service-create")
+            ? _c("unauthorized")
+            : _c(
                 "div",
                 { staticClass: "container formcolor animated fadeInRight" },
                 [
-                  _vm._m(0),
+                  _c("div", { staticClass: "row " }, [
+                    _c("div", { staticClass: "col-12" }, [
+                      _c("h3", { staticClass: "pt-3" }, [
+                        _vm._v("ADD NEW SERVICE")
+                      ])
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c("hr"),
                   _vm._v(" "),
@@ -79023,24 +79019,12 @@ var render = function() {
                   ])
                 ]
               )
-            : _vm._e()
         ],
         1
       )
     : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row " }, [
-      _c("div", { staticClass: "col-12" }, [
-        _c("h3", { staticClass: "pt-3" }, [_vm._v("ADD NEW SERVICE")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -79119,54 +79103,50 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-	components: {
-		'saleperson-editview': __WEBPACK_IMPORTED_MODULE_0__EditBySaleperson___default.a,
-		'engineer-editview': __WEBPACK_IMPORTED_MODULE_1__EditByEngineer___default.a,
-		'unauthorized': __WEBPACK_IMPORTED_MODULE_2__errors_Unauthorized403___default.a
-	},
-	data: function data() {
-		return {
-			show: false,
-			authorized: false,
-			User: new Object()
-		};
-	},
+  components: {
+    "saleperson-editview": __WEBPACK_IMPORTED_MODULE_0__EditBySaleperson___default.a,
+    "engineer-editview": __WEBPACK_IMPORTED_MODULE_1__EditByEngineer___default.a,
+    unauthorized: __WEBPACK_IMPORTED_MODULE_2__errors_Unauthorized403___default.a
+  },
+  data: function data() {
+    return {
+      show: false,
+      authorized: false,
+      User: new Object()
+    };
+  },
 
-	methods: {
-		isServiceEngineer: function isServiceEngineer() {
-			return Gate.isServiceEngineer();
-		},
-		isSaleperson: function isSaleperson() {
-			return Gate.isSaleperson();
-		},
-		shows: function shows() {
-			this.show = true;
-		}
-	},
-	created: function created() {
-		var _this = this;
+  methods: {
+    isServiceEngineer: function isServiceEngineer() {
+      return Gate.isServiceEngineer();
+    },
+    isSaleperson: function isSaleperson() {
+      return Gate.isSaleperson();
+    },
+    shows: function shows() {
+      this.show = true;
+    },
+    can: function can(permis) {
+      return Gate.can(permis);
+    }
+  },
+  created: function created() {
+    var _this = this;
 
-		if (User.isLoggedIn()) {
-			axios.post('/api/auth/me').then(function (response) {
-				Gate.setUser(response.data.user.roles, response.data.user.permissions);
+    if (User.isLoggedIn()) {
+      axios.post("/api/auth/me").then(function (response) {
+        Gate.setUser(response.data.user.roles, response.data.user.permissions);
 
-				if (!(Gate.isSaleperson() || Gate.isServiceEngineer())) {
-					_this.shows();
-					_this.authorized = false;
-				} else {
-					_this.shows();
-					_this.authorized = true;
-				}
-			});
-		}
-	}
+        _this.shows();
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -80638,7 +80618,7 @@ var render = function() {
     ? _c(
         "div",
         [
-          !_vm.authorized
+          !_vm.can("service-update")
             ? _c("unauthorized")
             : _c(
                 "div",
@@ -85201,138 +85181,11 @@ if (false) {
 }
 
 /***/ }),
-/* 290 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(291)
-}
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(293)
-/* template */
-var __vue_template__ = __webpack_require__(294)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/Items/ItemCRUD/EditItem.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0c699ede", Component.options)
-  } else {
-    hotAPI.reload("data-v-0c699ede", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 291 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(292);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("1849262d", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c699ede\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditItem.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0c699ede\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./EditItem.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 292 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 293 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({});
-
-/***/ }),
-/* 294 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row" }, [
-    _c("h1", [
-      _vm._v("\n        EDIT ITEM " + _vm._s(_vm.$route.params.id) + "\n    ")
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0c699ede", module.exports)
-  }
-}
-
-/***/ }),
+/* 290 */,
+/* 291 */,
+/* 292 */,
+/* 293 */,
+/* 294 */,
 /* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 

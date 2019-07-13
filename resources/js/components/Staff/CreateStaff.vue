@@ -1,6 +1,6 @@
 <template>
   <div v-if="show">
-    <unauthorized v-if="!authorized"></unauthorized>
+    <unauthorized v-if="!can('staff-create')"></unauthorized>
     <div v-else>
       <div class="animated zoomIn">
         <div class="container formcolor">
@@ -9,23 +9,22 @@
               <h3>New Staff</h3>
             </div>
           </div>
-          <hr>
+          <hr />
           <div class="row">
             <div class="col-12">
               <form @submit.prevent="submit" method="POST">
                 <div class="form-group row">
                   <div class="col-md-6">
                     <label for="name">Name</label>
-                  <div class="error text-muted" v-if="errs.name">{{errs.name[0]}}</div>
-                  <input type="text" class="form-control" id="name" v-model="form.name">
+                    <div class="error text-muted" v-if="errs.name">{{errs.name[0]}}</div>
+                    <input type="text" class="form-control" id="name" v-model="form.name" />
                   </div>
                   <div class="col-md-6">
                     <label for="phone1">Phone Numbers</label>
-                  <div class="error text-muted" v-if="errs.phone">{{errs.phone[0]}}</div>
-                  <input type="text" class="form-control" id="phone1" v-model="form.phone">
+                    <div class="error text-muted" v-if="errs.phone">{{errs.phone[0]}}</div>
+                    <input type="text" class="form-control" id="phone1" v-model="form.phone" />
                   </div>
                 </div>
-                
 
                 <div class="form-group">
                   <label for="address">Address</label>
@@ -65,7 +64,7 @@
                         class="form-control"
                         id="address"
                         placeholder="Address Line"
-                      >
+                      />
                     </div>
                   </div>
                 </div>
@@ -132,12 +131,12 @@
                   <div class="col-md-6">
                     <label for="username">Login Username</label>
                     <div class="error text-muted" v-if="errs.username">{{errs.username[0]}}</div>
-                    <input type="text" class="form-control" v-model="form.username">
+                    <input type="text" class="form-control" v-model="form.username" />
                   </div>
                   <div class="col-md-6">
                     <label for="password">Login Password</label>
                     <div class="error text-muted" v-if="errs.password">{{errs.password[0]}}</div>
-                    <input type="text" class="form-control" v-model="form.password">
+                    <input type="text" class="form-control" v-model="form.password" />
                   </div>
                 </div>
 
@@ -150,8 +149,6 @@
           </div>
         </div>
       </div>
-
-      
     </div>
   </div>
 </template>
@@ -174,8 +171,8 @@ export default {
         password: "",
         phone: "",
         state: "",
-        township:'',
-        address_line:'',
+        township: "",
+        address_line: "",
         business: "",
         department: "",
         role: ""
@@ -207,7 +204,7 @@ export default {
       axios
         .get(`/api/businesses/${business_id}/departments`)
         .then(response => {
-          this.departments = response.data.data
+          this.departments = response.data.data;
           this.$refs.department.disabled = false;
         })
         .catch(error => console.log(error.response.data));
@@ -260,12 +257,12 @@ export default {
         .catch(errr => console.log(err.response.data));
     },
     submit() {
-      this.form.township=this.form.township.name
-      this.form.state = this.form.state.id
+      this.form.township = this.form.township.name;
+      this.form.state = this.form.state.id;
       axios
         .post("/api/staffs/", this.form)
         .then(response => {
-          if(response.status == 201){
+          if (response.status == 201) {
             Toast.fire({
               type: "success",
               title: "Staff Created Successfully"
@@ -273,7 +270,6 @@ export default {
             Bus.$emit("afterCreated");
             this.close();
           }
-          
         })
         .catch(error => {
           Toast.fire({
@@ -281,9 +277,12 @@ export default {
             title: error.response.data.message
           });
           this.errs = error.response.data.errors;
-          setTimeout(function(){
-            this.errs = ""
-          }.bind(this),3000)
+          setTimeout(
+            function() {
+              this.errs = "";
+            }.bind(this),
+            3000
+          );
         });
     },
     close() {
@@ -305,27 +304,23 @@ export default {
       };
       this.townships.push(tag);
       this.form.township = tag;
+    },
+    can(permis) {
+      return Gate.can(permis);
     }
   },
   created() {
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.user.roles,response.data.user.permissions);
-        if (!Gate.isDeveloper()) {
-          this.shows();
-          this.authorized = false;
-        } else {
-          this.shows();
-          this.authorized = true;
-        }
+        Gate.setUser(response.data.user.roles, response.data.user.permissions);
+
+        this.shows();
       });
     }
     this.loadStates();
     this.loadData();
     this.loadBusinesses();
-  },
- 
-  
+  }
 };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
@@ -337,13 +332,12 @@ export default {
   font-style: italic;
 }
 .formcolor {
-  
-    background: #EBEFF2;
-    border-left: 2px solid rgba(113, 190, 152, 0.271);
-    border-right: 2px solid rgba(113, 190, 152, 0.271);
-    border-top: 20px solid rgba(113, 190, 152, 0.271);
-    border-bottom: 2px solid rgba(113, 190, 152, 0.271);
-    border-radius:30px;
+  background: #ebeff2;
+  border-left: 2px solid rgba(113, 190, 152, 0.271);
+  border-right: 2px solid rgba(113, 190, 152, 0.271);
+  border-top: 20px solid rgba(113, 190, 152, 0.271);
+  border-bottom: 2px solid rgba(113, 190, 152, 0.271);
+  border-radius: 30px;
 }
 </style>
 
