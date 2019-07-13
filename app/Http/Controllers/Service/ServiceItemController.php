@@ -8,6 +8,7 @@ use App\Http\Resources\ServiceItem\ServiceItemResource;
 use App\Service;
 use App\ItemService;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ServiceItemController extends Controller
 {
@@ -38,6 +39,11 @@ class ServiceItemController extends Controller
                 'price' => $service_item['price']
             ]);
         }
+
+        $service->invoice()->updateOrCreate([
+            'total_price' => $request->total_price,
+            'opened_date' => Carbon::createFromFormat('/d/m/Y', now());
+        ]);
 
         return response()->json($service, 201);
     }

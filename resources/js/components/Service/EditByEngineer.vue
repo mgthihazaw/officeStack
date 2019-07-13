@@ -203,12 +203,13 @@ export default {
             }
           })
           .catch(error => {
-            Toast.fire({
-            type: "error",
-            title: error.response.data.message
-          });
+            
           this.form.secret = ""
             if (error.response.status == 422) {
+              Toast.fire({
+                type: "error",
+                title: error.response.data.message
+              });
               this.form_errors = error.response.data.errors;
               this.form.service_engineer = this.service_engineers.find(
                 staff => {
@@ -221,6 +222,10 @@ export default {
               error.response.status == 401 &&
               error.response.data == "Your secret is wrong"
             ) {
+              Toast.fire({
+                type: "error",
+                title: error.response.data.error
+              });
               this.form.service_engineer = this.service_engineers.find(
                 staff => {
                   return staff.no === this.form.service_engineer;

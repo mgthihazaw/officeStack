@@ -1,5 +1,4 @@
-class User{
-
+export class User{
 	setToken(token){
 		localStorage.setItem('token',token);
 	}
@@ -40,4 +39,3 @@ class User{
 	}
 	
 }
-export default User = new User();

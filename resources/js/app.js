@@ -40,8 +40,8 @@ window.Bus = new Vue();
  */
 import router from './Router/router.js';
 import vSelect from 'vue-select'
-import User from './Helpers/User.js';
-import Gate from './Helpers/Gate.js';
+import {User} from './Helpers/User.js';
+import {Gate} from './Helpers/Gate.js';
 
 axios.interceptors.response.use(function (response) {
 	// Do something with response data
@@ -64,14 +64,14 @@ axios.interceptors.response.use(function (response) {
 });
 
 
-window.User = User
-window.Gate = Gate
+window.User = new User()
+window.Gate = new Gate()
 
-if (User.isLoggedIn()) {
+if (window.User.isLoggedIn()) {
 	axios.post('/api/auth/me')
 		.then(response => {
 			// console.log(response.data.user.roles,response.data.user.permissions)
-			 Gate.setUser(response.data.user.roles,response.data.user.permissions);
+			window.Gate.setUser(response.data.user.roles,response.data.user.permissions);
 			//   console.log(Gate.can('service-list'))
 		})
 		.catch(err=>{

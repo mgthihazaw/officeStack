@@ -1,8 +1,8 @@
-class Gate{
+export class Gate{
 	
 	setUser(roles,permissions){
 		this.role = roles;
-		this.permissions=permissions
+		this.permissions = permissions
 	}
 	
 	isServiceEngineer(){
@@ -16,17 +16,16 @@ class Gate{
 		}
 	}
 	isDeveloper(){
-	if(Array.isArray(this.role)){
-		return this.role.includes('developer')
-	}
+		if(Array.isArray(this.role)){
+			return this.role.includes('developer')
+		}
 	}
 	can(permis){
-		
-			return this.permissions.includes(permis)
-		
+		console.log('permisison',this.permissions);
+		return this.permissions.includes(permis)
 	}
 }
-export default Gate = new Gate();
+// export default Gate = new Gate();
 
 
 

@@ -90,5 +90,10 @@ class PersonBusinessSeeder extends Seeder
             "address_line" => "ျမင့္မိုရ္ရပ္ကြက္",
             'township_id' => 1
         ]);
+
+        Person::create([
+            'name' => 'Administrator',
+            'person_business_id' => 2
+        ]);
     }
 }

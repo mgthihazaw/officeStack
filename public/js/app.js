@@ -31346,6 +31346,7 @@ module.exports = Component.exports
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Gate; });
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -31385,15 +31386,14 @@ var Gate = function () {
 	}, {
 		key: 'can',
 		value: function can(permis) {
-
+			console.log('permisison', this.permissions);
 			return this.permissions.includes(permis);
 		}
 	}]);
 
 	return Gate;
 }();
-
-/* harmony default export */ __webpack_exports__["a"] = (Gate = new Gate());
+// export default Gate = new Gate();
 
 /***/ }),
 /* 148 */
@@ -31637,13 +31637,13 @@ axios.interceptors.response.use(function (response) {
 	return Promise.reject(error);
 });
 
-window.User = __WEBPACK_IMPORTED_MODULE_5__Helpers_User_js__["a" /* default */];
-window.Gate = __WEBPACK_IMPORTED_MODULE_6__Helpers_Gate_js__["a" /* default */];
+window.User = new __WEBPACK_IMPORTED_MODULE_5__Helpers_User_js__["a" /* User */]();
+window.Gate = new __WEBPACK_IMPORTED_MODULE_6__Helpers_Gate_js__["a" /* Gate */]();
 
-if (__WEBPACK_IMPORTED_MODULE_5__Helpers_User_js__["a" /* default */].isLoggedIn()) {
+if (window.User.isLoggedIn()) {
 	axios.post('/api/auth/me').then(function (response) {
 		// console.log(response.data.user.roles,response.data.user.permissions)
-		__WEBPACK_IMPORTED_MODULE_6__Helpers_Gate_js__["a" /* default */].setUser(response.data.user.roles, response.data.user.permissions);
+		window.Gate.setUser(response.data.user.roles, response.data.user.permissions);
 		//   console.log(Gate.can('service-list'))
 	}).catch(function (err) {
 		console.log(err);
@@ -72534,10 +72534,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   data: function data() {
 
     return {
+      show: false,
       User: {
         sale: '',
         service: '',
-        develop: ''
+        develop: '',
+        can: ''
       },
       isLoggedIn: '',
       username: ''
@@ -72553,6 +72555,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     StaffShow: function StaffShow() {
       return this.User.develop ? true : false;
+    },
+    can: function can(permission) {
+      this.User.can = Gate.can(permission);
+      return Gate.can(permission) ? true : false;
     }
   },
   created: function created() {
@@ -72564,9 +72570,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     if (this.isLoggedIn) {
       axios.post('/api/auth/me').then(function (response) {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
+        console.log(Gate.can('staff-list'));
         _this.User.sale = Gate.isSaleperson();
         _this.User.service = Gate.isServiceEngineer();
         _this.User.develop = Gate.isDeveloper();
+        _this.show = true;
       });
     }
 
@@ -72997,79 +73005,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "wrapper" },
-    [
-      !_vm.isLoggedIn ? _c("login") : _vm._e(),
-      _vm._v(" "),
-      _vm.isLoggedIn
-        ? _c("div", [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "aside",
-              { staticClass: "main-sidebar sidecolor elevation-4" },
-              [
+  return _vm.show
+    ? _c(
+        "div",
+        { staticClass: "wrapper" },
+        [
+          !_vm.isLoggedIn ? _c("login") : _vm._e(),
+          _vm._v(" "),
+          _vm.isLoggedIn
+            ? _c("div", [
+                _vm._m(0),
+                _vm._v(" "),
                 _c(
-                  "router-link",
-                  { staticClass: "brand-link", attrs: { to: "/" } },
+                  "aside",
+                  { staticClass: "main-sidebar sidecolor elevation-4" },
                   [
-                    _c("img", {
-                      staticClass: "brand-image  elevation-3",
-                      staticStyle: { opacity: ".8" },
-                      attrs: {
-                        src: "/images/logo/2.png",
-                        alt: "Microstack Logo"
-                      }
-                    }),
-                    _vm._v(" "),
                     _c(
-                      "span",
-                      {
-                        staticClass: "brand-text font-weight-light text-primary"
-                      },
-                      [_c("br")]
-                    )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("hr"),
-                _vm._v(" "),
-                _c("div", { staticClass: "sidebar" }, [
-                  _c("div", { staticClass: "user-panel mt-2  mb-3 d-flex" }, [
-                    _c("div", { staticClass: "image" }, [
-                      _c("img", {
-                        staticClass: "img-circle elevation-2",
-                        attrs: { src: "/images/profile.jpg", alt: "User Image" }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "info" }, [
-                      _c("a", { staticClass: "d-block" }, [
-                        _vm._v(_vm._s(_vm.username))
-                      ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("nav", { staticClass: " text-white" }, [
-                    _c(
-                      "ul",
-                      {
-                        staticClass: "nav nav-pills nav-sidebar flex-column",
-                        attrs: {
-                          "data-widget": "treeview",
-                          role: "menu",
-                          "data-accordion": "false"
-                        }
-                      },
+                      "router-link",
+                      { staticClass: "brand-link", attrs: { to: "/" } },
                       [
+                        _c("img", {
+                          staticClass: "brand-image  elevation-3",
+                          staticStyle: { opacity: ".8" },
+                          attrs: {
+                            src: "/images/logo/2.png",
+                            alt: "Microstack Logo"
+                          }
+                        }),
+                        _vm._v(" "),
                         _c(
-                          "li",
-                          { staticClass: "nav-item" },
+                          "span",
+                          {
+                            staticClass:
+                              "brand-text font-weight-light text-primary"
+                          },
+                          [_c("br")]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("hr"),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "sidebar" }, [
+                      _c(
+                        "div",
+                        { staticClass: "user-panel mt-2  mb-3 d-flex" },
+                        [
+                          _c("div", { staticClass: "image" }, [
+                            _c("img", {
+                              staticClass: "img-circle elevation-2",
+                              attrs: {
+                                src: "/images/profile.jpg",
+                                alt: "User Image"
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "info" }, [
+                            _c("a", { staticClass: "d-block" }, [
+                              _vm._v(_vm._s(_vm.username))
+                            ])
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("nav", { staticClass: " text-white" }, [
+                        _c(
+                          "ul",
+                          {
+                            staticClass:
+                              "nav nav-pills nav-sidebar flex-column",
+                            attrs: {
+                              "data-widget": "treeview",
+                              role: "menu",
+                              "data-accordion": "false"
+                            }
+                          },
                           [
-                            _vm.StaffShow()
-                              ? _c(
+                            _c(
+                              "li",
+                              { staticClass: "nav-item" },
+                              [
+                                _c(
                                   "router-link",
                                   {
                                     staticClass: "nav-link",
@@ -73088,38 +73105,146 @@ var render = function() {
                                     ])
                                   ]
                                 )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _vm.StaffShow()
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "li",
+                              { staticClass: "nav-item" },
+                              [
+                                _vm.can("staff-list")
+                                  ? _c(
+                                      "router-link",
+                                      {
+                                        staticClass: "nav-link",
+                                        attrs: { to: "/staffs" }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "nav-icon indigo fas fa-people-carry"
+                                        }),
+                                        _vm._v(" "),
+                                        _c("p", [_vm._v("STAFFS")])
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _vm.ServiceShow()
                               ? _c(
-                                  "router-link",
-                                  {
-                                    staticClass: "nav-link",
-                                    attrs: { to: "/staffs" }
-                                  },
+                                  "li",
+                                  { staticClass: "nav-item" },
                                   [
-                                    _c("i", {
-                                      staticClass:
-                                        "nav-icon indigo fas fa-people-carry"
-                                    }),
+                                    _c(
+                                      "router-link",
+                                      {
+                                        staticClass: "nav-link",
+                                        attrs: { to: "/services" }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "nav-icon orange fas fa-tasks"
+                                        }),
+                                        _vm._v(" "),
+                                        _c("p", [_vm._v("SERVICES")])
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.SaleShow()
+                              ? _c(
+                                  "li",
+                                  { staticClass: "nav-item has-treeview" },
+                                  [
+                                    _vm._m(1),
                                     _vm._v(" "),
-                                    _c("p", [_vm._v("STAFFS")])
+                                    _c(
+                                      "ul",
+                                      { staticClass: "nav nav-treeview" },
+                                      [
+                                        _c(
+                                          "li",
+                                          { staticClass: "nav-item" },
+                                          [
+                                            _c(
+                                              "router-link",
+                                              {
+                                                staticClass: "nav-link",
+                                                attrs: { to: "/item" }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "far fa-circle nav-icon green"
+                                                }),
+                                                _vm._v(" "),
+                                                _c("p", [_vm._v("Item")])
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          { staticClass: "nav-item" },
+                                          [
+                                            _c(
+                                              "router-link",
+                                              {
+                                                staticClass: "nav-link",
+                                                attrs: { to: "/itemtype" }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "far fa-circle nav-icon green"
+                                                }),
+                                                _vm._v(" "),
+                                                _c("p", [_vm._v("Item Type")])
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "li",
+                                          { staticClass: "nav-item" },
+                                          [
+                                            _c(
+                                              "router-link",
+                                              {
+                                                staticClass: "nav-link",
+                                                attrs: { to: "/attribute" }
+                                              },
+                                              [
+                                                _c("i", {
+                                                  staticClass:
+                                                    "far fa-circle nav-icon green"
+                                                }),
+                                                _vm._v(" "),
+                                                _c("p", [_vm._v("Attribute")])
+                                              ]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ]
+                                    )
                                   ]
                                 )
-                              : _vm._e()
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm.ServiceShow()
-                          ? _c(
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _c(
                               "li",
                               { staticClass: "nav-item" },
                               [
@@ -73127,171 +73252,73 @@ var render = function() {
                                   "router-link",
                                   {
                                     staticClass: "nav-link",
-                                    attrs: { to: "/services" }
+                                    attrs: { to: "/profile" }
                                   },
                                   [
                                     _c("i", {
                                       staticClass:
-                                        "nav-icon orange fas fa-tasks"
+                                        "fas fa-user-cog nav-icon indigo"
                                     }),
                                     _vm._v(" "),
-                                    _c("p", [_vm._v("SERVICES")])
+                                    _c("p", [
+                                      _vm._v(
+                                        "\n              Account Setting\n            "
+                                      )
+                                    ])
+                                  ]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "li",
+                              { staticClass: "nav-item logout" },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "nav-link",
+                                    attrs: { to: "/logout" }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass:
+                                        "nav-icon red fas fa-power-off"
+                                    }),
+                                    _vm._v(" "),
+                                    _c("p", [_vm._v("LOG OUT")])
                                   ]
                                 )
                               ],
                               1
                             )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.SaleShow()
-                          ? _c("li", { staticClass: "nav-item has-treeview" }, [
-                              _vm._m(1),
-                              _vm._v(" "),
-                              _c("ul", { staticClass: "nav nav-treeview" }, [
-                                _c(
-                                  "li",
-                                  { staticClass: "nav-item" },
-                                  [
-                                    _c(
-                                      "router-link",
-                                      {
-                                        staticClass: "nav-link",
-                                        attrs: { to: "/item" }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass:
-                                            "far fa-circle nav-icon green"
-                                        }),
-                                        _vm._v(" "),
-                                        _c("p", [_vm._v("Item")])
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "li",
-                                  { staticClass: "nav-item" },
-                                  [
-                                    _c(
-                                      "router-link",
-                                      {
-                                        staticClass: "nav-link",
-                                        attrs: { to: "/itemtype" }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass:
-                                            "far fa-circle nav-icon green"
-                                        }),
-                                        _vm._v(" "),
-                                        _c("p", [_vm._v("Item Type")])
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "li",
-                                  { staticClass: "nav-item" },
-                                  [
-                                    _c(
-                                      "router-link",
-                                      {
-                                        staticClass: "nav-link",
-                                        attrs: { to: "/attribute" }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass:
-                                            "far fa-circle nav-icon green"
-                                        }),
-                                        _vm._v(" "),
-                                        _c("p", [_vm._v("Attribute")])
-                                      ]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ])
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: "/profile" }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "fas fa-user-cog nav-icon indigo"
-                                }),
-                                _vm._v(" "),
-                                _c("p", [
-                                  _vm._v(
-                                    "\n              Account Setting\n            "
-                                  )
-                                ])
-                              ]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "li",
-                          { staticClass: "nav-item logout" },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                staticClass: "nav-link",
-                                attrs: { to: "/logout" }
-                              },
-                              [
-                                _c("i", {
-                                  staticClass: "nav-icon red fas fa-power-off"
-                                }),
-                                _vm._v(" "),
-                                _c("p", [_vm._v("LOG OUT")])
-                              ]
-                            )
-                          ],
-                          1
+                          ]
                         )
-                      ]
+                      ])
+                    ])
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "content-wrapper bgBody" }, [
+                  _c("div", { staticClass: "content pt-4" }, [
+                    _c(
+                      "div",
+                      { staticClass: "container-fluid" },
+                      [_c("router-view")],
+                      1
                     )
                   ])
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "content-wrapper bgBody" }, [
-              _c("div", { staticClass: "content pt-4" }, [
-                _c(
-                  "div",
-                  { staticClass: "container-fluid" },
-                  [_c("router-view")],
-                  1
-                )
+                ]),
+                _vm._v(" "),
+                _vm._m(2)
               ])
-            ]),
-            _vm._v(" "),
-            _vm._m(2)
-          ])
-        : _vm._e()
-    ],
-    1
-  )
+            : _vm._e()
+        ],
+        1
+      )
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
@@ -77933,7 +77960,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       axios.get("/api/services").then(function (response) {
-        _this.service_list = response.data;
+        _this.service_list = response.data.data;
       }).catch(function (error) {
         if (error.response.data.type == "token_invalid") {
           alert(error.response.data.error);
@@ -80175,12 +80202,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             _this3.$router.push("/services");
           }
         }).catch(function (error) {
-          Toast.fire({
-            type: "error",
-            title: error.response.data.message
-          });
+
           _this3.form.secret = "";
           if (error.response.status == 422) {
+            Toast.fire({
+              type: "error",
+              title: error.response.data.message
+            });
             _this3.form_errors = error.response.data.errors;
             _this3.form.service_engineer = _this3.service_engineers.find(function (staff) {
               return staff.no === _this3.form.service_engineer;
@@ -80188,6 +80216,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           }
 
           if (error.response.status == 401 && error.response.data == "Your secret is wrong") {
+            Toast.fire({
+              type: "error",
+              title: error.response.data.error
+            });
             _this3.form.service_engineer = _this3.service_engineers.find(function (staff) {
               return staff.no === _this3.form.service_engineer;
             });
@@ -86308,6 +86340,7 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return User; });
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -86377,8 +86410,6 @@ var User = function () {
 
 	return User;
 }();
-
-/* harmony default export */ __webpack_exports__["a"] = (User = new User());
 
 /***/ }),
 /* 310 */

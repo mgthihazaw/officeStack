@@ -106,7 +106,8 @@ export default {
       axios
         .get("/api/services")
         .then(response => {
-          this.service_list = response.data;
+          this.service_list = response.data.data;
+
         })
         .catch(error => {
           if (error.response.data.type == "token_invalid") {

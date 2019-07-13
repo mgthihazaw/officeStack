@@ -22,8 +22,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = ServiceResource::collection(Service::all());
-        return response()->json($services);
+        return ServiceResource::collection(Service::paginate(10));
     }
 
     /**
@@ -87,6 +86,7 @@ class ServiceController extends Controller
                 'staff_id' => $staff_id,
                 'received_description' => $description,
                 'received_remark' => $remark,
+                'updated_at' => NULL,
             ]);
         }
 
@@ -144,6 +144,7 @@ class ServiceController extends Controller
                     'service_remark' => $request->service_remark,
                     'service_engineer_id' => $request->service_engineer,
                     'pending' => 1,
+                    'finished_date' => now(),
                 ]);
 
                 return response()->json('Service has been finished', 200);
@@ -169,7 +170,6 @@ class ServiceController extends Controller
             'township'=>$request->customer_address,
             'description'=>$request->description,
             'remark'=>$request->remark,
-            
         ]);
         return response()->json("Sevice Successfully Updated");
     }

@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper">
+    <div class="wrapper" v-if="show">
         <login v-if="!isLoggedIn"></login>
         <div v-if="isLoggedIn">
         <nav class="main-header navbar navbar-expand bg-success navbar-light border-bottom">
@@ -59,7 +59,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <router-link to="/" class="nav-link" v-if="StaffShow()">
+            <router-link to="/" class="nav-link">
               <i class="nav-icon green fas fa-tachometer-alt"></i>
               <p>
                 DASHBOARD
@@ -70,7 +70,7 @@
           
 
           <li class="nav-item">
-            <router-link class="nav-link" to="/staffs" v-if="StaffShow()">
+            <router-link class="nav-link" to="/staffs" v-if="can('staff-list')">
                 <i class="nav-icon indigo fas fa-people-carry"></i>
                 <p>STAFFS</p>
             </router-link>
@@ -185,10 +185,12 @@
         data(){
             
             return {
+              show :false,
                 User : {
                   sale:'',
                   service: '',
-                  develop:''
+                  develop:'',
+                  can : '',
                 },
                 isLoggedIn : '',
                 username : '',
@@ -199,10 +201,14 @@
            return this.User.sale || this.User.service ?true :false
            },
            SaleShow(){
-           return this.User.sale  ?true :false
+           return this.User.sale  ? true :false
            },
            StaffShow(){
-            return this.User.develop ?true :false
+            return this.User.develop ? true :false
+           },
+           can(permission){
+            this.User.can =Gate.can(permission)
+            return Gate.can(permission) ?true : false
            }
         },
         created() {
@@ -216,9 +222,12 @@
             axios.post('/api/auth/me')
               .then(response => {
             Gate.setUser(response.data.user.roles,response.data.user.permissions);
+            console.log(Gate.can('staff-list'));
             this.User.sale = Gate.isSaleperson()
-            this.User.service=Gate.isServiceEngineer()
-            this.User.develop=Gate.isDeveloper()
+            this.User.service = Gate.isServiceEngineer()
+            this.User.develop = Gate.isDeveloper()
+            this.show = true
+
            })
          
            
@@ -227,10 +236,10 @@
 
           Bus.$emit('getrole');
           Bus.$on('logout', function(){
-                User.clear();
-                this.isLoggedIn = false
-                window.location.replace('/');
-            })
+            User.clear();
+            this.isLoggedIn = false
+            window.location.replace('/');
+          })
         }
     }
 </script>
