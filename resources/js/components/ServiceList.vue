@@ -3,16 +3,18 @@
     <unauthorized v-if="!can('service-list')"></unauthorized>
     <div v-else>
       <div class="row">
-        <div class="col-12">
-          <div class="row mb-2">
-            <h3 class="pl-5 col-10">Service List</h3>
-            <div class="col-2 text-center" v-if="can('service-create')">
+        <div class="col-12 table-scroll">
+          
+          <div class="mb-2 row">
+            <div class="col-md-5" v-if="can('service-create')">
               <router-link
-                class="btn btn-success text-white"
+                class="btn btn-outline-success text-success"
                 to="/services/create"
                 v-if="can('service-create')"
-              >New Service</router-link>
+              >Add New
+              <i class="fa fa-plus"></i> </router-link>
             </div>
+            <h3 class="px-4 pt-2 col-md-4 text-left">Service List</h3>
           </div>
 
           <table class="table table-hover">
@@ -32,7 +34,7 @@
             </thead>
             <tbody>
               <tr v-for="(service,index) in service_list" :key="service.id" class="animated fadeIn">
-                <td>{{ index+1 }}</td>
+                <td>{{ paginationData.meta.from + index }}</td>
                 <td>{{ service.customer_name }}</td>
                 <td>{{ service.customer_address }}</td>
                 <td>{{ service.customer_phone }}</td>
@@ -81,6 +83,7 @@
               </tr>
             </tbody>
           </table>
+          <pagination :data="paginationData" @pagination-change-page="getServiceList"></pagination>
         </div>
       </div>
     </div>
@@ -95,17 +98,20 @@ export default {
   },
   data() {
     return {
-      show: false,
+      
       authorized: false,
       User: "",
-      service_list: []
+      service_list: [],
+      paginationData : {}
     };
   },
   methods: {
-    getServiceList() {
+    
+    getServiceList(page = 1) {
       axios
-        .get("/api/services")
+        .get("/api/services?page=" + page)
         .then(response => {
+          this.paginationData = response.data;
           this.service_list = response.data.data;
         })
         .catch(error => {
@@ -137,13 +143,8 @@ export default {
         .catch(error => {
           console.log(error);
         });
-    },
-    shows() {
-      this.show = true;
-    },
-    can(permis) {
-      return Gate.can(permis);
     }
+    
   },
 
   created() {
@@ -164,15 +165,7 @@ export default {
     //   });
     // }
 
-    if (User.isLoggedIn()) {
-      axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        this.User = Gate;
-
-        this.shows();
-      });
-    }
-
+   this.auth();
     this.getServiceList();
     Bus.$on("afterServiceDeleted", () => {
       this.getServiceList();
@@ -191,9 +184,10 @@ export default {
 </script>
 
 <style scoped>
-td {
-  font-family: "Zawgyi-One";
+.table-scroll {
+  overflow-x: auto;
 }
+
 /* .table{
     width:100%;
     height: 100%;
@@ -224,7 +218,8 @@ tbody tr {
 }
 
 td {
-  padding: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
   background: #fff;
   border-bottom: 1px solid rgba(191, 236, 197, 0.87);
 }

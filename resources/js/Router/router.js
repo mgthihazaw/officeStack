@@ -12,7 +12,7 @@ import ServiceList from '../components/ServiceList';
 import CreateService from '../components/Service/CreateService';
 import EditService from '../components/Service/EditService';
 import StartServiceReport from '../components/Service/StartServiceReport';
-import FinishServiceReport from '../components/Service/FinishServiceReport';
+
 import Login from '../components/Login';
 import NotFound404 from '../components/errors/NotFound404';
 import Profile from '../components/Profile';
@@ -23,7 +23,7 @@ import Attribute from '../components/Items/Attribute';
 
 import Logout from '../components/Logout';
 
-import Table from '../components/Table/Table';
+
 
 const routes = [
   {
@@ -112,12 +112,7 @@ const routes = [
       requiresAuth: true,
     }
   },
-  {
-    path: '/fprint',
-    name: 'fprint',
-    component: FinishServiceReport,
-
-  },
+ 
   {
     path: '/profile',
     component: Profile,

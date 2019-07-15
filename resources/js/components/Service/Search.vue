@@ -288,7 +288,8 @@ tbody tr {
 }
 
 td {
-  padding: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
   background: #fff;
   border-bottom: 1px solid rgb(140, 177, 226);
 }

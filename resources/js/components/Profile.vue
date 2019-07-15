@@ -1,6 +1,6 @@
 <template>
   <div class="col-md-12 row justify-content-center">
-    <div class="col-md-10">
+    <div class="col-md-10 col-sm-12">
       <div class="card">
         <div class="card-header p-2">
           <ul class="nav nav-pills">
@@ -16,15 +16,13 @@
         <div class="card-body">
           <div class="tab-content">
             <div class="active tab-pane" id="account">
-              <div class="col-md-12 pt-5 animated zoomIn">
-                <div class="card">
-                  <div class="card-header">
-                    <h3>Profile</h3>
+              <div class="col-md-12 pt-2 animated zoomIn">
+                <div >
+                  <div class="pb-3">
+                    <h3 class="text-info">Change  Password</h3>
                   </div>
-                  <div class="card-body box-profile">
-                    <div class="text-center">
-                      <h5>Change For Your Account</h5>
-                    </div>
+                  <div class=" box-profile">
+                    
 
                     <form @submit.prevent="changeAccount">
                      
@@ -87,15 +85,13 @@
             </div>
             <!-- /.tab-pane -->
             <div class="tab-pane" id="secret">
-              <div class="col-md-12 pt-5 animated zoomIn">
-                <div class="card">
-                  <div class="card-header">
-                    <h3>Permission Secret Number</h3>
+              <div class="col-md-12 pt-2 animated zoomIn">
+                <div>
+                  <div class="pb-3">
+                    <h3 class="text-info">Change Secret Code</h3>
                   </div>
-                  <div class="card-body box-profile">
-                    <div class="text-center">
-                      <h5>Change For Your Secret Number</h5>
-                    </div>
+                  <div class="box-profile">
+                    
 
                     <form @submit.prevent="changeSecret">
 

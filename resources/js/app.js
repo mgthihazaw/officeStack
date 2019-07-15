@@ -32,6 +32,8 @@ Vue.component('multiselect', Multiselect)
 
 window.Bus = new Vue();
 
+import Auth from './Helpers/Auth';
+Vue.mixin(Auth);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -67,17 +69,17 @@ axios.interceptors.response.use(function (response) {
 window.User = new User()
 window.Gate = new Gate()
 
-if (window.User.isLoggedIn()) {
-	axios.post('/api/auth/me')
-		.then(response => {
-			// console.log(response.data.user.roles,response.data.user.permissions)
-			window.Gate.setUser(response.data.user.roles,response.data.user.permissions);
-			//   console.log(Gate.can('service-list'))
-		})
-		.catch(err=>{
-			console.log(err)
-		})
-}
+// if (window.User.isLoggedIn()) {
+// 	axios.post('/api/auth/me')
+// 		.then(response => {
+// 			// console.log(response.data.user.roles,response.data.user.permissions)
+// 			window.Gate.setUser(response.data.user.roles,response.data.user.permissions);
+// 			//   console.log(Gate.can('service-list'))
+// 		})
+// 		.catch(err=>{
+// 			console.log(err)
+// 		})
+// }
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 

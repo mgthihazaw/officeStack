@@ -1,5 +1,7 @@
 <template>
-  <div class="row">
+<div  v-if="show">
+ <unauthorized v-if="!can('item-create')"></unauthorized>
+  <div class="row" v-else>
     <div class="mb-2 col-md-12 row">
       <div class="col-md-5">
         <button class="btn btn-outline-success btn-lg" @click.prevent="createAttribute">
@@ -98,10 +100,15 @@
     </div>
     <!------------------------MODAL DIALOG------------------------>
   </div>
+  </div>
 </template>
 
 <script>
+import Unauthorized403 from "../errors/Unauthorized403";
 export default {
+  components: {
+    Unauthorized: Unauthorized403
+  },
   data() {
     return {
       paginationData: {},
@@ -242,6 +249,7 @@ export default {
     }
   },
   created() {
+    this.auth()
     this.getAttribute();
     this.getItemType();
     Bus.$on("afterAttributeChange", () => {
@@ -276,7 +284,8 @@ tbody tr {
 }
 
 td {
-  padding: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
   background: #fff;
   border-bottom: 1px solid rgba(191, 236, 197, 0.87);
 }

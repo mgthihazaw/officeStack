@@ -1,5 +1,7 @@
 <template>
-  <div class="row">
+<div v-if="show">
+  <unauthorized v-if="!can('item-create')"></unauthorized>
+  <div class="row" v-else>
     <div class="mb-2 col-md-12 row">
       <div class="col-md-5">
         <button class="btn btn-outline-success btn-lg" @click.prevent="createType">
@@ -74,10 +76,15 @@
     </div>
     <!------------------------MODAL DIALOG------------------------>
   </div>
+  </div>
 </template>
 
 <script>
+import Unauthorized403 from "../errors/Unauthorized403";
 export default {
+  components: {
+    Unauthorized: Unauthorized403
+  },
   data() {
     return {
       edit: false,
@@ -202,6 +209,7 @@ export default {
     }
   },
   created() {
+    this.auth();
     this.getItemTypes();
     Bus.$on("afterTypeCreated", () => {
       this.getItemTypes();
@@ -225,7 +233,7 @@ export default {
 .table {
   width: 100%;
   height: 100%;
-  font-family: "Poppins", sans-serif !important;
+  
   font-size: 15px;
 
   line-height: 1.2;
@@ -250,7 +258,8 @@ tbody tr {
 }
 
 td {
-  padding: 1em;
+ padding-top: 1em;
+  padding-bottom: 1em;
   background: #fff;
   border-bottom: 1px solid rgba(191, 236, 197, 0.87);
 }

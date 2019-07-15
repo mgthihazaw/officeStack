@@ -18,7 +18,7 @@
                   <h6 class="text-dark">Invoice ID</h6>
                 </div>
                 <div class="col-8">
-                  <p class="text-dark">Mrs-{{service.id}}</p>
+                  <p class="text-dark">Mrs-{{service.invoice_id}}</p>
                 </div>
               </div>
 
@@ -61,7 +61,7 @@
                       <h6 class="text-dark">Customer Address</h6>
                     </div>
                     <div class="col-8">
-                      <p class="text-dark">{{ service.township}}</p>
+                      <p class="text-dark">{{ service.customer_address}}</p>
                     </div>
                   </div>
                 </div>

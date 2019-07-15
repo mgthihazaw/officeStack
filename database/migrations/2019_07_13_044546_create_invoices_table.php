@@ -20,6 +20,7 @@ class CreateInvoicesTable extends Migration
             $table->integer('invoiceable_id')->unsigned();
             $table->string('invoiceable_type');
             $table->date('opened_date');
+            $table->date('closed_date');
         });
     }
 
@@ -30,9 +31,7 @@ class CreateInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::table('invoices', function(Blueprint $table){
-            $table->dropForeign(['service_id']);
-        });
+        
         Schema::dropIfExists('invoices');
     }
 }

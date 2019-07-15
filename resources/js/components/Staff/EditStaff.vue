@@ -158,8 +158,7 @@ export default {
   },
   data() {
     return {
-      show: false,
-      authorized: false,
+      
       errs: [],
       staff: {},
       state: "",
@@ -314,13 +313,6 @@ export default {
       };
       this.townships.push(tag);
       this.form.township = tag;
-    },
-
-    shows() {
-      this.show = true;
-    },
-    can(permis) {
-      return Gate.can(permis);
     }
   },
 
@@ -338,6 +330,7 @@ export default {
   },
 
   created() {
+    thia.auth();
     this.loadStates();
     this.loadBusinesses();
     // this.loadDepartments();
@@ -373,14 +366,6 @@ export default {
       .catch(error => {
         console.log(error);
       });
-
-    if (User.isLoggedIn()) {
-      axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.user.roles, response.data.user.permissions);
-
-        this.shows();
-      });
-    }
   }
 };
 </script>

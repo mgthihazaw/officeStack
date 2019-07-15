@@ -7,7 +7,7 @@
         <div>
           <div class="row pageHeader">
             <div class="mt-3 col-6">
-              <img :src="'/images/logo/1.png'" alt="microstack" width="300px" />
+              <img :src="'/images/logo/1.png'" alt="microstack" width="200px" />
             </div>
             <div class="col-6 pt-2">
               <div class="row">
@@ -15,7 +15,7 @@
                   <h6 class="text-dark">Invoice ID</h6>
                 </div>
                 <div class="col-8">
-                  <p class="text-dark">Mrs-{{service.id}}</p>
+                  <p class="text-dark">Mrs-{{service.invoice_id}}</p>
                 </div>
               </div>
 
@@ -132,13 +132,13 @@
                     <table class="table table-hover">
                       <tbody>
                         <tr class="heading" v-if="serviceItems.length>0">
-                          <th style="width: 100px">No.</th>
+                          <th style="width: 30px">No.</th>
                           <th>Name</th>
 
-                          <th>Quantity</th>
+                          <th >Quantity</th>
                           <th>Unit Price</th>
                           <th>Amount</th>
-                          <th style="width: 100px"></th>
+                          <th style="width: 20px"></th>
                         </tr>
 
                         <tr

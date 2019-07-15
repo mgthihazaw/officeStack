@@ -304,19 +304,10 @@ export default {
       };
       this.townships.push(tag);
       this.form.township = tag;
-    },
-    can(permis) {
-      return Gate.can(permis);
     }
   },
   created() {
-    if (User.isLoggedIn()) {
-      axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.user.roles, response.data.user.permissions);
-
-        this.shows();
-      });
-    }
+    this.auth();
     this.loadStates();
     this.loadData();
     this.loadBusinesses();

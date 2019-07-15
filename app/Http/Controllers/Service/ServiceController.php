@@ -60,11 +60,18 @@ class ServiceController extends Controller
                 'remark' => 'required|string',
             ]);
 
-            Service::create([
+            $service = Service::create([
                 'customer_id' => $customer_id,
                 'staff_id' => $staff_id,
                 'description' => $description,
                 'remark' => $remark,
+            ]);
+            $service->invoice()->create([
+                'total_price' => $total_price,
+                'invoiceable_id' => $service->id,
+                'invoiceable_type' => get_class($service),
+                'opened_date' => now()->format('Y-m-d'),
+                'closed_date' => now()->format('Y-m-d')
             ]);
         }else{
             
@@ -78,7 +85,7 @@ class ServiceController extends Controller
                 'remark' => 'required|string',
             ]);
 
-            Service::create([
+            $service = Service::create([
                 'business_id' => auth()->user()->business->id,
                 'customer_name' => $customer_name,
                 'customer_phone' => $customer_phone,
@@ -87,6 +94,13 @@ class ServiceController extends Controller
                 'received_description' => $description,
                 'received_remark' => $remark,
                 'received_date' => now(),
+            ]);
+            $service->invoice()->create([
+                'total_price' => 0,
+                'invoiceable_id' => $service->id,
+                'invoiceable_type' => get_class($service),
+                'opened_date' => now()->format('Y-m-d'),
+                'closed_date' => now()->format('Y-m-d')
             ]);
         }
 

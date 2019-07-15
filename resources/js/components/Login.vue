@@ -108,14 +108,14 @@ button.submit {
   border: 1px solid #31ccaa;
   color: white;
   padding: 8px 0px;
-  font-family: "Arial", sans-serif;
+  
   border-radius: 5px !important;
 }
 button.submit:hover {
   color: white;
 }
 input {
-  font-family: "Arial", sans-serif;
+  
   font-weight: 400;
 }
 input[type="text"]:focus,

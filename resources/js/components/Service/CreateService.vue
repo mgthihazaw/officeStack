@@ -143,8 +143,7 @@ export default {
   },
   data() {
     return {
-      show: false,
-      authorized: false,
+      
       disable: false,
       receptionists: [],
       customers: [],
@@ -229,12 +228,6 @@ export default {
       } else {
         this.disable = false;
       }
-    },
-    shows() {
-      this.show = true;
-    },
-    can(permis) {
-      return Gate.can(permis);
     }
   },
 
@@ -251,12 +244,7 @@ export default {
     //     }
     //   });
     // }
-    if (User.isLoggedIn()) {
-      axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.user.roles,response.data.user.permissions);
-       this.shows();
-      });
-    }
+    this.auth();
 
     this.loadReceptionists();
     this.loadCustomers();
@@ -265,9 +253,7 @@ export default {
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 <style scopde>
-* {
-  font-family: "Zawgyi-One";
-}
+
 @media (max-width: 768px) {
   .col-md-4 {
     margin-bottom: 15px;

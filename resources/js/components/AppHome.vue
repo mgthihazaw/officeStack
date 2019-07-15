@@ -56,7 +56,7 @@
             </div>
 
             <div class="info">
-              <a class="d-block text-white">{{ username | username }}</a>
+              <a class="d-block text-white">{{ username | username }} </a>
             </div>
           </div>
 
@@ -150,7 +150,7 @@
 
         <!-- Main content -->
         <div class="content pt-4">
-          <div class="container-fluid">
+          <div class="container-fluid py-2">
             <router-view></router-view>
           </div>
           <!-- /.container-fluid -->
@@ -160,7 +160,7 @@
       <!-- /.content-wrapper -->
 
       <!-- Main Footer -->
-      <footer class="main-footer bg-white">
+      <footer class="main-footer bg-white ">
         <div class="text-center">
           <strong>Copyright &copy;Microstack Technology Co.ltd</strong>
         </div>
@@ -180,7 +180,7 @@ export default {
   },
   data() {
     return {
-      show: false,
+      
       User: {
         sale: "",
         service: "",
@@ -201,24 +201,22 @@ export default {
     StaffShow() {
       return this.User.develop ? true : false;
     },
-    can(permission) {
-      
-      return Gate.can(permission) ;
-    }
+    
   },
   created() {
+    this.auth()
     this.username = User.getUser();
     this.isLoggedIn = User.isLoggedIn();
 
-    if (this.isLoggedIn) {
-      axios.post("/api/auth/me").then(response => {
-        Gate.setUser(response.data.user.roles, response.data.user.permissions);
-        this.show = true;
-        this.User.sale = Gate.isSaleperson();
-        this.User.service = Gate.isServiceEngineer();
-        this.User.develop = Gate.isDeveloper();
-      });
-    }
+    // if (this.isLoggedIn) {
+    //   axios.post("/api/auth/me").then(response => {
+    //     Gate.setUser(response.data.user.roles, response.data.user.permissions);
+    //     this.show = true;
+    //     this.User.sale = Gate.isSaleperson();
+    //     this.User.service = Gate.isServiceEngineer();
+    //     this.User.develop = Gate.isDeveloper();
+    //   });
+    // }
 
     Bus.$emit("getrole");
     Bus.$on("logout", function() {

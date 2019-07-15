@@ -42,12 +42,7 @@ class ServiceItemController extends Controller
             ]);
         }
 
-        $service->invoice()->create([
-            'total_price' => $total_price,
-            'invoiceable_id' => $service->id,
-            'invoiceable_type' => get_class($service),
-            'opened_date' => now()->format('Y-m-d')
-        ]);
+        
 
         return response()->json($service, 201);
     }

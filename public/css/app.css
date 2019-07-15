@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons);@import url(https://fonts.googleapis.com/css?family=Miriam+Libre);@import url(/fonts/Zawgyi-One.ttf);/*!
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900|Material+Icons);@import url(https://fonts.googleapis.com/css?family=Miriam+Libre);@import url(/fonts/Zawgyi-One.ttf);@import url(https://fonts.googleapis.com/earlyaccess/notosanskannada.css);@import url(https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap);/*!
  *   AdminLTE v3.0.0-alpha
  *   Author: Abdullah Almsaeed
  *	 Website: AdminLTE.io <http://adminlte.io>
@@ -25823,10 +25823,11 @@ a.text-dark:focus {
 }
 
 .mirim_font {
-  font-family: 'Miriam Libre', sans-serif;
+  font-family: "Noto Sans Kannada" "Miriam Libre", sans-serif;
 }
 
 * {
-  font-family: 'Zawgyi';
+  font-family: 'Noto Sans Kannada','Poppins', sans-serif;
+  font-style: "regular 400";
 }
 

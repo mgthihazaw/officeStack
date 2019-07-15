@@ -16,7 +16,7 @@ class RoleSeeder extends Seeder
         // Admin Role
         $role = ['name' => 'admin', 'display_name' => 'Admin', 'description' => 'Full Permission'];
         $role = Role::create($role);
-        $permission = Permission::get();
+        $permission = Permission::where('name', 'not like','%service%')->get();
         foreach ($permission as $key => $value) {
             $role->attachPermission($value);
         }

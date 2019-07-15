@@ -8,7 +8,7 @@ class Invoice extends Model
 {
 	public $timestamps = false;
 	
-	protected $fillable = ['total_price','invoiceable_id','invoiceable_type','opened_date'];
+	protected $fillable = ['total_price','invoiceable_id','invoiceable_type','opened_date','closed_date'];
 
 	public function invoiceable(){
 		return $this->morphTo();
