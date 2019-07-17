@@ -4,15 +4,16 @@
     <div v-else>
       <div class="row">
         <div class="col-12 table-scroll">
-          
           <div class="mb-2 row">
             <div class="col-md-5" v-if="can('service-create')">
               <router-link
                 class="btn btn-outline-success text-success"
                 to="/services/create"
                 v-if="can('service-create')"
-              >Add New
-              <i class="fa fa-plus"></i> </router-link>
+              >
+                Add New
+                <i class="fa fa-plus"></i>
+              </router-link>
             </div>
             <h3 class="px-4 pt-2 col-md-4 text-left">Service List</h3>
           </div>
@@ -98,15 +99,13 @@ export default {
   },
   data() {
     return {
-      
       authorized: false,
       User: "",
       service_list: [],
-      paginationData : {}
+      paginationData: {}
     };
   },
   methods: {
-    
     getServiceList(page = 1) {
       axios
         .get("/api/services?page=" + page)
@@ -144,28 +143,10 @@ export default {
           console.log(error);
         });
     }
-    
   },
 
   created() {
-    // if (User.isLoggedIn()) {
-    //   axios.post("/api/auth/me").then(response => {
-    //     Gate.setUser(response.data.user.roles, response.data.user.permissions);
-    //     this.User = Gate;
-
-    //     if (this.User.isSaleperson() || this.User.isServiceEngineer()) {
-    //       // console.log("Permis");
-    //       this.shows();
-    //       this.authorized = true;
-    //     } else {
-    //       this.shows();
-    //       this.authorized = false;
-    //       // console.log("NoPermis");
-    //     }
-    //   });
-    // }
-
-   this.auth();
+    this.auth();
     this.getServiceList();
     Bus.$on("afterServiceDeleted", () => {
       this.getServiceList();

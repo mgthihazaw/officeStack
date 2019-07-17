@@ -300,10 +300,10 @@ export default {
         data.push(newData) 
       })
 
-      console.log('Before send',data)
+      
       axios.post(`/api/services/${this.service.id}/items`,data)
       .then( response => {
-        // console.log(response)
+        
         
       })
       .catch(err => {
@@ -349,7 +349,7 @@ export default {
       handler: function(after, before) {
         before.forEach(data => {
           data.amount = data.quantity * data.price;
-          // console.log(data.quantity, data.price);
+          
         });
       },
       deep: true

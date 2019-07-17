@@ -75,7 +75,7 @@
                         <th style="width: 100px"></th>
                       </tr>
 
-                      <tr v-for="(item,index) in items" :key="index" class="animated fadeIn" >
+                      <tr v-for="(item,index) in items" :key="index" class="animated fadeIn">
                         <td>{{ index+1 }}</td>
                         <td class="ml-2">
                           {{ item.brand.name }}
@@ -90,7 +90,11 @@
                         <td class="ml-2">{{ item. price}}</td>
 
                         <td>
-                          <button type="button" class="btn btn-primary btn-circle" @click="addItemForService(item)">
+                          <button
+                            type="button"
+                            class="btn btn-primary btn-circle"
+                            @click="addItemForService(item)"
+                          >
                             <i class="fas fa-plus-circle fa-2x"></i>
                           </button>
                         </td>
@@ -101,7 +105,7 @@
                 </div>
               </div>
               <div v-else class="text-center">
-                  <h1 class="text-info">This Item is Not Found</h1>
+                <h1 class="text-info">This Item is Not Found</h1>
               </div>
             </div>
           </div>
@@ -116,7 +120,7 @@ export default {
   data() {
     return {
       items: "",
-      paginationData : {},
+      paginationData: {},
       itemTypes: [],
       itemType: "",
       type: [],
@@ -137,7 +141,6 @@ export default {
         .get("/api/items")
         .then(res => {
           this.items = res.data.data;
-          
         })
         .catch(err => {
           console.log(err);
@@ -163,34 +166,28 @@ export default {
           console.log(err);
         });
     },
-    
+
     loadAttributeGroup(type) {
-      // console.log("getAttr",type)
       if (type) {
         axios
           .get(`/api/itemtypes/${type.id}/attributegroups`)
           .then(res => {
-            
             this.attributeGroups = res.data.data;
-            
           })
           .catch(err => {
             console.log(err);
           });
-         axios
-        .get(`/api/itemtypes/${type.id}/brands`)
-        .then(res => {
-          // console.log(res.data)
-          this.brands = res.data.data;
-        })
-        .catch(err => {
-          console.log(err);
-        });
+        axios
+          .get(`/api/itemtypes/${type.id}/brands`)
+          .then(res => {
+            this.brands = res.data.data;
+          })
+          .catch(err => {
+            console.log(err);
+          });
       }
     },
     loadItem(data) {
-      // console.log("page"+page)
-      // console.log("data"+data)
       if (this.itemType) {
         this.searchForm.item_type = this.itemType.id;
       }
@@ -202,16 +199,16 @@ export default {
           this.searchForm.attributes[key] = `${attr.id}`;
         });
       }
-      // console.log(this.searchForm);
+
       axios.get("/api/search/items", { params: this.searchForm }).then(res => {
-        this.paginationData = res.data
-        // console.log(res.data)
+        this.paginationData = res.data;
+
         this.items = res.data.data;
         this.clearForm();
       });
     },
-    getResults(page = 1){
-        if (this.itemType) {
+    getResults(page = 1) {
+      if (this.itemType) {
         this.searchForm.item_type = this.itemType.id;
       }
       if (this.brand) {
@@ -222,21 +219,20 @@ export default {
           this.searchForm.attributes[key] = `${attr.id}`;
         });
       }
-      // console.log(this.searchForm);
-      axios.get("/api/search/items?page="+ page, { params: this.searchForm }).then(res => {
-        this.paginationData = res.data
-        // console.log(res.data)
-        this.items = res.data.data;
-        this.clearForm();
-      });
+
+      axios
+        .get("/api/search/items?page=" + page, { params: this.searchForm })
+        .then(res => {
+          this.paginationData = res.data;
+
+          this.items = res.data.data;
+          this.clearForm();
+        });
     },
-    addItemForService(item){
-      // item.quantity = 1
-      // item.amount = item.price
-      //  console.log(item)
-        Bus.$emit('addItemForService',item)
+    addItemForService(item) {
+      Bus.$emit("addItemForService", item);
     },
-    
+
     clearForm() {
       (this.searchForm.item_type = ""), (this.searchForm.brand = "");
       this.searchForm.attributes = [];

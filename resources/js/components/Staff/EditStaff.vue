@@ -330,7 +330,7 @@ export default {
   },
 
   created() {
-    thia.auth();
+    this.auth();
     this.loadStates();
     this.loadBusinesses();
     // this.loadDepartments();
@@ -340,7 +340,7 @@ export default {
       .get(`/api/staffs/${id}`)
       .then(response => {
         this.staff = response.data.data;
-        console.log(this.staff);
+        // console.log(this.staff);
         this.form.name = this.staff.name;
         this.form.phone = this.staff.phone;
         this.form.state = this.staff.state;

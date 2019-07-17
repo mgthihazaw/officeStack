@@ -441,7 +441,7 @@ export default {
         });
     },
     loadAttributeGroup(type) {
-      // console.log("getAttr",type)
+      
       if (type) {
         axios
           .get(`/api/itemtypes/${type.id}/attributegroups`)
@@ -478,7 +478,7 @@ export default {
         .get("/api/items/" + id)
         .then(res => {
           this.form = res.data.data;
-          // console.log(res.data.data);
+          
           this.brand = this.form.brand;
           this.itemType = this.form.item_type;
           const tempAttributes = res.data.data.attributes;
@@ -542,12 +542,12 @@ export default {
           value[Object.keys(value)] != "" && value[Object.keys(value)] != null
         );
       });
-      // console.log(this.form.attributes)
+      
 
       axios
         .post("/api/items", this.form)
         .then(res => {
-          console.log(res);
+         
 
           this.back();
 
@@ -558,7 +558,7 @@ export default {
           Bus.$emit("afterItemChange");
         })
         .catch(err => {
-          // console.log(err.response.data);
+          
 
           Toast.fire({
             type: "error",
@@ -622,12 +622,12 @@ export default {
           value[Object.keys(value)] != "" && value[Object.keys(value)] != null
         );
       });
-      // console.log(this.form.attributes)
+      
 
       axios
         .put("/api/items/" + id, this.form)
         .then(res => {
-          // console.log(res);
+         
 
           this.back();
 
@@ -697,7 +697,7 @@ export default {
         name: newTag,
         id: attr_id
       };
-      //  console.log(attribute)
+      
       attributes.push(tag);
       this.attributes[attribute] = tag;
     }

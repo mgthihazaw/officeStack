@@ -165,7 +165,7 @@ export default {
         .get("/api/receptionists")
         .then(response => {
           this.receptionists = response.data;
-          console.log( response.data)
+          
         })
         .catch(error => {
           console.log(error.response);
@@ -175,7 +175,7 @@ export default {
       axios
         .get("/api/customers")
         .then(response => {
-          //console.log(response)
+          
           this.customers = response.data;
         })
         .catch(error => {

@@ -142,7 +142,7 @@ export default {
       axios
         .post("/api/attributegroups", this.form)
         .then(res => {
-          console.log(res);
+          
           this.cancel();
           Toast.fire({
             type: "success",

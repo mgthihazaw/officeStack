@@ -7,8 +7,6 @@ export default {
         }
     },
     methods: {
-
-        
         can(permis) {
             return Gate.can(permis);
         },
