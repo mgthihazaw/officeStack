@@ -8,23 +8,23 @@
           
           
           <div class="row pageHeader ">
-            <div class="mt-3 col-6">
+            <div class="mt-1 col-6">
               <img :src="'/images/logo/1.png'" class="logo" alt="microstack" width="300px">
             </div>
             <div class="col-6 pt-2">
               
               <div class="row">
                 <div class="col-3">
-                  <h6 class="text-dark">Invoice ID</h6>
+                  <h6 class="text-dark">Invoice #</h6>
                 </div>
                 <div class="col-9">
-                  <p class="text-dark">Mrs-{{service.invoice_id}}</p>
+                  <p class="text-dark">MI-{{service.invoice_id}}</p>
                 </div>
               </div>
 
               <div class="row">
                 <div class="col-3">
-                  <h6 class="text-dark">Invoice Date</h6>
+                  <h6 class="text-dark">Date</h6>
                 </div>
                 <div class="col-9">
                   <p class="text-dark">{{ service.created_at | myDate}}</p>

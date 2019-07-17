@@ -6,7 +6,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" data-widget="pushmenu">
+            <a class="nav-link pushmenu" data-widget="pushmenu">
               <i class="fa fa-bars black"></i>
             </a>
           </li>
@@ -237,6 +237,12 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Roboto|Ubuntu");
 
+.pushmenu:hover{
+  cursor: pointer;
+}
+.has-treeview{
+  cursor: pointer;
+}
 input {
   font-weight: 700 !important;
 }
