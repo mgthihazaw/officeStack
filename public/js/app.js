@@ -76336,13 +76336,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -77142,13 +77135,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-6 pt-2" }, [
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-4" }, [
+                          _c("div", { staticClass: "col-3" }, [
                             _c("h6", { staticClass: "text-dark" }, [
-                              _vm._v("Invoice ID")
+                              _vm._v("Invoice No")
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
+                          _c("div", { staticClass: "col-9" }, [
                             _c("p", { staticClass: "text-dark" }, [
                               _vm._v("Mrs-" + _vm._s(_vm.service.invoice_id))
                             ])
@@ -77156,13 +77149,13 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-4" }, [
+                          _c("div", { staticClass: "col-3" }, [
                             _c("h6", { staticClass: "text-dark" }, [
-                              _vm._v("Invoice Date")
+                              _vm._v("Date")
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
+                          _c("div", { staticClass: "col-9" }, [
                             _c("p", { staticClass: "text-dark" }, [
                               _vm._v(
                                 _vm._s(_vm._f("myDate")(_vm.service.created_at))
@@ -77225,48 +77218,42 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-6" }, [
-                            _c("h5", { staticClass: "pb-2" }, [
-                              _vm._v("Company Information")
-                            ]),
-                            _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-4" }, [
+                              _c("div", { staticClass: "col-3" }, [
                                 _c("h6", { staticClass: "text-dark" }, [
-                                  _vm._v("Company Name")
+                                  _vm._v("Microstack Mandalay")
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "col-8" }, [
+                              _c("div", { staticClass: "col-9" }, [
                                 _c("p", { staticClass: "text-dark" }, [
-                                  _vm._v("Microstack")
+                                  _vm._v(
+                                    "၆၃လမ္း၊၆၄လမး္ၾကား ပိေတာက္လမ္း၊ခ်မ္းျမသာစည္ျမိဳ႕နယ္။"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "text-dark" }, [
+                                  _vm._v("၀၉-၈၉၈၉၈၉၈၉၈၉")
                                 ])
                               ])
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-4" }, [
+                              _c("div", { staticClass: "col-3" }, [
                                 _c("h6", { staticClass: "text-dark" }, [
-                                  _vm._v("Company Street")
+                                  _vm._v("Microstack Yangon")
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "col-8" }, [
+                              _c("div", { staticClass: "col-9" }, [
                                 _c("p", { staticClass: "text-dark" }, [
-                                  _vm._v("63*64,Kantkaw Street")
-                                ])
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-4" }, [
-                                _c("h6", { staticClass: "text-dark" }, [
-                                  _vm._v("Company Email")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-8" }, [
+                                  _vm._v(
+                                    "အမွတ္ ၂၃၊နတ္ေခ်ာင္လမ္း၊တာေမြျမိဳ႕နယ္။"
+                                  )
+                                ]),
+                                _vm._v(" "),
                                 _c("p", { staticClass: "text-dark" }, [
-                                  _vm._v("microstack@gmail.com")
+                                  _vm._v("၀၉-၅၅၇၇၈၈၃၇၃")
                                 ])
                               ])
                             ])
@@ -78136,8 +78123,9 @@ var render = function() {
                                           : "badge-danger"
                                       ],
                                       staticStyle: {
-                                        "{ padding-top": "5px",
-                                        "padding-bottom": "5px"
+                                        "padding-top": "8px",
+                                        "padding-bottom": "5px",
+                                        "font-size": "10px"
                                       }
                                     },
                                     [
@@ -80870,15 +80858,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -80958,6 +80937,7 @@ var render = function() {
                     _c("div", { staticClass: "row pageHeader " }, [
                       _c("div", { staticClass: "mt-3 col-6" }, [
                         _c("img", {
+                          staticClass: "logo",
                           attrs: {
                             src: "/images/logo/1.png",
                             alt: "microstack",
@@ -80968,13 +80948,13 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "col-6 pt-2" }, [
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-4" }, [
+                          _c("div", { staticClass: "col-3" }, [
                             _c("h6", { staticClass: "text-dark" }, [
                               _vm._v("Invoice ID")
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
+                          _c("div", { staticClass: "col-9" }, [
                             _c("p", { staticClass: "text-dark" }, [
                               _vm._v("Mrs-" + _vm._s(_vm.service.invoice_id))
                             ])
@@ -80982,13 +80962,13 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "row" }, [
-                          _c("div", { staticClass: "col-4" }, [
+                          _c("div", { staticClass: "col-3" }, [
                             _c("h6", { staticClass: "text-dark" }, [
                               _vm._v("Invoice Date")
                             ])
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-8" }, [
+                          _c("div", { staticClass: "col-9" }, [
                             _c("p", { staticClass: "text-dark" }, [
                               _vm._v(
                                 _vm._s(_vm._f("myDate")(_vm.service.created_at))
@@ -81003,10 +80983,6 @@ var render = function() {
                       _c("div", [
                         _c("div", { staticClass: "row  customerParent " }, [
                           _c("div", { staticClass: "col-6 " }, [
-                            _c("h5", { staticClass: "pb-2" }, [
-                              _vm._v("Customer Information")
-                            ]),
-                            _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-4" }, [
                                 _c("h6", { staticClass: "text-dark" }, [
@@ -81051,48 +81027,42 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("div", { staticClass: "col-6" }, [
-                            _c("h5", { staticClass: "pb-2" }, [
-                              _vm._v("Company Information")
-                            ]),
-                            _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-4" }, [
+                              _c("div", { staticClass: "col-3" }, [
                                 _c("h6", { staticClass: "text-dark" }, [
-                                  _vm._v("Company Name")
+                                  _vm._v("Microstack Mandalay")
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "col-8" }, [
+                              _c("div", { staticClass: "col-9" }, [
                                 _c("p", { staticClass: "text-dark" }, [
-                                  _vm._v("Microstack")
+                                  _vm._v(
+                                    "၆၃လမ္း၊၆၄လမး္ၾကား ပိေတာက္လမ္း၊ခ်မ္းျမသာစည္ျမိဳ႕နယ္။"
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("p", { staticClass: "text-dark" }, [
+                                  _vm._v("၀၉-၈၉၈၉၈၉၈၉၈၉")
                                 ])
                               ])
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-4" }, [
+                              _c("div", { staticClass: "col-3" }, [
                                 _c("h6", { staticClass: "text-dark" }, [
-                                  _vm._v("Company Street")
+                                  _vm._v("Microstack Yangon")
                                 ])
                               ]),
                               _vm._v(" "),
-                              _c("div", { staticClass: "col-8" }, [
+                              _c("div", { staticClass: "col-9" }, [
                                 _c("p", { staticClass: "text-dark" }, [
-                                  _vm._v("63*64,Kantkaw Street")
-                                ])
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "row" }, [
-                              _c("div", { staticClass: "col-4" }, [
-                                _c("h6", { staticClass: "text-dark" }, [
-                                  _vm._v("Company Email")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "col-8" }, [
+                                  _vm._v(
+                                    "အမွတ္ ၂၃၊နတ္ေခ်ာင္လမ္း၊တာေမြျမိဳ႕နယ္။"
+                                  )
+                                ]),
+                                _vm._v(" "),
                                 _c("p", { staticClass: "text-dark" }, [
-                                  _vm._v("microstack@gmail.com")
+                                  _vm._v("၀၉-၅၅၇၇၈၈၃၇၃")
                                 ])
                               ])
                             ])
@@ -81100,10 +81070,6 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "staff " }, [
-                          _c("h4", { staticClass: "pb-2" }, [
-                            _vm._v("Staff Information")
-                          ]),
-                          _vm._v(" "),
                           _c("div", [
                             _c("div", { staticClass: "row" }, [
                               _c("div", { staticClass: "col-2" }, [

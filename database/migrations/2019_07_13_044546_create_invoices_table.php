@@ -20,7 +20,7 @@ class CreateInvoicesTable extends Migration
             $table->integer('invoiceable_id')->unsigned();
             $table->string('invoiceable_type');
             $table->date('opened_date');
-            $table->date('closed_date');
+            $table->date('closed_date')->nullable();
         });
     }
 

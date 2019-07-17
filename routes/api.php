@@ -45,11 +45,11 @@ Route::group(['middleware' => 'jwt'], function(){
 
 	Route::apiResource('customers', 'CustomerController');
 
-	Route::post('/service-item', 'ServiceItemController@store');
-    Route::delete('/service-item/{id}', 'ServiceItemController@destroy');
+	Route::post('/service-item', 'Service\ServiceItemController@store');
+    Route::delete('/service-item/{id}', 'Service\ServiceItemController@destroy');
      
 	Route::get('/states/{state}/townships', 'StateController@getTownships');
-	Route::get('/townships/{township}/blocks', 'AddressController@getBlocks');
+
 	Route::get('/departments/{department}/roles', 'DepartmentController@getRoles');
 
 	Route::apiResource('brands', 'Brand\BrandController');
@@ -67,4 +67,6 @@ Route::group(['middleware' => 'jwt'], function(){
 
 	Route::apiResource('items', 'Item\ItemController');
 	Route::get('search/items', 'Item\ItemController@search');
+
+	Route::get('/reports/services', 'Report\ServiceReportController@index')->name('reports.service');
 });

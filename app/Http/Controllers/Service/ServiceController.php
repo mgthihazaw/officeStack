@@ -22,7 +22,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        return ServiceResource::collection(Service::paginate(10));
+        return ServiceResource::collection(Service::orderBy('id','DESC')->paginate(10));
     }
 
     /**
@@ -71,7 +71,6 @@ class ServiceController extends Controller
                 'invoiceable_id' => $service->id,
                 'invoiceable_type' => get_class($service),
                 'opened_date' => now()->format('Y-m-d'),
-                'closed_date' => now()->format('Y-m-d')
             ]);
         }else{
             
@@ -100,7 +99,6 @@ class ServiceController extends Controller
                 'invoiceable_id' => $service->id,
                 'invoiceable_type' => get_class($service),
                 'opened_date' => now()->format('Y-m-d'),
-                'closed_date' => now()->format('Y-m-d')
             ]);
         }
 

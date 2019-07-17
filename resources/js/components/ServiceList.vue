@@ -46,7 +46,7 @@
                 <td>
                   <span
                     class="badge"
-                    style="{ padding-top : 5px ; padding-bottom : 5px"
+                    style="padding-top : 8px ; padding-bottom : 5px ; font-size : 10px;"
                     :class="[service.pending ? 'badge-success' : 'badge-danger']"
                   >{{ service.pending ? "Finished" : "Not Finished" }}</span>
                 </td>

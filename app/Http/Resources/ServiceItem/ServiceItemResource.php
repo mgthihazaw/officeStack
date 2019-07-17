@@ -30,7 +30,8 @@ class ServiceItemResource extends JsonResource
             'service_description' => $this->service_description,
             'service_remark' => $this->service_remark,
             'created_at' =>$this->created_at,
-            'items' => ItemResource::collection($this->items)
+            'items' => ItemResource::collection($this->items),
+            'invoice_id' => $this->invoice->id
             //'items' => $this->items
         ];
     }

@@ -30,6 +30,7 @@ class ServiceItemController extends Controller
      */
     public function store(ServiceItemStoreRequest $request, Service $service)
     {
+        
         $total_price = 0;
         $service->items()->detach();
         foreach ($request->all() as $key => $service_item) {
@@ -42,7 +43,10 @@ class ServiceItemController extends Controller
             ]);
         }
 
-        
+        $service->update(['pending' => 2]);
+
+        $service->invoice->update(['total_price' => $total_price, 'closed_date' => now()->format('Y-m-d')]);
+
 
         return response()->json($service, 201);
     }

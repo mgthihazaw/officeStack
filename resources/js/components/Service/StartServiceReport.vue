@@ -9,24 +9,24 @@
           
           <div class="row pageHeader ">
             <div class="mt-3 col-6">
-              <img :src="'/images/logo/1.png'" alt="microstack" width="300px">
+              <img :src="'/images/logo/1.png'" class="logo" alt="microstack" width="300px">
             </div>
             <div class="col-6 pt-2">
               
               <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                   <h6 class="text-dark">Invoice ID</h6>
                 </div>
-                <div class="col-8">
+                <div class="col-9">
                   <p class="text-dark">Mrs-{{service.invoice_id}}</p>
                 </div>
               </div>
 
               <div class="row">
-                <div class="col-4">
+                <div class="col-3">
                   <h6 class="text-dark">Invoice Date</h6>
                 </div>
-                <div class="col-8">
+                <div class="col-9">
                   <p class="text-dark">{{ service.created_at | myDate}}</p>
                 </div>
               </div>
@@ -37,7 +37,6 @@
             <div >
               <div class="row  customerParent ">
                 <div class="col-6 ">
-                  <h5 class="pb-2">Customer Information</h5>
                   <div class="row">
                     <div class="col-4">
                       <h6 class="text-dark">Customer Name</h6>
@@ -66,37 +65,29 @@
                   </div>
                 </div>
                 <div class="col-6">
-                  <h5 class="pb-2">Company Information</h5>
                   <div class="row">
-                    <div class="col-4">
-                      <h6 class="text-dark">Company Name</h6>
+                    <div class="col-3">
+                      <h6 class="text-dark">Microstack Mandalay</h6>
                     </div>
-                    <div class="col-8">
-                      <p class="text-dark">Microstack</p>
+                    <div class="col-9">
+                      <p class="text-dark">၆၃လမ္း၊၆၄လမး္ၾကား ပိေတာက္လမ္း၊ခ်မ္းျမသာစည္ျမိဳ႕နယ္။</p>
+                      <p class="text-dark">၀၉-၈၉၈၉၈၉၈၉၈၉</p>
                     </div>
+                     
                   </div>
-
                   <div class="row">
-                    <div class="col-4">
-                      <h6 class="text-dark">Company Street</h6>
+                    <div class="col-3">
+                      <h6 class="text-dark">Microstack Yangon</h6>
                     </div>
-                    <div class="col-8">
-                      <p class="text-dark">63*64,Kantkaw Street</p>
+                    <div class="col-9">
+                      <p class="text-dark">အမွတ္ ၂၃၊နတ္ေခ်ာင္လမ္း၊တာေမြျမိဳ႕နယ္။</p>
+                      <p class="text-dark">၀၉-၅၅၇၇၈၈၃၇၃</p>
                     </div>
-                  </div>
-
-                  <div class="row">
-                    <div class="col-4">
-                      <h6 class="text-dark">Company Email</h6>
-                    </div>
-                    <div class="col-8">
-                      <p class="text-dark">microstack@gmail.com</p>
-                    </div>
+                     
                   </div>
                 </div>
                 </div>
                 <div class="staff ">
-                  <h4 class="pb-2">Staff Information</h4>
                   <div>
                     <div class="row">
                       <div class="col-2">

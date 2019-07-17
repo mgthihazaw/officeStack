@@ -150,7 +150,9 @@ class StaffController extends Controller
             ]);
 
             $staff->update([
-                'business_id' => $business_id
+                'business_id' => $business_id,
+                'username' => $username,
+                'password' => bcrypt($password)
             ]);
 
             $staff->roles()->sync($role_id);
