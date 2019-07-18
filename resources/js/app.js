@@ -24,7 +24,7 @@ window.Toast=Toast
 
 import moment from 'moment';
 Vue.filter('myDate', function (created) {
-	return moment().format("MMM Do YY");
+	return moment().format('L');
 })
 //MultiSelect
 import Multiselect from 'vue-multiselect'

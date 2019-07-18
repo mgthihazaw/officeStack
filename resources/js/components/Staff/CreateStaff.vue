@@ -141,8 +141,8 @@
                 </div>
 
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" @click="close">Close</button>
-                  <button type="submit" class="btn btn-primary">Create</button>
+                  <button type="button" class="btn btn-secondary" @click="close">Back</button>
+                  <button type="submit" class="btn btn-primary">Save</button>
                 </div>
               </form>
             </div>

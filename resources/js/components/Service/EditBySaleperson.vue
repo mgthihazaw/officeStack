@@ -1,5 +1,5 @@
 <template>
-  <div class="container formcolor animated fadeInRight" v-if="!show">
+  <div class="container formcolor animated zoomIn" v-if="!show">
     <div class="row formheading">
       <div class="col-12">
         <h3 >Edit by saleperson</h3>
@@ -109,8 +109,9 @@
             >{{ error }}</div>
           </div>
           <div class="form-group text-right">
-            <button type="submit" class="btn btn-primary">Update Service</button>
-            <button class="btn btn-secondary" @click="close">Cancel</button>
+            <button class="btn btn-secondary" @click="close">Back</button>
+            <button type="submit" class="btn btn-primary">Update </button>
+            
           </div>
         </form>
       </div>

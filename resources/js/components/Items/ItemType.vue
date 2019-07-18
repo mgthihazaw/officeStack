@@ -9,7 +9,7 @@
           <i class="fa fa-plus"></i>
         </button>
       </div>
-      <h3 class="px-4 pt-2 col-md-4 text-left">ITEM TYPE TABLE</h3>
+      <h3 class="px-4 pt-2 col-md-4 text-left">ITEM TYPE TABLE </h3>
     </div>
 
     <div class="col-md-12">
@@ -188,7 +188,7 @@ export default {
           );
         });
 
-      this.edit = false;
+      
     },
 
     createType() {
@@ -200,6 +200,7 @@ export default {
         id: "",
         name: ""
       };
+      this.edit = false;
     },
     getItemTypes(page = 1) {
       axios.get("/api/itemtypes?page=" + page).then(response => {

@@ -45,10 +45,23 @@
                 <td>{{ service.received_remark | subStr }}</td>
                 <td>
                   <span
-                    class="badge"
+                    class="badge badge-danger"
                     style="padding-top : 8px ; padding-bottom : 5px ; font-size : 10px;"
-                    :class="[service.pending ? 'badge-success' : 'badge-danger']"
-                  >{{ service.pending ? "Finished" : "Not Finished" }}</span>
+                    
+                    v-if="service.pending ==0"
+                  >Not Finished</span>
+                  <span
+                    class="badge badge-success"
+                    style="padding-top : 8px ; padding-bottom : 5px ; font-size : 10px;"
+                    
+                    v-if="service.pending ==1"
+                  > Finished</span>
+                  <span
+                    class="badge badge-info px-2 text-white"
+                    style="padding-top : 8px ; padding-bottom : 5px ; font-size : 10px;"
+                    
+                    v-if="service.pending ==2"
+                  >Paid</span>
                 </td>
                 <td>
                   <button
@@ -68,7 +81,7 @@
                   <button
                     class="btn btn-primary btn-sm text-white"
                     @click="editServicebyServiceEngineer(service.id)"
-                    v-if="User.isServiceEngineer()"
+                    v-if="User.isServiceEngineer() && service.pending !=2"
                   >
                     <i class="fa fa-edit"></i>
                   </button>
@@ -76,10 +89,11 @@
                   <router-link
                     :to="'/services/'+service.id+'/show'"
                     class="btn btn-success btn-sm text-white"
-                    v-if="User.isSaleperson() && service.pending == 1"
+                    v-if="User.isSaleperson() && (service.pending == 1 || service.pending == 2) "
                   >
                     <i class="fas fa-print"></i>
                   </router-link>
+                  <p v-if="User.isServiceEngineer()  && service.pending==2 ">No Access</p>
                 </td>
               </tr>
             </tbody>
@@ -134,13 +148,31 @@ export default {
       this.$router.push("/services/edit/" + id);
     },
     deleteService(id) {
-      axios
-        .delete(`/api/services/${id}`)
-        .then(response => {
-          Bus.$emit("afterServiceDeleted");
+      
+     
+      swal
+        .fire({
+          title: "Are you sure to delete?",
+
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, delete it!"
         })
-        .catch(error => {
-          console.log(error);
+        .then(result => {
+          if (result.value) {
+            //Send Delete Request to sever
+            axios.delete(`/api/services/${id}`).then(response => {
+              Bus.$emit("afterServiceDeleted");
+            });
+          }
+        })
+        .catch(err => {
+          Toast.fire({
+            type: "error",
+            title: err.response.data.message
+          });
         });
     }
   },
@@ -182,7 +214,7 @@ export default {
 }
 table {
   font-family: Poppins-Regular;
-  border: 1px solid rgb(111, 161, 136);
+
   border-collapse: collapse;
   border-radius: 1em;
   overflow: hidden;

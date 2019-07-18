@@ -18,9 +18,9 @@ import NotFound404 from '../components/errors/NotFound404';
 import Profile from '../components/Profile';
 import ItemType from '../components/Items/ItemType';
 import Item from '../components/Items/Item';
-
 import Attribute from '../components/Items/Attribute';
-
+import ServiceReport from '../components/Reports/ServiceReport';
+import SaleReport from '../components/Reports/SaleReport';
 import Logout from '../components/Logout';
 
 
@@ -112,7 +112,7 @@ const routes = [
       requiresAuth: true,
     }
   },
- 
+
   {
     path: '/profile',
     component: Profile,
@@ -134,9 +134,25 @@ const routes = [
     meta: {
       requiresAuth: true,
     },
-  
+
   },
-  
+  {
+    path: '/reports/services',
+    component: ServiceReport,
+    meta: {
+      requiresAuth: true,
+    },
+
+  },
+  {
+    path: '/reports/sales',
+    component: SaleReport,
+    meta: {
+      requiresAuth: true,
+    },
+
+  },
+
 
   {
     path: '/attribute',

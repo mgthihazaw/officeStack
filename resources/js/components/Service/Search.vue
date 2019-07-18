@@ -18,7 +18,7 @@
                       deselectLabel="Deselect"
                       :options="itemTypes"
                       :reset-after="false"
-                      @input="loadItem($event,1)"
+                      @input="loadItem($event)"
                       @select="loadAttributeGroup"
                     ></multiselect>
                   </div>
@@ -76,7 +76,7 @@
                       </tr>
 
                       <tr v-for="(item,index) in items" :key="index" class="animated fadeIn">
-                        <td>{{ index+1 }}</td>
+                        <td>{{ paginationData.meta.from + index }}</td>
                         <td class="ml-2">
                           {{ item.brand.name }}
                           <span

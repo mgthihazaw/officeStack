@@ -1,7 +1,7 @@
 <template>
   <div v-if="show" >
     <unauthorized v-if="!can('service-create')"></unauthorized>
-    <div  v-else class="container formcolor animated fadeInRight">
+    <div  v-else class="container formcolor animated zoomIn">
       <div class="row ">
         <div class="col-12">
           <h3 class="pt-3">ADD NEW SERVICE</h3>
@@ -125,8 +125,9 @@
               >{{ error }}</div>
             </div>
             <div class="form-group text-right">
-              <button type="submit" class="btn btn-primary">ADD</button>
-              <button class="btn btn-secondary" @click="close">Cancel</button>
+              <button class="btn btn-secondary" @click="close">Back</button>
+              <button type="submit" class="btn btn-primary">Save</button>
+              
             </div>
           </form>
         </div>

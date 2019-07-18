@@ -147,9 +147,9 @@
                             >{{ attribute.name }} &nbsp;</span>
                           </td>
 
-                          <td class="ml-2">
-                            <input type="number" class="form-control" v-model="item.quantity" />
-                            <span class="inputData">{{ item.quantity }}</span>
+                          <td class="ml-2"   >
+                            <input type="number" class="form-control" v-model="item.quantity"  v-if="item.item_type.name.toLowerCase() != 'service'"/>
+                            <span class="inputData" v-if="item.item_type.name.toLowerCase() != 'service'">{{ item.quantity }}</span>
                           </td>
 
                           <td class="ml-2">

@@ -13,21 +13,7 @@
         </ul>
 
         <!-- SEARCH FORM -->
-        <form class="form-inline ml-3">
-          <div class="input-group input-group-sm">
-            <input
-              class="form-control form-control-navbar"
-              type="search"
-              placeholder="Search"
-              aria-label="Search"
-            />
-            <div class="input-group-append">
-              <button class="btn btn-navbar" type="submit">
-                <i class="fa fa-search"></i>
-              </button>
-            </div>
-          </div>
-        </form>
+        
       </nav>
       <!-- /.navbar -->
 
@@ -73,15 +59,44 @@
               <li class="nav-item">
                 <router-link to="/" class="nav-link">
                   <i class="nav-icon green fas fa-tachometer-alt"></i>
-                  <p>DASHBOARD</p>
+                  <p>Dashboard</p>
                 </router-link>
               </li>
+              
 
               <li class="nav-item">
                 <router-link class="nav-link" to="/staffs" v-if="can('staff-list')">
-                  <i class="nav-icon indigo fas fa-people-carry"></i>
-                  <p>STAFFS</p>
+                  <i class="nav-icon text-primary fas fa-people-carry"></i>
+                  <p>Staffs</p>
                 </router-link>
+              </li>
+               
+               <li class="nav-item has-treeview" v-if="can('staff-list')">
+                <a  class="nav-link">
+                  
+                  <i class="nav-icon fas fa-file-pdf text-info"></i>
+                  <p>
+                    Reports
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <router-link class="nav-link" to="/reports/services">
+                      <i class="far fa-circle nav-icon text-info"></i>
+
+                      <p>Service Reports</p>
+                    </router-link>
+                  </li>
+                  <li class="nav-item">
+                    <router-link class="nav-link" to="/reports/sales">
+                      <i class="far fa-circle nav-icon text-info"></i>
+
+                      <p>Sale Reports</p>
+                    </router-link>
+                  </li>
+                  
+                </ul>
               </li>
 
               <li class="nav-item" v-if="can('service-list')">
@@ -93,7 +108,7 @@
 
               <li class="nav-item has-treeview" v-if="can('item-list')">
                 <a  class="nav-link">
-                  <i class="nav-icon fas fa-database green"></i>
+                  <i class="nav-icon fas fa-database text-white"></i>
                   <p>
                     Items
                     <i class="right fas fa-angle-left"></i>
@@ -102,21 +117,21 @@
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <router-link class="nav-link" to="/item">
-                      <i class="far fa-circle nav-icon green"></i>
+                      <i class="far fa-circle nav-icon text-white"></i>
 
                       <p>Item</p>
                     </router-link>
                   </li>
                   <li class="nav-item">
                     <router-link class="nav-link" to="/itemtype">
-                      <i class="far fa-circle nav-icon green"></i>
+                      <i class="far fa-circle nav-icon text-white"></i>
 
                       <p>Item Type</p>
                     </router-link>
                   </li>
                   <li class="nav-item">
                     <router-link class="nav-link" to="/attribute">
-                      <i class="far fa-circle nav-icon green"></i>
+                      <i class="far fa-circle nav-icon text-white"></i>
 
                       <p>Attribute</p>
                     </router-link>

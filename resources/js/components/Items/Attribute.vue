@@ -200,6 +200,7 @@ export default {
         attribute: "",
         item_type_id: ""
       };
+      this.edit = false;
     },
     editAttribute(attribute) {
       this.edit = true;

@@ -222,7 +222,7 @@
                   <div class="form-group row pt-3">
                     <div class="col-md-5"></div>
                     <div class="col-md-4">
-                      <button class="btn btn-secondary" @click="back">Cancel</button>
+                      <button class="btn btn-secondary" @click="back">Back</button>
                       <button
                         type="button"
                         class="btn btn-primary"
@@ -377,7 +377,7 @@
                   <div class="form-group row pt-3">
                     <div class="col-md-5"></div>
                     <div class="col-md-4">
-                      <button type="button" class="btn btn-secondary" @click="back">Cancel</button>
+                      <button type="button" class="btn btn-secondary" @click="back">Back</button>
                       <button
                         type="button"
                         class="btn btn-primary"
@@ -722,7 +722,7 @@ export default {
 .table {
   width: 100%;
   height: 100%;
-
+  
   font-size: 15px;
 
   line-height: 1.2;
@@ -732,7 +732,6 @@ export default {
   padding-bottom: 20px;
 }
 table {
-  border: 1px solid rgb(111, 161, 136);
   border-collapse: collapse;
   border-radius: 1em;
   overflow: hidden;
@@ -748,13 +747,18 @@ tbody tr {
 }
 
 td {
-  padding-top: 1em;
+ padding-top: 1em;
   padding-bottom: 1em;
   background: #fff;
   border-bottom: 1px solid rgba(191, 236, 197, 0.87);
 }
-.table-hover tbody:hover td {
+.table-hover tbody tr:hover td {
   background: #e9ecef;
+}
+.error {
+  color: #d8000c !important;
+  margin-top: 2px;
+  font-style: italic;
 }
 
 .formcolor {
@@ -764,13 +768,5 @@ td {
   border-top: 20px solid rgba(113, 190, 152, 0.271);
   border-bottom: 2px solid rgba(113, 190, 152, 0.271);
   border-radius: 30px;
-}
-.form-group .form-control {
-  padding: 1.35rem 0.75rem;
-}
-.error {
-  color: #d8000c !important;
-  margin-top: 2px;
-  font-style: italic;
 }
 </style>

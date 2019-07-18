@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="formcolor animated fadeInRight">
+    <div class="formcolor animated zoomIn">
       <div class="col-md-12">
         <div class="m-3">
           <h3 class="text-capitalize text-dark">
@@ -98,7 +98,9 @@
 
                 <div class="form-group row">
                   <div class="col-10 text-right offset-2">
-                    <button type="submit" class="btn btn-success">Submit</button>
+                    
+                    <button type="submit" class="btn btn-secondary" @click="back()">Back</button>
+                    <button type="submit" class="btn btn-success">Update</button>
                   </div>
                 </div>
               </form>
