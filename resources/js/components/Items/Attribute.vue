@@ -12,7 +12,7 @@
       <h3 class="px-4 pt-2 col-md-4 text-left">ATTRIBUTE GROUP TABLE</h3>
     </div>
 
-    <div class="col-md-12">
+    <div class="col-md-12 table-scroll">
       <table class="table table-hover">
         <tbody>
           <tr class="heading">
@@ -269,6 +269,9 @@ export default {
 
 
 <style scoped>
+.table-scroll {
+  overflow-x: auto;
+}
 table {
   border-collapse: collapse;
   border-radius: 1em;

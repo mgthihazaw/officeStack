@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper" >
+  <div class="wrapper">
     <login v-if="!isLoggedIn"></login>
     <div v-if="isLoggedIn">
       <nav class="main-header navbar navbar-expand bg-success navbar-light border-bottom">
@@ -13,7 +13,6 @@
         </ul>
 
         <!-- SEARCH FORM -->
-        
       </nav>
       <!-- /.navbar -->
 
@@ -42,7 +41,7 @@
             </div>
 
             <div class="info">
-              <a class="d-block text-white">{{ username | username }} </a>
+              <a class="d-block text-white">{{ username | username }}</a>
             </div>
           </div>
 
@@ -62,7 +61,6 @@
                   <p>Dashboard</p>
                 </router-link>
               </li>
-              
 
               <li class="nav-item">
                 <router-link class="nav-link" to="/staffs" v-if="can('staff-list')">
@@ -70,10 +68,36 @@
                   <p>Staffs</p>
                 </router-link>
               </li>
-               
-               <li class="nav-item has-treeview" v-if="can('staff-list')">
-                <a  class="nav-link">
-                  
+
+              <li class="nav-item has-treeview" v-if="can('staff-list')">
+                <a  class="nav-link ">
+                  <i class="nav-icon fas fa-file-pdf text-info"></i>
+                  <p>
+                    Reports
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview ">
+                  <li class="nav-item">
+                   
+                    <router-link class="nav-link" to="/reports/services">
+                      <i class="far fa-circle nav-icon text-info"></i>
+
+                      <p>Service Reports</p>
+                    </router-link>
+                  </li>
+                  <li class="nav-item">
+                    <router-link class="nav-link" to="/reports/sales">
+                      <i class="far fa-circle nav-icon text-info"></i>
+
+                      <p>Sale Reports</p>
+                    </router-link>
+                  </li>
+                </ul>
+              </li>
+
+              <!-- <li class="nav-item has-treeview" v-if="can('staff-list')">
+                <a class="nav-link">
                   <i class="nav-icon fas fa-file-pdf text-info"></i>
                   <p>
                     Reports
@@ -95,9 +119,8 @@
                       <p>Sale Reports</p>
                     </router-link>
                   </li>
-                  
                 </ul>
-              </li>
+              </li> -->
 
               <li class="nav-item" v-if="can('service-list')">
                 <router-link class="nav-link" to="/services">
@@ -106,15 +129,15 @@
                 </router-link>
               </li>
 
-              <li class="nav-item has-treeview" v-if="can('item-list')">
-                <a  class="nav-link">
+              <li class="nav-item has-treeview menu-open" v-if="can('item-list')">
+                <a class="nav-link">
                   <i class="nav-icon fas fa-database text-white"></i>
                   <p>
                     Items
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-                <ul class="nav nav-treeview">
+                <ul class="nav nav-treeview" style="display: block;">
                   <li class="nav-item">
                     <router-link class="nav-link" to="/item">
                       <i class="far fa-circle nav-icon text-white"></i>
@@ -175,7 +198,7 @@
       <!-- /.content-wrapper -->
 
       <!-- Main Footer -->
-      <footer class="main-footer bg-white ">
+      <footer class="main-footer bg-white">
         <div class="text-center">
           <strong>Copyright &copy;Microstack Technology Co.ltd</strong>
         </div>
@@ -195,7 +218,6 @@ export default {
   },
   data() {
     return {
-      
       User: {
         sale: "",
         service: "",
@@ -215,11 +237,10 @@ export default {
     },
     StaffShow() {
       return this.User.develop ? true : false;
-    },
-    
+    }
   },
   created() {
-    this.auth()
+    this.auth();
     this.username = User.getUser();
     this.isLoggedIn = User.isLoggedIn();
 
@@ -240,11 +261,11 @@ export default {
       window.location.replace("/");
     });
   },
-  filters : {
-    username: function (value) {
-      if (!value) return ''
-      value = value.toString()
-      return value.charAt(0).toUpperCase() + value.slice(1)
+  filters: {
+    username: function(value) {
+      if (!value) return "";
+      value = value.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
     }
   }
 };
@@ -252,10 +273,10 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css?family=Roboto|Ubuntu");
 
-.pushmenu:hover{
+.pushmenu:hover {
   cursor: pointer;
 }
-.has-treeview{
+.has-treeview {
   cursor: pointer;
 }
 input {

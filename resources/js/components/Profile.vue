@@ -97,14 +97,14 @@
 
                       <div class="form-group row">
                         <div class="col-md-4">
-                          <label for="exampleInputPassword1" class="pt-2">Your Password</label>
+                          <label for="passwordForSecret" class="pt-2">Your Password</label>
                         </div>
                         <div class="col-md-8">
                           <input
                             type="password"
                             class="form-control"
-                            id="exampleInputPassword1"
-                            placeholder="Password"
+                            id="password"
+                            placeholder="passwordForSecret"
                             v-model="formSecret.password"
                           >
                         </div>
@@ -127,13 +127,13 @@
                       </div>
                       <div class="form-group row pt-4">
                         <div class="col-md-4">
-                          <label for="secret" class="pt-2">Confirmed Secret Number</label>
+                          <label for="confirmed_secret" class="pt-2">Confirmed Secret Number</label>
                         </div>
                         <div class="col-md-8">
                           <input
                             type="password"
                             class="form-control"
-                            id="secret"
+                            id="confirmed_secret"
                             placeholder="Confirmed Secret Number"
                             v-model="formSecret.newSecret_confirmation"
                           >

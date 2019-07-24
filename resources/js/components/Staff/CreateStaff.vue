@@ -30,7 +30,7 @@
                   <label for="address">Address</label>
                   <div
                     class="error text-muted"
-                    v-if="errs['address.township'] || errs['address.block'] || errs['address.home_no'] || errs['address.street'] || errs['address.state.id']"
+                    v-if="errs['township'] || errs['state'] || errs['address_line'] "
                   >Your address is not completed</div>
 
                   <div class="row">
@@ -120,8 +120,9 @@
                       ref="role"
                       class="form-control"
                       disabled="true"
+                     
                     >
-                      <option selected disabled>Choose Role/Job Title</option>
+                      <option value disabled>Choose Role</option>
                       <option v-for="role in roles" :key="role.id" :value="role.id">{{ role.name }}</option>
                     </select>
                   </div>
@@ -257,8 +258,14 @@ export default {
         .catch(errr => console.log(err.response.data));
     },
     submit() {
-      this.form.township = this.form.township.name;
-      this.form.state = this.form.state.id;
+      if(this.form.township){
+        this.form.township = this.form.township.name;
+      }
+      if(this.form.state){
+        this.form.state = this.form.state.id;
+      }
+      
+      
       axios
         .post("/api/staffs/", this.form)
         .then(response => {
@@ -277,12 +284,12 @@ export default {
             title: error.response.data.message
           });
           this.errs = error.response.data.errors;
-          setTimeout(
-            function() {
-              this.errs = "";
-            }.bind(this),
-            3000
-          );
+          // setTimeout(
+          //   function() {
+          //     this.errs = "";
+          //   }.bind(this),
+          //   7000
+          // );
         });
     },
     close() {

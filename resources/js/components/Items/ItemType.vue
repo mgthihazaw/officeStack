@@ -12,8 +12,8 @@
       <h3 class="px-4 pt-2 col-md-4 text-left">ITEM TYPE TABLE </h3>
     </div>
 
-    <div class="col-md-12">
-      <table class="table table-hover">
+    <div class="col-md-12 table-scroll">
+      <table class="table table-hover ">
         <tbody>
           <tr class="heading">
             <th style="width: 200px">#</th>
@@ -231,6 +231,10 @@ export default {
 
 
 <style scoped>
+.table-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
 .table {
   width: 100%;
   height: 100%;
@@ -271,5 +275,14 @@ td {
   color: #d8000c !important;
   margin-top: 2px;
   font-style: italic;
+}
+
+.formcolor {
+  background: #ebeff2;
+  border-left: 2px solid rgba(113, 190, 152, 0.271);
+  border-right: 2px solid rgba(113, 190, 152, 0.271);
+  border-top: 20px solid rgba(113, 190, 152, 0.271);
+  border-bottom: 2px solid rgba(113, 190, 152, 0.271);
+  border-radius: 30px;
 }
 </style>

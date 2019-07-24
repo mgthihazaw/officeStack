@@ -21,7 +21,4 @@ Route::get('/{any?}', function (){
 
 
 
-// Route::get('/test', function(){
-// 	$staff = App\Staff::findOrFail(4);
-// 	dd($staff->hasPermission('update-service'));
-// });
+

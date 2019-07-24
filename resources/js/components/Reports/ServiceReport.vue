@@ -61,6 +61,7 @@
                   <td></td>
                    <td></td>
                    <td><h5 class="text-secondary" >NO DATA</h5></td>
+                   <td></td>
               </tr>
             </tbody>
           </table>

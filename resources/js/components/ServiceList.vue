@@ -93,7 +93,7 @@
                   >
                     <i class="fas fa-print"></i>
                   </router-link>
-                  <p v-if="User.isServiceEngineer()  && service.pending==2 ">No Access</p>
+                 
                 </td>
               </tr>
             </tbody>

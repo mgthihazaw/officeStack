@@ -32,7 +32,7 @@
                 <td>{{ paginationData.meta.from + index }}</td>
                 <td>{{ staff.name }}</td>
                 <td>{{ staff.phone }}</td>
-                <td>{{ staff.address}}</td>
+                <td>{{ staff.address}} ၊  {{ staff.township.name }}</td>
                 <td>{{ staff.business.name }}</td>
                 <td>{{ staff.department.name }}</td>
                 <td>{{ staff.role.name }}</td>
@@ -194,8 +194,8 @@ td {
   background: #e9ecef;
 }
 
-.createroute {
+/* .createroute {
   display: block;
   float: right;
-}
+} */
 </style>

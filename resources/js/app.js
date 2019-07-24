@@ -85,17 +85,17 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 
 Vue.component('app-home', require('./components/AppHome.vue'));
 
-import Turbolinks from 'turbolinks';
-Turbolinks.start()
+// import Turbolinks from 'turbolinks';
+// Turbolinks.start()
   
-  import TurbolinksAdapter from 'vue-turbolinks';
-  Vue.use(TurbolinksAdapter)
-  document.addEventListener('turbolinks:load', () => {
-    var element=document.getElementById("app")
-    if(element != null){
+//   import TurbolinksAdapter from 'vue-turbolinks';
+//   Vue.use(TurbolinksAdapter)
+//   document.addEventListener('turbolinks:load', () => {
+//     var element=document.getElementById("app")
+//     if(element != null){
 const app = new Vue({
 	el: '#app',
 	router,
 });
-}
-});
+// }
+// });

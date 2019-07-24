@@ -195,7 +195,7 @@
         <div class="button_group pb-4">
           <button class="btn btn-secondary printBtn" @click="back()" >Back</button>
           <button class="btn btn-success printBtn" @click="save">Print Preview</button>
-          <button type="button" class="btn btn-info printBtn text-white" data-toggle="modal" data-target="#modal-xl">
+          <button type="button" class="btn btn-info printBtn text-white" data-toggle="modal" data-target="#modal-lg">
             Add Item
             <i class="ml-2 fas fa-plus-circle fa-1x"></i>
           </button>
@@ -204,8 +204,8 @@
       </div>
 
       
-      <div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true" ref="modal">
-        <div class="modal-dialog modal-xl">
+      <div class="modal fade" id="modal-lg" style="display: none;" aria-hidden="true" ref="modal">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title text-info">Add Item for Service</h4>
@@ -361,7 +361,7 @@ export default {
   },
   beforeDestroy() {
     //While Modal is opened Route change has modal errors.That is dixed this error
-    $("#modal-xl").modal("hide");
+    $("#modal-lg").modal("hide");
     $(document.body).removeClass("modal-open");
      $(document.body).css('padding-right',"0px")
     $(".modal-backdrop").remove();

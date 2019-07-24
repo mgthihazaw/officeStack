@@ -148,12 +148,13 @@ class StaffController extends Controller
                 'address_line' => $address_line,
                 'township_id' => $township->id
             ]);
-
-            $staff->update([
-                'business_id' => $business_id,
-                'username' => $username,
-                'password' => bcrypt($password)
-            ]);
+            
+            $staff->business_id = $business_id;
+            $staff->username = $username;
+            if($request->password){
+                $staff->password = bcrypt($request->password);
+            }
+            $staff->save();
 
             $staff->roles()->sync($role_id);
             
