@@ -19,4 +19,7 @@ class ItemType extends Model
     public function brands(){
     	return $this->belongsToMany('App\Brand','brand_item_type');
     }
+    public function scopeService(){
+        return $this->where('name','Service');
+    }
 }

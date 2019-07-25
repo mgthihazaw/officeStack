@@ -39,7 +39,7 @@ class ItemTypeBrandController extends Controller
      */
     public function show(ItemType $itemType)
     {
-        //
+         
     }
 
     /**

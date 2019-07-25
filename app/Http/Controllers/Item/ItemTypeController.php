@@ -76,5 +76,5 @@ class ItemTypeController extends Controller
 
         return response()->json([], 204);
     }
-    
+  
 }

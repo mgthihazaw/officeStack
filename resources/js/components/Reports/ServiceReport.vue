@@ -10,14 +10,14 @@
             </div>
             <div class="col-md-3">
               <multiselect
-                v-model="itemType"
+                v-model="brand"
                 track-by="name"
                 :block-keys="['Delete']"
                 placeholder="Choose Item Type"
                 label="name"
                 selectLabel="Select"
                 deselectLabel="Deselect"
-                :options="itemTypes"
+                :options="brands"
                 :reset-after="false"
                 
               ></multiselect>
@@ -25,7 +25,7 @@
             <div class="col-md-3">
               <vue-monthly-picker
                 v-model="selectedMonth"
-                :clearOption="false"
+                
                 placeHolder="Select MonthOfYear"
               ></vue-monthly-picker>
             </div>
@@ -41,20 +41,20 @@
             <tbody>
               <tr class="heading">
                 <th style="width: 50px">No</th>
-                <th>ItemType</th>
+                <th>brand</th>
 
                 <th>Total Price</th>
 
-                <th style="width: 100px">Action</th>
+                <th >Date</th>
               </tr>
               <tr class="heading" v-for="(data,index) in serviceDatas" :key="index" v-if="serviceDatas.length>0">
                 <td>{{ index+1 }}</td>
                 <td>{{ data.name}}</td>
                 <td>{{ data.total }}</td>
                 <td>
-                  <button class="btn btn-info btn-sm text-white">
-                    <i class="fa fa-eye"></i>
-                  </button>
+                  
+                    {{ data.date}}
+                  
                 </td>
               </tr>
               <tr v-if="serviceDatas.length<1">
@@ -83,22 +83,22 @@ export default {
   },
   data() {
     return {
-      itemTypes: [],
-      itemType: "",
+      brands: [],
+      brand: "",
       selectedMonth: null,
       serviceDatas: [],
       searchForm: {
-        item_type: "",
+        brand: "",
         date: ""
       }
     };
   },
   methods: {
-    getItemType() {
+    getBrand() {
       axios
-        .get(`/api/itemtypes`)
+        .get(`/api/brands?item_type=Service`)
         .then(res => {
-          this.itemTypes = res.data.data;
+          this.brands = res.data.data;
         })
         .catch(err => {
           console.log(err);
@@ -107,12 +107,12 @@ export default {
     loadService() {
         this.serviceDatas =[]
         this.searchForm = {
-        item_type: "",
+        brand: "",
         date: ""
       }
         
-      if (this.itemType) {
-        this.searchForm.item_type = this.itemType.id;
+      if (this.brand) {
+        this.searchForm.brand = this.brand.id;
       }
       if (this.selectedMonth) {
         this.searchForm.date = this.selectedMonth.format("YYYY-MM");
@@ -123,12 +123,16 @@ export default {
         .get("/api/reports/services", { params: this.searchForm })
         .then(res => {
           this.serviceDatas = res.data
+          
+
         });
     }
   },
   created() {
     this.auth();
-    this.getItemType();
+    this.getBrand();
+    this.loadService()
+    
   }
 };
 </script>

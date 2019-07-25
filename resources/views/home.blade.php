@@ -13,9 +13,7 @@
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,700,800,800i,900i&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" >
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-		<meta http-equiv="Pragma" content="no-cache" />
-		<meta http-equiv="Expires" content="0"/>
+        
        
         <style>
             
@@ -37,5 +35,5 @@
             <app-home></app-home>
         </div>
     </body>
-    <script src="{{ asset('js/app.js?ver=1.1') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </html>

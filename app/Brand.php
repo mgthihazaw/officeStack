@@ -15,4 +15,6 @@ class Brand extends Model
     public function models(){
     	return $this->hasMany('App\Model');
     }
+
+    
 }

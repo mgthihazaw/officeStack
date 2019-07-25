@@ -47,12 +47,7 @@
 
           <!-- Sidebar Menu -->
           <nav class="text-white" v-if="show">
-            <ul
-              class="nav nav-pills nav-sidebar flex-column"
-              data-widget="treeview"
-              role="menu"
-              data-accordion="false"
-            >
+            <ul class="nav nav-pills nav-sidebar flex-column" role="menu" data-accordion="false">
               <!-- Add icons to the links using the .nav-icon class
               with font-awesome or any other icon font library-->
               <li class="nav-item">
@@ -67,33 +62,6 @@
                   <i class="nav-icon text-primary fas fa-people-carry"></i>
                   <p>Staffs</p>
                 </router-link>
-              </li>
-
-              <li class="nav-item has-treeview" v-if="can('staff-list')">
-                <a  class="nav-link ">
-                  <i class="nav-icon fas fa-file-pdf text-info"></i>
-                  <p>
-                    Reports
-                    <i class="right fas fa-angle-left"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview ">
-                  <li class="nav-item">
-                   
-                    <router-link class="nav-link" to="/reports/services">
-                      <i class="far fa-circle nav-icon text-info"></i>
-
-                      <p>Service Reports</p>
-                    </router-link>
-                  </li>
-                  <li class="nav-item">
-                    <router-link class="nav-link" to="/reports/sales">
-                      <i class="far fa-circle nav-icon text-info"></i>
-
-                      <p>Sale Reports</p>
-                    </router-link>
-                  </li>
-                </ul>
               </li>
 
               <!-- <li class="nav-item has-treeview" v-if="can('staff-list')">
@@ -120,7 +88,7 @@
                     </router-link>
                   </li>
                 </ul>
-              </li> -->
+              </li>-->
 
               <li class="nav-item" v-if="can('service-list')">
                 <router-link class="nav-link" to="/services">
@@ -129,15 +97,41 @@
                 </router-link>
               </li>
 
-              <li class="nav-item has-treeview menu-open" v-if="can('item-list')">
-                <a class="nav-link">
+              <li class="nav-item tree1" v-if="can('staff-list')" >
+                <a class="nav-link" @click="tree1">
+                  <i class="nav-icon fas fa-file-pdf text-info"></i>
+                  <p>
+                    Reports
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <router-link class="nav-link" to="/reports/services">
+                      <i class="far fa-circle nav-icon text-info"></i>
+
+                      <p>Service Reports</p>
+                    </router-link>
+                  </li>
+                  <li class="nav-item">
+                    <router-link class="nav-link" to="/reports/sales">
+                      <i class="far fa-circle nav-icon text-info"></i>
+
+                      <p>Sale Reports</p>
+                    </router-link>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item tree2" v-if="can('item-list')">
+                <a class="nav-link"  @click="tree2">
                   <i class="nav-icon fas fa-database text-white"></i>
                   <p>
                     Items
                     <i class="right fas fa-angle-left"></i>
                   </p>
                 </a>
-                <ul class="nav nav-treeview" style="display: block;">
+                <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <router-link class="nav-link" to="/item">
                       <i class="far fa-circle nav-icon text-white"></i>
@@ -237,22 +231,51 @@ export default {
     },
     StaffShow() {
       return this.User.develop ? true : false;
+    },
+    tree1(e) {
+      if ($(".tree1 .nav-treeview").css("display") == "block") {
+        $(".tree1 .nav-link .right")
+          .css("-ms-transform", "rotate(0deg)")
+          .css("transform", "rotate(0deg)");
+        $(".tree1 .nav-treeview").animate({ height: "0px" }, 500, function() {
+          $(".tree1 .nav-treeview").css("display", "none");
+        });
+      } else {
+        $(".tree1 .nav-treeview").css("display", "block");
+        $(".tree1 .nav-treeview").css("height", "0px");
+        $(".tree1 .nav-link .right")
+          .css("-ms-transform", "rotate(-90deg)")
+          .css("transform", "rotate(-90deg)");
+
+        $(".tree1 .nav-treeview").animate({ height: "92px" }, 500, function() {
+          $(".tree1 .nav-treeview").css("overflow", "none");
+        });
+      }
+    },
+    tree2(e) {
+      if ($(".tree2 .nav-treeview").css("display") == "block") {
+        $(".tree2 .nav-link .right")
+          .css("-ms-transform", "rotate(0deg)")
+          .css("transform", "rotate(0deg)");
+        $(".tree2 .nav-treeview").animate({ height: "0px" }, 500, function() {
+          $(".tree2 .nav-treeview").css("display", "none");
+        });
+      } else {
+        $(".tree2 .nav-link .right")
+          .css("-ms-transform", "rotate(-90deg)")
+          .css("transform", "rotate(-90deg)");
+        $(".tree2 .nav-treeview").css("display", "block");
+        $(".tree2 .nav-treeview").css("height", "0px");
+        $(".tree2 .nav-treeview").animate({ height: "144px" }, 500, function() {
+          $(".tree2 .nav-treeview").css("overflow", "none");
+        });
+      }
     }
   },
   created() {
     this.auth();
     this.username = User.getUser();
     this.isLoggedIn = User.isLoggedIn();
-
-    // if (this.isLoggedIn) {
-    //   axios.post("/api/auth/me").then(response => {
-    //     Gate.setUser(response.data.user.roles, response.data.user.permissions);
-    //     this.show = true;
-    //     this.User.sale = Gate.isSaleperson();
-    //     this.User.service = Gate.isServiceEngineer();
-    //     this.User.develop = Gate.isDeveloper();
-    //   });
-    // }
 
     Bus.$emit("getrole");
     Bus.$on("logout", function() {
@@ -276,7 +299,7 @@ export default {
 .pushmenu:hover {
   cursor: pointer;
 }
-.has-treeview {
+.nav-item {
   cursor: pointer;
 }
 input {
