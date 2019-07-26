@@ -13,21 +13,16 @@
                 v-model="brand"
                 track-by="name"
                 :block-keys="['Delete']"
-                placeholder="Choose Item Type"
+                placeholder="Choose Service"
                 label="name"
                 selectLabel="Select"
                 deselectLabel="Deselect"
                 :options="brands"
                 :reset-after="false"
-                
               ></multiselect>
             </div>
             <div class="col-md-3">
-              <vue-monthly-picker
-                v-model="selectedMonth"
-                
-                placeHolder="Select MonthOfYear"
-              ></vue-monthly-picker>
+              <vue-monthly-picker v-model="selectedMonth" placeHolder="Select MonthOfYear"></vue-monthly-picker>
             </div>
             <div class="col-md-1">
               <button class="btn btn-outline-primary" type="submit">Search</button>
@@ -35,33 +30,34 @@
           </div>
         </form>
       </div>
+
       <div class="itemTable">
         <div class="p-0 col-md-12">
-          <table class="table table-hover">
+          <table class="table table-hover" v-if="datas.length >0">
             <tbody>
               <tr class="heading">
                 <th style="width: 50px">No</th>
-                <th>brand</th>
+                <th>Name</th>
 
                 <th>Total Price</th>
 
-                <th >Date</th>
+                <th>Date</th>
               </tr>
-              <tr class="heading" v-for="(data,index) in serviceDatas" :key="index" v-if="serviceDatas.length>0">
+              <tr class="heading" v-for="(data,index) in datas" :key="index">
                 <td>{{ index+1 }}</td>
                 <td>{{ data.name}}</td>
                 <td>{{ data.total }}</td>
-                <td>
-                  
-                    {{ data.date}}
-                  
-                </td>
+                <td>{{ data.date}}</td>
               </tr>
-              <tr v-if="serviceDatas.length<1">
-                  <td></td>
-                   <td></td>
-                   <td><h5 class="text-secondary" >NO DATA</h5></td>
-                   <td></td>
+              <tr>
+                <td></td>
+                <td>
+                  <h5 class="text-info">Total Price of Month</h5>
+                </td>
+                <td>
+                  <h5 class="text-info">{{ totalPrice }}</h5>
+                </td>
+                <td></td>
               </tr>
             </tbody>
           </table>
@@ -83,10 +79,12 @@ export default {
   },
   data() {
     return {
+      datas: [],
       brands: [],
       brand: "",
       selectedMonth: null,
       serviceDatas: [],
+      totalPrice: 0,
       searchForm: {
         brand: "",
         date: ""
@@ -105,34 +103,68 @@ export default {
         });
     },
     loadService() {
-        this.serviceDatas =[]
-        this.searchForm = {
+      this.datashow = false;
+      this.serviceDatas = [];
+      this.searchForm = {
         brand: "",
         date: ""
-      }
-        
+      };
+
       if (this.brand) {
         this.searchForm.brand = this.brand.id;
       }
       if (this.selectedMonth) {
         this.searchForm.date = this.selectedMonth.format("YYYY-MM");
       }
-    //   console.log("searchForm", this.searchForm);
 
       axios
         .get("/api/reports/services", { params: this.searchForm })
         .then(res => {
-          this.serviceDatas = res.data
-          
+          this.serviceDatas = res.data;
+          this.datas = [];
+          let date;
+          if (this.serviceDatas.length > 0) {
+            date = new Date(this.serviceDatas[0].date);
+          } else if (this.searchForm.date) {
+            date = new Date(this.searchForm.date);
+          } else {
+            date = new Date();
+          }
 
+          let y = date.getFullYear();
+          let m = ("0" + (date.getMonth() + 1)).slice(-2);
+
+          for (let i = 0; i < this.getDaysInMonth(m, y); i++) {
+            this.datas[i] = {
+              date: `${y}-${m}-${i + 1}`,
+              name: ".....",
+              total: "0"
+            };
+            this.serviceDatas.find(service => {
+              if (new Date(service.date).getDate() == i + 1) {
+                this.datas[i] = service;
+              }
+            });
+          }
         });
+    },
+    getDaysInMonth(month, year) {
+      return parseInt(new Date(year, month, 0).getDate());
     }
   },
+  watch: {
+    datas(s) {
+      this.totalPrice = 0;
+      s.forEach(data => {
+        this.totalPrice += parseInt(data.total);
+      });
+    }
+  },
+
   created() {
+    this.loadService();
     this.auth();
     this.getBrand();
-    this.loadService()
-    
   }
 };
 </script>
