@@ -4,7 +4,7 @@
 
     <div class="container_fluid" v-else>
       <div>
-        <div>
+        <div class="printPage">
           <div class="row pageHeader">
             <div class="mt-3 col-6">
               <img :src="'/images/logo/1.png'" alt="microstack" width="200px" />
@@ -148,16 +148,16 @@
                           </td>
 
                           <td class="ml-2"   >
-                            <input type="number" class="form-control" v-model="item.quantity"  v-if="item.item_type.name.toLowerCase() != 'service'"/>
+                            <input type="number" min="1"  class="form-control" v-model="item.quantity"  v-if="item.item_type.name.toLowerCase() != 'service'"/>
                             <span class="inputData" v-if="item.item_type.name.toLowerCase() != 'service'">{{ item.quantity }}</span>
                           </td>
 
                           <td class="ml-2">
-                            <input type="number" v-model="item.price" class="form-control" />
+                            <input type="number" min="0" v-model="item.price" class="form-control" />
                             <span class="inputData">{{ item.price }}</span>
                           </td>
                           <td class="ml-2">
-                            <input type="number" v-model="item.amount" class="form-control" />
+                            <input type="number" min="0" v-model="item.amount" class="form-control" />
                             <span class="inputData">{{ item.amount }}</span>
                           </td>
                           <td>
@@ -384,9 +384,7 @@ h6 {
   line-height: 1.4em;
 }
 
-.customerParent {
-  border-bottom: 1px solid #7e7e7e;
-}
+
 .pageHeader {
   margin: 0;
   padding: 0px;
@@ -394,6 +392,7 @@ h6 {
 }
 .staff {
   padding-top: 20px;
+  border-top: 1px solid #7e7e7e
 }
 .des {
   background-color: #ffffff;
@@ -420,6 +419,9 @@ h6 {
   .saveform {
     display: none;
     margin: 0;
+  }
+  .printPage{
+    margin : 50px;
   }
 }
 .tb {

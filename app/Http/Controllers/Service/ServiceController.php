@@ -57,7 +57,7 @@ class ServiceController extends Controller
                 'customer_id' => 'required|integer',
                 'receive_staff' => 'required|integer',
                 'description' => 'required|string',
-                'remark' => 'required|string',
+                'remark' => 'sometimes',
             ]);
 
             $service = Service::create([
@@ -81,7 +81,7 @@ class ServiceController extends Controller
                 'customer_address' => 'required|string',
                 'receive_staff' => 'required|integer',
                 'description' => 'required|string',
-                'remark' => 'required|string',
+                'remark' => 'sometimes',
             ]);
 
             $service = Service::create([
@@ -143,7 +143,7 @@ class ServiceController extends Controller
         if($request->service_engineer){
             $request->validate([
                 'service_description' => 'required|string',
-                'service_remark' => 'required',
+                'service_remark' => 'sometimes',
                 'service_engineer' => 'required|integer',
             ]);
 
@@ -172,16 +172,16 @@ class ServiceController extends Controller
             'customer_address' => 'required|string',
             'receive_staff' => 'required|integer',
             'description' => 'required|string',
-            'remark' => 'required|string',
+            'remark' => 'sometimes',
         ]);
 
         $service->update([
             'staff_id'=>$request->receive_staff,
             'customer_name'=>$request->customer_name,
             'customer_phone'=>$request->customer_phone,
-            'township'=>$request->customer_address,
-            'description'=>$request->description,
-            'remark'=>$request->remark,
+            'customer_address'=>$request->customer_address,
+            'received_description'=>$request->description,
+            'received_remark'=>$request->remark,
         ]);
         return response()->json("Sevice Successfully Updated");
     }

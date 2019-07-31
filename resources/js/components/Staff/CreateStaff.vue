@@ -284,12 +284,7 @@ export default {
             title: error.response.data.message
           });
           this.errs = error.response.data.errors;
-          // setTimeout(
-          //   function() {
-          //     this.errs = "";
-          //   }.bind(this),
-          //   7000
-          // );
+          
         });
     },
     close() {

@@ -157,12 +157,7 @@ export default {
           });
           this.errors = err.response.data.errors;
 
-          setTimeout(
-            function() {
-              this.errors = "";
-            }.bind(this),
-            3000
-          );
+         
         });
     },
     deleteAttribute(id) {
@@ -228,12 +223,7 @@ export default {
           });
           this.errors = err.response.data.errors;
 
-          setTimeout(
-            function() {
-              this.errors = "";
-            }.bind(this),
-            3000
-          );
+          
         });
     },
     getAttribute(page = 1) {

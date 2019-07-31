@@ -198,7 +198,7 @@ class StaffController extends Controller
     public function changeAccount(Staff $staff,Request $request)
     {
         $request->validate([
-            'newPassword' => 'required|confirmed',
+            'newPassword' => 'required|min:6|confirmed',
             'oldPassword' =>'required'
         ]);
         
@@ -210,12 +210,12 @@ class StaffController extends Controller
                 return response()->json("Successfully change Account",200);
             
         }
-        return response()->json("Your Account is invalid",403);
+        return response()->json(["error" => "Your Account is invalid"],403);
     }
     public function changeSecret(Staff $staff,Request $request){
         
         $request->validate([
-            'newSecret' => 'required|confirmed',
+            'newSecret' => 'required|min:6|confirmed',
             'password' =>'required'
         ]);
         if(Hash::check($request->password,$staff->password)){
@@ -226,7 +226,7 @@ class StaffController extends Controller
                 return response()->json("Successfully change Account",200);
             
         }
-        return response()->json("Your Account is invalid",403);
+        return response()->json(["error" => "Your Account is invalid"],403);
     
     }
 }

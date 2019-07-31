@@ -4,7 +4,7 @@
 
     <div class="container_fluid" v-else>
       <div>
-        <div class="">
+        <div class="printPage">
           
           
           <div class="row pageHeader ">
@@ -190,11 +190,7 @@ h6{
   line-height: 1.4em;
 }
 
-.customerParent {
-  
-  border-bottom: 1px solid #7e7e7e;
-  
-}
+
 .pageHeader {
   margin:0;
   padding: 0px;
@@ -202,6 +198,7 @@ h6{
 }
 .staff {
   padding-top: 20px;
+  border-top: 1px solid #7e7e7e;
 }
 .callout {
   background-color: #eff0f1;
@@ -215,6 +212,9 @@ h6{
   .main-footer{
     display:none;
   }
+  .printPage {
+  margin : 50px;
+}
 }
 
   

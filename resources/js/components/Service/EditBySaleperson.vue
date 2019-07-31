@@ -93,7 +93,7 @@
           </div>
 
           <div class="form-group">
-            <label for="remark">Product Remarks</label>
+            <label for="remark">Service Remarks</label>
             <textarea
               name="remark"
               id="remark"

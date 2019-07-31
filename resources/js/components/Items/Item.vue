@@ -115,6 +115,7 @@
                         :taggable="true"
                         :block-keys="['Delete']"
                         @select="loadAttributeGroup"
+                        @input="getBrand"
                       ></multiselect>
                       <div
                         class="error text-muted"
@@ -161,17 +162,17 @@
                     <div class="col-md-3">
                       <label for="exampleInputtext1" class="pt-2">Item Price</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-9">
                       <input
                         type="number"
                         class="form-control"
                         id="exampleInputtext1"
-                        placeholder="Enter Price One"
+                        placeholder="price"
                         v-model="form.price_one"
                       />
                       <div class="error text-muted" v-if="errors.price_one">Item price1 is required</div>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                       <input
                         type="number"
                         class="form-control"
@@ -188,7 +189,7 @@
                         placeholder="Enter  Price Three(optional)"
                         v-model="form.price_three"
                       />
-                    </div>
+                    </div> -->
                   </div>
 
                   <div v-if="attributeGroups.length>0">
@@ -269,6 +270,7 @@
                         label="name"
                         :options="itemTypes"
                         :reset-after="false"
+                        @selected = "getBrand"
                         @input="loadAttributeGroup"
                       ></multiselect>
                       <div
@@ -317,17 +319,17 @@
                     <div class="col-md-3">
                       <label for="exampleInputtext1" class="pt-2">Item Price</label>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-9">
                       <input
                         type="number"
                         class="form-control"
                         id="exampleInputtext1"
-                        placeholder="Enter Item Price One"
+                        placeholder="price"
                         v-model="form.price"
                       />
                       <div class="error text-muted" v-if="errors.price_one">Item price1 is required</div>
                     </div>
-                    <div class="col-md-3">
+                    <!-- <div class="col-md-3">
                       <input
                         type="number"
                         class="form-control"
@@ -344,7 +346,7 @@
                         placeholder="Enter Item Price Three"
                         v-model="form.price_three"
                       />
-                    </div>
+                    </div> -->
                   </div>
 
                   <div v-if="attributeGroups.length>0">
@@ -503,15 +505,18 @@ export default {
           console.log(err);
         });
     },
-    getBrand() {
-      axios
-        .get("/api/brands")
+    getBrand(type) {
+
+      if(type){
+        axios
+        .get(`/api/itemtypes/${type.id}/brands`)
         .then(res => {
           this.brands = res.data.data;
         })
         .catch(err => {
           console.log(err);
         });
+      }
     },
     createItem() {
       this.create = true;
@@ -566,12 +571,7 @@ export default {
           });
           this.errors = err.response.data.errors;
 
-          setTimeout(
-            function() {
-              this.errors = "";
-            }.bind(this),
-            3000
-          );
+          
         });
     },
     deleteItem(id) {
@@ -644,12 +644,7 @@ export default {
           });
           this.errors = err.response.data.errors;
 
-          setTimeout(
-            function() {
-              this.errors = "";
-            }.bind(this),
-            3000
-          );
+          
         });
     },
     showItem(id) {
@@ -706,7 +701,7 @@ export default {
     this.auth();
     this.getItems();
     this.loadItemType();
-    this.getBrand();
+    
     Bus.$on("afterItemChange", () => {
       this.getItems();
     });

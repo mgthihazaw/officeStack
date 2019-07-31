@@ -186,11 +186,14 @@ export default {
   },
   filters: {
     subStr: function(string) {
-      if (string.length > 150) {
-        return string.substring(0, 150) + "...";
+      if(string){
+        if (string.length > 150) {
+          return string.substring(0, 150) + "...";
+        }
+        return string;
       }
-
-      return string;
+    
+      return '....';
     }
   }
 };

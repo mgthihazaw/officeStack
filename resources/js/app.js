@@ -50,6 +50,13 @@ axios.interceptors.response.use(function (response) {
 	
 	return response;
 }, function (error) {
+	// console.log("NetWork Error",error)
+	// if(error =="Network Error"){
+	// 	Toast.fire({
+	// 		type : "error",
+	// 		title : "Network Error,check your network connection and refresh the page"
+	// 	});
+	// }
 	Toast.fire({
 		type: "error",
 		title: error.response.data.error
