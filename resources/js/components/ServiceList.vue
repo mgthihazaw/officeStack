@@ -3,32 +3,63 @@
     <unauthorized v-if="!can('service-list')"></unauthorized>
     <div v-else>
       <div class="row">
-        <div class="col-12 table-scroll">
+        <div class="col-md-12 table-scroll">
           <div class="mb-2 row">
-            <div class="col-md-5" v-if="can('service-create')">
+            <div class="col-md-1" v-if="can('service-create')">
               <router-link
-                class="btn btn-outline-success text-success"
+                class="btn btn-success "
                 to="/services/create"
                 v-if="can('service-create')"
               >
-                Add New
+                Add
                 <i class="fa fa-plus"></i>
               </router-link>
             </div>
-            <h3 class="px-4 pt-2 col-md-4 text-left">Service List</h3>
+            <div class="col-md-7 mt-sm-3 mt-md-0 mt-lg-0">
+              <div class="row">
+                <div class="col-md-2 col-sm-2">
+                  <label  style="padding-top: 8px;">Search by</label>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                  <select class='form-control' v-model="search_key" @change="search_value = ''">
+                    <option value="id">ID</option>
+                    <option value="customer_name">Name</option>
+                  </select>
+                </div>
+                <div class="col-md-6 col-sm-6 search-text">
+                  <input type="text" name="search" class="form-control" v-model="search_value" @input="search_service">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 mt-sm-3 mt-md-0 mt-lg-0">
+              <div class="row">
+                <div class="col-md-3 col-sm-2">
+                  <label for="service_filter" style="padding-top: 8px;">Filter by</label>
+                </div>
+                <div class="col-md-9 col-sm-10">
+                  <select name="service_filter" id="service_filter" class="form-control" v-model="service_filter" @change="filter_service">
+                    <option value=''>All</option>
+                    <option value="0">Not Finished</option>
+                    <option value="1">Finished</option>
+                    <option value="2">Paid</option>
+                  </select>
+                </div>
+              </div>
+              
+              
+            </div>
           </div>
 
           <table class="table table-hover">
             <thead>
               <tr class="heading">
                 <th>No</th>
+                <th>ID</th>
                 <th>Customer</th>
                 <th>Customer Address</th>
                 <th>Customer Phone</th>
                 <th>Received Staff</th>
                 <th>Service Engineer</th>
-                <th>Description</th>
-                <th>Remark</th>
                 <th>Received Date</th>
                 <th>Status</th>
                 <th>Action</th>
@@ -37,13 +68,12 @@
             <tbody>
               <tr v-for="(service,index) in service_list" :key="service.id" class="animated fadeIn">
                 <td>{{ paginationData.meta.from + index }}</td>
+                <td>{{ service.id }}</td>
                 <td>{{ service.customer_name }}</td>
                 <td>{{ service.customer_address }}</td>
                 <td>{{ service.customer_phone }}</td>
                 <td>{{ service.staff }}</td>
                 <td>{{ service.service_engineer }}</td>
-                <td v-html="$options.filters.subStr(service.received_description) "></td>
-                <td v-html="$options.filters.subStr(service.received_remark)"></td>
                 <td>{{ service.received_date }}</td>
                 <td>
                   <span
@@ -116,6 +146,9 @@ export default {
   data() {
     return {
       authorized: false,
+      service_filter: '',
+      search_key : 'id',
+      search_value : '',
       User: "",
       service_list: [],
       paginationData: {}
@@ -124,7 +157,7 @@ export default {
   methods: {
     getServiceList(page = 1) {
       axios
-        .get("/api/services?page=" + page)
+        .get(`/api/services?service_filter=${this.service_filter}&page=${page}`)
         .then(response => {
           this.paginationData = response.data;
           this.service_list = response.data.data;
@@ -135,6 +168,21 @@ export default {
             Bus.$emit("logout");
           }
         });
+    },
+    filter_service(){
+      axios.get(`/api/services?service_filter=${this.service_filter}`)
+        .then((response) => {
+          this.paginationData = response.data;
+          this.service_list = response.data.data;
+        })
+    },
+    search_service(){
+      this.service_filter = '';
+      axios.get(`/api/services?search_key=${this.search_key}&search_value=${this.search_value}`)
+        .then((response) => {
+          this.paginationData = response.data;
+          this.service_list = response.data.data;
+        })
     },
     editServicebySaleperson(id) {
       this.$router.push("/services/edit/" + id);
@@ -202,6 +250,11 @@ export default {
 </script>
 
 <style scoped>
+@media screen and (max-width: 575px) {
+  .search-text{
+    margin-top : 15px;
+  }
+}
 .table-scroll {
   overflow-x: auto;
 }

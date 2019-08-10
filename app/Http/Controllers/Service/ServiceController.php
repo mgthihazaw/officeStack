@@ -20,8 +20,19 @@ class ServiceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if($request->has('service_filter') && $request->query('service_filter') !== null){
+            $filter = $request->query('service_filter');
+                return ServiceResource::collection(Service::where('pending', $filter)->paginate(10));
+        }else if($request->has('search_key') && $request->has('search_value') && $request->query('search_value') !== null){
+            $search_key = $request->query('search_key');
+            $search_value = $request->query('search_value');
+            if($search_key == "id"){
+            return ServiceResource::collection(Service::where($search_key, $search_value)->paginate(10));
+            }
+            return ServiceResource::collection(Service::where($search_key, 'LIKE', "$search_value%")->paginate(10));
+        }
         return ServiceResource::collection(Service::orderBy('id','DESC')->paginate(10));
     }
 
