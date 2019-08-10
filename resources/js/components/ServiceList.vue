@@ -29,6 +29,7 @@
                 <th>Service Engineer</th>
                 <th>Description</th>
                 <th>Remark</th>
+                <th>Received Date</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
@@ -41,8 +42,9 @@
                 <td>{{ service.customer_phone }}</td>
                 <td>{{ service.staff }}</td>
                 <td>{{ service.service_engineer }}</td>
-                <td>{{ service.received_description | subStr }}</td>
-                <td>{{ service.received_remark | subStr }}</td>
+                <td v-html="$options.filters.subStr(service.received_description) "></td>
+                <td v-html="$options.filters.subStr(service.received_remark)"></td>
+                <td>{{ service.received_date }}</td>
                 <td>
                   <span
                     class="badge badge-danger"
@@ -187,8 +189,8 @@ export default {
   filters: {
     subStr: function(string) {
       if(string){
-        if (string.length > 150) {
-          return string.substring(0, 150) + "...";
+        if (string.length > 20) {
+          return string.substring(0, string.indexOf("</")) + "...";
         }
         return string;
       }

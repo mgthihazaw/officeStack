@@ -20,7 +20,7 @@
             <th>Attribute Group Name</th>
 
             <th>Item Type</th>
-            <th>Date</th>
+            
             <th style="width: 200px">Action</th>
           </tr>
           <tr v-for="(attribute,index) in attributes" :key="index" class="animated fadeIn">
@@ -28,7 +28,7 @@
             <td>{{ attribute.name }}</td>
 
             <td>{{ attribute.item_type.name}}</td>
-            <td>{{ attribute.update_at | myDate}}</td>
+            
             <td style="width: 200px">
               <button class="btn btn-warning btn-sm text-white" @click="editAttribute(attribute)">
                 <i class="fa fa-edit"></i>

@@ -47,7 +47,7 @@
                 <td>{{ index+1 }}</td>
                 <td>{{ data.name}}</td>
                 <td>{{ data.total }}</td>
-                <td>{{ data.date}}</td>
+                <td>{{ data.date }}</td>
               </tr>
               <tr>
                 <td></td>
@@ -135,14 +135,25 @@ export default {
           let m = ("0" + (date.getMonth() + 1)).slice(-2);
 
           for (let i = 0; i < this.getDaysInMonth(m, y); i++) {
+            let d=("0" + (i + 1)).slice(-2)
             this.datas[i] = {
-              date: `${y}-${m}-${i + 1}`,
+              
+              date: `${y}-${m}-${d}`,
               name: ".....",
               total: "0"
             };
             this.serviceDatas.find(service => {
               if (new Date(service.date).getDate() == i + 1) {
-                this.datas[i] = service;
+                if(this.brand){
+                  this.datas[i] = {
+              date: service.date,
+              name: this.brand.name,
+              total: service.total
+            };
+                }else{
+                  this.datas[i] = service;
+                }
+                
               }
             });
           }

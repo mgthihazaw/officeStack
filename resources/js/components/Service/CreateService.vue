@@ -73,7 +73,7 @@
 
             <div class="form-group row">
               <div class="col-12">
-                <label >Received Staff</label>
+                <label >Received By</label>
                 <multiselect
                   v-model="form.receive_staff"
                   track-by="name"
@@ -92,15 +92,18 @@
             </div>
 
             <div class="form-group">
-              <label for="description">Service Description</label>
-              <textarea
+              <label for="description">Received Description</label>
+              <editor
+               :init="{menubar:false,
+                       statusbar: false,
+                       toolbar : false}"
                 name="description"
                 id="description"
                 cols="30"
                 rows="5"
-                class="form-control"
+                class="form-control tiny"
                 v-model="form.description"
-              ></textarea>
+              ></editor>
               <div
                 class="error"
                 v-for="(error,index) in form_errors['description']"
@@ -109,15 +112,18 @@
             </div>
 
             <div class="form-group">
-              <label for="remark">Service Remarks</label>
-              <textarea
+              <label for="remark">Received Remarks</label>
+              <editor
+                :init="{menubar:false,
+                       statusbar: false,
+                       toolbar : false}"
                 name="remark"
                 id="remark"
                 cols="30"
                 rows="5"
                 class="form-control"
                 v-model="form.remark"
-              ></textarea>
+              ></editor>
               <div
                 class="error"
                 v-for="(error,index) in form_errors['remark']"
@@ -253,8 +259,10 @@ export default {
 };
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-<style scopde>
-
+<style scope>
+.tox-notifications-container{
+  display : none !important;
+}
 @media (max-width: 768px) {
   .col-md-4 {
     margin-bottom: 15px;

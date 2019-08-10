@@ -29,14 +29,14 @@
               <div class="info-box bg-light my-4 py-4">
                 <div class="info-box-content">
                   <h5 class="info-box-text text-dark">Received Description</h5>
-                  <span class="info-box-number  text-info mb-0">{{ service.received_description}}</span>
+                  <span class="info-box-number  text-info mb-0" v-html = "service.received_description"></span>
                 </div>
               </div>
               
               <div class="info-box bg-light my-1 py-4">
                 <div class="info-box-content">
                   <h5 class="info-box-text text-dark">Received Remarks</h5>
-                  <span class="info-box-number  text-info mb-0">{{ service.received_remark}}</span>
+                  <span class="info-box-number  text-info mb-0" v-html="service.received_remark"></span>
                 </div>
               </div>
               
@@ -44,16 +44,23 @@
 
             <div class="col-7 pr-5">
               <form @submit.prevent="updateService">
-                <div class="form-group row">
+                <div class="form-group">
                   <label
                     for="service_descriptioin"
                     class="form-control-label card-title"
                   >Service Description</label>
-                  <textarea
+                  <editor
+                    :init="{
+                      menubar:false,
+                       statusbar: false,
+                       toolbar : false
+                     }"
+                     
                     class="form-control"
                     v-model="form.service_description"
-                    style="height:160px;"
-                  ></textarea>
+                    
+                  ></editor>
+                  
                   <div
                     class="error"
                     v-for="(error,index) in form_errors['service_description']"
@@ -61,16 +68,19 @@
                   >{{ error }}</div>
                 </div>
 
-                <div class="form-group row">
+                <div class="form-group">
                   <label
                     for="service_descriptioin"
                     class="form-control-label card-title"
                   >Service Remark</label>
-                  <textarea
+                  <editor
+                  :init="{menubar:false,
+                       statusbar: false,
+                       toolbar : false}"
                     class="form-control"
                     v-model="form.service_remark"
-                    style="height:160px;"
-                  ></textarea>
+                  
+                  ></editor>
                   <div
                     class="error"
                     v-for="(error,index) in form_errors['service_remark']"
@@ -81,7 +91,7 @@
                 <div class="form-group row">
                   <label
                     for="service_engineer"
-                    class="form-control-label card-title"
+                    class="form-control-label card-title "
                   >Choose Service Engineer</label>
                   <multiselect
                     :options="service_engineers"
@@ -95,6 +105,7 @@
 
                   <div v-if="service_engineer_error" class="error">Select the service engineer</div>
                 </div>
+                
 
                 <div class="form-group row">
                   <div class="col-10 text-right offset-2">

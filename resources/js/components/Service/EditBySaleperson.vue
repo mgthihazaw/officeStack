@@ -54,7 +54,7 @@
               >{{ error }}</div>
             </div>
           </div>
-           <label >Received Staff</label>
+           <label >Received By</label>
           <div class="form-group row">
             
             <div class="col-12">
@@ -76,15 +76,20 @@
           </div>
 
           <div class="form-group">
-            <label for="description">Service Description</label>
-            <textarea
+            <label for="description">Received Description</label>
+            <editor
+              :init="{
+                      menubar:false,
+                       statusbar: false,
+                       toolbar : false
+                     }"
               name="description"
               id="description"
               cols="30"
               rows="5"
               class="form-control"
               v-model="form.description"
-            ></textarea>
+            ></editor>
             <div
               class="error"
               v-for="(error,index) in form_errors['description']"
@@ -93,15 +98,18 @@
           </div>
 
           <div class="form-group">
-            <label for="remark">Service Remarks</label>
-            <textarea
+            <label for="remark">Received Remarks</label>
+            <editor
+              :init="{menubar:false,
+                       statusbar: false,
+                       toolbar : false}"
               name="remark"
               id="remark"
               cols="30"
               rows="5"
               class="form-control"
               v-model="form.remark"
-            ></textarea>
+            ></editor>
             <div
               class="error"
               v-for="(error,index) in form_errors['remark']"

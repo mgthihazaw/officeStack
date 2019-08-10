@@ -28,6 +28,9 @@
                 
                 padding-right: 0px !important;
             }
+            .tox-notifications-container{
+                display : none !important;
+            }
         </style>
     </head>
     <body class="hold-transition sidebar-mini">
@@ -35,5 +38,8 @@
             <app-home></app-home>
         </div>
     </body>
+    
     <script src="{{ asset('js/app.js') }}"></script>
+  
+    
 </html>

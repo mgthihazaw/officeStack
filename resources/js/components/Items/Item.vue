@@ -25,7 +25,7 @@
 
                   <th>Item Type</th>
                   <th>Price</th>
-                  <th>Date</th>
+                  
                   <th style="width: 150px">Action</th>
                 </tr>
               </tbody>
@@ -40,7 +40,7 @@
                   <td>{{ item.item_type.name }}</td>
 
                   <td>{{ item.price }}</td>
-                  <td>{{ item.update_at | myDate}}</td>
+                  
                   <td style="width: 200px">
                     <button
                       class="btn btn-info btn-sm text-white"

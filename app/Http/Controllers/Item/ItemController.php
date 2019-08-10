@@ -117,7 +117,7 @@ class ItemController extends Controller
             }
             $brand = Brand::firstOrCreate(['name' => $request->brand]);
             $item->update([
-                'price' => $request->price,
+                'price_one' => $request->price_one,
                 'brand_id' => $brand->id,
                 'item_type_id' => $request->item_type_id,
                 'model_no' => $request->model_no

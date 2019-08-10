@@ -38,50 +38,43 @@
               <div class="row  customerParent ">
                 <div class="col-6 ">
                   <div class="row">
-                    <div class="col-4">
+                    <div class="col-6">
                       <h6 class="text-dark">Customer Name</h6>
                     </div>
-                    <div class="col-8">
+                    <div class="col-6">
                       <p class="text-dark">{{ service.customer_name}}</p>
                     </div>
                   </div>
 
                   <div class="row">
-                    <div class="col-4">
+                    <div class="col-6">
                       <h6 class="text-dark">Customer Phone</h6>
                     </div>
-                    <div class="col-8">
+                    <div class="col-6">
                       <p class="text-dark">{{ service.customer_phone}}</p>
                     </div>
                   </div>
 
                   <div class="row">
-                    <div class="col-4">
+                    <div class="col-6">
                       <h6 class="text-dark">Customer Address</h6>
                     </div>
-                    <div class="col-8">
+                    <div class="col-6">
                       <p class="text-dark">{{ service.customer_address}}</p>
                     </div>
                   </div>
                 </div>
                 <div class="col-6">
                   <div class="row">
-                    <div class="col-3">
-                      <h6 class="text-dark">Microstack Mandalay</h6>
-                    </div>
-                    <div class="col-9">
-                      <p class="text-dark">၆၃လမ္း၊၆၄လမး္ၾကား ပိေတာက္လမ္း၊ခ်မ္းျမသာစည္ျမိဳ႕နယ္။</p>
-                      <p class="text-dark">၀၉-၈၉၈၉၈၉၈၉၈၉</p>
+                    
+                    <div class="col-12">
+                      <p class="text-dark">၆၃လမ္း၊၆၄လမး္ၾကား ပိေတာက္လမ္း၊ခ်မ္းျမသာစည္ျမိဳ႕နယ္၊မႏၱေလး။၀၉-၈၉၈၉၈၉၈၉၈၉</p>
                     </div>
                      
                   </div>
                   <div class="row">
-                    <div class="col-3">
-                      <h6 class="text-dark">Microstack Yangon</h6>
-                    </div>
-                    <div class="col-9">
-                      <p class="text-dark">အမွတ္ ၂၃၊နတ္ေခ်ာင္လမ္း၊တာေမြျမိဳ႕နယ္။</p>
-                      <p class="text-dark">၀၉-၅၅၇၇၈၈၃၇၃</p>
+                    <div class="col-12">
+                      <p class="text-dark">အမွတ္ ၂၃၊နတ္ေခ်ာင္လမ္း၊တာေမြျမိဳ႕နယ္၊ရန္ကုန္။၀၉-၅၅၇၇၈၈၃၇၃</p>
                     </div>
                      
                   </div>
@@ -91,7 +84,7 @@
                   <div>
                     <div class="row">
                       <div class="col-2">
-                        <h6 class="text-dark">Received Staff</h6>
+                        <h6 class="text-dark">Received By</h6>
                       </div>
                       <div class="col-10">
                         <p class=" text-dark">{{ service.staff}}</p>
@@ -99,15 +92,15 @@
                     </div>
 
                     <div class="row">
-                      <div class="callout callout-info mb-4 col-6">
-                      <h6 class="mb-3">Received Description</h6>
-                      {{ service.received_description}}
-                    </div>
-
-                    <div class="callout callout-info mb-4 col-6">
-                      <h6 class="mb-3">Received Remarks</h6>
-                      {{ service.received_remark }}
-                    </div>
+                      <div class="ml-3 callout callout-info mb-4 col-5">
+                        <h6 class="mb-3">Received Description</h6>
+                        <span v-html="service.received_description"></span>
+                      </div>
+                      <div class="col-1"></div>
+                      <div class="ml-2 callout callout-info mb-4 col-5">
+                        <h6 class="mb-3">Received Remarks</h6>
+                        <span v-html="service.received_remark"></span>
+                      </div>
                     </div>
                   </div>
                 </div>

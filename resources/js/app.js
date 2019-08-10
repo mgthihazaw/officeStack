@@ -9,6 +9,10 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+//TinyMce 
+import Editor from '@tinymce/tinymce-vue';
+Vue.component('editor', Editor)
+
 //Alert Message
 
 import swal from 'sweetalert2';
@@ -24,7 +28,7 @@ window.Toast=Toast
 
 import moment from 'moment';
 Vue.filter('myDate', function (created) {
-	return moment().format('L');
+	return moment().format('DD/MM/YYYY');
 })
 //MultiSelect
 import Multiselect from 'vue-multiselect'
@@ -41,7 +45,7 @@ Vue.mixin(Auth);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 import router from './Router/router.js';
-import vSelect from 'vue-select'
+
 import {User} from './Helpers/User.js';
 import {Gate} from './Helpers/Gate.js';
 
@@ -106,3 +110,11 @@ const app = new Vue({
 });
 // }
 // });
+$(function(){
+	$(document).on('keydown', function(event){
+		if(event.keyCode == 13) {
+			event.preventDefault();
+			return false;
+		}
+	})
+})

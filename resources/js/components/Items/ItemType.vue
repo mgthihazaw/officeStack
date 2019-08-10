@@ -18,13 +18,13 @@
           <tr class="heading">
             <th style="width: 200px">#</th>
             <th>Name</th>
-            <th>Date</th>
+            
             <th style="width: 200px">Action</th>
           </tr>
           <tr v-for="(type,index) in itemTypes" :key="index" class="animated fadeIn">
             <td>{{ paginationData.meta.from + index }}</td>
             <td>{{ type.name }}</td>
-            <td>{{ type.update_at | myDate}}</td>
+            
             <td>
               <button class="btn btn-warning btn-sm text-white" @click="editType(type)">
                 <i class="fa fa-edit"></i>
