@@ -22,8 +22,8 @@
                 <tr class="heading">
                   <th style="width: 50px">#</th>
                   <th>Name</th>
-
                   <th>Item Type</th>
+                  <th>Attributes</th>
                   <th>Price</th>
                   
                   <th style="width: 150px">Action</th>
@@ -38,6 +38,13 @@
                   </td>
 
                   <td>{{ item.item_type.name }}</td>
+
+                  <td>
+                    <span
+                      v-for="(attribute,index) in item.attributes"
+                      :key="index"
+                    >{{ attribute.name }} &nbsp;</span>
+                  </td>
 
                   <td>{{ item.price }}</td>
                   

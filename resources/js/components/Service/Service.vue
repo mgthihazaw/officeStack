@@ -34,7 +34,6 @@
             <div>
               <div class="row customerParent">
                 <div class="col-6">
-                  
                   <div class="row">
                     <div class="col-6">
                       <h6 class="text-dark">Customer Name</h6>
@@ -64,17 +63,20 @@
                 </div>
                 <div class="col-6">
                   <div class="row">
-                    
                     <div class="col-12">
-                      <p class="text-dark">တ-၂/၇ ပိေတာက္လမ္း၊၆၃လမ္း၊၆၄လမး္ၾကား ပိေတာက္လမ္းၾကား<br>ခ်မ္းျမသာစည္ျမိဳ႕နယ္၊မႏၱေလး။ ၀၉-၉၁၀၂၄၂၄၃ ၊ ၀၉-၉၇၃၅၃၇၆၅၆</p>
+                      <p class="text-dark">
+                        တ-၂/၇ ပိေတာက္လမ္း၊၆၃လမ္း၊၆၄လမး္ၾကား ပိေတာက္လမ္းၾကား
+                        <br />ခ်မ္းျမသာစည္ျမိဳ႕နယ္၊မႏၱေလး။ ၀၉-၉၁၀၂၄၂၄၃ ၊ ၀၉-၉၇၃၅၃၇၆၅၆
+                      </p>
                     </div>
-                     
                   </div>
                   <div class="row">
                     <div class="col-12">
-                      <p class="text-dark">အမွတ္ ၂၃-ေျမညီထပ္(A)၊သမိန္ပရမ္းလမ္းတို၊နတ္ေခ်ာင္းရပ္ကြက္<br>တာေမြျမိဳ႕နယ္၊ရန္ကုန္။ ၀၉-၇၉၁၇၂၂၇၂၂ ၊ ၀၉-၉၆၁၇၂၂၇၂၂</p>
+                      <p class="text-dark">
+                        အမွတ္ ၂၃-ေျမညီထပ္(A)၊သမိန္ပရမ္းလမ္းတို၊နတ္ေခ်ာင္းရပ္ကြက္
+                        <br />တာေမြျမိဳ႕နယ္၊ရန္ကုန္။ ၀၉-၇၉၁၇၂၂၇၂၂ ၊ ၀၉-၇၈၅၅၅၇၉၄၄
+                      </p>
                     </div>
-                     
                   </div>
                 </div>
               </div>
@@ -93,13 +95,11 @@
                     <div class="des mb-4 col-6">
                       <h6 class="mb-3">Received Description</h6>
                       <span v-html="service.received_description"></span>
-                      
                     </div>
 
                     <div class="des mb-4 col-6">
                       <h6 class="mb-3">Received Remarks</h6>
                       <span v-html="service.received_remark"></span>
-                      
                     </div>
                   </div>
 
@@ -122,7 +122,7 @@
                           <th style="width: 30px">No.</th>
                           <th>Name</th>
 
-                          <th >Quantity</th>
+                          <th>Quantity</th>
                           <th>Unit Price</th>
                           <th>Amount</th>
                           <th style="width: 20px"></th>
@@ -142,21 +142,47 @@
                             >{{ attribute.name }} &nbsp;</span>
                           </td>
 
-                          <td class="ml-2"   >
-                            <input type="number" min="1"  class="form-control" v-model="item.quantity"  />
+                          <td class="ml-2">
+                            <input
+                              type="number"
+                              min="1"
+                              class="form-control"
+                              v-model="item.quantity"
+                              :disabled="service.pending == 4"
+                              @input="this.Bus.$emit('addItemForService',item)"
+                             
+                            />
                             <span class="inputData">{{ item.quantity }}</span>
                           </td>
 
                           <td class="ml-2">
-                            <input type="number" min="0" v-model="item.price" class="form-control" />
+                            <input
+                              type="number"
+                              min="0"
+                              v-model="item.price"
+                              class="form-control"
+                              :disabled="service.pending == 4"
+                              @input="this.Bus.$emit('addItemForService',item)"
+                            />
                             <span class="inputData">{{ item.price }}</span>
                           </td>
                           <td class="ml-2">
-                            <input type="number" min="0" v-model="item.amount" class="form-control" />
+                            <input
+                              type="number"
+                              min="0"
+                              v-model="item.amount"
+                              class="form-control"
+                              :disabled="service.pending == 4"
+                              
+                            />
                             <span class="inputData">{{ item.amount }}</span>
                           </td>
                           <td>
-                            <button class="btn btn-danger btn-sm" @click="deleteItem(index)">
+                            <button
+                              class="btn btn-danger btn-sm"
+                              @click="deleteItem(index)"
+                              v-if="service.pending != 4"
+                            >
                               <i class="fas fa-minus"></i>
                             </button>
                           </td>
@@ -170,11 +196,9 @@
                           <td></td>
                           <td>Total</td>
                           <td style="padding-left:10px;">
-                            <p class="text-bold ">{{ getTotal }}</p>
+                            <p class="text-bold">{{ getTotal }}</p>
                           </td>
-                          <td>
-                            
-                          </td>
+                          <td></td>
                           <td></td>
                         </tr>
                       </tbody>
@@ -188,19 +212,29 @@
           </div>
         </div>
         <div class="button_group pb-4">
-          <button class="btn btn-secondary printBtn" @click="back()" >Back</button>
-          <button class="btn btn-success printBtn" @click="save">Print Preview</button>
-          <button type="button" class="btn btn-info printBtn text-white" data-toggle="modal" data-target="#modal-lg">
+          <button class="btn btn-secondary" @click="back()">Back</button>
+          <button
+            class="btn btn-success"
+            @click="print"
+            v-if="(service.pending == 3 || service.pending == 4) && printBtnDisplay  && serviceItems.length > 0"
+            
+          >Print Preview</button>
+          <button class="btn btn-primary" @click="save" v-if="service.pending != 4">Hold</button>
+          <button
+            type="button"
+            class="btn btn-info text-white"
+            data-toggle="modal"
+            data-target="#modal-xl"
+            v-if="service.pending != 4"
+          >
             Add Item
             <i class="ml-2 fas fa-plus-circle fa-1x"></i>
           </button>
         </div>
-        
       </div>
 
-      
-      <div class="modal fade" id="modal-lg" style="display: none;" aria-hidden="true" ref="modal">
-        <div class="modal-dialog modal-lg">
+      <div class="modal fade" id="modal-xl" style="display: none;" aria-hidden="true" ref="modal">
+        <div class="modal-dialog modal-xl">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title text-info">Add Item for Service</h4>
@@ -240,7 +274,7 @@ export default {
       authorized: false,
       service: "",
       serviceItems: [],
-      
+      printBtnDisplay : true
     };
   },
   methods: {
@@ -250,11 +284,11 @@ export default {
         .get("/api/services/" + id + "/items")
         .then(res => {
           this.service = res.data.data;
-          if(this.service.items.length > 0){
-             this.service.items.forEach( item => {
-        let newData = { ...item, amount: item.price };
-        this.serviceItems.push(newData) 
-      })
+          if (this.service.items.length > 0) {
+            this.service.items.forEach(item => {
+              let newData = { ...item, amount: item.price };
+              this.serviceItems.push(newData);
+            });
           }
         })
         .catch(err => {
@@ -267,40 +301,48 @@ export default {
     shows() {
       this.show = true;
     },
-    
 
     deleteItem(index) {
+      this.printBtnDisplay = false
       this.serviceItems.splice(index, 1);
-      
-
     },
-    save(){
-      window.print()
-      let data = []
-  
-      this.serviceItems.forEach( serviceItem => {
+    print() {
+      window.print();
+      axios
+        .put(`/api/services/${this.service.id}`)
+        .then(res => {
+          this.service = res.data;
+        })
+        .catch(error => {
+          console.log("Error here", error);
+        });
+    },
+    save() {
+      let data = [];
+
+      this.serviceItems.forEach(serviceItem => {
         let newData = {
-          'item_id' : serviceItem.id,
-          'quantity' : serviceItem.quantity ,
-          'price' : serviceItem.price 
-        }
-        data.push(newData) 
-      })
+          item_id: serviceItem.id,
+          quantity: serviceItem.quantity,
+          price: serviceItem.price
+        };
+        data.push(newData);
+      });
 
-      
-      axios.post(`/api/services/${this.service.id}/items`,data)
-      .then( response => {
-        
-        
-      })
-      .catch(err => {
-        console.log(err)
-      })
-
+      axios
+        .post(`/api/services/${this.service.id}/items`, data)
+        .then(res => {
+          this.service = res.data;
+          this.printBtnDisplay = true
+        })
+        .catch(err => {
+          console.log(err);
+        });
     }
   },
   created() {
     Bus.$on("addItemForService", item => {
+      this.printBtnDisplay = false
       item = { ...item, quantity: 1, amount: item.price };
 
       this.serviceItems.push(item);
@@ -312,14 +354,12 @@ export default {
           return serviceItem;
         }
       }, []);
-
-      
     });
     if (User.isLoggedIn()) {
       axios.post("/api/auth/me").then(response => {
         Gate.setUser(response.data.user.roles, response.data.user.permissions);
 
-        if (!(Gate.isSaleperson() )) {
+        if (!Gate.isSaleperson()) {
           this.shows();
           this.authorized = false;
         } else {
@@ -335,8 +375,8 @@ export default {
     serviceItems: {
       handler: function(after, before) {
         before.forEach(data => {
-          data.amount = data.quantity * data.price;
           
+          data.amount = data.quantity * data.price;
         });
       },
       deep: true
@@ -346,19 +386,19 @@ export default {
     getTotal() {
       this.total = 0;
       let data;
-
+      
       data = this.serviceItems.forEach(serviceItem => {
         this.total += serviceItem.amount;
         return this.total;
       });
-      return this.total
+      return this.total;
     }
   },
   beforeDestroy() {
     //While Modal is opened Route change has modal errors.That is dixed this error
-    $("#modal-lg").modal("hide");
+    $("#modal-xl").modal("hide");
     $(document.body).removeClass("modal-open");
-     $(document.body).css('padding-right',"0px")
+    $(document.body).css("padding-right", "0px");
     $(".modal-backdrop").remove();
   }
 };
@@ -379,7 +419,6 @@ h6 {
   line-height: 1.4em;
 }
 
-
 .pageHeader {
   margin: 0;
   padding: 0px;
@@ -387,7 +426,7 @@ h6 {
 }
 .staff {
   padding-top: 20px;
-  border-top: 1px solid #7e7e7e
+  border-top: 1px solid #7e7e7e;
 }
 .des {
   background-color: #ffffff;
@@ -409,14 +448,13 @@ h6 {
   }
   .des {
     display: none;
-    
   }
   .saveform {
     display: none;
     margin: 0;
   }
-  .printPage{
-    margin : 50px;
+  .printPage {
+    margin: 50px;
   }
 }
 .tb {

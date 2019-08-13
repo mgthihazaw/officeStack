@@ -166,7 +166,7 @@ class ServiceController extends Controller
                     'service_description' => $request->service_description,
                     'service_remark' => $request->service_remark,
                     'service_engineer_id' => $request->service_engineer,
-                    'pending' => 1,
+                    'pending' => 2,
                     'finished_date' => now(),
                 ]);
 
@@ -177,24 +177,34 @@ class ServiceController extends Controller
             
         }
 
-        $request->validate([
-            'customer_name' => 'required|string',
-            'customer_phone' => 'required',
-            'customer_address' => 'required|string',
-            'receive_staff' => 'required|integer',
-            'description' => 'required|string',
-            'remark' => 'sometimes',
-        ]);
+        if($service->pending == 3){
+            $service->update([
+                'pending' => 4
+            ]);
 
-        $service->update([
-            'staff_id'=>$request->receive_staff,
-            'customer_name'=>$request->customer_name,
-            'customer_phone'=>$request->customer_phone,
-            'customer_address'=>$request->customer_address,
-            'received_description'=>$request->description,
-            'received_remark'=>$request->remark,
-        ]);
-        return response()->json("Sevice Successfully Updated");
+            return response()->json($service, 200);
+        }else if($service->pending != 4){
+            $request->validate([
+                'customer_name' => 'required|string',
+                'customer_phone' => 'required',
+                'customer_address' => 'required|string',
+                'receive_staff' => 'required|integer',
+                'description' => 'required|string',
+                'remark' => 'sometimes',
+            ]);
+    
+            $service->update([
+                'staff_id'=>$request->receive_staff,
+                'customer_name'=>$request->customer_name,
+                'customer_phone'=>$request->customer_phone,
+                'customer_address'=>$request->customer_address,
+                'received_description'=>$request->description,
+                'received_remark'=>$request->remark,
+            ]);
+            return response()->json("Sevice Successfully Updated");
+        }
+
+        return response()->json($service, 200);
     }
 
     /**

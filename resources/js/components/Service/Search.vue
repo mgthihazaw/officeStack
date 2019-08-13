@@ -69,7 +69,7 @@
                         <th style="width: 100px">#</th>
                         <th>Name</th>
 
-                        <th>Item Type</th>
+                        <th>Attributes</th>
                         <th>Price</th>
 
                         <th style="width: 100px"></th>
@@ -78,14 +78,16 @@
                       <tr v-for="(item,index) in items" :key="index" class="animated fadeIn">
                         <td>{{ paginationData.meta.from + index }}</td>
                         <td class="ml-2">
-                          {{ item.brand.name }}
+                          {{ item.brand.name }} {{ item.model_no }}
+                          
+                        </td>
+
+                        <td class="ml-2">
                           <span
                             v-for="(attribute,index) in item.attributes"
                             :key="index"
                           >{{ attribute.name }} &nbsp;</span>
                         </td>
-
-                        <td class="ml-2">{{ item.item_type.name }}</td>
 
                         <td class="ml-2">{{ item. price}}</td>
 

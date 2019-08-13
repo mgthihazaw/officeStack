@@ -30,25 +30,26 @@ class ServiceItemController extends Controller
      */
     public function store(ServiceItemStoreRequest $request, Service $service)
     {
-        
-        $total_price = 0;
-        $service->items()->detach();
-        foreach ($request->all() as $key => $service_item) {
-            $total_price += $service_item['quantity'] * $service_item['price'];
-            ItemService::updateOrCreate([
-                'service_id' => $service->id,
-                'item_id' => $service_item['item_id'],
-                'quantity' => $service_item['quantity'],
-                'price' => $service_item['price']
-            ]);
+        if(count($request->all()) > 0){
+            $total_price = 0;
+            $service->items()->detach();
+            foreach ($request->all() as $key => $service_item) {
+                $total_price += $service_item['quantity'] * $service_item['price'];
+                ItemService::updateOrCreate([
+                    'service_id' => $service->id,
+                    'item_id' => $service_item['item_id'],
+                    'quantity' => $service_item['quantity'],
+                    'price' => $service_item['price']
+                ]);
+            }
+    
+            $service->update(['pending' => 3]);
+    
+            $service->invoice->update(['total_price' => $total_price, 'closed_date' => now()->format('Y-m-d')]);
+            return response()->json($service, 201);
         }
-
-        $service->update(['pending' => 2]);
-
-        $service->invoice->update(['total_price' => $total_price, 'closed_date' => now()->format('Y-m-d')]);
-
-
-        return response()->json($service, 201);
+        $service->items()->detach();
+        return response()->json($service, 200);
     }
 
     /**

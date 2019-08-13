@@ -15,13 +15,14 @@
                 <i class="fa fa-plus"></i>
               </router-link>
             </div>
+            
             <div class="col-md-7 mt-sm-3 mt-md-0 mt-lg-0">
               <div class="row">
                 <div class="col-md-2 col-sm-2">
                   <label  style="padding-top: 8px;">Search by</label>
                 </div>
                 <div class="col-md-4 col-sm-4">
-                  <select class='form-control' v-model="search_key" @change="search_value = ''">
+                  <select class='form-control' v-model="search_key" @change="showAll">
                     <option value="id">ID</option>
                     <option value="customer_name">Name</option>
                   </select>
@@ -30,6 +31,9 @@
                   <input type="text" name="search" class="form-control" v-model="search_value" @input="search_service">
                 </div>
               </div>
+            </div>
+            <div class="col-md-1" v-if="!can('service-create')">
+
             </div>
             <div class="col-md-4 mt-sm-3 mt-md-0 mt-lg-0">
               <div class="row">
@@ -80,19 +84,25 @@
                     class="badge badge-danger"
                     style="padding-top : 8px ; padding-bottom : 5px ; font-size : 10px;"
                     
-                    v-if="service.pending ==0"
+                    v-if="service.pending == 0"
                   >Not Finished</span>
                   <span
                     class="badge badge-success"
                     style="padding-top : 8px ; padding-bottom : 5px ; font-size : 10px;"
                     
-                    v-if="service.pending ==1"
+                    v-if="service.pending == 2"
                   > Finished</span>
+                  <span
+                    class="badge badge-warning px-2 text-dark"
+                    style="padding-top : 8px ; padding-bottom : 5px ; font-size : 10px;"
+                    
+                    v-if="service.pending == 3"
+                  >Hold</span>
                   <span
                     class="badge badge-info px-2 text-white"
                     style="padding-top : 8px ; padding-bottom : 5px ; font-size : 10px;"
                     
-                    v-if="service.pending ==2"
+                    v-if="service.pending == 4"
                   >Paid</span>
                 </td>
                 <td>
@@ -106,7 +116,7 @@
                   <button
                     class="btn btn-secondary btn-sm"
                     @click="printView(service.id)"
-                    v-if="User.isSaleperson() && !service.pending"
+                    v-if="User.isSaleperson() && (service.pending == 0 || service.pending == 1)"
                   >
                     <i class="fas fa-print"></i>
                   </button>
@@ -121,7 +131,7 @@
                   <router-link
                     :to="'/services/'+service.id+'/show'"
                     class="btn btn-success btn-sm text-white"
-                    v-if="User.isSaleperson() && (service.pending == 1 || service.pending == 2) "
+                    v-if="User.isSaleperson() && (service.pending == 2 || service.pending == 3 || service.pending == 4) "
                   >
                     <i class="fas fa-print"></i>
                   </router-link>
@@ -157,7 +167,7 @@ export default {
   methods: {
     getServiceList(page = 1) {
       axios
-        .get(`/api/services?service_filter=${this.service_filter}&page=${page}`)
+        .get(`/api/services?service_filter=${this.service_filter}&search_key=${this.search_key}&search_value=${this.search_value}&page=${page}`)
         .then(response => {
           this.paginationData = response.data;
           this.service_list = response.data.data;
@@ -172,6 +182,8 @@ export default {
     filter_service(){
       axios.get(`/api/services?service_filter=${this.service_filter}`)
         .then((response) => {
+          this.search_key = 'id'
+          this.search_value = ''
           this.paginationData = response.data;
           this.service_list = response.data.data;
         })
@@ -224,6 +236,11 @@ export default {
             title: err.response.data.message
           });
         });
+    },
+    showAll()
+    {
+      this.search_value = ''
+      this.getServiceList();
     }
   },
 
