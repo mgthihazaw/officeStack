@@ -17,9 +17,13 @@ class ItemTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $item_types = ItemType::orderBy('id', 'DESC')->paginate(10);
+        if($request->page){
+            $item_types = ItemType::orderBy('id', 'DESC')->paginate(10);
+        }else{
+            $item_types = ItemType::orderBy('id', 'DESC')->get();
+        }
 
         return ItemTypeResource::collection($item_types);
     }

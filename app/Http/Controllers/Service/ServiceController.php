@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Auth\Access\AuthorizationException;
 use Hash;
 use App\Staff;
-
+use App\Events\ServiceEvent;
 class ServiceController extends Controller
 {
     /**
@@ -58,7 +58,7 @@ class ServiceController extends Controller
         $customer_phone = $request->customer_phone;
         $customer_address = $request->customer_address;
         $staff_id = $request->receive_staff;
-
+        $date = $request->date;
         $description = $request->description;
         $remark = $request->remark;
         $customer_id = $request->customer_id;
@@ -66,6 +66,7 @@ class ServiceController extends Controller
         if($customer_id){
             $request->validate([
                 'customer_id' => 'required|integer',
+                'date' => 'required|date_format:Y-m-d H:i:s',
                 'receive_staff' => 'required|integer',
                 'description' => 'required|string',
                 'remark' => 'sometimes',
@@ -76,6 +77,7 @@ class ServiceController extends Controller
                 'staff_id' => $staff_id,
                 'description' => $description,
                 'remark' => $remark,
+                'received_date' => $date
             ]);
             $service->invoice()->create([
                 'total_price' => $total_price,
@@ -84,13 +86,12 @@ class ServiceController extends Controller
                 'opened_date' => now()->format('Y-m-d'),
             ]);
         }else{
-            
-
             $request->validate([
                 'customer_name' => 'required|string',
                 'customer_phone' => 'required',
                 'customer_address' => 'required|string',
                 'receive_staff' => 'required|integer',
+                'date' => 'required|date_format:Y-m-d H:i:s',
                 'description' => 'required|string',
                 'remark' => 'sometimes',
             ]);
@@ -101,9 +102,9 @@ class ServiceController extends Controller
                 'customer_phone' => $customer_phone,
                 'customer_address' => $customer_address,
                 'staff_id' => $staff_id,
+                'received_date' => $date,
                 'received_description' => $description,
                 'received_remark' => $remark,
-                'received_date' => now(),
             ]);
             $service->invoice()->create([
                 'total_price' => 0,
@@ -112,7 +113,9 @@ class ServiceController extends Controller
                 'opened_date' => now()->format('Y-m-d'),
             ]);
         }
-
+        
+        
+        event(new ServiceEvent($service));
     
         return response()->json("New Service Added" , 200);
     }
@@ -167,7 +170,6 @@ class ServiceController extends Controller
                     'service_remark' => $request->service_remark,
                     'service_engineer_id' => $request->service_engineer,
                     'pending' => 2,
-                    'finished_date' => now(),
                 ]);
 
                 return response()->json('Service has been finished', 200);
@@ -179,7 +181,8 @@ class ServiceController extends Controller
 
         if($service->pending == 3){
             $service->update([
-                'pending' => 4
+                'pending' => 4,
+                'finished_date' => now(),
             ]);
 
             return response()->json($service, 200);
@@ -189,6 +192,7 @@ class ServiceController extends Controller
                 'customer_phone' => 'required',
                 'customer_address' => 'required|string',
                 'receive_staff' => 'required|integer',
+                'date' => 'required|date_format:Y-m-d H:i:s',
                 'description' => 'required|string',
                 'remark' => 'sometimes',
             ]);
@@ -198,6 +202,7 @@ class ServiceController extends Controller
                 'customer_name'=>$request->customer_name,
                 'customer_phone'=>$request->customer_phone,
                 'customer_address'=>$request->customer_address,
+                'received_date' => $request->date,
                 'received_description'=>$request->description,
                 'received_remark'=>$request->remark,
             ]);

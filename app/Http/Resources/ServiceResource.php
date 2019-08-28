@@ -28,7 +28,7 @@ class ServiceResource extends JsonResource
             'pending' => $this->pending,
             'service_description' => $this->service_description,
             'service_remark' => $this->service_remark,
-            'received_date' => substr($this->received_date, 0 , 10),
+            'received_date' => $this->received_date,
             'invoice_id' => $this->invoice->id
         ];
     }

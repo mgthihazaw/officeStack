@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -35,8 +36,10 @@
     </head>
     <body class="hold-transition sidebar-mini">
         <div id="app">
+               
             <app-home></app-home>
         </div>
+       
     </body>
     
     <script src="{{ asset('js/app.js') }}"></script>

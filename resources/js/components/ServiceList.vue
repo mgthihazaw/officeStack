@@ -1,7 +1,9 @@
 <template>
+
   <div v-if="show">
     <unauthorized v-if="!can('service-list')"></unauthorized>
     <div v-else>
+      
       <div class="row">
         <div class="col-md-12 table-scroll">
           <div class="mb-2 row">
@@ -44,8 +46,9 @@
                   <select name="service_filter" id="service_filter" class="form-control" v-model="service_filter" @change="filter_service">
                     <option value=''>All</option>
                     <option value="0">Not Finished</option>
-                    <option value="1">Finished</option>
-                    <option value="2">Paid</option>
+                    <option value="2">Finished</option>
+                    <option value="3">Hold</option>
+                    <option value="4">Paid</option>
                   </select>
                 </div>
               </div>
@@ -78,7 +81,7 @@
                 <td>{{ service.customer_phone }}</td>
                 <td>{{ service.staff }}</td>
                 <td>{{ service.service_engineer }}</td>
-                <td>{{ service.received_date }}</td>
+                <td>{{ service.received_date.substring(0, 10) }}</td>
                 <td>
                   <span
                     class="badge badge-danger"
@@ -123,7 +126,7 @@
                   <button
                     class="btn btn-primary btn-sm text-white"
                     @click="editServicebyServiceEngineer(service.id)"
-                    v-if="User.isServiceEngineer() && service.pending !=2"
+                    v-if="User.isServiceEngineer() && service.pending !=4"
                   >
                     <i class="fa fa-edit"></i>
                   </button>
@@ -143,8 +146,10 @@
           <pagination :data="paginationData" @pagination-change-page="getServiceList"></pagination>
         </div>
       </div>
+      
     </div>
   </div>
+ 
 </template>
 
 <script>
@@ -245,11 +250,16 @@ export default {
   },
 
   created() {
+    
     this.auth();
     this.getServiceList();
-    Bus.$on("afterServiceDeleted", () => {
-      this.getServiceList();
-    });
+    // Bus.$on("afterServiceDeleted", () => {
+    //   this.getServiceList();
+    // });
+     Echo.channel('service-channel')
+          .listen('ServiceEvent', (e) => {
+              this.getServiceList()
+          });
   },
   filters: {
     subStr: function(string) {

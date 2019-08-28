@@ -6,6 +6,7 @@ use App\Staff;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Cache;
 
 class AuthController extends Controller
 {
@@ -53,6 +54,7 @@ class AuthController extends Controller
 
     public function me()
     {
+        
         $permissions = [];
         foreach($this->guard()->user()->roles as $role){
             foreach($role->perms as $permission){

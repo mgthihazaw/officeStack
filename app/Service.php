@@ -3,9 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Events\ServiceEvent;
+// use App\Http\Resources\ServiceResource;
 
 class Service extends Model
 {
+	
+
+
 
    public $timestamps  = false;
 
@@ -31,4 +36,38 @@ class Service extends Model
    public function invoice(){
 		return $this->morphOne('App\Invoice', 'invoiceable');
 	}
+
+	public static function boot() {
+
+
+
+	    parent::boot();
+
+
+
+	    static::created(function($service) {
+
+	        event(new ServiceEvent($service));
+
+	    });
+
+
+
+	    static::updated(function($service) {
+
+	        event(new ServiceEvent($service));
+
+	    });
+
+
+
+	    static::deleted(function($service) {
+
+	        event(new ServiceEvent($service));
+
+	    });
+
+	}
+
+
 }
